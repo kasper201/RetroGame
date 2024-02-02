@@ -3,6 +3,8 @@
  * Copyright (c) 2020 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: Apache-2.0
+ * 
+ * Connect pin 2 to A14 and pin 8 to A15
  */
 
 #include <zephyr/kernel.h>
