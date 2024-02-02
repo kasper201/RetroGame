@@ -41,6 +41,7 @@ end main;
 
 architecture Behavioral of main is
 
+--Uart rx component
 component UART_RX is
   port (
     i_Clk       : in  std_logic;
@@ -50,17 +51,41 @@ component UART_RX is
     );
 end component;
 
+--Uart tx component
+component UART_TX is
+  port (
+    i_Clk       : in  std_logic;
+    i_TX_DV     : in  std_logic;
+    i_TX_Byte   : in  std_logic_vector(7 downto 0);
+    o_TX_Active : out std_logic;
+    o_TX_Serial : out std_logic;
+    o_TX_Done   : out std_logic
+    );
+end component;
 
-signal RecievedDataValid : std_logic;
-signal DataRecieved : std_logic_vector (7 downto 0);
+--Status for the bytes and if they are ready to handle or to transmit
+signal Recieved_Data_Valid, Transmit_Data_Valid : std_logic;
+--The bytes to recieve and send
+signal Data_Recieved, Data_To_Send : std_logic_vector (7 downto 0);
+--Transmit status
+signal Transmit_Active, Transmit_Complete : std_logic;
 
 begin
 
     URX: UART_RX port map (
         i_Clk       => clk,
         i_RX_Serial => Rx,
-        o_RX_DV     => RecievedDataValid,
-        o_RX_Byte   => DataRecieved
+        o_RX_DV     => Recieved_Data_Valid,
+        o_RX_Byte   => Data_Recieved
+    );
+    
+    UTX: UART_TX port map (
+        i_Clk       => clk,
+        i_TX_DV     => Transmit_Data_Valid,
+        i_TX_Byte   => Data_To_Send,
+        o_TX_Active => Transmit_Active,
+        o_TX_Serial => Tx,
+        o_TX_Done   => Transmit_Done
     );
 
 
