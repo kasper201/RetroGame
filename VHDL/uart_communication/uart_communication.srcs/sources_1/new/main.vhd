@@ -85,7 +85,7 @@ begin
         i_TX_Byte   => Data_To_Send,
         o_TX_Active => Transmit_Active,
         o_TX_Serial => Tx,
-        o_TX_Done   => Transmit_Done
+        o_TX_Done   => Transmit_Complete
     );
 
 
