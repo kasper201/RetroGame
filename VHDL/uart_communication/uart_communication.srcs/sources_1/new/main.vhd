@@ -6,7 +6,7 @@
 -- Design Name: 
 -- Module Name: main - Behavioral
 -- Project Name: Retro Game
--- Target Devices: Artic 7 Basys 3
+-- Target Devices: Artix 7 Basys 3
 -- Tool Versions: 
 -- Description: 
 -- 
@@ -34,9 +34,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity main is
-    Port ( Rx : in STD_LOGIC;
+    Port ( clk : in STD_LOGIC;
+           Rx : in STD_LOGIC;
            Tx : out STD_LOGIC;
-           clk : in STD_LOGIC);
+           LED_Status : out STD_LOGIC
+           );
 end main;
 
 architecture Behavioral of main is
@@ -61,6 +63,14 @@ component UART_TX is
     o_TX_Serial : out std_logic;
     o_TX_Done   : out std_logic
     );
+end component;
+
+--Handling input from uart
+component RD_Process is
+    Port ( i_Clk : in STD_LOGIC;
+           i_RX_DV : in STD_LOGIC;
+           i_R_Byte : in STD_LOGIC_VECTOR (7 downto 0);
+           o_Status : out STD_LOGIC);
 end component;
 
 --Status for the bytes and if they are ready to handle or to transmit
@@ -88,5 +98,11 @@ begin
         o_TX_Done   => Transmit_Complete
     );
 
+    UHAN: RD_Process port map (
+        i_Clk       => clk,
+        i_RX_DV     => Recieved_Data_Valid,
+        i_R_Byte    => Data_Recieved,
+        o_Status    => LED_Status
+    );
 
 end Behavioral;
