@@ -16,7 +16,6 @@
 #include <string.h>
 
 #include "uart.h"
-#include "compc.h"
 #include "main.h"
 
 #define SLEEP_TIME_MS 10
@@ -151,8 +150,6 @@ int main(void)
 					ledActivated = 0;
 				}
 			}
-
-			readPc(); // Reads uart output from the FPGA
 
 			k_msleep(SLEEP_TIME_MS);
 		}
