@@ -1,4 +1,6 @@
-#include "headers/mainGame.h"
+#include "mainGame.h"
+#include "updateHandler.h"
+
 /**
  * @brief initialize the map
  * 
@@ -11,6 +13,7 @@ int mapinit(struct Map map[MAP_WIDTH][MAP_HEIGHT])
     {
         for (int y = 0; y < MAP_HEIGHT; y++)
         {
+            map[x][y].cost = 0;
             map[x][y].health = 0;
             map[x][y].damage = 0;
             map[x][y].defense = 0;
@@ -18,7 +21,23 @@ int mapinit(struct Map map[MAP_WIDTH][MAP_HEIGHT])
             map[x][y].type = 0;
         }
     }
-    if(map[0][0].health != 0 || map[3][1].health != 0)
+    if(map[0][0].health != 0 || map[3][1].type != 0) // check if the map is initialized correctly with an arbitrary position
+        return 1;
+    return 0;
+}
+
+/**
+ * @brief initialize the player
+ * 
+ * @param player 
+ * @return int 1 for error, 0 for no error 
+ */
+int playerInit(struct Player *player)
+{
+    player->wave = 0;
+    player->health = 100;
+    player->money = 200;
+    if(player->wave != 0 || player->health != 100 || player->money != 100)
         return 1;
     return 0;
 }
@@ -40,7 +59,6 @@ int gameLoop(struct Map map[MAP_WIDTH][MAP_HEIGHT])
         {
             return err;
         }
-        // update game state
         // draw game state
         // check for user input
         // check for win/lose conditions
