@@ -2,7 +2,7 @@
 
 int game()
 {
-    printf("Map Handler Test\n");
+    printf("Initializing map\n");
     // create a 2D array of Map structs
     struct Map map[MAP_WIDTH][MAP_HEIGHT];
 
@@ -14,8 +14,17 @@ int game()
         return 1;
     }
     printf("Map initialized\n");
+    printf("Initializing player\n");
+    // initialize the player
+    struct Player player;
+    err = playerInit(&player);
+    if (err)
+    {
+        printf("Error initializing player\n");
+        return 1;
+    }
 
-    err = gameLoop(map);
+    err = gameLoop(&map);
     if (err)
     {
         printf("Error %d in game loop\n", err);

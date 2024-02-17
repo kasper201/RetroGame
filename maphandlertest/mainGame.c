@@ -37,7 +37,7 @@ int playerInit(struct Player *player)
     player->wave = 0;
     player->health = 100;
     player->money = 200;
-    if(player->wave != 0 || player->health != 100 || player->money != 100)
+    if(player->wave != 0 || player->health != 100 || player->money != 200)
         return 1;
     return 0;
 }
@@ -59,6 +59,7 @@ int gameLoop(struct Map map[MAP_WIDTH][MAP_HEIGHT])
         {
             return err;
         }
+        return 0;
         // draw game state
         // check for user input
         // check for win/lose conditions
