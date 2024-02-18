@@ -14,18 +14,24 @@ int updateEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y)
     return 0;
 }
 
+/**
+ * @brief Update the game
+ * 
+ * @param map 
+ * @return int 0 if succeeded, 2 if plant update failed, 3 if enemy update failed
+ */
 int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT])
 {
     for(int x = 0; x < MAP_WIDTH; x++)
     {
         for(int y = 0; y < MAP_HEIGHT; y++)
         {
-            if(map[x][y].type == 1)
+            if(map[x][y].type >= 1 && map[x][y].type <= 4)
             {
                 if(updatePlant(map, x, y))
                     return 2;
             }
-            else if(map[x][y].type == 2)
+            else if(map[x][y].type >= 5)
             {
                 if(updateEnemy(map, x, y))
                     return 3;
@@ -38,9 +44,6 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT])
 /**
  * @brief Get the Info object
  * 
- * @param map 
- * @param x 
- * @param y 
  * @param cost 
  * @param health 
  * @param damage 
@@ -126,8 +129,9 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
 
     // create plant
     uint8_t cost, health, damage, defense, speed;
-    getInfo(map, x, y, &cost, &health, &damage, &defense, &speed, type);
-    map[x][y].cost = cost;
+    getGenInfo(&cost, &health, &damage, &defense, &speed, type);
+
+    // TODO: money check here
     map[x][y].health = health;
     map[x][y].damage = damage;
     map[x][y].defense = defense;

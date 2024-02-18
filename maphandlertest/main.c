@@ -24,7 +24,7 @@ int game()
         return 1;
     }
 
-    err = gameLoop(&map);
+    err = gameLoop(map);
     if (err)
     {
         printf("Error %d in game loop\n", err);

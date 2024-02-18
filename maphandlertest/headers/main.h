@@ -10,7 +10,6 @@
 
 struct Map
 {
-    uint8_t cost;
     uint8_t health;
     uint8_t damage;
     uint8_t defense;
