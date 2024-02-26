@@ -36,8 +36,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity main is
     Port ( clk : in STD_LOGIC;
            sendButton : in STD_LOGIC;
-           Rx : in STD_LOGIC;
-           Tx : out STD_LOGIC;
+           Rx : in STD_LOGIC;           --pin 7 (op stm32 verbinden met pin 8)
+           Tx : out STD_LOGIC;          --pin 1 (op stm32 verbinden met pin 2)
            LED_Status : out STD_LOGIC
            );
 end main;
