@@ -30,10 +30,10 @@ int game()
         printf("Error %d in game loop\n", err);
         return 1;
     }
+    return 0;
 }
 
 int main()
 {
-    game();
-    return 0;
+    return game();
 }
