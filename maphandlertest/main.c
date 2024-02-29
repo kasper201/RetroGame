@@ -1,5 +1,10 @@
 #include "mainGame.h"
 
+/**
+ * @brief Initializes the game and runs it
+ *
+ * @return int 0 for no error, 1 for general error
+ */
 int game()
 {
     printf("Initializing map\n");
@@ -30,10 +35,10 @@ int game()
         printf("Error %d in game loop\n", err);
         return 1;
     }
+    return 0;
 }
 
 int main()
 {
-    game();
-    return 0;
+    return game();
 }
