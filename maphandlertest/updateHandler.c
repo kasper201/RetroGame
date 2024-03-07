@@ -1,14 +1,63 @@
 #include "updateHandler.h"
 
+static unsigned frame = 0;
+#define framerate 20
+#define waverate 10
+
+/**
+ *
+ * @param map
+ * @param x
+ * @param y
+ * @return int 0 by default
+ */
 int updatePlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y)
 {
-    // TODO: implement updatePlant
-    // update plant
+    if(map[x][y].speed > 0)
+    {
+        // call shoot function
+    }
+    // if we decide its necessary for the game, reduce health or defence slowly here:
     return 0;
 }
 
+/**
+ *
+ * @param map
+ * @param x
+ * @param y
+ * @param speed
+ * @return int 0 by default, -1 if can't move further, -2 if the enemy entered behind the plants (-1 heart)
+ */
+int moveEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y)
+{
+    if(map[x-1][y].type < 5) // if there is already something there that isn't another enemy don't move
+        return -1;
+
+    if(x < 0) // if out of bounds the player has lost one heart
+        return -2;
+
+    if(map[x][y].wavesNotMoved == 100 - map[x][y].speed) // TODO: fix that this is compatible with Jasper/Wouter's code for the FPGA
+    {
+        map[x-1][y] = map[x][y];
+        map[x][y].type = 0;
+        map[x][y].wavesNotMoved = 0;
+    } else {
+        map[x][y].wavesNotMoved++;
+    }
+    return 0;
+}
+
+/**
+ *
+ * @param map
+ * @param x
+ * @param y
+ * @return int 0 by default
+ */
 int updateEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y)
 {
+    moveEnemy(map, x, y);
     // TODO: implement updateEnemy
     // update enemy
     return 0;
@@ -18,10 +67,11 @@ int updateEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y)
  * @brief Update the game
  * 
  * @param map 
- * @return int 0 if succeeded, 2 if plant update failed, 3 if enemy update failed
+ * @return int 0 if succeeded, 2 if plant update failed, 3 if enemy update failed 4 if wave creation failed
  */
 int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT])
 {
+    frame++;
     for(int x = 0; x < MAP_WIDTH; x++)
     {
         for(int y = 0; y < MAP_HEIGHT; y++)
@@ -37,6 +87,12 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT])
                     return 3;
             }
         }
+    }
+    if(frame == framerate * waverate)
+    {
+        frame = 0;
+        if(!createWave(map))
+            return 4;
     }
     return 0;
 }
