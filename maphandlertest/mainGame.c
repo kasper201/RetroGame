@@ -13,6 +13,7 @@ int mapinit(struct Map map[MAP_WIDTH][MAP_HEIGHT])
     {
         for (int y = 0; y < MAP_HEIGHT; y++)
         {
+            map[x][y].wavesNotMoved = 0;
             map[x][y].health = 0;
             map[x][y].damage = 0;
             map[x][y].defense = 0;
