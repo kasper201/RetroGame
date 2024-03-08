@@ -23,12 +23,19 @@
 ## GPU
 - Added the ability to draw a sprite
 - Added the ability to draw the background
-- Added the ability to "greenscreen" the sprites
+- Added the ability to "green screen" the sprites
+
+## Other
+- Added the ability to use UART to communicate at 230400 baud
 
 # Known bugs
+
+## Sprites
+- Borders have green artifacts
 
 ## Game logic
 - There are currently no known bugs
 
 ## GPU
-- There are currently no known bugs
+- Line on the left of the sprite
+- improper border handling

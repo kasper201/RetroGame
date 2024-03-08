@@ -31,7 +31,7 @@ int updatePlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y)
  */
 int moveEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y)
 {
-    if(map[x-1][y].type < 5) // if there is already something there that isn't another enemy don't move
+    if(map[x-1][y].type != 0) // if there is already something there don't move
         return -1;
 
     if(x < 0) // if out of bounds the player has lost one heart
