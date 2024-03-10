@@ -1,0 +1,6 @@
+Time resolution is 1 ps
+Note: Test Failed - Incorrect Byte Received
+Time: 182370 ns  Iteration: 0  Process: /uart_tb/line__108  File: C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sim_1/new/UART_TB.vhd
+Failure: Tests Complete
+Time: 182370 ns  Iteration: 0  Process: /uart_tb/line__108  File: C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sim_1/new/UART_TB.vhd
+$finish called at time : 182370 ns : File "C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sim_1/new/UART_TB.vhd" Line 133
