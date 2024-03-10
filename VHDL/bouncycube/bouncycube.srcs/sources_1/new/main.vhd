@@ -80,6 +80,8 @@ component locationDetermination is
             aReset : in STD_LOGIC;
             sprSel : in STD_LOGIC_VECTOR(1 downto 0);
             speedSel : in STD_LOGIC_VECTOR(3 downto 0);
+            hWriteLoc : in STD_LOGIC_VECTOR (9 downto 0);
+            vWriteLoc : in STD_LOGIC_VECTOR (9 downto 0);
             coordY : out STD_LOGIC_VECTOR(9 downto 0);
             coordX : out STD_LOGIC_VECTOR(9 downto 0);
             spriteSelect : out STD_LOGIC_VECTOR (1 downto 0)
@@ -117,6 +119,8 @@ G0 : prescaler port map(
            --frame => frame,
            speedSel => speedSel,
            aReset => aReset,
+           hWriteLoc => hQ,
+           vWriteLoc => vQ,
            coordY => coordY,
            coordX => coordX,
            sprSel => sprSel,
