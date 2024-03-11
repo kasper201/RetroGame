@@ -5,6 +5,6 @@
 
 int mapinit(struct Map map[MAP_WIDTH][MAP_HEIGHT]);
 int playerInit(struct Player *player);
-int gameLoop(struct Map map[MAP_WIDTH][MAP_HEIGHT]);
+int gameLoop(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player *player);
 
 #endif //MAINGAME_H_
