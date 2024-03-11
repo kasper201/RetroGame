@@ -108,61 +108,53 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT])
  * @param type 
  * @return void 
  */
-void getGenInfo(uint8_t *cost, uint8_t *health, uint8_t *damage, uint8_t *defense, uint8_t *speed, uint8_t type)
+void getGenInfo(uint8_t *health, uint8_t *damage, uint8_t *defense, uint8_t *speed, uint8_t type)
 {
     switch (type)
     {
     case 1:
-        *cost = 10;
         *health = 10;
         *damage = 0;
         *defense = 0;
         *speed = 0;
         break;
     case 2: // shooter plant
-        *cost = 20;
         *health = 20;
         *damage = 5;
         *defense = 0;
         *speed = 0;
         break;  
     case 3: // blocking plant
-        *cost = 30;
         *health = 30;
         *damage = 0;
         *defense = 5;
         *speed = 0;
         break;
     case 4: // exploding plant
-        *cost = 40;
         *health = 40;
         *damage = 10;
         *defense = 0;
         *speed = 0;
         break;
     case 5: // normal robot (cleaner robot)
-        *cost = 0;
         *health = 10;
         *damage = 0;
         *defense = 0;
         *speed = 1;
         break;
     case 6: // tank robot (wall-e)
-        *cost = 0;
         *health = 20;
         *damage = 5;
         *defense = 5;
         *speed = 1;
         break;
     case 7: // flying robot (eve)
-        *cost = 0;
         *health = 30;
         *damage = 10;
         *defense = 0;
         *speed = 2;
         break;
     }
-    return;
 }
 
 /**
@@ -176,16 +168,16 @@ void getGenInfo(uint8_t *cost, uint8_t *health, uint8_t *damage, uint8_t *defens
 int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uint8_t type)
 {
     // error checking
-    if(type < 1 || type > 4)
-        return 2;
     if(map[x][y].type != 0)
         return 1;
+    if(type < 1 || type > 4)
+        return 2;
     if(x < 0 || x >= MAP_WIDTH || y < 0 || y >= MAP_HEIGHT)
         return 3;
 
     // create plant
-    uint8_t cost, health, damage, defense, speed;
-    getGenInfo(&cost, &health, &damage, &defense, &speed, type);
+    uint8_t health, damage, defense, speed;
+    getGenInfo(&health, &damage, &defense, &speed, type);
 
     // TODO: money check here
     map[x][y].health = health;
