@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Fri Feb  2 17:01:41 2024
-# Process ID: 19228
+# Start of session at: Mon Feb 26 00:48:09 2024
+# Process ID: 20416
 # Current directory: C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1
 # Command line: vivado.exe -log main.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source main.tcl
 # Log file: C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/main.vds
@@ -12,44 +12,49 @@
 # Running On: PC-WouterRosenbrand, OS: Windows, CPU Frequency: 3800 MHz, CPU Physical cores: 16, Host memory: 34281 MB
 #-----------------------------------------------------------
 source main.tcl -notrace
-create_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 463.500 ; gain = 184.352
+Command: read_checkpoint -auto_incremental -incremental C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/utils_1/imports/synth_1/main.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/utils_1/imports/synth_1/main.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top main -part xc7a35tcpg236-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 11140
+INFO: [Synth 8-7075] Helper process launched with PID 6508
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1296.668 ; gain = 439.371
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1301.289 ; gain = 441.703
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'main' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:44]
-INFO: [Synth 8-3491] module 'UART_RX' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:21' bound to instance 'URX' of component 'UART_RX' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:85]
-INFO: [Synth 8-638] synthesizing module 'UART_RX' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:34]
-INFO: [Synth 8-256] done synthesizing module 'UART_RX' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:34]
-INFO: [Synth 8-3491] module 'UART_TX' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:22' bound to instance 'UTX' of component 'UART_TX' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:92]
-INFO: [Synth 8-638] synthesizing module 'UART_TX' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:37]
-INFO: [Synth 8-256] done synthesizing module 'UART_TX' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:37]
-INFO: [Synth 8-3491] module 'RD_Process' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:34' bound to instance 'UHAN' of component 'RD_Process' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:101]
+INFO: [Synth 8-638] synthesizing module 'main' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:45]
+INFO: [Synth 8-3491] module 'UART_RX' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:22' bound to instance 'URX' of component 'UART_RX' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:94]
+INFO: [Synth 8-638] synthesizing module 'UART_RX' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:35]
+INFO: [Synth 8-256] done synthesizing module 'UART_RX' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:35]
+INFO: [Synth 8-3491] module 'UART_TX' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:23' bound to instance 'UTX' of component 'UART_TX' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:101]
+INFO: [Synth 8-638] synthesizing module 'UART_TX' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:38]
+INFO: [Synth 8-256] done synthesizing module 'UART_TX' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:38]
+INFO: [Synth 8-3491] module 'RD_Process' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:34' bound to instance 'UHANDLE' of component 'RD_Process' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:110]
 INFO: [Synth 8-638] synthesizing module 'RD_Process' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:41]
 INFO: [Synth 8-256] done synthesizing module 'RD_Process' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:41]
-INFO: [Synth 8-256] done synthesizing module 'main' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:44]
-WARNING: [Synth 8-3848] Net Transmit_Data_Valid in module/entity main does not have driver. [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:77]
-WARNING: [Synth 8-3848] Net Data_To_Send in module/entity main does not have driver. [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:79]
+INFO: [Synth 8-3491] module 'TX_Send' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/TX_Send.vhd:34' bound to instance 'USEND' of component 'TX_Send' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:117]
+INFO: [Synth 8-638] synthesizing module 'TX_Send' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/TX_Send.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'TX_Send' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/TX_Send.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'main' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:45]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1405.594 ; gain = 548.297
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1409.680 ; gain = 550.094
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1405.594 ; gain = 548.297
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1409.680 ; gain = 550.094
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1405.594 ; gain = 548.297
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1409.680 ; gain = 550.094
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1405.594 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1409.680 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -60,28 +65,31 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/main_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1436.234 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1465.074 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1436.234 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1465.074 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:12 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:12 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:12 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'r_SM_Main_reg' in module 'UART_TX'
+INFO: [Synth 8-802] inferred FSM for state register 'byte_out_reg' in module 'TX_Send'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -92,32 +100,41 @@ INFO: [Synth 8-802] inferred FSM for state register 'r_SM_Main_reg' in module 'U
                s_cleanup |                              100 |                              100
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'r_SM_Main_reg' using encoding 'sequential' in module 'UART_TX'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE0 |                                0 |  0000000000000000000000010001000
+                  iSTATE |                                1 |  0000000000000000000000000010001
+*
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'byte_out_reg' using encoding 'sequential' in module 'TX_Send'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:12 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   10 Bit       Adders := 2     
+	   2 Input    9 Bit       Adders := 2     
 	   2 Input    3 Bit       Adders := 2     
 +---Registers : 
-	               10 Bit    Registers := 2     
-	                8 Bit    Registers := 2     
+	               31 Bit    Registers := 1     
+	                9 Bit    Registers := 2     
+	                8 Bit    Registers := 3     
 	                3 Bit    Registers := 3     
-	                1 Bit    Registers := 8     
+	                1 Bit    Registers := 9     
 +---Muxes : 
-	   2 Input   10 Bit        Muxes := 2     
-	   6 Input   10 Bit        Muxes := 1     
+	   2 Input    9 Bit        Muxes := 2     
+	   6 Input    9 Bit        Muxes := 1     
 	   6 Input    8 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 2     
 	   2 Input    3 Bit        Muxes := 8     
 	   5 Input    3 Bit        Muxes := 1     
 	   2 Input    2 Bit        Muxes := 1     
 	   3 Input    2 Bit        Muxes := 1     
 	   6 Input    1 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 4     
+	   2 Input    1 Bit        Muxes := 5     
 	   5 Input    1 Bit        Muxes := 10    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -136,28 +153,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:14 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:18 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:18 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:18 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished Timing Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:18 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-3332] Sequential element (UTX/FSM_sequential_r_SM_Main_reg[2]) is unused and will be removed from module main.
-WARNING: [Synth 8-3332] Sequential element (UTX/FSM_sequential_r_SM_Main_reg[1]) is unused and will be removed from module main.
-WARNING: [Synth 8-3332] Sequential element (UTX/FSM_sequential_r_SM_Main_reg[0]) is unused and will be removed from module main.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:18 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished Technology Mapping : Time (s): cpu = 00:00:12 ; elapsed = 00:00:18 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -175,37 +189,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:14 ; elapsed = 00:00:21 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished IO Insertion : Time (s): cpu = 00:00:15 ; elapsed = 00:00:21 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:14 ; elapsed = 00:00:21 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:15 ; elapsed = 00:00:21 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:14 ; elapsed = 00:00:21 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:15 ; elapsed = 00:00:21 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:14 ; elapsed = 00:00:21 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:15 ; elapsed = 00:00:21 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:21 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:21 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:14 ; elapsed = 00:00:21 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:15 ; elapsed = 00:00:21 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -222,36 +236,36 @@ Report Cell Usage:
 |      |Cell |Count |
 +------+-----+------+
 |1     |BUFG |     1|
-|2     |LUT2 |     4|
-|3     |LUT3 |     2|
-|4     |LUT4 |     5|
-|5     |LUT5 |    13|
-|6     |LUT6 |    22|
-|7     |FDRE |    28|
+|2     |LUT2 |     5|
+|3     |LUT3 |    15|
+|4     |LUT4 |    16|
+|5     |LUT5 |    14|
+|6     |LUT6 |    32|
+|7     |FDRE |    50|
 |8     |FDSE |     1|
-|9     |IBUF |     2|
+|9     |IBUF |     3|
 |10    |OBUF |     2|
 +------+-----+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:14 ; elapsed = 00:00:21 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:15 ; elapsed = 00:00:21 . Memory (MB): peak = 1465.074 ; gain = 605.488
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:20 . Memory (MB): peak = 1436.234 ; gain = 548.297
-Synthesis Optimization Complete : Time (s): cpu = 00:00:14 ; elapsed = 00:00:21 . Memory (MB): peak = 1436.234 ; gain = 578.938
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:19 . Memory (MB): peak = 1465.074 ; gain = 550.094
+Synthesis Optimization Complete : Time (s): cpu = 00:00:15 ; elapsed = 00:00:21 . Memory (MB): peak = 1465.074 ; gain = 605.488
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1436.523 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1465.074 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1440.164 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1465.074 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 2329dec1
+Synth Design complete | Checksum: 5be10b99
 INFO: [Common 17-83] Releasing license: Synthesis
-26 Infos, 6 Warnings, 0 Critical Warnings and 0 Errors encountered.
+37 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:25 . Memory (MB): peak = 1440.164 ; gain = 976.664
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1440.164 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:29 . Memory (MB): peak = 1465.074 ; gain = 995.469
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1465.074 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/main.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file main_utilization_synth.rpt -pb main_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Feb  2 17:02:13 2024...
+INFO: [Common 17-206] Exiting Vivado at Mon Feb 26 00:48:45 2024...

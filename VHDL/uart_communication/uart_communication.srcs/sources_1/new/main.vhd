@@ -35,8 +35,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity main is
     Port ( clk : in STD_LOGIC;
-           Rx : in STD_LOGIC;
-           Tx : out STD_LOGIC;
+           sendButton : in STD_LOGIC;
+           Rx : in STD_LOGIC;           --pin 7 (op stm32 verbinden met pin 8)
+           Tx : out STD_LOGIC;          --pin 1 (op stm32 verbinden met pin 2)
            LED_Status : out STD_LOGIC
            );
 end main;
@@ -73,6 +74,14 @@ component RD_Process is
            o_Status : out STD_LOGIC);
 end component;
 
+--Sends out a byte for the uart tx
+component TX_Send is
+    Port ( i_Clk : in STD_LOGIC;
+           i_Button : in STD_LOGIC;
+           o_Send_TX : out STD_LOGIC;
+           o_Byte_TX : out STD_LOGIC_VECTOR (7 downto 0));
+end component;
+
 --Status for the bytes and if they are ready to handle or to transmit
 signal Recieved_Data_Valid, Transmit_Data_Valid : std_logic;
 --The bytes to recieve and send
@@ -98,11 +107,18 @@ begin
         o_TX_Done   => Transmit_Complete
     );
 
-    UHAN: RD_Process port map (
+    UHANDLE: RD_Process port map (
         i_Clk       => clk,
         i_RX_DV     => Recieved_Data_Valid,
         i_R_Byte    => Data_Recieved,
         o_Status    => LED_Status
+    );
+    
+    USEND: TX_Send port map (
+        i_Clk       => clk,
+        i_Button    => sendButton,
+        o_Send_TX   => Transmit_Data_Valid,
+        o_Byte_TX   => Data_To_Send
     );
 
 end Behavioral;

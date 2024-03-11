@@ -14,6 +14,7 @@
 -- Changed for our use by Wouter Rosenbrand
 -- Reality: 100 MHz Clock, 115200 baud UART
 -- (100.000.000) / (155.200) = 868
+-- (100.000.000) / (230.400) = 434
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -21,7 +22,7 @@ use ieee.numeric_std.all;
  
 entity UART_TX is
   generic (
-    g_CLKS_PER_BIT : integer := 868     -- After calculations it is 868
+    g_CLKS_PER_BIT : integer := 434     -- After calculations it is 434
     );
   port (
     i_Clk       : in  std_logic;
