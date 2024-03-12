@@ -73,6 +73,12 @@ begin
                         bytes_out_2 := "00001111";
                         bytes_out_3 := "11110000";
                         bytes_out_4 := "00110011";
+                    when "0001" =>
+                        bytes_out_0 := "01110111";
+                        bytes_out_1 := "01101000";
+                        bytes_out_2 := "01100001";
+                        bytes_out_3 := "01110100";
+                        bytes_out_4 := "00001010";
                     when others =>
                         bytes_out_0 := "00000000";
                         bytes_out_1 := "00000000";

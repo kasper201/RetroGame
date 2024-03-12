@@ -14,6 +14,7 @@
 #include <zephyr/sys/printk.h>
 #include <inttypes.h>
 #include <string.h>
+#include <zephyr/drivers/uart.h>
 
 #include "uart.h"
 #include "main.h"
@@ -42,6 +43,24 @@ void button_pressed(const struct device *dev, struct gpio_callback *cb,
 					uint32_t pins)
 {
 	// printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
+}
+
+#define MESSAGE_SIZE 128
+
+int checkFromFpga()
+{
+    int returnValue = 0;
+    char Message[MESSAGE_SIZE];
+    k_msgq_get(&uart_msgq, &Message, K_NO_WAIT);
+    k_msgq_cleanup(&uart_msgq);
+
+    //Returns 1 when fpga sends "what"
+    if (strstr(Message, "what"))
+    {
+        returnValue = 1;
+    }
+
+    return returnValue;
 }
 
 int main(void)
@@ -116,16 +135,12 @@ int main(void)
 	{
 		while (1)
 		{
-			/* If we have an LED, match its state to the button's. */
+			//Read when button pressed 1 when released 0
 			int val = gpio_pin_get_dt(&button);
 
 			if (val >= 1 && buttonPressed <= 0)
 			{
-				if (ledState == 1)
-				{
-					ledState = 0;
-				}
-				else
+				if (ledState == 0)
 				{
 					ledState = 1;
 				}
@@ -155,12 +170,15 @@ int main(void)
 					ledActivated = 1;
 				}
 			}
-			else
+			
+			if (checkFromFpga() == 1)
 			{
 				gpio_pin_set_dt(&led, 0);
 				if (ledActivated == 1)
 				{
 					ledActivated = 0;
+					printk("LED turned off\n");
+					ledState = 0;
 				}
 			}
 

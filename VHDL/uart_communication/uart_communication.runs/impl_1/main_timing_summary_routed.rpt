@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Tue Mar 12 19:45:55 2024
+| Date         : Tue Mar 12 20:43:04 2024
 | Host         : PC-WouterRosenbrand running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file main_timing_summary_routed.rpt -pb main_timing_summary_routed.pb -rpx main_timing_summary_routed.rpx -warn_on_violation
 | Design       : main
@@ -43,7 +43,7 @@ Timing Summary Report
 
 Rule       Severity          Description                  Violations  
 ---------  ----------------  ---------------------------  ----------  
-TIMING-17  Critical Warning  Non-clocked sequential cell  87          
+TIMING-17  Critical Warning  Non-clocked sequential cell  88          
 
 Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
 
@@ -53,10 +53,10 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (87)
+1. checking no_clock (88)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (150)
+4. checking unconstrained_internal_endpoints (151)
 5. checking no_input_delay (2)
 6. checking no_output_delay (6)
 7. checking multiple_clock (0)
@@ -66,9 +66,9 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (87)
+1. checking no_clock (88)
 -------------------------
- There are 87 register/latch pins with no clock driven by root clock pin: i_Clk (HIGH)
+ There are 88 register/latch pins with no clock driven by root clock pin: i_Clk (HIGH)
 
 
 2. checking constant_clock (0)
@@ -81,9 +81,9 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (150)
+4. checking unconstrained_internal_endpoints (151)
 --------------------------------------------------
- There are 150 pins that are not constrained for maximum delay. (HIGH)
+ There are 151 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
@@ -142,7 +142,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-        inf        0.000                      0                  156          inf        0.000                      0                  156           NA           NA                      NA                    NA  
+        inf        0.000                      0                  157          inf        0.000                      0                  157           NA           NA                      NA                    NA  
 
 
 There are no user specified timing constraints.
@@ -211,160 +211,63 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay           156 Endpoints
-Min Delay           156 Endpoints
+Max Delay           157 Endpoints
+Min Delay           157 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 UTX/o_TX_Serial_reg/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            o_Tx
-                            (output port)
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.950ns  (logic 4.030ns (45.031%)  route 4.920ns (54.969%))
-  Logic Levels:           2  (FDRE=1 OBUF=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X14Y22         FDRE                         0.000     0.000 r  UTX/o_TX_Serial_reg/C
-    SLICE_X14Y22         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  UTX/o_TX_Serial_reg/Q
-                         net (fo=1, routed)           4.920     5.438    o_Tx_OBUF
-    M3                   OBUF (Prop_obuf_I_O)         3.512     8.950 r  o_Tx_OBUF_inst/O
-                         net (fo=0)                   0.000     8.950    o_Tx
-    M3                                                                r  o_Tx (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 i_SendButton
-                            (input port)
-  Destination:            USEND/counter_reg[10]/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        7.454ns  (logic 3.286ns (44.088%)  route 4.168ns (55.912%))
-  Logic Levels:           7  (CARRY4=3 IBUF=1 LUT2=1 LUT6=2)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 f  i_SendButton (IN)
-                         net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 f  i_SendButton_IBUF_inst/O
-                         net (fo=15, routed)          2.116     3.557    USEND/i_SendButton_IBUF
-    SLICE_X10Y26         LUT2 (Prop_lut2_I0_O)        0.149     3.706 f  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=14, routed)          0.669     4.375    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X9Y27          LUT6 (Prop_lut6_I1_O)        0.355     4.730 r  USEND/counter0_carry_i_1/O
-                         net (fo=2, routed)           0.536     5.266    USEND/counter[0]
-    SLICE_X10Y27         CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.595     5.861 r  USEND/counter0_carry/CO[3]
-                         net (fo=1, routed)           0.000     5.861    USEND/counter0_carry_n_0
-    SLICE_X10Y28         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     5.978 r  USEND/counter0_carry__0/CO[3]
-                         net (fo=1, routed)           0.000     5.978    USEND/counter0_carry__0_n_0
-    SLICE_X10Y29         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     6.301 r  USEND/counter0_carry__1/O[1]
-                         net (fo=1, routed)           0.847     7.148    USEND/counter0[10]
-    SLICE_X8Y28          LUT6 (Prop_lut6_I0_O)        0.306     7.454 r  USEND/counter[10]_i_1/O
-                         net (fo=1, routed)           0.000     7.454    USEND/counter[10]_i_1_n_0
-    SLICE_X8Y28          FDRE                                         r  USEND/counter_reg[10]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
   Source:                 i_SendButton
                             (input port)
   Destination:            USEND/counter_reg[11]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        7.332ns  (logic 3.197ns (43.610%)  route 4.134ns (56.390%))
-  Logic Levels:           7  (CARRY4=3 IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        8.553ns  (logic 1.937ns (22.652%)  route 6.615ns (77.348%))
+  Logic Levels:           5  (IBUF=1 LUT2=1 LUT5=1 LUT6=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 f  i_SendButton (IN)
+    U18                                               0.000     0.000 r  i_SendButton (IN)
                          net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 f  i_SendButton_IBUF_inst/O
-                         net (fo=15, routed)          2.116     3.557    USEND/i_SendButton_IBUF
-    SLICE_X10Y26         LUT2 (Prop_lut2_I0_O)        0.149     3.706 f  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=14, routed)          0.669     4.375    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X9Y27          LUT6 (Prop_lut6_I1_O)        0.355     4.730 r  USEND/counter0_carry_i_1/O
-                         net (fo=2, routed)           0.536     5.266    USEND/counter[0]
-    SLICE_X10Y27         CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.595     5.861 r  USEND/counter0_carry/CO[3]
-                         net (fo=1, routed)           0.000     5.861    USEND/counter0_carry_n_0
-    SLICE_X10Y28         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     5.978 r  USEND/counter0_carry__0/CO[3]
-                         net (fo=1, routed)           0.000     5.978    USEND/counter0_carry__0_n_0
-    SLICE_X10Y29         CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239     6.217 r  USEND/counter0_carry__1/O[2]
-                         net (fo=1, routed)           0.814     7.031    USEND/counter0[11]
-    SLICE_X8Y29          LUT6 (Prop_lut6_I0_O)        0.301     7.332 r  USEND/counter[11]_i_1/O
-                         net (fo=1, routed)           0.000     7.332    USEND/counter[11]_i_1_n_0
-    SLICE_X8Y29          FDRE                                         r  USEND/counter_reg[11]/D
+    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
+                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
+    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
+                         net (fo=35, routed)          1.656     5.495    USEND/temp_byte_out[7]_i_1_n_0
+    SLICE_X10Y40         LUT6 (Prop_lut6_I5_O)        0.124     5.619 f  USEND/counter[11]_i_3/O
+                         net (fo=5, routed)           1.177     6.796    USEND/counter[11]
+    SLICE_X8Y40          LUT5 (Prop_lut5_I1_O)        0.124     6.920 r  USEND/counter[11]_i_2/O
+                         net (fo=12, routed)          1.509     8.429    USEND/counter[11]_i_2_n_0
+    SLICE_X9Y41          LUT6 (Prop_lut6_I1_O)        0.124     8.553 r  USEND/counter[11]_i_1/O
+                         net (fo=1, routed)           0.000     8.553    USEND/counter[11]_i_1_n_0
+    SLICE_X9Y41          FDRE                                         r  USEND/counter_reg[11]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 i_SendButton
                             (input port)
-  Destination:            USEND/counter_reg[12]/D
+  Destination:            USEND/counter_reg[3]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        7.259ns  (logic 3.279ns (45.176%)  route 3.980ns (54.824%))
-  Logic Levels:           7  (CARRY4=3 IBUF=1 LUT2=1 LUT5=1 LUT6=1)
+  Data Path Delay:        8.327ns  (logic 2.165ns (26.002%)  route 6.162ns (73.998%))
+  Logic Levels:           5  (IBUF=1 LUT2=1 LUT4=1 LUT6=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 f  i_SendButton (IN)
+    U18                                               0.000     0.000 r  i_SendButton (IN)
                          net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 f  i_SendButton_IBUF_inst/O
-                         net (fo=15, routed)          2.116     3.557    USEND/i_SendButton_IBUF
-    SLICE_X10Y26         LUT2 (Prop_lut2_I0_O)        0.149     3.706 f  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=14, routed)          0.669     4.375    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X9Y27          LUT6 (Prop_lut6_I1_O)        0.355     4.730 r  USEND/counter0_carry_i_1/O
-                         net (fo=2, routed)           0.536     5.266    USEND/counter[0]
-    SLICE_X10Y27         CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.595     5.861 r  USEND/counter0_carry/CO[3]
-                         net (fo=1, routed)           0.000     5.861    USEND/counter0_carry_n_0
-    SLICE_X10Y28         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     5.978 r  USEND/counter0_carry__0/CO[3]
-                         net (fo=1, routed)           0.000     5.978    USEND/counter0_carry__0_n_0
-    SLICE_X10Y29         CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315     6.293 r  USEND/counter0_carry__1/O[3]
-                         net (fo=1, routed)           0.659     6.952    USEND/counter0[12]
-    SLICE_X11Y29         LUT5 (Prop_lut5_I0_O)        0.307     7.259 r  USEND/counter[12]_i_1/O
-                         net (fo=1, routed)           0.000     7.259    USEND/counter[12]_i_1_n_0
-    SLICE_X11Y29         FDRE                                         r  USEND/counter_reg[12]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 i_SendButton
-                            (input port)
-  Destination:            USEND/counter_reg[6]/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        7.067ns  (logic 3.169ns (44.848%)  route 3.897ns (55.152%))
-  Logic Levels:           6  (CARRY4=2 IBUF=1 LUT2=1 LUT6=2)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 f  i_SendButton (IN)
-                         net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 f  i_SendButton_IBUF_inst/O
-                         net (fo=15, routed)          2.116     3.557    USEND/i_SendButton_IBUF
-    SLICE_X10Y26         LUT2 (Prop_lut2_I0_O)        0.149     3.706 f  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=14, routed)          0.669     4.375    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X9Y27          LUT6 (Prop_lut6_I1_O)        0.355     4.730 r  USEND/counter0_carry_i_1/O
-                         net (fo=2, routed)           0.536     5.266    USEND/counter[0]
-    SLICE_X10Y27         CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.595     5.861 r  USEND/counter0_carry/CO[3]
-                         net (fo=1, routed)           0.000     5.861    USEND/counter0_carry_n_0
-    SLICE_X10Y28         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     6.184 r  USEND/counter0_carry__0/O[1]
-                         net (fo=1, routed)           0.577     6.761    USEND/counter0[6]
-    SLICE_X11Y28         LUT6 (Prop_lut6_I0_O)        0.306     7.067 r  USEND/counter[6]_i_1/O
-                         net (fo=1, routed)           0.000     7.067    USEND/counter[6]_i_1_n_0
-    SLICE_X11Y28         FDRE                                         r  USEND/counter_reg[6]/D
+    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
+                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
+    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
+                         net (fo=35, routed)          1.842     5.680    USEND/temp_byte_out[7]_i_1_n_0
+    SLICE_X11Y40         LUT6 (Prop_lut6_I5_O)        0.124     5.804 f  USEND/counter[10]_i_2/O
+                         net (fo=5, routed)           0.543     6.347    USEND/counter[10]
+    SLICE_X10Y40         LUT4 (Prop_lut4_I1_O)        0.148     6.495 r  USEND/counter[12]_i_6/O
+                         net (fo=11, routed)          1.504     7.999    USEND/counter[12]_i_6_n_0
+    SLICE_X8Y37          LUT6 (Prop_lut6_I4_O)        0.328     8.327 r  USEND/counter[3]_i_1/O
+                         net (fo=1, routed)           0.000     8.327    USEND/counter[3]_i_1_n_0
+    SLICE_X8Y37          FDRE                                         r  USEND/counter_reg[3]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -373,91 +276,44 @@ Slack:                    inf
   Destination:            USEND/counter_reg[5]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        7.060ns  (logic 3.054ns (43.262%)  route 4.006ns (56.738%))
-  Logic Levels:           6  (CARRY4=2 IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        8.308ns  (logic 2.189ns (26.353%)  route 6.118ns (73.647%))
+  Logic Levels:           5  (IBUF=1 LUT2=1 LUT3=1 LUT6=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 f  i_SendButton (IN)
+    U18                                               0.000     0.000 r  i_SendButton (IN)
                          net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 f  i_SendButton_IBUF_inst/O
-                         net (fo=15, routed)          2.116     3.557    USEND/i_SendButton_IBUF
-    SLICE_X10Y26         LUT2 (Prop_lut2_I0_O)        0.149     3.706 f  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=14, routed)          0.669     4.375    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X9Y27          LUT6 (Prop_lut6_I1_O)        0.355     4.730 r  USEND/counter0_carry_i_1/O
-                         net (fo=2, routed)           0.536     5.266    USEND/counter[0]
-    SLICE_X10Y27         CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.595     5.861 r  USEND/counter0_carry/CO[3]
-                         net (fo=1, routed)           0.000     5.861    USEND/counter0_carry_n_0
-    SLICE_X10Y28         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219     6.080 r  USEND/counter0_carry__0/O[0]
-                         net (fo=1, routed)           0.685     6.765    USEND/counter0[5]
-    SLICE_X11Y28         LUT6 (Prop_lut6_I0_O)        0.295     7.060 r  USEND/counter[5]_i_1/O
-                         net (fo=1, routed)           0.000     7.060    USEND/counter[5]_i_1_n_0
-    SLICE_X11Y28         FDRE                                         r  USEND/counter_reg[5]/D
+    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
+                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
+    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
+                         net (fo=35, routed)          1.489     5.328    USEND/temp_byte_out[7]_i_1_n_0
+    SLICE_X8Y39          LUT6 (Prop_lut6_I5_O)        0.124     5.452 f  USEND/counter[5]_i_2/O
+                         net (fo=4, routed)           1.175     6.627    USEND/counter[5]
+    SLICE_X8Y38          LUT3 (Prop_lut3_I1_O)        0.152     6.779 r  USEND/counter[12]_i_4/O
+                         net (fo=12, routed)          1.181     7.960    USEND/counter[12]_i_4_n_0
+    SLICE_X8Y39          LUT6 (Prop_lut6_I2_O)        0.348     8.308 r  USEND/counter[5]_i_1/O
+                         net (fo=1, routed)           0.000     8.308    USEND/counter[5]_i_1_n_0
+    SLICE_X8Y39          FDRE                                         r  USEND/counter_reg[5]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i_SendButton
-                            (input port)
-  Destination:            USEND/counter_reg[7]/D
+  Source:                 UTX/o_TX_Serial_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            o_Tx
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        7.044ns  (logic 3.080ns (43.729%)  route 3.964ns (56.271%))
-  Logic Levels:           6  (CARRY4=2 IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        8.304ns  (logic 3.968ns (47.786%)  route 4.336ns (52.214%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 f  i_SendButton (IN)
-                         net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 f  i_SendButton_IBUF_inst/O
-                         net (fo=15, routed)          2.116     3.557    USEND/i_SendButton_IBUF
-    SLICE_X10Y26         LUT2 (Prop_lut2_I0_O)        0.149     3.706 f  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=14, routed)          0.669     4.375    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X9Y27          LUT6 (Prop_lut6_I1_O)        0.355     4.730 r  USEND/counter0_carry_i_1/O
-                         net (fo=2, routed)           0.536     5.266    USEND/counter[0]
-    SLICE_X10Y27         CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.595     5.861 r  USEND/counter0_carry/CO[3]
-                         net (fo=1, routed)           0.000     5.861    USEND/counter0_carry_n_0
-    SLICE_X10Y28         CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239     6.100 r  USEND/counter0_carry__0/O[2]
-                         net (fo=1, routed)           0.644     6.743    USEND/counter0[7]
-    SLICE_X11Y29         LUT6 (Prop_lut6_I0_O)        0.301     7.044 r  USEND/counter[7]_i_1/O
-                         net (fo=1, routed)           0.000     7.044    USEND/counter[7]_i_1_n_0
-    SLICE_X11Y29         FDRE                                         r  USEND/counter_reg[7]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 i_SendButton
-                            (input port)
-  Destination:            USEND/counter_reg[9]/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.965ns  (logic 3.171ns (45.530%)  route 3.794ns (54.470%))
-  Logic Levels:           7  (CARRY4=3 IBUF=1 LUT2=1 LUT6=2)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 f  i_SendButton (IN)
-                         net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 f  i_SendButton_IBUF_inst/O
-                         net (fo=15, routed)          2.116     3.557    USEND/i_SendButton_IBUF
-    SLICE_X10Y26         LUT2 (Prop_lut2_I0_O)        0.149     3.706 f  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=14, routed)          0.669     4.375    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X9Y27          LUT6 (Prop_lut6_I1_O)        0.355     4.730 r  USEND/counter0_carry_i_1/O
-                         net (fo=2, routed)           0.536     5.266    USEND/counter[0]
-    SLICE_X10Y27         CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.595     5.861 r  USEND/counter0_carry/CO[3]
-                         net (fo=1, routed)           0.000     5.861    USEND/counter0_carry_n_0
-    SLICE_X10Y28         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     5.978 r  USEND/counter0_carry__0/CO[3]
-                         net (fo=1, routed)           0.000     5.978    USEND/counter0_carry__0_n_0
-    SLICE_X10Y29         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219     6.197 r  USEND/counter0_carry__1/O[0]
-                         net (fo=1, routed)           0.474     6.670    USEND/counter0[9]
-    SLICE_X9Y29          LUT6 (Prop_lut6_I0_O)        0.295     6.965 r  USEND/counter[9]_i_1/O
-                         net (fo=1, routed)           0.000     6.965    USEND/counter[9]_i_1_n_0
-    SLICE_X9Y29          FDRE                                         r  USEND/counter_reg[9]/D
+    SLICE_X13Y36         FDRE                         0.000     0.000 r  UTX/o_TX_Serial_reg/C
+    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  UTX/o_TX_Serial_reg/Q
+                         net (fo=1, routed)           4.336     4.792    o_Tx_OBUF
+    M3                   OBUF (Prop_obuf_I_O)         3.512     8.304 r  o_Tx_OBUF_inst/O
+                         net (fo=0)                   0.000     8.304    o_Tx
+    M3                                                                r  o_Tx (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -466,28 +322,24 @@ Slack:                    inf
   Destination:            USEND/counter_reg[8]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.896ns  (logic 3.162ns (45.858%)  route 3.734ns (54.142%))
-  Logic Levels:           6  (CARRY4=2 IBUF=1 LUT2=1 LUT5=1 LUT6=1)
+  Data Path Delay:        8.271ns  (logic 2.165ns (26.180%)  route 6.106ns (73.820%))
+  Logic Levels:           5  (IBUF=1 LUT2=1 LUT4=1 LUT6=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 f  i_SendButton (IN)
+    U18                                               0.000     0.000 r  i_SendButton (IN)
                          net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 f  i_SendButton_IBUF_inst/O
-                         net (fo=15, routed)          2.116     3.557    USEND/i_SendButton_IBUF
-    SLICE_X10Y26         LUT2 (Prop_lut2_I0_O)        0.149     3.706 f  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=14, routed)          0.669     4.375    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X9Y27          LUT6 (Prop_lut6_I1_O)        0.355     4.730 r  USEND/counter0_carry_i_1/O
-                         net (fo=2, routed)           0.536     5.266    USEND/counter[0]
-    SLICE_X10Y27         CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.595     5.861 r  USEND/counter0_carry/CO[3]
-                         net (fo=1, routed)           0.000     5.861    USEND/counter0_carry_n_0
-    SLICE_X10Y28         CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315     6.176 r  USEND/counter0_carry__0/O[3]
-                         net (fo=1, routed)           0.413     6.589    USEND/counter0[8]
-    SLICE_X9Y28          LUT5 (Prop_lut5_I0_O)        0.307     6.896 r  USEND/counter[8]_i_1/O
-                         net (fo=1, routed)           0.000     6.896    USEND/counter[8]_i_1_n_0
-    SLICE_X9Y28          FDRE                                         r  USEND/counter_reg[8]/D
+    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
+                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
+    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
+                         net (fo=35, routed)          1.842     5.680    USEND/temp_byte_out[7]_i_1_n_0
+    SLICE_X11Y40         LUT6 (Prop_lut6_I5_O)        0.124     5.804 f  USEND/counter[10]_i_2/O
+                         net (fo=5, routed)           0.543     6.347    USEND/counter[10]
+    SLICE_X10Y40         LUT4 (Prop_lut4_I1_O)        0.148     6.495 r  USEND/counter[12]_i_6/O
+                         net (fo=11, routed)          1.448     7.943    USEND/counter[12]_i_6_n_0
+    SLICE_X8Y39          LUT6 (Prop_lut6_I4_O)        0.328     8.271 r  USEND/counter[8]_i_1/O
+                         net (fo=1, routed)           0.000     8.271    USEND/counter[8]_i_1_n_0
+    SLICE_X8Y39          FDRE                                         r  USEND/counter_reg[8]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -496,25 +348,128 @@ Slack:                    inf
   Destination:            USEND/counter_reg[4]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.893ns  (logic 2.914ns (42.279%)  route 3.979ns (57.721%))
-  Logic Levels:           5  (CARRY4=1 IBUF=1 LUT2=1 LUT6=2)
+  Data Path Delay:        8.266ns  (logic 1.937ns (23.436%)  route 6.329ns (76.564%))
+  Logic Levels:           5  (IBUF=1 LUT2=1 LUT5=1 LUT6=2)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    U18                                               0.000     0.000 r  i_SendButton (IN)
+                         net (fo=0)                   0.000     0.000    i_SendButton
+    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
+                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
+    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
+                         net (fo=35, routed)          1.489     5.328    USEND/temp_byte_out[7]_i_1_n_0
+    SLICE_X8Y39          LUT6 (Prop_lut6_I5_O)        0.124     5.452 f  USEND/counter[5]_i_2/O
+                         net (fo=4, routed)           1.001     6.453    USEND/counter[5]
+    SLICE_X8Y38          LUT5 (Prop_lut5_I1_O)        0.124     6.577 r  USEND/counter[12]_i_5/O
+                         net (fo=13, routed)          1.565     8.142    USEND/counter[12]_i_5_n_0
+    SLICE_X8Y37          LUT6 (Prop_lut6_I3_O)        0.124     8.266 r  USEND/counter[4]_i_1/O
+                         net (fo=1, routed)           0.000     8.266    USEND/counter[4]_i_1_n_0
+    SLICE_X8Y37          FDRE                                         r  USEND/counter_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i_SendButton
+                            (input port)
+  Destination:            USEND/counter_reg[6]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.197ns  (logic 1.937ns (23.633%)  route 6.260ns (76.367%))
+  Logic Levels:           5  (IBUF=1 LUT2=1 LUT5=1 LUT6=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
     U18                                               0.000     0.000 f  i_SendButton (IN)
                          net (fo=0)                   0.000     0.000    i_SendButton
     U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 f  i_SendButton_IBUF_inst/O
-                         net (fo=15, routed)          2.116     3.557    USEND/i_SendButton_IBUF
-    SLICE_X10Y26         LUT2 (Prop_lut2_I0_O)        0.149     3.706 f  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=14, routed)          0.669     4.375    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X9Y27          LUT6 (Prop_lut6_I1_O)        0.355     4.730 r  USEND/counter0_carry_i_1/O
-                         net (fo=2, routed)           0.536     5.266    USEND/counter[0]
-    SLICE_X10Y27         CARRY4 (Prop_carry4_CYINIT_O[3])
-                                                      0.662     5.928 r  USEND/counter0_carry/O[3]
-                         net (fo=1, routed)           0.658     6.586    USEND/counter0[4]
-    SLICE_X11Y27         LUT6 (Prop_lut6_I0_O)        0.307     6.893 r  USEND/counter[4]_i_1/O
-                         net (fo=1, routed)           0.000     6.893    USEND/counter[4]_i_1_n_0
-    SLICE_X11Y27         FDRE                                         r  USEND/counter_reg[4]/D
+                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
+    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 f  USEND/temp_byte_out[7]_i_1/O
+                         net (fo=35, routed)          1.489     5.328    USEND/temp_byte_out[7]_i_1_n_0
+    SLICE_X8Y39          LUT6 (Prop_lut6_I5_O)        0.124     5.452 r  USEND/counter[5]_i_2/O
+                         net (fo=4, routed)           1.001     6.453    USEND/counter[5]
+    SLICE_X8Y38          LUT5 (Prop_lut5_I1_O)        0.124     6.577 f  USEND/counter[12]_i_5/O
+                         net (fo=13, routed)          1.496     8.073    USEND/counter[12]_i_5_n_0
+    SLICE_X8Y38          LUT6 (Prop_lut6_I4_O)        0.124     8.197 r  USEND/counter[6]_i_1/O
+                         net (fo=1, routed)           0.000     8.197    USEND/counter[6]_i_1_n_0
+    SLICE_X8Y38          FDRE                                         r  USEND/counter_reg[6]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i_SendButton
+                            (input port)
+  Destination:            USEND/counter_reg[9]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.163ns  (logic 2.189ns (26.818%)  route 5.974ns (73.182%))
+  Logic Levels:           5  (IBUF=1 LUT2=1 LUT3=1 LUT6=2)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    U18                                               0.000     0.000 r  i_SendButton (IN)
+                         net (fo=0)                   0.000     0.000    i_SendButton
+    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
+                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
+    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
+                         net (fo=35, routed)          1.489     5.328    USEND/temp_byte_out[7]_i_1_n_0
+    SLICE_X8Y39          LUT6 (Prop_lut6_I5_O)        0.124     5.452 f  USEND/counter[5]_i_2/O
+                         net (fo=4, routed)           1.175     6.627    USEND/counter[5]
+    SLICE_X8Y38          LUT3 (Prop_lut3_I1_O)        0.152     6.779 r  USEND/counter[12]_i_4/O
+                         net (fo=12, routed)          1.037     7.815    USEND/counter[12]_i_4_n_0
+    SLICE_X10Y40         LUT6 (Prop_lut6_I2_O)        0.348     8.163 r  USEND/counter[9]_i_1/O
+                         net (fo=1, routed)           0.000     8.163    USEND/counter[9]_i_1_n_0
+    SLICE_X10Y40         FDRE                                         r  USEND/counter_reg[9]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i_SendButton
+                            (input port)
+  Destination:            USEND/counter_reg[10]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.152ns  (logic 1.937ns (23.766%)  route 6.214ns (76.234%))
+  Logic Levels:           5  (IBUF=1 LUT2=1 LUT5=1 LUT6=2)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    U18                                               0.000     0.000 r  i_SendButton (IN)
+                         net (fo=0)                   0.000     0.000    i_SendButton
+    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
+                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
+    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
+                         net (fo=35, routed)          1.656     5.495    USEND/temp_byte_out[7]_i_1_n_0
+    SLICE_X10Y40         LUT6 (Prop_lut6_I5_O)        0.124     5.619 f  USEND/counter[11]_i_3/O
+                         net (fo=5, routed)           1.177     6.796    USEND/counter[11]
+    SLICE_X8Y40          LUT5 (Prop_lut5_I1_O)        0.124     6.920 r  USEND/counter[11]_i_2/O
+                         net (fo=12, routed)          1.108     8.028    USEND/counter[11]_i_2_n_0
+    SLICE_X9Y41          LUT6 (Prop_lut6_I1_O)        0.124     8.152 r  USEND/counter[10]_i_1/O
+                         net (fo=1, routed)           0.000     8.152    USEND/counter[10]_i_1_n_0
+    SLICE_X9Y41          FDRE                                         r  USEND/counter_reg[10]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i_SendButton
+                            (input port)
+  Destination:            USEND/counter_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.056ns  (logic 1.937ns (24.049%)  route 6.118ns (75.951%))
+  Logic Levels:           5  (IBUF=1 LUT2=1 LUT5=1 LUT6=2)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    U18                                               0.000     0.000 r  i_SendButton (IN)
+                         net (fo=0)                   0.000     0.000    i_SendButton
+    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
+                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
+    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
+                         net (fo=35, routed)          1.656     5.495    USEND/temp_byte_out[7]_i_1_n_0
+    SLICE_X10Y40         LUT6 (Prop_lut6_I5_O)        0.124     5.619 f  USEND/counter[11]_i_3/O
+                         net (fo=5, routed)           1.177     6.796    USEND/counter[11]
+    SLICE_X8Y40          LUT5 (Prop_lut5_I1_O)        0.124     6.920 r  USEND/counter[11]_i_2/O
+                         net (fo=12, routed)          1.012     7.932    USEND/counter[11]_i_2_n_0
+    SLICE_X10Y38         LUT6 (Prop_lut6_I1_O)        0.124     8.056 r  USEND/counter[2]_i_1/O
+                         net (fo=1, routed)           0.000     8.056    USEND/counter[2]_i_1_n_0
+    SLICE_X10Y38         FDRE                                         r  USEND/counter_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
 
@@ -524,20 +479,54 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 URX/r_RX_Byte_reg[6]/C
+  Source:                 USEND/temp_byte_out_reg[5]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UHANDLE/status_reg/D
+  Destination:            UTX/r_TX_Data_reg[5]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.276ns  (logic 0.141ns (51.017%)  route 0.135ns (48.983%))
+  Data Path Delay:        0.270ns  (logic 0.148ns (54.750%)  route 0.122ns (45.250%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X3Y18          FDRE                         0.000     0.000 r  URX/r_RX_Byte_reg[6]/C
-    SLICE_X3Y18          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  URX/r_RX_Byte_reg[6]/Q
-                         net (fo=9, routed)           0.135     0.276    UHANDLE/r_RX_Byte[2]
-    SLICE_X1Y18          FDRE                                         r  UHANDLE/status_reg/D
+    SLICE_X12Y35         FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[5]/C
+    SLICE_X12Y35         FDRE (Prop_fdre_C_Q)         0.148     0.148 r  USEND/temp_byte_out_reg[5]/Q
+                         net (fo=2, routed)           0.122     0.270    UTX/D[5]
+    SLICE_X12Y36         FDRE                                         r  UTX/r_TX_Data_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 USEND/temp_byte_out_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UTX/r_TX_Data_reg[4]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.285ns  (logic 0.164ns (57.522%)  route 0.121ns (42.478%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y37         FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[4]/C
+    SLICE_X12Y37         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  USEND/temp_byte_out_reg[4]/Q
+                         net (fo=2, routed)           0.121     0.285    UTX/D[4]
+    SLICE_X12Y36         FDRE                                         r  UTX/r_TX_Data_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 USEND/FSM_onehot_which_byte_out_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            USEND/FSM_onehot_which_byte_out_reg[4]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.292ns  (logic 0.141ns (48.306%)  route 0.151ns (51.694%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X13Y35         FDRE                         0.000     0.000 r  USEND/FSM_onehot_which_byte_out_reg[3]/C
+    SLICE_X13Y35         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/FSM_onehot_which_byte_out_reg[3]/Q
+                         net (fo=8, routed)           0.151     0.292    USEND/FSM_onehot_which_byte_out_reg_n_0_[3]
+    SLICE_X13Y35         FDRE                                         r  USEND/FSM_onehot_which_byte_out_reg[4]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -546,66 +535,34 @@ Slack:                    inf
   Destination:            UHANDLE/status2_reg/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.284ns  (logic 0.141ns (49.629%)  route 0.143ns (50.371%))
+  Data Path Delay:        0.302ns  (logic 0.141ns (46.757%)  route 0.161ns (53.243%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X3Y19          FDRE                         0.000     0.000 r  URX/r_RX_Byte_reg[2]/C
-    SLICE_X3Y19          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  URX/r_RX_Byte_reg[2]/Q
-                         net (fo=9, routed)           0.143     0.284    UHANDLE/r_RX_Byte[0]
-    SLICE_X2Y20          FDRE                                         r  UHANDLE/status2_reg/D
+    SLICE_X0Y20          FDRE                         0.000     0.000 r  URX/r_RX_Byte_reg[2]/C
+    SLICE_X0Y20          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  URX/r_RX_Byte_reg[2]/Q
+                         net (fo=9, routed)           0.161     0.302    UHANDLE/r_RX_Byte[0]
+    SLICE_X0Y19          FDRE                                         r  UHANDLE/status2_reg/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 USEND/temp_byte_out_reg[6]/C
+  Source:                 URX/r_Clk_Count_reg[6]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UTX/r_TX_Data_reg[6]/D
+  Destination:            URX/r_Clk_Count_reg[8]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.289ns  (logic 0.141ns (48.707%)  route 0.148ns (51.293%))
-  Logic Levels:           1  (FDRE=1)
+  Data Path Delay:        0.307ns  (logic 0.186ns (60.622%)  route 0.121ns (39.378%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X13Y25         FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[6]/C
-    SLICE_X13Y25         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/temp_byte_out_reg[6]/Q
-                         net (fo=2, routed)           0.148     0.289    UTX/D[6]
-    SLICE_X12Y24         FDRE                                         r  UTX/r_TX_Data_reg[6]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 USEND/temp_byte_out_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            UTX/r_TX_Data_reg[1]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.312ns  (logic 0.164ns (52.482%)  route 0.148ns (47.518%))
-  Logic Levels:           1  (FDRE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X12Y25         FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[1]/C
-    SLICE_X12Y25         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  USEND/temp_byte_out_reg[1]/Q
-                         net (fo=2, routed)           0.148     0.312    UTX/D[1]
-    SLICE_X13Y24         FDRE                                         r  UTX/r_TX_Data_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 UTX/FSM_sequential_r_SM_Main_reg[2]_inv/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            UTX/o_TX_Serial_reg/CE
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.320ns  (logic 0.148ns (46.317%)  route 0.172ns (53.683%))
-  Logic Levels:           1  (FDRE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X14Y23         FDRE                         0.000     0.000 r  UTX/FSM_sequential_r_SM_Main_reg[2]_inv/C
-    SLICE_X14Y23         FDRE (Prop_fdre_C_Q)         0.148     0.148 r  UTX/FSM_sequential_r_SM_Main_reg[2]_inv/Q
-                         net (fo=10, routed)          0.172     0.320    UTX/r_SM_Main[2]
-    SLICE_X14Y22         FDRE                                         r  UTX/o_TX_Serial_reg/CE
+    SLICE_X4Y19          FDRE                         0.000     0.000 r  URX/r_Clk_Count_reg[6]/C
+    SLICE_X4Y19          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  URX/r_Clk_Count_reg[6]/Q
+                         net (fo=6, routed)           0.121     0.262    URX/r_Clk_Count_reg_n_0_[6]
+    SLICE_X5Y19          LUT6 (Prop_lut6_I0_O)        0.045     0.307 r  URX/r_Clk_Count[8]_i_3/O
+                         net (fo=1, routed)           0.000     0.307    URX/r_Clk_Count[8]_i_3_n_0
+    SLICE_X5Y19          FDRE                                         r  URX/r_Clk_Count_reg[8]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -614,89 +571,91 @@ Slack:                    inf
   Destination:            UTX/r_TX_Data_reg[2]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.326ns  (logic 0.141ns (43.244%)  route 0.185ns (56.756%))
+  Data Path Delay:        0.317ns  (logic 0.164ns (51.668%)  route 0.153ns (48.332%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X13Y25         FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[2]/C
-    SLICE_X13Y25         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/temp_byte_out_reg[2]/Q
-                         net (fo=2, routed)           0.185     0.326    UTX/D[2]
-    SLICE_X13Y24         FDRE                                         r  UTX/r_TX_Data_reg[2]/D
+    SLICE_X12Y37         FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[2]/C
+    SLICE_X12Y37         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  USEND/temp_byte_out_reg[2]/Q
+                         net (fo=2, routed)           0.153     0.317    UTX/D[2]
+    SLICE_X12Y36         FDRE                                         r  UTX/r_TX_Data_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 URX/r_Bit_Index_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            URX/r_RX_Byte_reg[4]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.318ns  (logic 0.186ns (58.427%)  route 0.132ns (41.573%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y20          FDRE                         0.000     0.000 r  URX/r_Bit_Index_reg[1]/C
+    SLICE_X3Y20          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  URX/r_Bit_Index_reg[1]/Q
+                         net (fo=11, routed)          0.132     0.273    URX/r_Bit_Index_reg_n_0_[1]
+    SLICE_X2Y20          LUT6 (Prop_lut6_I1_O)        0.045     0.318 r  URX/r_RX_Byte[4]_i_1/O
+                         net (fo=1, routed)           0.000     0.318    URX/r_RX_Byte[4]_i_1_n_0
+    SLICE_X2Y20          FDRE                                         r  URX/r_RX_Byte_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 UTX/r_Clk_Count_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UTX/r_Clk_Count_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.319ns  (logic 0.186ns (58.389%)  route 0.133ns (41.611%))
+  Logic Levels:           2  (FDRE=1 LUT4=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y35         FDRE                         0.000     0.000 r  UTX/r_Clk_Count_reg[0]/C
+    SLICE_X15Y35         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UTX/r_Clk_Count_reg[0]/Q
+                         net (fo=8, routed)           0.133     0.274    UTX/r_Clk_Count_reg[0]
+    SLICE_X14Y35         LUT4 (Prop_lut4_I1_O)        0.045     0.319 r  UTX/r_Clk_Count[2]_i_1__0/O
+                         net (fo=1, routed)           0.000     0.319    UTX/r_Clk_Count[2]
+    SLICE_X14Y35         FDRE                                         r  UTX/r_Clk_Count_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 UTX/r_Clk_Count_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UTX/r_Clk_Count_reg[3]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.322ns  (logic 0.189ns (58.778%)  route 0.133ns (41.222%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y35         FDRE                         0.000     0.000 r  UTX/r_Clk_Count_reg[0]/C
+    SLICE_X15Y35         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UTX/r_Clk_Count_reg[0]/Q
+                         net (fo=8, routed)           0.133     0.274    UTX/r_Clk_Count_reg[0]
+    SLICE_X14Y35         LUT5 (Prop_lut5_I2_O)        0.048     0.322 r  UTX/r_Clk_Count[3]_i_1__0/O
+                         net (fo=1, routed)           0.000     0.322    UTX/r_Clk_Count[3]
+    SLICE_X14Y35         FDRE                                         r  UTX/r_Clk_Count_reg[3]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 USEND/FSM_onehot_which_byte_out_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            USEND/FSM_onehot_which_byte_out_reg[1]/D
+  Destination:            USEND/temp_byte_out_reg[6]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.334ns  (logic 0.141ns (42.177%)  route 0.193ns (57.823%))
-  Logic Levels:           1  (FDRE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X13Y26         FDRE                         0.000     0.000 r  USEND/FSM_onehot_which_byte_out_reg[0]/C
-    SLICE_X13Y26         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/FSM_onehot_which_byte_out_reg[0]/Q
-                         net (fo=6, routed)           0.193     0.334    USEND/FSM_onehot_which_byte_out_reg_n_0_[0]
-    SLICE_X12Y26         FDRE                                         r  USEND/FSM_onehot_which_byte_out_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 USEND/FSM_onehot_which_byte_out_reg[3]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            USEND/temp_byte_out_reg[4]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.334ns  (logic 0.209ns (62.499%)  route 0.125ns (37.501%))
+  Data Path Delay:        0.335ns  (logic 0.186ns (55.564%)  route 0.149ns (44.436%))
   Logic Levels:           2  (FDRE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X12Y26         FDRE                         0.000     0.000 r  USEND/FSM_onehot_which_byte_out_reg[3]/C
-    SLICE_X12Y26         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  USEND/FSM_onehot_which_byte_out_reg[3]/Q
-                         net (fo=6, routed)           0.125     0.289    USEND/FSM_onehot_which_byte_out_reg_n_0_[3]
-    SLICE_X13Y25         LUT5 (Prop_lut5_I4_O)        0.045     0.334 r  USEND/temp_byte_out[4]_i_1/O
-                         net (fo=1, routed)           0.000     0.334    USEND/temp_byte_out[4]
-    SLICE_X13Y25         FDRE                                         r  USEND/temp_byte_out_reg[4]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 URX/r_Clk_Count_reg[7]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            URX/r_Clk_Count_reg[8]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.334ns  (logic 0.246ns (73.561%)  route 0.088ns (26.439%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X6Y23          FDRE                         0.000     0.000 r  URX/r_Clk_Count_reg[7]/C
-    SLICE_X6Y23          FDRE (Prop_fdre_C_Q)         0.148     0.148 r  URX/r_Clk_Count_reg[7]/Q
-                         net (fo=6, routed)           0.088     0.236    URX/r_Clk_Count_reg_n_0_[7]
-    SLICE_X6Y23          LUT6 (Prop_lut6_I2_O)        0.098     0.334 r  URX/r_Clk_Count[8]_i_3/O
-                         net (fo=1, routed)           0.000     0.334    URX/r_Clk_Count[8]_i_3_n_0
-    SLICE_X6Y23          FDRE                                         r  URX/r_Clk_Count_reg[8]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 UHANDLE/byte_count_reg[2]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            UHANDLE/byte_count_reg[1]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.338ns  (logic 0.186ns (55.034%)  route 0.152ns (44.966%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X1Y20          FDRE                         0.000     0.000 r  UHANDLE/byte_count_reg[2]/C
-    SLICE_X1Y20          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UHANDLE/byte_count_reg[2]/Q
-                         net (fo=10, routed)          0.152     0.293    UHANDLE/byte_count_reg[2]_0
-    SLICE_X0Y20          LUT6 (Prop_lut6_I3_O)        0.045     0.338 r  UHANDLE/byte_count[1]_i_1/O
-                         net (fo=1, routed)           0.000     0.338    UHANDLE/byte_count[1]_i_1_n_0
-    SLICE_X0Y20          FDRE                                         r  UHANDLE/byte_count_reg[1]/D
+    SLICE_X13Y35         FDRE                         0.000     0.000 r  USEND/FSM_onehot_which_byte_out_reg[0]/C
+    SLICE_X13Y35         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/FSM_onehot_which_byte_out_reg[0]/Q
+                         net (fo=9, routed)           0.149     0.290    USEND/FSM_onehot_which_byte_out_reg_n_0_[0]
+    SLICE_X12Y35         LUT5 (Prop_lut5_I2_O)        0.045     0.335 r  USEND/temp_byte_out[6]_i_1/O
+                         net (fo=1, routed)           0.000     0.335    USEND/temp_byte_out[6]
+    SLICE_X12Y35         FDRE                                         r  USEND/temp_byte_out_reg[6]/D
   -------------------------------------------------------------------    -------------------
 
 

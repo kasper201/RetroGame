@@ -131,7 +131,7 @@ begin
     
     USEND: UREQUEST port map (
         i_Clk               => i_clk,
-        i_Request_select    => "0000",
+        i_Request_select    => "0001",
         i_Request_confirm   => i_sendButton,
         o_Byte_out          => Data_To_Send,
         o_Send_Byte         => Transmit_Data_Valid
