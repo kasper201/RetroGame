@@ -1,8 +1,8 @@
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-| Date         : Mon Mar 11 13:13:31 2024
-| Host         : MSI running 64-bit major release  (build 9200)
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Tue Mar 12 19:45:39 2024
+| Host         : PC-WouterRosenbrand running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
 | Design       : main
 | Device       : xc7a35t
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    13 |
-|    Minimum number of control sets                        |    13 |
+| Total control sets                                       |    12 |
+|    Minimum number of control sets                        |    12 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
 | Unused register locations in slices containing registers |    65 |
@@ -39,10 +39,10 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    13 |
+| Total control sets |    12 |
 | >= 0 to < 4        |     6 |
 | >= 4 to < 6        |     1 |
-| >= 6 to < 8        |     1 |
+| >= 6 to < 8        |     0 |
 | >= 8 to < 10       |     4 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              35 |           21 |
+| No           | No                    | No                     |              42 |           23 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |              34 |           14 |
+| Yes          | No                    | No                     |              27 |           12 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              18 |            5 |
+| Yes          | Yes                   | No                     |              18 |            7 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,19 +73,18 @@ Table of Contents
 +------------------+--------------------------------------------+-------------------------------+------------------+----------------+--------------+
 |   Clock Signal   |                Enable Signal               |        Set/Reset Signal       | Slice Load Count | Bel Load Count | Bels / Slice |
 +------------------+--------------------------------------------+-------------------------------+------------------+----------------+--------------+
-|  i_Clk_IBUF_BUFG | URX/status41_out                           |                               |                1 |              1 |         1.00 |
-|  i_Clk_IBUF_BUFG | URX/status17_out                           |                               |                1 |              1 |         1.00 |
-|  i_Clk_IBUF_BUFG | URX/status33_out                           |                               |                1 |              1 |         1.00 |
-|  i_Clk_IBUF_BUFG | URX/status9_out                            |                               |                1 |              1 |         1.00 |
-|  i_Clk_IBUF_BUFG | URX/status25_out                           |                               |                1 |              1 |         1.00 |
+|  i_Clk_IBUF_BUFG | UHANDLE/status41_out                       |                               |                1 |              1 |         1.00 |
+|  i_Clk_IBUF_BUFG | UHANDLE/status17_out                       |                               |                1 |              1 |         1.00 |
+|  i_Clk_IBUF_BUFG | UHANDLE/status33_out                       |                               |                1 |              1 |         1.00 |
+|  i_Clk_IBUF_BUFG | UHANDLE/status9_out                        |                               |                1 |              1 |         1.00 |
+|  i_Clk_IBUF_BUFG | UHANDLE/status25_out                       |                               |                1 |              1 |         1.00 |
 |  i_Clk_IBUF_BUFG | UTX/r_SM_Main[2]                           |                               |                1 |              1 |         1.00 |
 |  i_Clk_IBUF_BUFG | USEND/FSM_onehot_which_byte_out[4]_i_1_n_0 |                               |                2 |              5 |         2.50 |
-|  i_Clk_IBUF_BUFG | USEND/counter[9]_i_1_n_0                   |                               |                3 |              7 |         2.33 |
-|  i_Clk_IBUF_BUFG | UTX/r_TX_Data_0                            |                               |                1 |              8 |         8.00 |
+|  i_Clk_IBUF_BUFG | UTX/r_TX_Data_0                            |                               |                2 |              8 |         4.00 |
 |  i_Clk_IBUF_BUFG | USEND/temp_byte_out[7]_i_1_n_0             |                               |                2 |              8 |         4.00 |
-|  i_Clk_IBUF_BUFG | URX/r_Clk_Count[8]_i_2_n_0                 | URX/r_Clk_Count[8]_i_1__0_n_0 |                3 |              9 |         3.00 |
-|  i_Clk_IBUF_BUFG | UTX/r_Clk_Count_1                          | UTX/r_Clk_Count0              |                2 |              9 |         4.50 |
-|  i_Clk_IBUF_BUFG |                                            |                               |               21 |             35 |         1.67 |
+|  i_Clk_IBUF_BUFG | URX/r_Clk_Count[8]_i_2_n_0                 | URX/r_Clk_Count[8]_i_1__0_n_0 |                4 |              9 |         2.25 |
+|  i_Clk_IBUF_BUFG | UTX/r_Clk_Count_1                          | UTX/r_Clk_Count0              |                3 |              9 |         3.00 |
+|  i_Clk_IBUF_BUFG |                                            |                               |               23 |             42 |         1.83 |
 +------------------+--------------------------------------------+-------------------------------+------------------+----------------+--------------+
 
 

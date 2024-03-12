@@ -50,7 +50,7 @@ begin
     process(i_Clk)
     variable Data_Viable : std_logic := '0';
     variable status, status1, status2, status3, status4 : std_logic := '0';
-    variable byte_count : integer range 0 to 5 := 0;
+    variable byte_count : integer range 0 to 6 := 0;
     
     begin
         if rising_edge(i_Clk) then
@@ -86,12 +86,21 @@ begin
                             byte_count := 5;
                             status4 := '1';
                         end if;
+                    when "00001010" =>
+                        if byte_count = 5 then
+                            byte_count := 6;
+                            status := '0';
+                            status1 := '0';
+                            status2 := '0';
+                            status3 := '0';
+                            status4 := '0';
+                        end if;
                     when others =>
                         --Reset byte_count
-                        byte_count := 0;
+                        byte_count := byte_count;
                 end case;
                 
-                if byte_count = 5 then
+                if byte_count = 6 then
                     byte_count := 0;
                 end if;
                 

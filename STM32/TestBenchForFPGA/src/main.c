@@ -101,7 +101,15 @@ int main(void)
 	int buttonPressed = 0;
 	int ledState = 0;
 	int ledActivated = 0;
-	char outToFpga;
+	char outToFpga[6];
+	int countWatVerstuurdIs = 0;
+	
+	outToFpga[0] = 0x55;
+	outToFpga[1] = 0xaa;
+	outToFpga[2] = 0x0f;
+	outToFpga[3] = 0xf0;
+	outToFpga[4] = 0x33;
+	outToFpga[5] = 0x0a;
 
 	printk("Start\n");
 	if (led.port)
@@ -133,9 +141,17 @@ int main(void)
 				gpio_pin_set_dt(&led, 1);
 				if (ledActivated == 0)
 				{
-					outToFpga = 0x11;
-					print_uart(&outToFpga);
-					printk("Send 00010001\n");
+					char temp = outToFpga[countWatVerstuurdIs];
+					print_uart(&temp);
+					printk("Send this byte: %02x\n", temp);
+					if (countWatVerstuurdIs < 5) 
+					{
+						countWatVerstuurdIs++;
+					} else
+					{
+						countWatVerstuurdIs = 0;
+					}
+
 					ledActivated = 1;
 				}
 			}
@@ -144,9 +160,6 @@ int main(void)
 				gpio_pin_set_dt(&led, 0);
 				if (ledActivated == 1)
 				{
-					outToFpga = 0x88;
-					print_uart(&outToFpga);
-					printk("Send 10001000\n");
 					ledActivated = 0;
 				}
 			}
