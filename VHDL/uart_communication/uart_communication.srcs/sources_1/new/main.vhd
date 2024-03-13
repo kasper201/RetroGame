@@ -34,11 +34,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity main is
-    Port ( clk : in STD_LOGIC;
-           sendButton : in STD_LOGIC;
-           Rx : in STD_LOGIC;           --pin 7 (op stm32 verbinden met pin 8)
-           Tx : out STD_LOGIC;          --pin 1 (op stm32 verbinden met pin 2)
-           LED_Status : out STD_LOGIC
+    Port ( i_Clk : in STD_LOGIC;
+           i_SendButton : in STD_LOGIC;
+           i_Rx : in STD_LOGIC;           --JAX pin 7 (op stm32 verbinden met pin 8)
+           o_Tx : out STD_LOGIC;          --JAX pin 8 (op stm32 verbinden met pin 2)
+           o_LED_Status : out STD_LOGIC;
+           o_LED_Status1 : out STD_LOGIC;
+           o_LED_Status2 : out STD_LOGIC;
+           o_LED_Status3 : out STD_LOGIC;
+           o_LED_Status4 : out STD_LOGIC
            );
 end main;
 
@@ -71,15 +75,22 @@ component RD_Process is
     Port ( i_Clk : in STD_LOGIC;
            i_RX_DV : in STD_LOGIC;
            i_R_Byte : in STD_LOGIC_VECTOR (7 downto 0);
-           o_Status : out STD_LOGIC);
+           o_Status : out STD_LOGIC;
+           o_Status1 : out STD_LOGIC;
+           o_Status2 : out STD_LOGIC;
+           o_Status3 : out STD_LOGIC;
+           o_Status4 : out STD_LOGIC);
 end component;
 
---Sends out a byte for the uart tx
-component TX_Send is
-    Port ( i_Clk : in STD_LOGIC;
-           i_Button : in STD_LOGIC;
-           o_Send_TX : out STD_LOGIC;
-           o_Byte_TX : out STD_LOGIC_VECTOR (7 downto 0));
+--Sends out 5 bytes for the uart tx
+component UREQUEST is
+  Port (
+        i_Clk : in std_logic;
+        i_Request_select : in std_logic_vector(3 downto 0);
+        i_Request_confirm : in std_logic;
+        o_Byte_out : out std_logic_vector(7 downto 0);
+        o_Send_Byte : out std_logic
+   );
 end component;
 
 --Status for the bytes and if they are ready to handle or to transmit
@@ -92,33 +103,38 @@ signal Transmit_Active, Transmit_Complete : std_logic;
 begin
 
     URX: UART_RX port map (
-        i_Clk       => clk,
-        i_RX_Serial => Rx,
+        i_Clk       => i_clk,
+        i_RX_Serial => i_Rx,
         o_RX_DV     => Recieved_Data_Valid,
         o_RX_Byte   => Data_Recieved
     );
     
     UTX: UART_TX port map (
-        i_Clk       => clk,
+        i_Clk       => i_clk,
         i_TX_DV     => Transmit_Data_Valid,
         i_TX_Byte   => Data_To_Send,
         o_TX_Active => Transmit_Active,
-        o_TX_Serial => Tx,
+        o_TX_Serial => o_Tx,
         o_TX_Done   => Transmit_Complete
     );
 
     UHANDLE: RD_Process port map (
-        i_Clk       => clk,
+        i_Clk       => i_clk,
         i_RX_DV     => Recieved_Data_Valid,
         i_R_Byte    => Data_Recieved,
-        o_Status    => LED_Status
+        o_Status    => o_LED_Status,
+        o_Status1    => o_LED_Status1,
+        o_Status2    => o_LED_Status2,
+        o_Status3    => o_LED_Status3,
+        o_Status4    => o_LED_Status4
     );
     
-    USEND: TX_Send port map (
-        i_Clk       => clk,
-        i_Button    => sendButton,
-        o_Send_TX   => Transmit_Data_Valid,
-        o_Byte_TX   => Data_To_Send
-    );
+    USEND: UREQUEST port map (
+        i_Clk               => i_clk,
+        i_Request_select    => "0001",
+        i_Request_confirm   => i_sendButton,
+        o_Byte_out          => Data_To_Send,
+        o_Send_Byte         => Transmit_Data_Valid
+   );
 
 end Behavioral;

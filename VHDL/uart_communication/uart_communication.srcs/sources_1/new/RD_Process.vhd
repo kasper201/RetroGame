@@ -35,7 +35,12 @@ entity RD_Process is
     Port ( i_Clk : in STD_LOGIC;
            i_RX_DV : in STD_LOGIC;
            i_R_Byte : in STD_LOGIC_VECTOR (7 downto 0);
-           o_Status : out STD_LOGIC);
+           o_Status : out STD_LOGIC;
+           o_Status1 : out STD_LOGIC;
+           o_Status2 : out STD_LOGIC;
+           o_Status3 : out STD_LOGIC;
+           o_Status4 : out STD_LOGIC
+           );
 end RD_Process;
 
 architecture Behavioral of RD_Process is
@@ -44,7 +49,8 @@ begin
 
     process(i_Clk)
     variable Data_Viable : std_logic := '0';
-    variable status : std_logic := '0';
+    variable status, status1, status2, status3, status4 : std_logic := '0';
+    variable byte_count : integer range 0 to 6 := 0;
     
     begin
         if rising_edge(i_Clk) then
@@ -53,16 +59,49 @@ begin
                 --Set to 1 because this should not be triggered again until i_RD_DV goes to '0'
                 Data_Viable := '1';
                 
-                --Check incoming Byte
-                if i_R_Byte = "00010001" then
-                    --Turn status to one
-                    status := '1';
-                elsif i_R_Byte = "10001000" then
-                    --Turn status to zero
-                    status := '0';
-                else
-                    --Keep status the same
-                    status := status;
+                --Check incoming Bytes
+                case i_R_Byte is
+                    when "01010101" =>
+                        if byte_count = 0 then
+                            byte_count := 1;
+                            status := '1';
+                        end if;
+                    when "10101010" =>
+                        if byte_count = 1 then
+                            byte_count := 2;
+                            status1 := '1';
+                        end if;
+                    when "00001111" =>
+                        if byte_count = 2 then
+                            byte_count := 3;
+                            status2 := '1';
+                        end if;
+                    when "11110000" =>
+                        if byte_count = 3 then
+                            byte_count := 4;
+                            status3 := '1';
+                        end if;
+                    when "00110011" =>
+                        if byte_count = 4 then
+                            byte_count := 5;
+                            status4 := '1';
+                        end if;
+                    when "00001010" =>
+                        if byte_count = 5 then
+                            byte_count := 6;
+                            status := '0';
+                            status1 := '0';
+                            status2 := '0';
+                            status3 := '0';
+                            status4 := '0';
+                        end if;
+                    when others =>
+                        --Reset byte_count
+                        byte_count := byte_count;
+                end case;
+                
+                if byte_count = 6 then
+                    byte_count := 0;
                 end if;
                 
             
@@ -76,6 +115,10 @@ begin
             end if;
         end if;
         o_Status <= status;
+        o_Status1 <= status1;
+        o_Status2 <= status2;
+        o_Status3 <= status3;
+        o_Status4 <= status4;
     end process;
 
 end Behavioral;

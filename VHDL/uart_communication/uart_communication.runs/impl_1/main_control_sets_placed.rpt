@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Feb 26 00:49:15 2024
+| Date         : Tue Mar 12 20:42:48 2024
 | Host         : PC-WouterRosenbrand running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
 | Design       : main
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     5 |
-|    Minimum number of control sets                        |     5 |
+| Total control sets                                       |    12 |
+|    Minimum number of control sets                        |    12 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    29 |
+| Unused register locations in slices containing registers |    64 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,11 +39,11 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     5 |
-| >= 0 to < 4        |     2 |
-| >= 4 to < 6        |     0 |
+| Total control sets |    12 |
+| >= 0 to < 4        |     6 |
+| >= 4 to < 6        |     1 |
 | >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     2 |
+| >= 8 to < 10       |     4 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
@@ -58,26 +58,33 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              31 |            9 |
+| No           | No                    | No                     |              43 |           21 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |               1 |            1 |
+| Yes          | No                    | No                     |              27 |           11 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              19 |            7 |
+| Yes          | Yes                   | No                     |              18 |            7 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+----------------------------+----------------------------+------------------+----------------+--------------+
-|  Clock Signal  |        Enable Signal       |      Set/Reset Signal      | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------+----------------------------+----------------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG | URX/status4_out            | URX/status1_out            |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG | UTX/r_SM_Main[2]           |                            |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG | URX/r_Clk_Count[8]_i_2_n_0 | URX/r_Clk_Count[8]_i_1_n_0 |                3 |              9 |         3.00 |
-|  clk_IBUF_BUFG | UTX/r_Clk_Count_0          | UTX/r_Clk_Count0           |                3 |              9 |         3.00 |
-|  clk_IBUF_BUFG |                            |                            |                9 |             31 |         3.44 |
-+----------------+----------------------------+----------------------------+------------------+----------------+--------------+
++------------------+--------------------------------------------+-------------------------------+------------------+----------------+--------------+
+|   Clock Signal   |                Enable Signal               |        Set/Reset Signal       | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------+--------------------------------------------+-------------------------------+------------------+----------------+--------------+
+|  i_Clk_IBUF_BUFG | UHANDLE/status33_out                       |                               |                1 |              1 |         1.00 |
+|  i_Clk_IBUF_BUFG | UHANDLE/status41_out                       |                               |                1 |              1 |         1.00 |
+|  i_Clk_IBUF_BUFG | UHANDLE/status9_out                        |                               |                1 |              1 |         1.00 |
+|  i_Clk_IBUF_BUFG | UHANDLE/status25_out                       |                               |                1 |              1 |         1.00 |
+|  i_Clk_IBUF_BUFG | UHANDLE/status17_out                       |                               |                1 |              1 |         1.00 |
+|  i_Clk_IBUF_BUFG | UTX/r_SM_Main[2]                           |                               |                1 |              1 |         1.00 |
+|  i_Clk_IBUF_BUFG | USEND/FSM_onehot_which_byte_out[4]_i_1_n_0 |                               |                1 |              5 |         5.00 |
+|  i_Clk_IBUF_BUFG | UTX/r_TX_Data_0                            |                               |                1 |              8 |         8.00 |
+|  i_Clk_IBUF_BUFG | USEND/temp_byte_out[7]_i_1_n_0             |                               |                3 |              8 |         2.67 |
+|  i_Clk_IBUF_BUFG | URX/r_Clk_Count[8]_i_2_n_0                 | URX/r_Clk_Count[8]_i_1__0_n_0 |                4 |              9 |         2.25 |
+|  i_Clk_IBUF_BUFG | UTX/r_Clk_Count_1                          | UTX/r_Clk_Count0              |                3 |              9 |         3.00 |
+|  i_Clk_IBUF_BUFG |                                            |                               |               21 |             43 |         2.05 |
++------------------+--------------------------------------------+-------------------------------+------------------+----------------+--------------+
 
 
