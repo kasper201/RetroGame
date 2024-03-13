@@ -149,6 +149,17 @@ int main(void)
 			else if (val == 0 && buttonPressed >= 1)
 			{
 				buttonPressed = 0;
+
+				if (ledState == 1)
+				{
+					gpio_pin_set_dt(&led, 0);
+					if (ledActivated == 1)
+					{
+						ledActivated = 0;
+						printk("LED turned off\n");
+					}
+					ledState = 0;
+				}
 			}
 
 			if (ledState == 1)
