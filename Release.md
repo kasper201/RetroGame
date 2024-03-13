@@ -1,32 +1,22 @@
 # What's changed
 
 ## Sprites
-- Added enemy: angy wall-E
-- Added enemy: CleaningRobot
-- Added enemy: Evil Eve
-- Added plant: moneyplant (sunflower like)
-- Added plant: Pineapple
-- Added plant: crazyPear
-- Added plant: peashooterRO
+- Nothing has changed
 
 ## Game logic
 
 ### location handling
-- Added location handling
-- Added the ability to move enemies
-- Added the ability to detect plants and stop moving
-- Added the ability to change entity information based on location
+- Added the ability to move the player
+- Added a cursor 'demo'
 
 ### STM32
-- Added the ability to read a button press
+- Nothing has changed
 
 ## GPU
-- Added the ability to draw a sprite
-- Added the ability to draw the background
-- Added the ability to "green screen" the sprites
+- Nothing has changed
 
 ## Other
-- Added the ability to use UART to communicate at 230400 baud
+- Nothing has changed
 
 # Known bugs
 

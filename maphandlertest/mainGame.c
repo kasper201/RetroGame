@@ -48,13 +48,13 @@ int playerInit(struct Player *player)
  * @param map 
  * @return int 0 for no error, 1 for general error, 2 for plant update error, 3 for enemy update error 
  */
-int gameLoop(struct Map map[MAP_WIDTH][MAP_HEIGHT])
+int gameLoop(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player *player)
 {
     int err;
     // game loop
     while (1)
     {
-        err = updateGame(map);
+        err = updateGame(map, player);
         if (err)
         {
             return err;
