@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="prescaler_synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1709305201">
+<GenRun Id="prescaler_synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1710148318">
   <File Type="PA-TCL" Name="prescaler.tcl"/>
   <File Type="REPORTS-TCL" Name="prescaler_reports.tcl"/>
   <File Type="RDS-RDS" Name="prescaler.vds"/>
@@ -40,6 +40,8 @@
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedInSteps" Val="synth_1"/>
         <Attr Name="UsedInSteps" Val="synth_1_copy_1"/>
+        <Attr Name="UsedInSteps" Val="synth_1_copy_2"/>
+        <Attr Name="UsedInSteps" Val="synth_1_copy_3"/>
         <Attr Name="AutoDcp" Val="1"/>
       </FileInfo>
     </File>

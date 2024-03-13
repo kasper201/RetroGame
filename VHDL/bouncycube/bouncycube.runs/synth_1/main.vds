@@ -1,0 +1,430 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Mar 13 07:56:06 2024
+# Process ID: 41500
+# Current directory: C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.runs/synth_1
+# Command line: vivado.exe -log main.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source main.tcl
+# Log file: C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.runs/synth_1/main.vds
+# Journal file: C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.runs/synth_1\vivado.jou
+# Running On: Japser, OS: Windows, CPU Frequency: 2918 MHz, CPU Physical cores: 10, Host memory: 16890 MB
+#-----------------------------------------------------------
+source main.tcl -notrace
+create_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 465.684 ; gain = 183.590
+Command: read_checkpoint -auto_incremental -incremental C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/utils_1/imports/synth_1/VGA.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/utils_1/imports/synth_1/VGA.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top main -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 34496
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:13 . Memory (MB): peak = 1313.469 ; gain = 439.391
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'main' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/main.vhd:23]
+INFO: [Synth 8-3491] module 'prescaler' declared at 'C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.runs/synth_1/.Xil/Vivado-41500-Japser/realtime/prescaler_stub.vhdl:6' bound to instance 'G0' of component 'prescaler' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/main.vhd:113]
+INFO: [Synth 8-638] synthesizing module 'prescaler' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.runs/synth_1/.Xil/Vivado-41500-Japser/realtime/prescaler_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'LocationDetermination' declared at 'C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/locationDetermination.vhd:34' bound to instance 'G1' of component 'locationDetermination' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/main.vhd:120]
+INFO: [Synth 8-638] synthesizing module 'LocationDetermination' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/locationDetermination.vhd:46]
+	Parameter data_width bound to: 4 - type: integer 
+	Parameter addr_length bound to: 128 - type: integer 
+INFO: [Synth 8-3491] module 'locationRAM' declared at 'C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/LocationRam.vhd:34' bound to instance 'ram1' of component 'locationRAM' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/locationDetermination.vhd:75]
+INFO: [Synth 8-638] synthesizing module 'locationRAM' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/LocationRam.vhd:48]
+	Parameter data_width bound to: 4 - type: integer 
+	Parameter addr_length bound to: 128 - type: integer 
+WARNING: [Synth 8-7193] Integer conversion function is truncating input [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/LocationRam.vhd:69]
+INFO: [Synth 8-256] done synthesizing module 'locationRAM' (0#1) [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/LocationRam.vhd:48]
+WARNING: [Synth 8-614] signal 'hWriteLoc' is read in the process but is not in the sensitivity list [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/locationDetermination.vhd:88]
+WARNING: [Synth 8-614] signal 'x' is read in the process but is not in the sensitivity list [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/locationDetermination.vhd:88]
+INFO: [Synth 8-256] done synthesizing module 'LocationDetermination' (0#1) [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/locationDetermination.vhd:46]
+INFO: [Synth 8-3491] module 'sprite_locatie' declared at 'C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/sprite locatie.vhd:34' bound to instance 'G2' of component 'sprite_locatie' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/main.vhd:134]
+INFO: [Synth 8-638] synthesizing module 'sprite_locatie' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/sprite locatie.vhd:51]
+INFO: [Synth 8-256] done synthesizing module 'sprite_locatie' (0#1) [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/sprite locatie.vhd:51]
+INFO: [Synth 8-3491] module 'vROM' declared at 'C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vROM.vhd:14' bound to instance 'G3' of component 'vROM' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/main.vhd:148]
+INFO: [Synth 8-638] synthesizing module 'vROM' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vROM.vhd:26]
+INFO: [Synth 8-3491] module 'blk_mem_gen_0' declared at 'C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.runs/synth_1/.Xil/Vivado-41500-Japser/realtime/blk_mem_gen_0_stub.vhdl:6' bound to instance 'ROM1' of component 'blk_mem_gen_0' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vROM.vhd:70]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.runs/synth_1/.Xil/Vivado-41500-Japser/realtime/blk_mem_gen_0_stub.vhdl:16]
+INFO: [Synth 8-3491] module 'blk_mem_gen_1' declared at 'C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.runs/synth_1/.Xil/Vivado-41500-Japser/realtime/blk_mem_gen_1_stub.vhdl:6' bound to instance 'ROM2' of component 'blk_mem_gen_1' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vROM.vhd:77]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_1' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.runs/synth_1/.Xil/Vivado-41500-Japser/realtime/blk_mem_gen_1_stub.vhdl:16]
+INFO: [Synth 8-256] done synthesizing module 'vROM' (0#1) [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vROM.vhd:26]
+INFO: [Synth 8-3491] module 'VGA' declared at 'C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vga.vhd:8' bound to instance 'G4' of component 'VGA' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/main.vhd:157]
+INFO: [Synth 8-638] synthesizing module 'VGA' [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vga.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'VGA' (0#1) [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vga.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'main' (0#1) [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/main.vhd:23]
+WARNING: [Synth 8-7129] Port aReset in module sprite_locatie is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[127] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[126] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[125] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[124] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[123] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[122] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[121] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[120] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[119] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[118] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[117] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[116] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[115] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[114] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[113] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[112] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[111] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[110] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[109] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[108] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[107] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[106] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[105] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[104] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[103] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[102] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[101] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[100] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[99] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[98] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[97] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[96] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[95] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[94] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[93] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[92] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[91] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[90] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[89] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[88] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[87] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[86] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[85] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[84] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[83] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[82] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[81] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[80] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[79] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[78] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[77] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[76] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[75] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[74] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[73] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[72] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[71] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[70] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[69] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[68] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[67] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[66] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[65] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[64] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[63] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[62] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[61] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[60] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[59] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[58] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[57] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[56] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[55] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[54] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[53] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[52] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[51] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[50] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[49] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[48] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[47] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[46] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[45] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[44] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[43] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[42] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[41] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[40] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[39] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[38] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[37] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[36] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[35] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[34] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[33] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[32] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[31] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[30] in module locationRAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[29] in module locationRAM is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:18 . Memory (MB): peak = 1429.109 ; gain = 555.031
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:18 . Memory (MB): peak = 1429.109 ; gain = 555.031
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:18 . Memory (MB): peak = 1429.109 ; gain = 555.031
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.037 . Memory (MB): peak = 1429.109 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler/prescaler_in_context.xdc] for cell 'G0'
+Finished Parsing XDC File [c:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler/prescaler_in_context.xdc] for cell 'G0'
+Parsing XDC File [c:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'G3/ROM1'
+Finished Parsing XDC File [c:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'G3/ROM1'
+Parsing XDC File [c:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1/blk_mem_gen_1_in_context.xdc] for cell 'G3/ROM2'
+Finished Parsing XDC File [c:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1/blk_mem_gen_1_in_context.xdc] for cell 'G3/ROM2'
+Parsing XDC File [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/constrs_1/scherm.xdc]
+Finished Parsing XDC File [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/constrs_1/scherm.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/constrs_1/scherm.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/main_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/main_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1489.402 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1489.402 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:39 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:39 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for clk100. (constraint file  c:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler/prescaler_in_context.xdc, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for clk100. (constraint file  c:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler/prescaler_in_context.xdc, line 4).
+Applied set_property KEEP_HIERARCHY = SOFT for G0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for G3/ROM1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for G3/ROM2. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:39 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3936] Found unconnected internal register 'vtemp_reg' and it is trimmed from '10' to '1' bits. [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vga.vhd:47]
+WARNING: [Synth 8-3936] Found unconnected internal register 'htemp_reg' and it is trimmed from '10' to '1' bits. [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vga.vhd:50]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:40 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 1     
+	   2 Input   31 Bit       Adders := 1     
+	   2 Input   11 Bit       Adders := 2     
+	   2 Input   10 Bit       Adders := 11    
+	   3 Input    8 Bit       Adders := 2     
+	   2 Input    1 Bit       Adders := 2     
++---Registers : 
+	               12 Bit    Registers := 1     
+	               10 Bit    Registers := 7     
+	                8 Bit    Registers := 2     
+	                4 Bit    Registers := 4     
+	                1 Bit    Registers := 7     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 1     
+	   2 Input   31 Bit        Muxes := 1     
+	   5 Input   12 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 7     
+	   2 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3936] Found unconnected internal register 'G1/ram1/data_reg' and it is trimmed from '4' to '2' bits. [C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/LocationRam.vhd:69]
+DSP Report: Generating DSP G1/cnt3, operation Mode is: (A:0x1388)*B.
+DSP Report: operator G1/cnt3 is absorbed into DSP G1/cnt3.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:52 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+ Sort Area is  G1/cnt3_0 : 0 0 : 208 208 : Used 1 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++----------------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name           | DSP Mapping  | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++----------------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|LocationDetermination | (A:0x1388)*B | 6      | 13     | -      | -      | 19     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++----------------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:01:05 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:01:06 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:21 ; elapsed = 00:01:06 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:22 ; elapsed = 00:01:09 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:22 ; elapsed = 00:01:09 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:22 ; elapsed = 00:01:09 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:01:09 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:22 ; elapsed = 00:01:09 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:22 ; elapsed = 00:01:09 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Dynamic Shift Register Report:
++------------+--------------+--------+------------+--------+---------+--------+--------+--------+
+|Module Name | RTL Name     | Length | Data Width | SRL16E | SRLC32E | Mux F7 | Mux F8 | Mux F9 | 
++------------+--------------+--------+------------+--------+---------+--------+--------+--------+
+|dsrl        | ram_reg[127] | 4      | 4          | 0      | 16      | 8      | 4      | 0      | 
+|dsrl__1     | ram_reg[127] | 4      | 4          | 0      | 16      | 8      | 4      | 0      | 
++------------+--------------+--------+------------+--------+---------+--------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |prescaler     |         1|
+|2     |blk_mem_gen_0 |         1|
+|3     |blk_mem_gen_1 |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+-------------------+------+
+|      |Cell               |Count |
++------+-------------------+------+
+|1     |blk_mem_gen_0_bbox |     1|
+|2     |blk_mem_gen_1_bbox |     1|
+|3     |prescaler_bbox     |     1|
+|4     |CARRY4             |    81|
+|5     |LUT1               |    41|
+|6     |LUT2               |   142|
+|7     |LUT3               |    84|
+|8     |LUT4               |    77|
+|9     |LUT5               |    60|
+|10    |LUT6               |   121|
+|11    |MUXF7              |     4|
+|12    |MUXF8              |     2|
+|13    |SRLC32E            |     8|
+|14    |FDRE               |    75|
+|15    |FDSE               |    12|
+|16    |IBUF               |     5|
+|17    |OBUF               |    14|
++------+-------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:22 ; elapsed = 00:01:09 . Memory (MB): peak = 1489.402 ; gain = 615.324
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:01:04 . Memory (MB): peak = 1489.402 ; gain = 555.031
+Synthesis Optimization Complete : Time (s): cpu = 00:00:22 ; elapsed = 00:01:09 . Memory (MB): peak = 1489.402 ; gain = 615.324
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1489.402 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 87 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1489.402 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 88694e9e
+INFO: [Common 17-83] Releasing license: Synthesis
+46 Infos, 107 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:24 ; elapsed = 00:01:20 . Memory (MB): peak = 1489.402 ; gain = 1009.789
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1489.402 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.runs/synth_1/main.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file main_utilization_synth.rpt -pb main_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 13 07:57:36 2024...

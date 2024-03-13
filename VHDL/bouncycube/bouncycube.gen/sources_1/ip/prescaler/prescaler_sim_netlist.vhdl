@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Fri Mar  1 16:00:40 2024
+-- Date        : Mon Mar 11 10:12:29 2024
 -- Host        : Japser running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/verpl/Documents/project/retrogame/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler_sim_netlist.vhdl
+--               c:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler_sim_netlist.vhdl
 -- Design      : prescaler
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -18,7 +18,6 @@ use UNISIM.VCOMPONENTS.ALL;
 entity prescaler_clk_wiz is
   port (
     clk_25 : out STD_LOGIC;
-    clk_5 : out STD_LOGIC;
     reset : in STD_LOGIC;
     clk_100 : in STD_LOGIC
   );
@@ -27,13 +26,13 @@ end prescaler_clk_wiz;
 architecture STRUCTURE of prescaler_clk_wiz is
   signal clk_100_prescaler : STD_LOGIC;
   signal clk_25_prescaler : STD_LOGIC;
-  signal clk_5_prescaler : STD_LOGIC;
   signal clkfbout_buf_prescaler : STD_LOGIC;
   signal clkfbout_prescaler : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED : STD_LOGIC;
+  signal NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED : STD_LOGIC;
@@ -56,7 +55,6 @@ architecture STRUCTURE of prescaler_clk_wiz is
   attribute IFD_DELAY_VALUE : string;
   attribute IFD_DELAY_VALUE of clkin1_ibufg : label is "AUTO";
   attribute BOX_TYPE of clkout1_buf : label is "PRIMITIVE";
-  attribute BOX_TYPE of clkout2_buf : label is "PRIMITIVE";
   attribute BOX_TYPE of mmcm_adv_inst : label is "PRIMITIVE";
 begin
 clkf_buf: unisim.vcomponents.BUFG
@@ -77,24 +75,19 @@ clkout1_buf: unisim.vcomponents.BUFG
       I => clk_25_prescaler,
       O => clk_25
     );
-clkout2_buf: unisim.vcomponents.BUFG
-     port map (
-      I => clk_5_prescaler,
-      O => clk_5
-    );
 mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
     generic map(
       BANDWIDTH => "OPTIMIZED",
-      CLKFBOUT_MULT_F => 6.250000,
+      CLKFBOUT_MULT_F => 9.125000,
       CLKFBOUT_PHASE => 0.000000,
       CLKFBOUT_USE_FINE_PS => false,
       CLKIN1_PERIOD => 10.000000,
       CLKIN2_PERIOD => 0.000000,
-      CLKOUT0_DIVIDE_F => 25.000000,
+      CLKOUT0_DIVIDE_F => 36.500000,
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => false,
-      CLKOUT1_DIVIDE => 125,
+      CLKOUT1_DIVIDE => 1,
       CLKOUT1_DUTY_CYCLE => 0.500000,
       CLKOUT1_PHASE => 0.000000,
       CLKOUT1_USE_FINE_PS => false,
@@ -144,7 +137,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKINSTOPPED => NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED,
       CLKOUT0 => clk_25_prescaler,
       CLKOUT0B => NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED,
-      CLKOUT1 => clk_5_prescaler,
+      CLKOUT1 => NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED,
       CLKOUT1B => NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED,
       CLKOUT2 => NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED,
       CLKOUT2B => NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED,
@@ -176,7 +169,6 @@ use UNISIM.VCOMPONENTS.ALL;
 entity prescaler is
   port (
     clk_25 : out STD_LOGIC;
-    clk_5 : out STD_LOGIC;
     reset : in STD_LOGIC;
     clk_100 : in STD_LOGIC
   );
@@ -190,7 +182,6 @@ inst: entity work.prescaler_clk_wiz
      port map (
       clk_100 => clk_100,
       clk_25 => clk_25,
-      clk_5 => clk_5,
       reset => reset
     );
 end STRUCTURE;

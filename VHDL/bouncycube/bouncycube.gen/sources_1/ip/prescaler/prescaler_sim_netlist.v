@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Fri Mar  1 16:00:40 2024
+// Date        : Mon Mar 11 10:12:29 2024
 // Host        : Japser running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/Users/verpl/Documents/project/retrogame/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler_sim_netlist.v
+//               c:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler_sim_netlist.v
 // Design      : prescaler
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -16,33 +16,27 @@
 (* NotValidForBitStream *)
 module prescaler
    (clk_25,
-    clk_5,
     reset,
     clk_100);
   output clk_25;
-  output clk_5;
   input reset;
   input clk_100;
 
   (* IBUF_LOW_PWR *) wire clk_100;
   wire clk_25;
-  wire clk_5;
   wire reset;
 
   prescaler_clk_wiz inst
        (.clk_100(clk_100),
         .clk_25(clk_25),
-        .clk_5(clk_5),
         .reset(reset));
 endmodule
 
 module prescaler_clk_wiz
    (clk_25,
-    clk_5,
     reset,
     clk_100);
   output clk_25;
-  output clk_5;
   input reset;
   input clk_100;
 
@@ -50,8 +44,6 @@ module prescaler_clk_wiz
   wire clk_100_prescaler;
   wire clk_25;
   wire clk_25_prescaler;
-  wire clk_5;
-  wire clk_5_prescaler;
   wire clkfbout_buf_prescaler;
   wire clkfbout_prescaler;
   wire reset;
@@ -59,6 +51,7 @@ module prescaler_clk_wiz
   wire NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED;
@@ -90,22 +83,18 @@ module prescaler_clk_wiz
        (.I(clk_25_prescaler),
         .O(clk_25));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFG clkout2_buf
-       (.I(clk_5_prescaler),
-        .O(clk_5));
-  (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT_F(6.250000),
+    .CLKFBOUT_MULT_F(9.125000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
     .CLKIN1_PERIOD(10.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(25.000000),
+    .CLKOUT0_DIVIDE_F(36.500000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
-    .CLKOUT1_DIVIDE(125),
+    .CLKOUT1_DIVIDE(1),
     .CLKOUT1_DUTY_CYCLE(0.500000),
     .CLKOUT1_PHASE(0.000000),
     .CLKOUT1_USE_FINE_PS("FALSE"),
@@ -154,7 +143,7 @@ module prescaler_clk_wiz
         .CLKINSTOPPED(NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED),
         .CLKOUT0(clk_25_prescaler),
         .CLKOUT0B(NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED),
-        .CLKOUT1(clk_5_prescaler),
+        .CLKOUT1(NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED),
         .CLKOUT1B(NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED),
         .CLKOUT2(NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED),
         .CLKOUT2B(NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED),

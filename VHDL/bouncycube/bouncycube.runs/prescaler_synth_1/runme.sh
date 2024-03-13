@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/verpl/Documents/project/retrogame/bouncycube/bouncycube.runs/prescaler_synth_1'
+HD_PWD='C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/bouncycube/bouncycube.runs/prescaler_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

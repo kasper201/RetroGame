@@ -53,8 +53,7 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// __clk_25__25.00000______0.000______50.0______196.678____128.132
-// ___clk_5___5.00000______0.000______50.0______270.159____128.132
+// __clk_25__25.00000______0.000______50.0______181.828____104.359
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -68,7 +67,6 @@ module prescaler_clk_wiz
  (// Clock in ports
   // Clock out ports
   output        clk_25,
-  output        clk_5,
   // Status and control signals
   input         reset,
   input         clk_100
@@ -107,6 +105,7 @@ wire clk_in2_prescaler;
   wire        clkfbout_buf_prescaler;
   wire        clkfboutb_unused;
     wire clkout0b_unused;
+   wire clkout1_unused;
    wire clkout1b_unused;
    wire clkout2_unused;
    wire clkout2b_unused;
@@ -125,17 +124,13 @@ wire clk_in2_prescaler;
     .COMPENSATION         ("ZHOLD"),
     .STARTUP_WAIT         ("FALSE"),
     .DIVCLK_DIVIDE        (1),
-    .CLKFBOUT_MULT_F      (6.250),
+    .CLKFBOUT_MULT_F      (9.125),
     .CLKFBOUT_PHASE       (0.000),
     .CLKFBOUT_USE_FINE_PS ("FALSE"),
-    .CLKOUT0_DIVIDE_F     (25.000),
+    .CLKOUT0_DIVIDE_F     (36.500),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
     .CLKOUT0_USE_FINE_PS  ("FALSE"),
-    .CLKOUT1_DIVIDE       (125),
-    .CLKOUT1_PHASE        (0.000),
-    .CLKOUT1_DUTY_CYCLE   (0.500),
-    .CLKOUT1_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (10.000))
   mmcm_adv_inst
     // Output clocks
@@ -144,7 +139,7 @@ wire clk_in2_prescaler;
     .CLKFBOUTB           (clkfboutb_unused),
     .CLKOUT0             (clk_25_prescaler),
     .CLKOUT0B            (clkout0b_unused),
-    .CLKOUT1             (clk_5_prescaler),
+    .CLKOUT1             (clkout1_unused),
     .CLKOUT1B            (clkout1b_unused),
     .CLKOUT2             (clkout2_unused),
     .CLKOUT2B            (clkout2b_unused),
@@ -198,10 +193,6 @@ wire clk_in2_prescaler;
    (.O   (clk_25),
     .I   (clk_25_prescaler));
 
-
-  BUFG clkout2_buf
-   (.O   (clk_5),
-    .I   (clk_5_prescaler));
 
 
 
