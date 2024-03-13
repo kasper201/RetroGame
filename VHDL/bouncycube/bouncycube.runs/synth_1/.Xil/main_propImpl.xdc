@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/constrs_1/scherm.xdc rfile:../../../bouncycube.srcs/constrs_1/scherm.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/constrs_1/scherm.xdc rfile:../../../bouncycube.srcs/constrs_1/scherm.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN P19 [get_ports hsync]
 set_property src_info {type:XDC file:1 line:3 export:INPUT save:INPUT read:READ} [current_design]

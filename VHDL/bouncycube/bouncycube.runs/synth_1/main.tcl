@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.runs/synth_1/main.tcl"
+  variable script "C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.runs/synth_1/main.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,7 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 4
+set_param chipscope.maxJobs 3
 set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
@@ -79,41 +79,39 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.cache/wt [current_project]
-set_property parent.project_path C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.cache/wt [current_project]
+set_property parent.project_path C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property board_part_repo_paths {C:/Users/Wouter/AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store} [current_project]
-set_property board_part digilentinc.com:basys3:part0:1.2 [current_project]
-set_property ip_output_repo c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.cache/ip [current_project]
+set_property ip_output_repo c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-add_files C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/output.coe
-add_files C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/ball.coe
+add_files C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/output.coe
+add_files C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/ball.coe
 read_vhdl -library xil_defaultlib {
-  C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/main.vhd
-  C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/LocationRam.vhd
-  C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vga.vhd
-  C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vROM.vhd
-  {C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/sprite locatie.vhd}
-  C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/locationDetermination.vhd
-  C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/RD_Process.vhd
-  C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/UART_TX.vhd
-  C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/Uart_rx.vhd
-  C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/UREQUEST.vhd
+  C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/main.vhd
+  C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/LocationRam.vhd
+  C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vga.vhd
+  C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/vROM.vhd
+  {C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/sprite locatie.vhd}
+  C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/locationDetermination.vhd
+  C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/RD_Process.vhd
+  C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/UART_TX.vhd
+  C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/Uart_rx.vhd
+  C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/UREQUEST.vhd
 }
-read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/ip/prescaler/prescaler.xci
-set_property used_in_implementation false [get_files -all c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler_ooc.xdc]
+read_ip -quiet C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/ip/prescaler/prescaler.xci
+set_property used_in_implementation false [get_files -all c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/prescaler/prescaler_ooc.xdc]
 
-read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
-set_property used_in_implementation false [get_files -all c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
+read_ip -quiet C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
 
-read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1.xci
-set_property used_in_implementation false [get_files -all c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1_ooc.xdc]
+read_ip -quiet C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1.xci
+set_property used_in_implementation false [get_files -all c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.gen/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -124,12 +122,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/constrs_1/scherm.xdc
-set_property used_in_implementation false [get_files C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/constrs_1/scherm.xdc]
+read_xdc C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/constrs_1/scherm.xdc
+set_property used_in_implementation false [get_files C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/constrs_1/scherm.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/bouncycube/bouncycube.srcs/utils_1/imports/synth_1/VGA.dcp
+read_checkpoint -auto_incremental -incremental C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/bouncycube/bouncycube.srcs/utils_1/imports/synth_1/VGA.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

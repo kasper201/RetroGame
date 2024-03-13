@@ -46,8 +46,8 @@ end LocationDetermination;
 architecture Behavioral of LocationDetermination is
             
       --signal clk : STD_LOGIC;
-      signal x : unsigned(9 downto 0) := to_unsigned(640,10);--(others => '0');-- to_singed  "0111100001";
-      signal xMov : unsigned(8 downto 0) := "011111111";
+      signal x : unsigned(9 downto 0) := to_unsigned(560,10);--(others => '0');-- to_singed  "0111100001";
+      signal xMov : unsigned(8 downto 0) := "000001000";
       --signal y : unsigned(9 downto 0) :=  to_unsigned(10,10); --(others => '0');
       signal yMov : unsigned(8 downto 0) := "000000001";
       signal cnt : unsigned(19 downto 0);
@@ -86,19 +86,30 @@ port map(
     
 
 physicsBox : process(clk, aReset)
+    
+    variable moveVolgendeKans : std_logic := '0';
         
     begin
     AddrB <= std_logic_vector( to_unsigned((((TO_INTEGER(Unsigned(hWriteLoc))-144)*128)/784),128 ));
         if(aReset = '1') then
-            x <= to_unsigned(640,10);
+            x <= to_unsigned(560,10);
             
         elsif (rising_edge(clk)) then
             cnt <= cnt + to_unsigned(1,1); -- count how many times the clock has been on the rising edge
             
+            if(move = '1') then
+                moveVolgendeKans := '1';
+            else
+                moveVolgendeKans := moveVolgendeKans;
+            end if;
+            
             if(cnt >= (TO_UNSIGNED(5000,20) * (unsigned(speedSel)* TO_UNSIGNED(2,20)))AND (speedSel(0) = '1')) then -- only actually move if approximately 1 frame has passed
                 cnt <= to_unsigned(0,20);
-                if(move = '1') then
-                    x <= x + xMov;
+                if(moveVolgendeKans = '1') then
+                    x <= x - xMov;
+                    moveVolgendeKans := '0';
+                else
+                    moveVolgendeKans := moveVolgendeKans;
                 end if;
             end if;
             

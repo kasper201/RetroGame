@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Mar 13 20:05:15 2024
-| Host         : PC-WouterRosenbrand running 64-bit major release  (build 9200)
+| Date         : Wed Mar 13 20:45:00 2024
+| Host         : MSI running 64-bit major release  (build 9200)
 | Command      : report_utilization -file blk_mem_gen_1_utilization_synth.rpt -pb blk_mem_gen_1_utilization_synth.pb
 | Design       : blk_mem_gen_1
 | Device       : xc7a35tcpg236-1

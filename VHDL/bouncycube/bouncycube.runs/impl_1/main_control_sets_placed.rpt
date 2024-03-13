@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Mar 13 20:32:41 2024
-| Host         : PC-WouterRosenbrand running 64-bit major release  (build 9200)
+| Date         : Wed Mar 13 21:11:28 2024
+| Host         : MSI running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
 | Design       : main
 | Device       : xc7a35t
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |    21 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    94 |
+| Unused register locations in slices containing registers |    83 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -42,9 +42,9 @@ Table of Contents
 | Total control sets |    21 |
 | >= 0 to < 4        |     4 |
 | >= 4 to < 6        |     2 |
-| >= 6 to < 8        |     1 |
+| >= 6 to < 8        |     3 |
 | >= 8 to < 10       |     4 |
-| >= 10 to < 12      |     4 |
+| >= 10 to < 12      |     2 |
 | >= 12 to < 14      |     2 |
 | >= 14 to < 16      |     1 |
 | >= 16              |     3 |
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              59 |           26 |
+| No           | No                    | No                     |              60 |           26 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              36 |           13 |
-| Yes          | No                    | No                     |              57 |           22 |
-| Yes          | No                    | Yes                    |              10 |            3 |
-| Yes          | Yes                   | No                     |              48 |           16 |
+| No           | Yes                   | No                     |              36 |           10 |
+| Yes          | No                    | No                     |              54 |           24 |
+| Yes          | No                    | Yes                    |               7 |            2 |
+| Yes          | Yes                   | No                     |              48 |           14 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,27 +73,27 @@ Table of Contents
 +-------------------+------------------------------------------+-------------------------------+------------------+----------------+--------------+
 |    Clock Signal   |               Enable Signal              |        Set/Reset Signal       | Slice Load Count | Bel Load Count | Bels / Slice |
 +-------------------+------------------------------------------+-------------------------------+------------------+----------------+--------------+
-|  clk100_IBUF_BUFG | G6U/status1_out                          |                               |                1 |              1 |         1.00 |
-|  clk100_IBUF_BUFG | G7U/r_SM_Main[2]                         |                               |                1 |              1 |         1.00 |
 |  G0/inst/clk_25   |                                          | G4/hsync_i_1_n_0              |                1 |              1 |         1.00 |
 |  G0/inst/clk_25   |                                          | G4/vsync_i_1_n_0              |                1 |              1 |         1.00 |
+|  clk100_IBUF_BUFG | G6U/status1_out                          |                               |                1 |              1 |         1.00 |
+|  clk100_IBUF_BUFG | G7U/r_SM_Main[2]                         |                               |                1 |              1 |         1.00 |
 |  G0/inst/clk_25   | G4/vcountsquare                          |                               |                4 |              4 |         1.00 |
-|  clk100_IBUF_BUFG | G9U/FSM_onehot_which_byte_out[4]_i_1_n_0 |                               |                1 |              5 |         5.00 |
+|  clk100_IBUF_BUFG | G9U/FSM_onehot_which_byte_out[4]_i_1_n_0 |                               |                2 |              5 |         2.50 |
 |  clk100_IBUF_BUFG | G9U/counter[11]_i_1_n_0                  |                               |                3 |              6 |         2.00 |
+|  G0/inst/clk_25   | G4/E[0]                                  |                               |                3 |              7 |         2.33 |
+|  clk100_IBUF_BUFG | G1/x                                     | aReset_IBUF                   |                2 |              7 |         3.50 |
 |  clk100_IBUF_BUFG | G7U/r_TX_Data                            |                               |                2 |              8 |         4.00 |
 |  clk100_IBUF_BUFG | G9U/temp_byte_out[7]_i_1_n_0             |                               |                3 |              8 |         2.67 |
 |  clk100_IBUF_BUFG | G6U/r_Clk_Count[8]_i_2_n_0               | G6U/r_Clk_Count[8]_i_1__0_n_0 |                3 |              9 |         3.00 |
-|  clk100_IBUF_BUFG | G7U/r_Clk_Count_0                        | G7U/r_Clk_Count0              |                3 |              9 |         3.00 |
-|  clk100_IBUF_BUFG | G1/x                                     | aReset_IBUF                   |                3 |             10 |         3.33 |
+|  clk100_IBUF_BUFG | G7U/r_Clk_Count_0                        | G7U/r_Clk_Count0              |                2 |              9 |         4.50 |
 |  G0/inst/clk_25   |                                          | G4/eqOp                       |                4 |             10 |         2.50 |
-|  G0/inst/clk_25   | G4/eqOp                                  | G4/vcount[9]_i_1_n_0          |                5 |             10 |         2.00 |
-|  G0/inst/clk_25   | G4/E[0]                                  |                               |                3 |             10 |         3.33 |
-|  G0/inst/clk_25   |                                          | G4/red[3]_i_1_n_0             |                4 |             12 |         3.00 |
-|  G0/inst/clk_25   |                                          | G2/active_reg_0               |                3 |             12 |         4.00 |
-|  G0/inst/clk_25   | G2/active_i_1_n_0                        |                               |                4 |             14 |         3.50 |
-|  clk100_IBUF_BUFG | G1/cnt[0]_i_2_n_0                        | G1/cnt0                       |                5 |             20 |         4.00 |
-|  G0/inst/clk_25   |                                          |                               |               11 |             23 |         2.09 |
-|  clk100_IBUF_BUFG |                                          |                               |               15 |             36 |         2.40 |
+|  G0/inst/clk_25   | G4/eqOp                                  | G4/vcount[9]_i_1_n_0          |                4 |             10 |         2.50 |
+|  G0/inst/clk_25   |                                          | G4/red[3]_i_1_n_0             |                2 |             12 |         6.00 |
+|  G0/inst/clk_25   |                                          | G2/active_reg_0               |                2 |             12 |         6.00 |
+|  G0/inst/clk_25   | G2/active_i_1_n_0                        |                               |                5 |             14 |         2.80 |
+|  clk100_IBUF_BUFG | G1/p_1_in                                | G1/moveVolgendeKans0          |                5 |             20 |         4.00 |
+|  G0/inst/clk_25   |                                          |                               |                9 |             23 |         2.56 |
+|  clk100_IBUF_BUFG |                                          |                               |               17 |             37 |         2.18 |
 +-------------------+------------------------------------------+-------------------------------+------------------+----------------+--------------+
 
 

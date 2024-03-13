@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Wed Mar 13 20:32:58 2024
-| Host             : PC-WouterRosenbrand running 64-bit major release  (build 9200)
+| Date             : Wed Mar 13 21:11:53 2024
+| Host             : MSI running 64-bit major release  (build 9200)
 | Command          : report_power -file main_power_routed.rpt -pb main_power_summary_routed.pb -rpx main_power_routed.rpx
 | Design           : main
 | Device           : xc7a35tcpg236-1
@@ -30,7 +30,7 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.195        |
+| Total On-Chip Power (W)  | 0.194        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
 | Dynamic (W)              | 0.122        |
@@ -53,18 +53,18 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        5 |       --- |             --- |
-| Slice Logic    |    <0.001 |      694 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      312 |     20800 |            1.50 |
-|   CARRY4       |    <0.001 |       45 |      8150 |            0.55 |
-|   Register     |    <0.001 |      210 |     41600 |            0.50 |
+| Slice Logic    |    <0.001 |      677 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      303 |     20800 |            1.46 |
+|   CARRY4       |    <0.001 |       44 |      8150 |            0.54 |
+|   Register     |    <0.001 |      205 |     41600 |            0.49 |
 |   Others       |     0.000 |       27 |       --- |             --- |
-| Signals        |    <0.001 |      491 |       --- |             --- |
+| Signals        |    <0.001 |      481 |       --- |             --- |
 | Block RAM      |    <0.001 |        3 |        50 |            6.00 |
 | MMCM           |     0.116 |        1 |         5 |           20.00 |
 | DSPs           |    <0.001 |        1 |        90 |            1.11 |
 | I/O            |     0.002 |       26 |       106 |           24.53 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.195 |          |           |                 |
+| Total          |     0.194 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,9 +74,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.014 |       0.005 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.015 |       0.005 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.077 |       0.064 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -149,6 +149,7 @@ Table of Contents
 |   G0     |     0.116 |
 |     inst |     0.116 |
 |   G1     |     0.001 |
+|   G3     |     0.001 |
 +----------+-----------+
 
 
