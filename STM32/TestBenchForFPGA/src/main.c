@@ -159,11 +159,20 @@ int main(void)
 					char temp = outToFpga[countWatVerstuurdIs];
 					print_uart(&temp);
 					printk("Send this byte: %02x\n", temp);
-					if (countWatVerstuurdIs < 5) 
+					/*if (countWatVerstuurdIs < 5) 
 					{
 						countWatVerstuurdIs++;
 					} else
 					{
+						countWatVerstuurdIs = 0;
+					}
+					Uit gecomment zodat we kunnen testen voor poc*/
+
+					if (countWatVerstuurdIs == 0)
+					{
+						countWatVerstuurdIs = 5;
+					}
+					else{
 						countWatVerstuurdIs = 0;
 					}
 

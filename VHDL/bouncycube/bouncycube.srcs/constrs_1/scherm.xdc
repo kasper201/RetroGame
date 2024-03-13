@@ -29,3 +29,13 @@ set_property PACKAGE_PIN R2 [get_ports {speedSel[3]}]
 set_property PACKAGE_PIN T1 [get_ports {speedSel[2]}]
 set_property PACKAGE_PIN U1 [get_ports {speedSel[1]}]
 set_property PACKAGE_PIN W2 [get_ports {speedSel[0]}]
+
+##Rx en Tx
+set_property PACKAGE_PIN K3 [get_ports i_Rx]
+set_property PACKAGE_PIN M3 [get_ports o_Tx]
+
+##LEDS
+set_property PACKAGE_PIN U15 [get_ports o_LED_Status]
+
+##Buttons
+set_property PACKAGE_PIN T18 [get_ports i_SendButton]

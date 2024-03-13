@@ -13,6 +13,11 @@ use UNISIM.VComponents.all;
 entity main is
  Port (clk100 : in STD_LOGIC;
        aReset : in STD_LOGIC;
+       
+           i_SendButton : in STD_LOGIC;
+           i_Rx : in STD_LOGIC;           --JAX pin 7 (op stm32 verbinden met pin 8)
+           o_Tx : out STD_LOGIC;          --JAX pin 8 (op stm32 verbinden met pin 2)
+           o_LED_Status : out STD_LOGIC;
       
        sprSel : in STD_LOGIC_VECTOR(1 downto 0);
        speedSel : in STD_LOGIC_VECTOR(3 downto 0);
@@ -32,6 +37,13 @@ signal rgb : STD_LOGIC_VECTOR(11 downto 0);
 signal active : STD_LOGIC;
 signal move : STD_LOGIC := '0';
 --signal frame : STD_LOGIC;
+
+--Status for the bytes and if they are ready to handle or to transmit
+signal Recieved_Data_Valid, Transmit_Data_Valid : std_logic;
+--The bytes to recieve and send
+signal Data_Recieved, Data_To_Send : std_logic_vector (7 downto 0);
+--Transmit status
+signal Transmit_Active, Transmit_Complete : std_logic;
 
 component prescaler is
     Port ( 
@@ -105,6 +117,48 @@ port(
  );
  end component;
  
+ --Uart rx component
+component UART_RX is
+  port (
+    i_Clk       : in  std_logic;
+    i_RX_Serial : in  std_logic;
+    o_RX_DV     : out std_logic;
+    o_RX_Byte   : out std_logic_vector(7 downto 0)
+    );
+end component;
+
+--Uart tx component
+component UART_TX is
+  port (
+    i_Clk       : in  std_logic;
+    i_TX_DV     : in  std_logic;
+    i_TX_Byte   : in  std_logic_vector(7 downto 0);
+    o_TX_Active : out std_logic;
+    o_TX_Serial : out std_logic;
+    o_TX_Done   : out std_logic
+    );
+end component;
+
+--Handling input from uart
+component RD_Process is
+    Port ( i_Clk : in STD_LOGIC;
+           i_RX_DV : in STD_LOGIC;
+           i_R_Byte : in STD_LOGIC_VECTOR (7 downto 0);
+           o_moveSprite : out STD_LOGIC;
+           o_Status : out STD_LOGIC);
+end component;
+
+--Sends out 5 bytes for the uart tx
+component UREQUEST is
+  Port (
+        i_Clk : in std_logic;
+        i_Request_select : in std_logic_vector(3 downto 0);
+        i_Request_confirm : in std_logic;
+        o_Byte_out : out std_logic_vector(7 downto 0);
+        o_Send_Byte : out std_logic
+   );
+end component;
+ 
 begin
 
 --coordX <= "0110010000";
@@ -172,5 +226,37 @@ G4 : VGA port map(
  --    create <= "1011"   
 
 --);
+
+    G6U: UART_RX port map (
+        i_Clk       => clk100,
+        i_RX_Serial => i_Rx,
+        o_RX_DV     => Recieved_Data_Valid,
+        o_RX_Byte   => Data_Recieved
+    );
+    
+    G7U: UART_TX port map (
+        i_Clk       => clk100,
+        i_TX_DV     => Transmit_Data_Valid,
+        i_TX_Byte   => Data_To_Send,
+        o_TX_Active => Transmit_Active,
+        o_TX_Serial => o_Tx,
+        o_TX_Done   => Transmit_Complete
+    );
+
+    G8U: RD_Process port map (
+        i_Clk           =>  clk100,
+        i_RX_DV         =>  Recieved_Data_Valid,
+        i_R_Byte        =>  Data_Recieved,
+        o_moveSprite    =>  move,
+        o_Status        =>  o_LED_Status
+    );
+    
+    G9U: UREQUEST port map (
+        i_Clk               => clk100,
+        i_Request_select    => "0001",
+        i_Request_confirm   => i_sendButton,
+        o_Byte_out          => Data_To_Send,
+        o_Send_Byte         => Transmit_Data_Valid
+   );
 
 end Behavioral;
