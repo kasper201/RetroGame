@@ -214,7 +214,7 @@ int createWave(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player *player)
 int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player *player)
 {
     frame++;
-    for(int x = 0; x < MAP_WIDTH; x++)
+    for(int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
     {
         for(int y = 0; y < MAP_HEIGHT; y++)
         {
@@ -230,7 +230,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player *player)
             }
         }
     }
-    if(frame == framerate * waverate)
+    if(frame == framerate * waverate) // create wave every defined amount of frames
     {
         frame = 0;
         if(createWave(map, player))

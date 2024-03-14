@@ -65,3 +65,16 @@ void bulletDetect(struct Bullet *bullet, struct Map map[MAP_WIDTH][MAP_HEIGHT])
         bullet->y = -1;
     }
 }
+
+/**
+ * @brief show the bullet
+ * @param bullet
+ * @return int 0 by default, 1 if there are no bullets
+ */
+ int bulletShow(struct Bullet bullet[maxBullets])
+{
+    for(int i = 0; i < maxBullets; i++)
+        if(bullet[i].x != (uint8_t)-1) // if the bullet space is already in use
+            return 0;
+    return 1;
+}
