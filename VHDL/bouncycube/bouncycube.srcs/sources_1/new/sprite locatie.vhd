@@ -46,12 +46,17 @@ entity sprite_locatie is
            vpos : out STD_LOGIC_VECTOR (7 downto 0));
 end sprite_locatie;
 
+
+
 architecture Behavioral of sprite_locatie is
     signal cnt : unsigned(20 downto 0);
     signal myvSpriteLoc : STD_LOGIC_VECTOR (9 downto 0);
     signal myhSpriteLoc : STD_LOGIC_VECTOR (9 downto 0);
-           
+        
+
 begin
+
+
     process(vWriteLoc,clk25)
     begin
     if(rising_edge(clk25)) then
