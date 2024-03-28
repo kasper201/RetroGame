@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Tue Mar 12 20:43:04 2024
+| Date         : Thu Mar 28 16:32:32 2024
 | Host         : PC-WouterRosenbrand running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file main_timing_summary_routed.rpt -pb main_timing_summary_routed.pb -rpx main_timing_summary_routed.rpx -warn_on_violation
 | Design       : main
@@ -43,7 +43,7 @@ Timing Summary Report
 
 Rule       Severity          Description                  Violations  
 ---------  ----------------  ---------------------------  ----------  
-TIMING-17  Critical Warning  Non-clocked sequential cell  88          
+TIMING-17  Critical Warning  Non-clocked sequential cell  141         
 
 Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
 
@@ -53,12 +53,12 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (88)
+1. checking no_clock (141)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (151)
-5. checking no_input_delay (2)
-6. checking no_output_delay (6)
+4. checking unconstrained_internal_endpoints (224)
+5. checking no_input_delay (6)
+6. checking no_output_delay (13)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
 9. checking loops (0)
@@ -66,9 +66,9 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (88)
--------------------------
- There are 88 register/latch pins with no clock driven by root clock pin: i_Clk (HIGH)
+1. checking no_clock (141)
+--------------------------
+ There are 141 register/latch pins with no clock driven by root clock pin: i_Clk (HIGH)
 
 
 2. checking constant_clock (0)
@@ -81,23 +81,23 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (151)
+4. checking unconstrained_internal_endpoints (224)
 --------------------------------------------------
- There are 151 pins that are not constrained for maximum delay. (HIGH)
+ There are 224 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
-5. checking no_input_delay (2)
+5. checking no_input_delay (6)
 ------------------------------
- There are 2 input ports with no input delay specified. (HIGH)
+ There are 6 input ports with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (6)
--------------------------------
- There are 6 ports with no output delay specified. (HIGH)
+6. checking no_output_delay (13)
+--------------------------------
+ There are 13 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -142,7 +142,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-        inf        0.000                      0                  157          inf        0.000                      0                  157           NA           NA                      NA                    NA  
+        inf        0.000                      0                  237          inf        0.000                      0                  237           NA           NA                      NA                    NA  
 
 
 There are no user specified timing constraints.
@@ -211,89 +211,379 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay           157 Endpoints
-Min Delay           157 Endpoints
+Max Delay           237 Endpoints
+Min Delay           237 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 i_SendButton
-                            (input port)
-  Destination:            USEND/counter_reg[11]/D
+  Source:                 UHANDLE/geld_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UDISPLAY/BCD_reg[1]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.553ns  (logic 1.937ns (22.652%)  route 6.615ns (77.348%))
-  Logic Levels:           5  (IBUF=1 LUT2=1 LUT5=1 LUT6=2)
+  Data Path Delay:        28.693ns  (logic 10.019ns (34.918%)  route 18.674ns (65.082%))
+  Logic Levels:           31  (CARRY4=16 FDRE=1 LUT1=2 LUT2=1 LUT3=2 LUT4=2 LUT5=2 LUT6=5)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 r  i_SendButton (IN)
-                         net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
-                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
-    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=35, routed)          1.656     5.495    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X10Y40         LUT6 (Prop_lut6_I5_O)        0.124     5.619 f  USEND/counter[11]_i_3/O
-                         net (fo=5, routed)           1.177     6.796    USEND/counter[11]
-    SLICE_X8Y40          LUT5 (Prop_lut5_I1_O)        0.124     6.920 r  USEND/counter[11]_i_2/O
-                         net (fo=12, routed)          1.509     8.429    USEND/counter[11]_i_2_n_0
-    SLICE_X9Y41          LUT6 (Prop_lut6_I1_O)        0.124     8.553 r  USEND/counter[11]_i_1/O
-                         net (fo=1, routed)           0.000     8.553    USEND/counter[11]_i_1_n_0
-    SLICE_X9Y41          FDRE                                         r  USEND/counter_reg[11]/D
+    SLICE_X59Y12         FDRE                         0.000     0.000 r  UHANDLE/geld_reg[4]/C
+    SLICE_X59Y12         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  UHANDLE/geld_reg[4]/Q
+                         net (fo=108, routed)         3.377     3.833    UHANDLE/geld_reg_n_0_[4]
+    SLICE_X60Y15         LUT3 (Prop_lut3_I1_O)        0.124     3.957 r  UHANDLE/BCD[3]_i_350/O
+                         net (fo=3, routed)           1.030     4.988    UHANDLE/BCD[3]_i_350_n_0
+    SLICE_X59Y16         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385     5.373 r  UHANDLE/BCD_reg[3]_i_430/CO[3]
+                         net (fo=1, routed)           0.000     5.373    UHANDLE/BCD_reg[3]_i_430_n_0
+    SLICE_X59Y17         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     5.487 r  UHANDLE/BCD_reg[3]_i_370/CO[3]
+                         net (fo=1, routed)           0.000     5.487    UHANDLE/BCD_reg[3]_i_370_n_0
+    SLICE_X59Y18         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.758 r  UHANDLE/BCD_reg[3]_i_307/CO[0]
+                         net (fo=33, routed)          1.717     7.474    UHANDLE/BCD_reg[3]_i_307_n_3
+    SLICE_X59Y23         LUT5 (Prop_lut5_I3_O)        0.373     7.847 r  UHANDLE/BCD[3]_i_365/O
+                         net (fo=2, routed)           0.597     8.445    UHANDLE/BCD[3]_i_365_n_0
+    SLICE_X58Y21         LUT6 (Prop_lut6_I0_O)        0.124     8.569 r  UHANDLE/BCD[3]_i_369/O
+                         net (fo=1, routed)           0.000     8.569    UHANDLE/BCD[3]_i_369_n_0
+    SLICE_X58Y21         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.101 r  UHANDLE/BCD_reg[3]_i_302/CO[3]
+                         net (fo=1, routed)           0.000     9.101    UHANDLE/BCD_reg[3]_i_302_n_0
+    SLICE_X58Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.215 r  UHANDLE/BCD_reg[3]_i_239/CO[3]
+                         net (fo=1, routed)           0.000     9.215    UHANDLE/BCD_reg[3]_i_239_n_0
+    SLICE_X58Y23         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.549 r  UHANDLE/BCD_reg[3]_i_193/O[1]
+                         net (fo=9, routed)           1.227    10.776    UHANDLE/BCD_reg[3]_i_193_n_6
+    SLICE_X58Y26         LUT4 (Prop_lut4_I2_O)        0.303    11.079 r  UHANDLE/BCD[3]_i_208/O
+                         net (fo=1, routed)           0.000    11.079    UHANDLE/BCD[3]_i_208_n_0
+    SLICE_X58Y26         CARRY4 (Prop_carry4_S[1]_O[2])
+                                                      0.580    11.659 r  UHANDLE/BCD_reg[3]_i_147/O[2]
+                         net (fo=1, routed)           0.917    12.576    UHANDLE/BCD_reg[3]_i_147_n_5
+    SLICE_X54Y26         LUT2 (Prop_lut2_I1_O)        0.302    12.878 r  UHANDLE/BCD[3]_i_198/O
+                         net (fo=1, routed)           0.000    12.878    UHANDLE/BCD[3]_i_198_n_0
+    SLICE_X54Y26         CARRY4 (Prop_carry4_S[1]_O[2])
+                                                      0.578    13.456 f  UHANDLE/BCD_reg[3]_i_138/O[2]
+                         net (fo=1, routed)           0.855    14.311    UHANDLE/BCD_reg[3]_i_138_n_5
+    SLICE_X56Y25         LUT1 (Prop_lut1_I0_O)        0.301    14.612 r  UHANDLE/BCD[3]_i_74/O
+                         net (fo=1, routed)           0.000    14.612    UHANDLE/BCD[3]_i_74_n_0
+    SLICE_X56Y25         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    14.988 r  UHANDLE/BCD_reg[3]_i_29/CO[3]
+                         net (fo=1, routed)           0.000    14.988    UHANDLE/BCD_reg[3]_i_29_n_0
+    SLICE_X56Y26         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    15.207 f  UHANDLE/BCD_reg[3]_i_27/O[0]
+                         net (fo=11, routed)          0.880    16.086    UHANDLE/BCD_reg[3]_i_27_n_7
+    SLICE_X55Y26         LUT1 (Prop_lut1_I0_O)        0.295    16.381 r  UHANDLE/BCD[3]_i_67/O
+                         net (fo=1, routed)           0.000    16.381    UHANDLE/BCD[3]_i_67_n_0
+    SLICE_X55Y26         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    16.917 r  UHANDLE/BCD_reg[3]_i_26/CO[2]
+                         net (fo=52, routed)          1.738    18.656    UHANDLE/BCD_reg[3]_i_26_n_1
+    SLICE_X58Y28         LUT3 (Prop_lut3_I1_O)        0.313    18.969 r  UHANDLE/BCD[3]_i_12/O
+                         net (fo=10, routed)          0.874    19.843    UHANDLE/o_BCD_bus4__0[11]
+    SLICE_X56Y27         LUT6 (Prop_lut6_I1_O)        0.124    19.967 r  UHANDLE/BCD[3]_i_214/O
+                         net (fo=1, routed)           0.000    19.967    UHANDLE/BCD[3]_i_214_n_0
+    SLICE_X56Y27         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    20.500 r  UHANDLE/BCD_reg[3]_i_156/CO[3]
+                         net (fo=1, routed)           0.000    20.500    UHANDLE/BCD_reg[3]_i_156_n_0
+    SLICE_X56Y28         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    20.823 r  UHANDLE/BCD_reg[3]_i_94/O[1]
+                         net (fo=4, routed)           0.629    21.452    UHANDLE/BCD_reg[3]_i_94_n_6
+    SLICE_X56Y29         LUT6 (Prop_lut6_I5_O)        0.306    21.758 r  UHANDLE/BCD[3]_i_87/O
+                         net (fo=1, routed)           0.472    22.231    UHANDLE/BCD[3]_i_87_n_0
+    SLICE_X57Y27         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385    22.616 r  UHANDLE/BCD_reg[3]_i_37/CO[3]
+                         net (fo=1, routed)           0.000    22.616    UHANDLE/BCD_reg[3]_i_37_n_0
+    SLICE_X57Y28         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    22.950 r  UHANDLE/BCD_reg[3]_i_11/O[1]
+                         net (fo=3, routed)           1.047    23.997    UHANDLE/BCD_reg[3]_i_11_n_6
+    SLICE_X59Y26         LUT4 (Prop_lut4_I0_O)        0.303    24.300 r  UHANDLE/BCD[3]_i_32/O
+                         net (fo=1, routed)           0.695    24.995    UHANDLE/BCD[3]_i_32_n_0
+    SLICE_X57Y26         CARRY4 (Prop_carry4_DI[1]_CO[2])
+                                                      0.520    25.515 r  UHANDLE/BCD_reg[3]_i_10/CO[2]
+                         net (fo=4, routed)           0.832    26.347    UHANDLE/BCD_reg[3]_i_10_n_1
+    SLICE_X59Y25         LUT5 (Prop_lut5_I1_O)        0.313    26.660 r  UHANDLE/BCD[1]_i_6/O
+                         net (fo=1, routed)           0.962    27.622    UHANDLE/BCD[1]_i_6_n_0
+    SLICE_X61Y23         LUT6 (Prop_lut6_I0_O)        0.124    27.746 r  UHANDLE/BCD[1]_i_3/O
+                         net (fo=1, routed)           0.823    28.569    UHANDLE/BCD[1]_i_3_n_0
+    SLICE_X61Y22         LUT6 (Prop_lut6_I1_O)        0.124    28.693 r  UHANDLE/BCD[1]_i_1/O
+                         net (fo=1, routed)           0.000    28.693    UDISPLAY/D[1]
+    SLICE_X61Y22         FDRE                                         r  UDISPLAY/BCD_reg[1]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i_SendButton
-                            (input port)
-  Destination:            USEND/counter_reg[3]/D
+  Source:                 UHANDLE/geld_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UDISPLAY/BCD_reg[0]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.327ns  (logic 2.165ns (26.002%)  route 6.162ns (73.998%))
-  Logic Levels:           5  (IBUF=1 LUT2=1 LUT4=1 LUT6=2)
+  Data Path Delay:        28.206ns  (logic 10.247ns (36.329%)  route 17.959ns (63.671%))
+  Logic Levels:           31  (CARRY4=16 FDRE=1 LUT1=2 LUT2=1 LUT3=2 LUT4=2 LUT5=3 LUT6=4)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 r  i_SendButton (IN)
-                         net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
-                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
-    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=35, routed)          1.842     5.680    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X11Y40         LUT6 (Prop_lut6_I5_O)        0.124     5.804 f  USEND/counter[10]_i_2/O
-                         net (fo=5, routed)           0.543     6.347    USEND/counter[10]
-    SLICE_X10Y40         LUT4 (Prop_lut4_I1_O)        0.148     6.495 r  USEND/counter[12]_i_6/O
-                         net (fo=11, routed)          1.504     7.999    USEND/counter[12]_i_6_n_0
-    SLICE_X8Y37          LUT6 (Prop_lut6_I4_O)        0.328     8.327 r  USEND/counter[3]_i_1/O
-                         net (fo=1, routed)           0.000     8.327    USEND/counter[3]_i_1_n_0
-    SLICE_X8Y37          FDRE                                         r  USEND/counter_reg[3]/D
+    SLICE_X59Y12         FDRE                         0.000     0.000 r  UHANDLE/geld_reg[4]/C
+    SLICE_X59Y12         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  UHANDLE/geld_reg[4]/Q
+                         net (fo=108, routed)         3.377     3.833    UHANDLE/geld_reg_n_0_[4]
+    SLICE_X60Y15         LUT3 (Prop_lut3_I1_O)        0.124     3.957 r  UHANDLE/BCD[3]_i_350/O
+                         net (fo=3, routed)           1.030     4.988    UHANDLE/BCD[3]_i_350_n_0
+    SLICE_X59Y16         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385     5.373 r  UHANDLE/BCD_reg[3]_i_430/CO[3]
+                         net (fo=1, routed)           0.000     5.373    UHANDLE/BCD_reg[3]_i_430_n_0
+    SLICE_X59Y17         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     5.487 r  UHANDLE/BCD_reg[3]_i_370/CO[3]
+                         net (fo=1, routed)           0.000     5.487    UHANDLE/BCD_reg[3]_i_370_n_0
+    SLICE_X59Y18         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.758 r  UHANDLE/BCD_reg[3]_i_307/CO[0]
+                         net (fo=33, routed)          1.717     7.474    UHANDLE/BCD_reg[3]_i_307_n_3
+    SLICE_X59Y23         LUT5 (Prop_lut5_I3_O)        0.373     7.847 r  UHANDLE/BCD[3]_i_365/O
+                         net (fo=2, routed)           0.597     8.445    UHANDLE/BCD[3]_i_365_n_0
+    SLICE_X58Y21         LUT6 (Prop_lut6_I0_O)        0.124     8.569 r  UHANDLE/BCD[3]_i_369/O
+                         net (fo=1, routed)           0.000     8.569    UHANDLE/BCD[3]_i_369_n_0
+    SLICE_X58Y21         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.101 r  UHANDLE/BCD_reg[3]_i_302/CO[3]
+                         net (fo=1, routed)           0.000     9.101    UHANDLE/BCD_reg[3]_i_302_n_0
+    SLICE_X58Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.215 r  UHANDLE/BCD_reg[3]_i_239/CO[3]
+                         net (fo=1, routed)           0.000     9.215    UHANDLE/BCD_reg[3]_i_239_n_0
+    SLICE_X58Y23         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.549 r  UHANDLE/BCD_reg[3]_i_193/O[1]
+                         net (fo=9, routed)           1.227    10.776    UHANDLE/BCD_reg[3]_i_193_n_6
+    SLICE_X58Y26         LUT4 (Prop_lut4_I2_O)        0.303    11.079 r  UHANDLE/BCD[3]_i_208/O
+                         net (fo=1, routed)           0.000    11.079    UHANDLE/BCD[3]_i_208_n_0
+    SLICE_X58Y26         CARRY4 (Prop_carry4_S[1]_O[2])
+                                                      0.580    11.659 r  UHANDLE/BCD_reg[3]_i_147/O[2]
+                         net (fo=1, routed)           0.917    12.576    UHANDLE/BCD_reg[3]_i_147_n_5
+    SLICE_X54Y26         LUT2 (Prop_lut2_I1_O)        0.302    12.878 r  UHANDLE/BCD[3]_i_198/O
+                         net (fo=1, routed)           0.000    12.878    UHANDLE/BCD[3]_i_198_n_0
+    SLICE_X54Y26         CARRY4 (Prop_carry4_S[1]_O[2])
+                                                      0.578    13.456 f  UHANDLE/BCD_reg[3]_i_138/O[2]
+                         net (fo=1, routed)           0.855    14.311    UHANDLE/BCD_reg[3]_i_138_n_5
+    SLICE_X56Y25         LUT1 (Prop_lut1_I0_O)        0.301    14.612 r  UHANDLE/BCD[3]_i_74/O
+                         net (fo=1, routed)           0.000    14.612    UHANDLE/BCD[3]_i_74_n_0
+    SLICE_X56Y25         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    14.988 r  UHANDLE/BCD_reg[3]_i_29/CO[3]
+                         net (fo=1, routed)           0.000    14.988    UHANDLE/BCD_reg[3]_i_29_n_0
+    SLICE_X56Y26         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    15.207 f  UHANDLE/BCD_reg[3]_i_27/O[0]
+                         net (fo=11, routed)          0.880    16.086    UHANDLE/BCD_reg[3]_i_27_n_7
+    SLICE_X55Y26         LUT1 (Prop_lut1_I0_O)        0.295    16.381 r  UHANDLE/BCD[3]_i_67/O
+                         net (fo=1, routed)           0.000    16.381    UHANDLE/BCD[3]_i_67_n_0
+    SLICE_X55Y26         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    16.917 r  UHANDLE/BCD_reg[3]_i_26/CO[2]
+                         net (fo=52, routed)          1.738    18.656    UHANDLE/BCD_reg[3]_i_26_n_1
+    SLICE_X58Y28         LUT3 (Prop_lut3_I1_O)        0.313    18.969 r  UHANDLE/BCD[3]_i_12/O
+                         net (fo=10, routed)          0.874    19.843    UHANDLE/o_BCD_bus4__0[11]
+    SLICE_X56Y27         LUT6 (Prop_lut6_I1_O)        0.124    19.967 r  UHANDLE/BCD[3]_i_214/O
+                         net (fo=1, routed)           0.000    19.967    UHANDLE/BCD[3]_i_214_n_0
+    SLICE_X56Y27         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    20.500 r  UHANDLE/BCD_reg[3]_i_156/CO[3]
+                         net (fo=1, routed)           0.000    20.500    UHANDLE/BCD_reg[3]_i_156_n_0
+    SLICE_X56Y28         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    20.823 r  UHANDLE/BCD_reg[3]_i_94/O[1]
+                         net (fo=4, routed)           0.629    21.452    UHANDLE/BCD_reg[3]_i_94_n_6
+    SLICE_X56Y29         LUT6 (Prop_lut6_I5_O)        0.306    21.758 r  UHANDLE/BCD[3]_i_87/O
+                         net (fo=1, routed)           0.472    22.231    UHANDLE/BCD[3]_i_87_n_0
+    SLICE_X57Y27         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385    22.616 r  UHANDLE/BCD_reg[3]_i_37/CO[3]
+                         net (fo=1, routed)           0.000    22.616    UHANDLE/BCD_reg[3]_i_37_n_0
+    SLICE_X57Y28         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    22.950 r  UHANDLE/BCD_reg[3]_i_11/O[1]
+                         net (fo=3, routed)           1.047    23.997    UHANDLE/BCD_reg[3]_i_11_n_6
+    SLICE_X59Y26         LUT4 (Prop_lut4_I0_O)        0.303    24.300 r  UHANDLE/BCD[3]_i_32/O
+                         net (fo=1, routed)           0.695    24.995    UHANDLE/BCD[3]_i_32_n_0
+    SLICE_X57Y26         CARRY4 (Prop_carry4_DI[1]_CO[2])
+                                                      0.520    25.515 r  UHANDLE/BCD_reg[3]_i_10/CO[2]
+                         net (fo=4, routed)           0.832    26.347    UHANDLE/BCD_reg[3]_i_10_n_1
+    SLICE_X59Y25         LUT5 (Prop_lut5_I1_O)        0.339    26.686 r  UHANDLE/BCD[0]_i_7/O
+                         net (fo=1, routed)           0.756    27.442    UHANDLE/bcd_to_display[12]
+    SLICE_X62Y23         LUT6 (Prop_lut6_I0_O)        0.326    27.768 r  UHANDLE/BCD[0]_i_3/O
+                         net (fo=1, routed)           0.314    28.082    UHANDLE/BCD[0]_i_3_n_0
+    SLICE_X64Y22         LUT5 (Prop_lut5_I1_O)        0.124    28.206 r  UHANDLE/BCD[0]_i_1/O
+                         net (fo=1, routed)           0.000    28.206    UDISPLAY/D[0]
+    SLICE_X64Y22         FDRE                                         r  UDISPLAY/BCD_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i_SendButton
-                            (input port)
-  Destination:            USEND/counter_reg[5]/D
+  Source:                 UHANDLE/geld_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UDISPLAY/BCD_reg[3]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.308ns  (logic 2.189ns (26.353%)  route 6.118ns (73.647%))
-  Logic Levels:           5  (IBUF=1 LUT2=1 LUT3=1 LUT6=2)
+  Data Path Delay:        27.988ns  (logic 9.895ns (35.355%)  route 18.093ns (64.645%))
+  Logic Levels:           30  (CARRY4=16 FDRE=1 LUT1=2 LUT2=1 LUT3=2 LUT4=2 LUT5=1 LUT6=5)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 r  i_SendButton (IN)
-                         net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
-                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
-    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=35, routed)          1.489     5.328    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X8Y39          LUT6 (Prop_lut6_I5_O)        0.124     5.452 f  USEND/counter[5]_i_2/O
-                         net (fo=4, routed)           1.175     6.627    USEND/counter[5]
-    SLICE_X8Y38          LUT3 (Prop_lut3_I1_O)        0.152     6.779 r  USEND/counter[12]_i_4/O
-                         net (fo=12, routed)          1.181     7.960    USEND/counter[12]_i_4_n_0
-    SLICE_X8Y39          LUT6 (Prop_lut6_I2_O)        0.348     8.308 r  USEND/counter[5]_i_1/O
-                         net (fo=1, routed)           0.000     8.308    USEND/counter[5]_i_1_n_0
-    SLICE_X8Y39          FDRE                                         r  USEND/counter_reg[5]/D
+    SLICE_X59Y12         FDRE                         0.000     0.000 r  UHANDLE/geld_reg[4]/C
+    SLICE_X59Y12         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  UHANDLE/geld_reg[4]/Q
+                         net (fo=108, routed)         3.377     3.833    UHANDLE/geld_reg_n_0_[4]
+    SLICE_X60Y15         LUT3 (Prop_lut3_I1_O)        0.124     3.957 r  UHANDLE/BCD[3]_i_350/O
+                         net (fo=3, routed)           1.030     4.988    UHANDLE/BCD[3]_i_350_n_0
+    SLICE_X59Y16         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385     5.373 r  UHANDLE/BCD_reg[3]_i_430/CO[3]
+                         net (fo=1, routed)           0.000     5.373    UHANDLE/BCD_reg[3]_i_430_n_0
+    SLICE_X59Y17         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     5.487 r  UHANDLE/BCD_reg[3]_i_370/CO[3]
+                         net (fo=1, routed)           0.000     5.487    UHANDLE/BCD_reg[3]_i_370_n_0
+    SLICE_X59Y18         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.758 r  UHANDLE/BCD_reg[3]_i_307/CO[0]
+                         net (fo=33, routed)          1.717     7.474    UHANDLE/BCD_reg[3]_i_307_n_3
+    SLICE_X59Y23         LUT5 (Prop_lut5_I3_O)        0.373     7.847 r  UHANDLE/BCD[3]_i_365/O
+                         net (fo=2, routed)           0.597     8.445    UHANDLE/BCD[3]_i_365_n_0
+    SLICE_X58Y21         LUT6 (Prop_lut6_I0_O)        0.124     8.569 r  UHANDLE/BCD[3]_i_369/O
+                         net (fo=1, routed)           0.000     8.569    UHANDLE/BCD[3]_i_369_n_0
+    SLICE_X58Y21         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.101 r  UHANDLE/BCD_reg[3]_i_302/CO[3]
+                         net (fo=1, routed)           0.000     9.101    UHANDLE/BCD_reg[3]_i_302_n_0
+    SLICE_X58Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.215 r  UHANDLE/BCD_reg[3]_i_239/CO[3]
+                         net (fo=1, routed)           0.000     9.215    UHANDLE/BCD_reg[3]_i_239_n_0
+    SLICE_X58Y23         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.549 r  UHANDLE/BCD_reg[3]_i_193/O[1]
+                         net (fo=9, routed)           1.227    10.776    UHANDLE/BCD_reg[3]_i_193_n_6
+    SLICE_X58Y26         LUT4 (Prop_lut4_I2_O)        0.303    11.079 r  UHANDLE/BCD[3]_i_208/O
+                         net (fo=1, routed)           0.000    11.079    UHANDLE/BCD[3]_i_208_n_0
+    SLICE_X58Y26         CARRY4 (Prop_carry4_S[1]_O[2])
+                                                      0.580    11.659 r  UHANDLE/BCD_reg[3]_i_147/O[2]
+                         net (fo=1, routed)           0.917    12.576    UHANDLE/BCD_reg[3]_i_147_n_5
+    SLICE_X54Y26         LUT2 (Prop_lut2_I1_O)        0.302    12.878 r  UHANDLE/BCD[3]_i_198/O
+                         net (fo=1, routed)           0.000    12.878    UHANDLE/BCD[3]_i_198_n_0
+    SLICE_X54Y26         CARRY4 (Prop_carry4_S[1]_O[2])
+                                                      0.578    13.456 f  UHANDLE/BCD_reg[3]_i_138/O[2]
+                         net (fo=1, routed)           0.855    14.311    UHANDLE/BCD_reg[3]_i_138_n_5
+    SLICE_X56Y25         LUT1 (Prop_lut1_I0_O)        0.301    14.612 r  UHANDLE/BCD[3]_i_74/O
+                         net (fo=1, routed)           0.000    14.612    UHANDLE/BCD[3]_i_74_n_0
+    SLICE_X56Y25         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    14.988 r  UHANDLE/BCD_reg[3]_i_29/CO[3]
+                         net (fo=1, routed)           0.000    14.988    UHANDLE/BCD_reg[3]_i_29_n_0
+    SLICE_X56Y26         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    15.207 f  UHANDLE/BCD_reg[3]_i_27/O[0]
+                         net (fo=11, routed)          0.880    16.086    UHANDLE/BCD_reg[3]_i_27_n_7
+    SLICE_X55Y26         LUT1 (Prop_lut1_I0_O)        0.295    16.381 r  UHANDLE/BCD[3]_i_67/O
+                         net (fo=1, routed)           0.000    16.381    UHANDLE/BCD[3]_i_67_n_0
+    SLICE_X55Y26         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    16.917 r  UHANDLE/BCD_reg[3]_i_26/CO[2]
+                         net (fo=52, routed)          1.738    18.656    UHANDLE/BCD_reg[3]_i_26_n_1
+    SLICE_X58Y28         LUT3 (Prop_lut3_I1_O)        0.313    18.969 r  UHANDLE/BCD[3]_i_12/O
+                         net (fo=10, routed)          0.874    19.843    UHANDLE/o_BCD_bus4__0[11]
+    SLICE_X56Y27         LUT6 (Prop_lut6_I1_O)        0.124    19.967 r  UHANDLE/BCD[3]_i_214/O
+                         net (fo=1, routed)           0.000    19.967    UHANDLE/BCD[3]_i_214_n_0
+    SLICE_X56Y27         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    20.500 r  UHANDLE/BCD_reg[3]_i_156/CO[3]
+                         net (fo=1, routed)           0.000    20.500    UHANDLE/BCD_reg[3]_i_156_n_0
+    SLICE_X56Y28         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    20.823 r  UHANDLE/BCD_reg[3]_i_94/O[1]
+                         net (fo=4, routed)           0.629    21.452    UHANDLE/BCD_reg[3]_i_94_n_6
+    SLICE_X56Y29         LUT6 (Prop_lut6_I5_O)        0.306    21.758 r  UHANDLE/BCD[3]_i_87/O
+                         net (fo=1, routed)           0.472    22.231    UHANDLE/BCD[3]_i_87_n_0
+    SLICE_X57Y27         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385    22.616 r  UHANDLE/BCD_reg[3]_i_37/CO[3]
+                         net (fo=1, routed)           0.000    22.616    UHANDLE/BCD_reg[3]_i_37_n_0
+    SLICE_X57Y28         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    22.950 r  UHANDLE/BCD_reg[3]_i_11/O[1]
+                         net (fo=3, routed)           1.047    23.997    UHANDLE/BCD_reg[3]_i_11_n_6
+    SLICE_X59Y26         LUT4 (Prop_lut4_I0_O)        0.303    24.300 r  UHANDLE/BCD[3]_i_32/O
+                         net (fo=1, routed)           0.695    24.995    UHANDLE/BCD[3]_i_32_n_0
+    SLICE_X57Y26         CARRY4 (Prop_carry4_DI[1]_CO[2])
+                                                      0.520    25.515 r  UHANDLE/BCD_reg[3]_i_10/CO[2]
+                         net (fo=4, routed)           1.054    26.569    UHANDLE/BCD_reg[3]_i_10_n_1
+    SLICE_X59Y25         LUT6 (Prop_lut6_I2_O)        0.313    26.882 r  UHANDLE/BCD[3]_i_3/O
+                         net (fo=1, routed)           0.982    27.864    UHANDLE/bcd_to_display[15]
+    SLICE_X62Y23         LUT6 (Prop_lut6_I3_O)        0.124    27.988 r  UHANDLE/BCD[3]_i_1/O
+                         net (fo=1, routed)           0.000    27.988    UDISPLAY/D[3]
+    SLICE_X62Y23         FDRE                                         r  UDISPLAY/BCD_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 UHANDLE/geld_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UDISPLAY/BCD_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        27.680ns  (logic 9.895ns (35.748%)  route 17.785ns (64.252%))
+  Logic Levels:           30  (CARRY4=16 FDRE=1 LUT1=2 LUT2=1 LUT3=2 LUT4=2 LUT5=2 LUT6=4)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X59Y12         FDRE                         0.000     0.000 r  UHANDLE/geld_reg[4]/C
+    SLICE_X59Y12         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  UHANDLE/geld_reg[4]/Q
+                         net (fo=108, routed)         3.377     3.833    UHANDLE/geld_reg_n_0_[4]
+    SLICE_X60Y15         LUT3 (Prop_lut3_I1_O)        0.124     3.957 r  UHANDLE/BCD[3]_i_350/O
+                         net (fo=3, routed)           1.030     4.988    UHANDLE/BCD[3]_i_350_n_0
+    SLICE_X59Y16         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385     5.373 r  UHANDLE/BCD_reg[3]_i_430/CO[3]
+                         net (fo=1, routed)           0.000     5.373    UHANDLE/BCD_reg[3]_i_430_n_0
+    SLICE_X59Y17         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     5.487 r  UHANDLE/BCD_reg[3]_i_370/CO[3]
+                         net (fo=1, routed)           0.000     5.487    UHANDLE/BCD_reg[3]_i_370_n_0
+    SLICE_X59Y18         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.271     5.758 r  UHANDLE/BCD_reg[3]_i_307/CO[0]
+                         net (fo=33, routed)          1.717     7.474    UHANDLE/BCD_reg[3]_i_307_n_3
+    SLICE_X59Y23         LUT5 (Prop_lut5_I3_O)        0.373     7.847 r  UHANDLE/BCD[3]_i_365/O
+                         net (fo=2, routed)           0.597     8.445    UHANDLE/BCD[3]_i_365_n_0
+    SLICE_X58Y21         LUT6 (Prop_lut6_I0_O)        0.124     8.569 r  UHANDLE/BCD[3]_i_369/O
+                         net (fo=1, routed)           0.000     8.569    UHANDLE/BCD[3]_i_369_n_0
+    SLICE_X58Y21         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532     9.101 r  UHANDLE/BCD_reg[3]_i_302/CO[3]
+                         net (fo=1, routed)           0.000     9.101    UHANDLE/BCD_reg[3]_i_302_n_0
+    SLICE_X58Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     9.215 r  UHANDLE/BCD_reg[3]_i_239/CO[3]
+                         net (fo=1, routed)           0.000     9.215    UHANDLE/BCD_reg[3]_i_239_n_0
+    SLICE_X58Y23         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     9.549 r  UHANDLE/BCD_reg[3]_i_193/O[1]
+                         net (fo=9, routed)           1.227    10.776    UHANDLE/BCD_reg[3]_i_193_n_6
+    SLICE_X58Y26         LUT4 (Prop_lut4_I2_O)        0.303    11.079 r  UHANDLE/BCD[3]_i_208/O
+                         net (fo=1, routed)           0.000    11.079    UHANDLE/BCD[3]_i_208_n_0
+    SLICE_X58Y26         CARRY4 (Prop_carry4_S[1]_O[2])
+                                                      0.580    11.659 r  UHANDLE/BCD_reg[3]_i_147/O[2]
+                         net (fo=1, routed)           0.917    12.576    UHANDLE/BCD_reg[3]_i_147_n_5
+    SLICE_X54Y26         LUT2 (Prop_lut2_I1_O)        0.302    12.878 r  UHANDLE/BCD[3]_i_198/O
+                         net (fo=1, routed)           0.000    12.878    UHANDLE/BCD[3]_i_198_n_0
+    SLICE_X54Y26         CARRY4 (Prop_carry4_S[1]_O[2])
+                                                      0.578    13.456 f  UHANDLE/BCD_reg[3]_i_138/O[2]
+                         net (fo=1, routed)           0.855    14.311    UHANDLE/BCD_reg[3]_i_138_n_5
+    SLICE_X56Y25         LUT1 (Prop_lut1_I0_O)        0.301    14.612 r  UHANDLE/BCD[3]_i_74/O
+                         net (fo=1, routed)           0.000    14.612    UHANDLE/BCD[3]_i_74_n_0
+    SLICE_X56Y25         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    14.988 r  UHANDLE/BCD_reg[3]_i_29/CO[3]
+                         net (fo=1, routed)           0.000    14.988    UHANDLE/BCD_reg[3]_i_29_n_0
+    SLICE_X56Y26         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    15.207 f  UHANDLE/BCD_reg[3]_i_27/O[0]
+                         net (fo=11, routed)          0.880    16.086    UHANDLE/BCD_reg[3]_i_27_n_7
+    SLICE_X55Y26         LUT1 (Prop_lut1_I0_O)        0.295    16.381 r  UHANDLE/BCD[3]_i_67/O
+                         net (fo=1, routed)           0.000    16.381    UHANDLE/BCD[3]_i_67_n_0
+    SLICE_X55Y26         CARRY4 (Prop_carry4_S[0]_CO[2])
+                                                      0.536    16.917 r  UHANDLE/BCD_reg[3]_i_26/CO[2]
+                         net (fo=52, routed)          1.738    18.656    UHANDLE/BCD_reg[3]_i_26_n_1
+    SLICE_X58Y28         LUT3 (Prop_lut3_I1_O)        0.313    18.969 r  UHANDLE/BCD[3]_i_12/O
+                         net (fo=10, routed)          0.874    19.843    UHANDLE/o_BCD_bus4__0[11]
+    SLICE_X56Y27         LUT6 (Prop_lut6_I1_O)        0.124    19.967 r  UHANDLE/BCD[3]_i_214/O
+                         net (fo=1, routed)           0.000    19.967    UHANDLE/BCD[3]_i_214_n_0
+    SLICE_X56Y27         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    20.500 r  UHANDLE/BCD_reg[3]_i_156/CO[3]
+                         net (fo=1, routed)           0.000    20.500    UHANDLE/BCD_reg[3]_i_156_n_0
+    SLICE_X56Y28         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    20.823 r  UHANDLE/BCD_reg[3]_i_94/O[1]
+                         net (fo=4, routed)           0.629    21.452    UHANDLE/BCD_reg[3]_i_94_n_6
+    SLICE_X56Y29         LUT6 (Prop_lut6_I5_O)        0.306    21.758 r  UHANDLE/BCD[3]_i_87/O
+                         net (fo=1, routed)           0.472    22.231    UHANDLE/BCD[3]_i_87_n_0
+    SLICE_X57Y27         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385    22.616 r  UHANDLE/BCD_reg[3]_i_37/CO[3]
+                         net (fo=1, routed)           0.000    22.616    UHANDLE/BCD_reg[3]_i_37_n_0
+    SLICE_X57Y28         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    22.950 r  UHANDLE/BCD_reg[3]_i_11/O[1]
+                         net (fo=3, routed)           1.047    23.997    UHANDLE/BCD_reg[3]_i_11_n_6
+    SLICE_X59Y26         LUT4 (Prop_lut4_I0_O)        0.303    24.300 r  UHANDLE/BCD[3]_i_32/O
+                         net (fo=1, routed)           0.695    24.995    UHANDLE/BCD[3]_i_32_n_0
+    SLICE_X57Y26         CARRY4 (Prop_carry4_DI[1]_CO[2])
+                                                      0.520    25.515 r  UHANDLE/BCD_reg[3]_i_10/CO[2]
+                         net (fo=4, routed)           0.548    26.063    UHANDLE/BCD_reg[3]_i_10_n_1
+    SLICE_X59Y25         LUT5 (Prop_lut5_I2_O)        0.313    26.376 r  UHANDLE/BCD[2]_i_3/O
+                         net (fo=1, routed)           1.180    27.556    UHANDLE/bcd_to_display[14]
+    SLICE_X62Y22         LUT6 (Prop_lut6_I3_O)        0.124    27.680 r  UHANDLE/BCD[2]_i_1/O
+                         net (fo=1, routed)           0.000    27.680    UDISPLAY/D[2]
+    SLICE_X62Y22         FDRE                                         r  UDISPLAY/BCD_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -303,173 +593,159 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.304ns  (logic 3.968ns (47.786%)  route 4.336ns (52.214%))
+  Data Path Delay:        9.410ns  (logic 3.968ns (42.172%)  route 5.441ns (57.828%))
   Logic Levels:           2  (FDRE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X13Y36         FDRE                         0.000     0.000 r  UTX/o_TX_Serial_reg/C
-    SLICE_X13Y36         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  UTX/o_TX_Serial_reg/Q
-                         net (fo=1, routed)           4.336     4.792    o_Tx_OBUF
-    M3                   OBUF (Prop_obuf_I_O)         3.512     8.304 r  o_Tx_OBUF_inst/O
-                         net (fo=0)                   0.000     8.304    o_Tx
+    SLICE_X4Y16          FDRE                         0.000     0.000 r  UTX/o_TX_Serial_reg/C
+    SLICE_X4Y16          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  UTX/o_TX_Serial_reg/Q
+                         net (fo=1, routed)           5.441     5.897    o_Tx_OBUF
+    M3                   OBUF (Prop_obuf_I_O)         3.512     9.410 r  o_Tx_OBUF_inst/O
+                         net (fo=0)                   0.000     9.410    o_Tx
     M3                                                                r  o_Tx (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i_SendButton
-                            (input port)
-  Destination:            USEND/counter_reg[8]/D
+  Source:                 USEND/counter_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            USEND/counter_reg[9]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.271ns  (logic 2.165ns (26.180%)  route 6.106ns (73.820%))
-  Logic Levels:           5  (IBUF=1 LUT2=1 LUT4=1 LUT6=2)
+  Data Path Delay:        7.092ns  (logic 2.167ns (30.557%)  route 4.925ns (69.443%))
+  Logic Levels:           9  (CARRY4=3 FDRE=1 LUT2=1 LUT4=1 LUT5=1 LUT6=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 r  i_SendButton (IN)
-                         net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
-                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
-    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=35, routed)          1.842     5.680    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X11Y40         LUT6 (Prop_lut6_I5_O)        0.124     5.804 f  USEND/counter[10]_i_2/O
-                         net (fo=5, routed)           0.543     6.347    USEND/counter[10]
-    SLICE_X10Y40         LUT4 (Prop_lut4_I1_O)        0.148     6.495 r  USEND/counter[12]_i_6/O
-                         net (fo=11, routed)          1.448     7.943    USEND/counter[12]_i_6_n_0
-    SLICE_X8Y39          LUT6 (Prop_lut6_I4_O)        0.328     8.271 r  USEND/counter[8]_i_1/O
-                         net (fo=1, routed)           0.000     8.271    USEND/counter[8]_i_1_n_0
-    SLICE_X8Y39          FDRE                                         r  USEND/counter_reg[8]/D
+    SLICE_X0Y18          FDRE                         0.000     0.000 r  USEND/counter_reg[0]/C
+    SLICE_X0Y18          FDRE (Prop_fdre_C_Q)         0.456     0.456 f  USEND/counter_reg[0]/Q
+                         net (fo=3, routed)           1.013     1.469    USEND/counter_reg_n_0_[0]
+    SLICE_X0Y18          LUT6 (Prop_lut6_I1_O)        0.124     1.593 r  USEND/FSM_onehot_which_byte_out[4]_i_4/O
+                         net (fo=1, routed)           0.798     2.391    USEND/FSM_onehot_which_byte_out[4]_i_4_n_0
+    SLICE_X0Y19          LUT6 (Prop_lut6_I3_O)        0.124     2.515 r  USEND/FSM_onehot_which_byte_out[4]_i_2/O
+                         net (fo=13, routed)          1.008     3.523    USEND/FSM_onehot_which_byte_out[4]_i_2_n_0
+    SLICE_X0Y17          LUT4 (Prop_lut4_I3_O)        0.124     3.647 f  USEND/FSM_onehot_which_byte_out[4]_i_1/O
+                         net (fo=18, routed)          0.599     4.246    USEND/FSM_onehot_which_byte_out[4]_i_1_n_0
+    SLICE_X0Y18          LUT2 (Prop_lut2_I1_O)        0.124     4.370 r  USEND/counter0_carry_i_1/O
+                         net (fo=1, routed)           0.640     5.010    USEND/counter[0]
+    SLICE_X1Y18          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     5.590 r  USEND/counter0_carry/CO[3]
+                         net (fo=1, routed)           0.000     5.590    USEND/counter0_carry_n_0
+    SLICE_X1Y19          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     5.704 r  USEND/counter0_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     5.704    USEND/counter0_carry__0_n_0
+    SLICE_X1Y20          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     5.926 r  USEND/counter0_carry__1/O[0]
+                         net (fo=1, routed)           0.867     6.793    USEND/counter0[9]
+    SLICE_X0Y20          LUT5 (Prop_lut5_I0_O)        0.299     7.092 r  USEND/counter[9]_i_1/O
+                         net (fo=1, routed)           0.000     7.092    USEND/counter[9]_i_1_n_0
+    SLICE_X0Y20          FDRE                                         r  USEND/counter_reg[9]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 USEND/counter_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            USEND/counter_reg[12]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.056ns  (logic 2.265ns (32.102%)  route 4.791ns (67.898%))
+  Logic Levels:           9  (CARRY4=3 FDRE=1 LUT2=1 LUT4=1 LUT5=1 LUT6=2)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y18          FDRE                         0.000     0.000 r  USEND/counter_reg[0]/C
+    SLICE_X0Y18          FDRE (Prop_fdre_C_Q)         0.456     0.456 f  USEND/counter_reg[0]/Q
+                         net (fo=3, routed)           1.013     1.469    USEND/counter_reg_n_0_[0]
+    SLICE_X0Y18          LUT6 (Prop_lut6_I1_O)        0.124     1.593 r  USEND/FSM_onehot_which_byte_out[4]_i_4/O
+                         net (fo=1, routed)           0.798     2.391    USEND/FSM_onehot_which_byte_out[4]_i_4_n_0
+    SLICE_X0Y19          LUT6 (Prop_lut6_I3_O)        0.124     2.515 r  USEND/FSM_onehot_which_byte_out[4]_i_2/O
+                         net (fo=13, routed)          1.008     3.523    USEND/FSM_onehot_which_byte_out[4]_i_2_n_0
+    SLICE_X0Y17          LUT4 (Prop_lut4_I3_O)        0.124     3.647 f  USEND/FSM_onehot_which_byte_out[4]_i_1/O
+                         net (fo=18, routed)          0.599     4.246    USEND/FSM_onehot_which_byte_out[4]_i_1_n_0
+    SLICE_X0Y18          LUT2 (Prop_lut2_I1_O)        0.124     4.370 r  USEND/counter0_carry_i_1/O
+                         net (fo=1, routed)           0.640     5.010    USEND/counter[0]
+    SLICE_X1Y18          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     5.590 r  USEND/counter0_carry/CO[3]
+                         net (fo=1, routed)           0.000     5.590    USEND/counter0_carry_n_0
+    SLICE_X1Y19          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     5.704 r  USEND/counter0_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     5.704    USEND/counter0_carry__0_n_0
+    SLICE_X1Y20          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     6.017 r  USEND/counter0_carry__1/O[3]
+                         net (fo=1, routed)           0.733     6.750    USEND/counter0[12]
+    SLICE_X0Y17          LUT5 (Prop_lut5_I0_O)        0.306     7.056 r  USEND/counter[12]_i_1/O
+                         net (fo=1, routed)           0.000     7.056    USEND/counter[12]_i_1_n_0
+    SLICE_X0Y17          FDRE                                         r  USEND/counter_reg[12]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 i_SendButton
                             (input port)
-  Destination:            USEND/counter_reg[4]/D
+  Destination:            USEND/temp_byte_out_reg[5]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.266ns  (logic 1.937ns (23.436%)  route 6.329ns (76.564%))
-  Logic Levels:           5  (IBUF=1 LUT2=1 LUT5=1 LUT6=2)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 r  i_SendButton (IN)
-                         net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
-                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
-    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=35, routed)          1.489     5.328    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X8Y39          LUT6 (Prop_lut6_I5_O)        0.124     5.452 f  USEND/counter[5]_i_2/O
-                         net (fo=4, routed)           1.001     6.453    USEND/counter[5]
-    SLICE_X8Y38          LUT5 (Prop_lut5_I1_O)        0.124     6.577 r  USEND/counter[12]_i_5/O
-                         net (fo=13, routed)          1.565     8.142    USEND/counter[12]_i_5_n_0
-    SLICE_X8Y37          LUT6 (Prop_lut6_I3_O)        0.124     8.266 r  USEND/counter[4]_i_1/O
-                         net (fo=1, routed)           0.000     8.266    USEND/counter[4]_i_1_n_0
-    SLICE_X8Y37          FDRE                                         r  USEND/counter_reg[4]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 i_SendButton
-                            (input port)
-  Destination:            USEND/counter_reg[6]/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.197ns  (logic 1.937ns (23.633%)  route 6.260ns (76.367%))
-  Logic Levels:           5  (IBUF=1 LUT2=1 LUT5=1 LUT6=2)
+  Data Path Delay:        6.825ns  (logic 2.289ns (33.543%)  route 4.536ns (66.457%))
+  Logic Levels:           6  (IBUF=1 LUT3=1 LUT5=2 LUT6=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
     U18                                               0.000     0.000 f  i_SendButton (IN)
                          net (fo=0)                   0.000     0.000    i_SendButton
     U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 f  i_SendButton_IBUF_inst/O
-                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
-    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 f  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=35, routed)          1.489     5.328    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X8Y39          LUT6 (Prop_lut6_I5_O)        0.124     5.452 r  USEND/counter[5]_i_2/O
-                         net (fo=4, routed)           1.001     6.453    USEND/counter[5]
-    SLICE_X8Y38          LUT5 (Prop_lut5_I1_O)        0.124     6.577 f  USEND/counter[12]_i_5/O
-                         net (fo=13, routed)          1.496     8.073    USEND/counter[12]_i_5_n_0
-    SLICE_X8Y38          LUT6 (Prop_lut6_I4_O)        0.124     8.197 r  USEND/counter[6]_i_1/O
-                         net (fo=1, routed)           0.000     8.197    USEND/counter[6]_i_1_n_0
-    SLICE_X8Y38          FDRE                                         r  USEND/counter_reg[6]/D
+                         net (fo=16, routed)          1.578     3.019    USEND/i_SendButton_IBUF
+    SLICE_X0Y17          LUT3 (Prop_lut3_I1_O)        0.150     3.169 r  USEND/temp_byte_out[5]_i_6/O
+                         net (fo=3, routed)           0.592     3.762    USEND/temp_byte_out[5]_i_6_n_0
+    SLICE_X0Y15          LUT5 (Prop_lut5_I3_O)        0.326     4.088 f  USEND/temp_byte_out[5]_i_5/O
+                         net (fo=6, routed)           0.823     4.911    USEND/temp_byte_out[5]_i_5_n_0
+    SLICE_X2Y15          LUT6 (Prop_lut6_I0_O)        0.124     5.035 f  USEND/temp_byte_out[5]_i_3/O
+                         net (fo=5, routed)           1.109     6.144    USEND/temp_byte_out[5]_i_3_n_0
+    SLICE_X1Y17          LUT5 (Prop_lut5_I0_O)        0.124     6.268 r  USEND/temp_byte_out[5]_i_2/O
+                         net (fo=1, routed)           0.433     6.701    USEND/temp_byte_out[5]_i_2_n_0
+    SLICE_X1Y17          LUT6 (Prop_lut6_I2_O)        0.124     6.825 r  USEND/temp_byte_out[5]_i_1/O
+                         net (fo=1, routed)           0.000     6.825    USEND/temp_byte_out[5]_i_1_n_0
+    SLICE_X1Y17          FDRE                                         r  USEND/temp_byte_out_reg[5]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i_SendButton
-                            (input port)
-  Destination:            USEND/counter_reg[9]/D
+  Source:                 USEND/send_out_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            o_LED_Status4
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.163ns  (logic 2.189ns (26.818%)  route 5.974ns (73.182%))
-  Logic Levels:           5  (IBUF=1 LUT2=1 LUT3=1 LUT6=2)
+  Data Path Delay:        6.685ns  (logic 3.986ns (59.623%)  route 2.699ns (40.377%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 r  i_SendButton (IN)
-                         net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
-                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
-    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=35, routed)          1.489     5.328    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X8Y39          LUT6 (Prop_lut6_I5_O)        0.124     5.452 f  USEND/counter[5]_i_2/O
-                         net (fo=4, routed)           1.175     6.627    USEND/counter[5]
-    SLICE_X8Y38          LUT3 (Prop_lut3_I1_O)        0.152     6.779 r  USEND/counter[12]_i_4/O
-                         net (fo=12, routed)          1.037     7.815    USEND/counter[12]_i_4_n_0
-    SLICE_X10Y40         LUT6 (Prop_lut6_I2_O)        0.348     8.163 r  USEND/counter[9]_i_1/O
-                         net (fo=1, routed)           0.000     8.163    USEND/counter[9]_i_1_n_0
-    SLICE_X10Y40         FDRE                                         r  USEND/counter_reg[9]/D
+    SLICE_X0Y17          FDRE                         0.000     0.000 r  USEND/send_out_reg/C
+    SLICE_X0Y17          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  USEND/send_out_reg/Q
+                         net (fo=17, routed)          2.699     3.155    o_LED_Status4_OBUF
+    E19                  OBUF (Prop_obuf_I_O)         3.530     6.685 r  o_LED_Status4_OBUF_inst/O
+                         net (fo=0)                   0.000     6.685    o_LED_Status4
+    E19                                                               r  o_LED_Status4 (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i_SendButton
+  Source:                 i_Request_select[0]
                             (input port)
-  Destination:            USEND/counter_reg[10]/D
+  Destination:            UHANDLE/geld_reg[3]/CE
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.152ns  (logic 1.937ns (23.766%)  route 6.214ns (76.234%))
-  Logic Levels:           5  (IBUF=1 LUT2=1 LUT5=1 LUT6=2)
+  Data Path Delay:        6.530ns  (logic 1.701ns (26.047%)  route 4.829ns (73.953%))
+  Logic Levels:           3  (IBUF=1 LUT6=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 r  i_SendButton (IN)
-                         net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
-                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
-    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=35, routed)          1.656     5.495    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X10Y40         LUT6 (Prop_lut6_I5_O)        0.124     5.619 f  USEND/counter[11]_i_3/O
-                         net (fo=5, routed)           1.177     6.796    USEND/counter[11]
-    SLICE_X8Y40          LUT5 (Prop_lut5_I1_O)        0.124     6.920 r  USEND/counter[11]_i_2/O
-                         net (fo=12, routed)          1.108     8.028    USEND/counter[11]_i_2_n_0
-    SLICE_X9Y41          LUT6 (Prop_lut6_I1_O)        0.124     8.152 r  USEND/counter[10]_i_1/O
-                         net (fo=1, routed)           0.000     8.152    USEND/counter[10]_i_1_n_0
-    SLICE_X9Y41          FDRE                                         r  USEND/counter_reg[10]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 i_SendButton
-                            (input port)
-  Destination:            USEND/counter_reg[2]/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.056ns  (logic 1.937ns (24.049%)  route 6.118ns (75.951%))
-  Logic Levels:           5  (IBUF=1 LUT2=1 LUT5=1 LUT6=2)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    U18                                               0.000     0.000 r  i_SendButton (IN)
-                         net (fo=0)                   0.000     0.000    i_SendButton
-    U18                  IBUF (Prop_ibuf_I_O)         1.441     1.441 r  i_SendButton_IBUF_inst/O
-                         net (fo=5, routed)           2.273     3.715    USEND/i_SendButton_IBUF
-    SLICE_X13Y35         LUT2 (Prop_lut2_I0_O)        0.124     3.839 r  USEND/temp_byte_out[7]_i_1/O
-                         net (fo=35, routed)          1.656     5.495    USEND/temp_byte_out[7]_i_1_n_0
-    SLICE_X10Y40         LUT6 (Prop_lut6_I5_O)        0.124     5.619 f  USEND/counter[11]_i_3/O
-                         net (fo=5, routed)           1.177     6.796    USEND/counter[11]
-    SLICE_X8Y40          LUT5 (Prop_lut5_I1_O)        0.124     6.920 r  USEND/counter[11]_i_2/O
-                         net (fo=12, routed)          1.012     7.932    USEND/counter[11]_i_2_n_0
-    SLICE_X10Y38         LUT6 (Prop_lut6_I1_O)        0.124     8.056 r  USEND/counter[2]_i_1/O
-                         net (fo=1, routed)           0.000     8.056    USEND/counter[2]_i_1_n_0
-    SLICE_X10Y38         FDRE                                         r  USEND/counter_reg[2]/D
+    V17                                               0.000     0.000 f  i_Request_select[0] (IN)
+                         net (fo=0)                   0.000     0.000    i_Request_select[0]
+    V17                  IBUF (Prop_ibuf_I_O)         1.453     1.453 f  i_Request_select_IBUF[0]_inst/O
+                         net (fo=5, routed)           1.948     3.401    UHANDLE/i_Request_select_IBUF[0]
+    SLICE_X0Y14          LUT6 (Prop_lut6_I3_O)        0.124     3.525 r  UHANDLE/geld[7]_i_2/O
+                         net (fo=1, routed)           2.343     5.868    URX/geld_reg[7]
+    SLICE_X59Y12         LUT6 (Prop_lut6_I0_O)        0.124     5.992 r  URX/geld[7]_i_1/O
+                         net (fo=8, routed)           0.538     6.530    UHANDLE/E[0]
+    SLICE_X58Y12         FDRE                                         r  UHANDLE/geld_reg[3]/CE
   -------------------------------------------------------------------    -------------------
 
 
@@ -479,20 +755,20 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 USEND/temp_byte_out_reg[5]/C
+  Source:                 USEND/temp_byte_out_reg[6]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UTX/r_TX_Data_reg[5]/D
+  Destination:            UTX/r_TX_Data_reg[6]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.270ns  (logic 0.148ns (54.750%)  route 0.122ns (45.250%))
+  Data Path Delay:        0.223ns  (logic 0.148ns (66.471%)  route 0.075ns (33.529%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X12Y35         FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[5]/C
-    SLICE_X12Y35         FDRE (Prop_fdre_C_Q)         0.148     0.148 r  USEND/temp_byte_out_reg[5]/Q
-                         net (fo=2, routed)           0.122     0.270    UTX/D[5]
-    SLICE_X12Y36         FDRE                                         r  UTX/r_TX_Data_reg[5]/D
+    SLICE_X2Y16          FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[6]/C
+    SLICE_X2Y16          FDRE (Prop_fdre_C_Q)         0.148     0.148 r  USEND/temp_byte_out_reg[6]/Q
+                         net (fo=2, routed)           0.075     0.223    UTX/D[6]
+    SLICE_X3Y16          FDRE                                         r  UTX/r_TX_Data_reg[6]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -501,15 +777,138 @@ Slack:                    inf
   Destination:            UTX/r_TX_Data_reg[4]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.285ns  (logic 0.164ns (57.522%)  route 0.121ns (42.478%))
+  Data Path Delay:        0.253ns  (logic 0.141ns (55.707%)  route 0.112ns (44.293%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X12Y37         FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[4]/C
-    SLICE_X12Y37         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  USEND/temp_byte_out_reg[4]/Q
-                         net (fo=2, routed)           0.121     0.285    UTX/D[4]
-    SLICE_X12Y36         FDRE                                         r  UTX/r_TX_Data_reg[4]/D
+    SLICE_X1Y16          FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[4]/C
+    SLICE_X1Y16          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/temp_byte_out_reg[4]/Q
+                         net (fo=2, routed)           0.112     0.253    UTX/D[4]
+    SLICE_X3Y16          FDRE                                         r  UTX/r_TX_Data_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 USEND/FSM_onehot_which_byte_out_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            USEND/FSM_onehot_which_byte_out_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.270ns  (logic 0.128ns (47.398%)  route 0.142ns (52.602%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y16          FDRE                         0.000     0.000 r  USEND/FSM_onehot_which_byte_out_reg[4]/C
+    SLICE_X0Y16          FDRE (Prop_fdre_C_Q)         0.128     0.128 r  USEND/FSM_onehot_which_byte_out_reg[4]/Q
+                         net (fo=5, routed)           0.142     0.270    USEND/FSM_onehot_which_byte_out_reg_n_0_[4]
+    SLICE_X0Y16          FDRE                                         r  USEND/FSM_onehot_which_byte_out_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 URX/r_RX_Byte_reg[5]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UHANDLE/geld_reg[5]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.285ns  (logic 0.164ns (57.514%)  route 0.121ns (42.486%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X60Y12         FDRE                         0.000     0.000 r  URX/r_RX_Byte_reg[5]/C
+    SLICE_X60Y12         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  URX/r_RX_Byte_reg[5]/Q
+                         net (fo=3, routed)           0.121     0.285    UHANDLE/geld_reg[7]_0[5]
+    SLICE_X59Y12         FDRE                                         r  UHANDLE/geld_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 USEND/temp_byte_out_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UTX/r_TX_Data_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.285ns  (logic 0.164ns (57.446%)  route 0.121ns (42.554%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y17          FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[1]/C
+    SLICE_X2Y17          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  USEND/temp_byte_out_reg[1]/Q
+                         net (fo=2, routed)           0.121     0.285    UTX/D[1]
+    SLICE_X3Y16          FDRE                                         r  UTX/r_TX_Data_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 URX/r_RX_Byte_reg[7]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UHANDLE/geld_reg[7]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.288ns  (logic 0.164ns (56.896%)  route 0.124ns (43.104%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X60Y12         FDRE                         0.000     0.000 r  URX/r_RX_Byte_reg[7]/C
+    SLICE_X60Y12         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  URX/r_RX_Byte_reg[7]/Q
+                         net (fo=3, routed)           0.124     0.288    UHANDLE/geld_reg[7]_0[7]
+    SLICE_X59Y12         FDRE                                         r  UHANDLE/geld_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 URX/r_Bit_Index_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            URX/r_RX_Byte_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.296ns  (logic 0.186ns (62.765%)  route 0.110ns (37.235%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X61Y11         FDRE                         0.000     0.000 r  URX/r_Bit_Index_reg[1]/C
+    SLICE_X61Y11         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  URX/r_Bit_Index_reg[1]/Q
+                         net (fo=11, routed)          0.110     0.251    URX/r_Bit_Index_reg_n_0_[1]
+    SLICE_X60Y11         LUT6 (Prop_lut6_I1_O)        0.045     0.296 r  URX/r_RX_Byte[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.296    URX/r_RX_Byte[0]_i_1_n_0
+    SLICE_X60Y11         FDRE                                         r  URX/r_RX_Byte_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 URX/r_Bit_Index_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            URX/r_RX_Byte_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.300ns  (logic 0.186ns (61.929%)  route 0.114ns (38.071%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X61Y11         FDRE                         0.000     0.000 r  URX/r_Bit_Index_reg[1]/C
+    SLICE_X61Y11         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  URX/r_Bit_Index_reg[1]/Q
+                         net (fo=11, routed)          0.114     0.255    URX/r_Bit_Index_reg_n_0_[1]
+    SLICE_X60Y11         LUT6 (Prop_lut6_I1_O)        0.045     0.300 r  URX/r_RX_Byte[1]_i_1/O
+                         net (fo=1, routed)           0.000     0.300    URX/r_RX_Byte[1]_i_1_n_0
+    SLICE_X60Y11         FDRE                                         r  URX/r_RX_Byte_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 USEND/temp_byte_out_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UTX/r_TX_Data_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.301ns  (logic 0.141ns (46.780%)  route 0.160ns (53.220%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y16          FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[0]/C
+    SLICE_X1Y16          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/temp_byte_out_reg[0]/Q
+                         net (fo=2, routed)           0.160     0.301    UTX/D[0]
+    SLICE_X3Y16          FDRE                                         r  UTX/r_TX_Data_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -518,144 +917,15 @@ Slack:                    inf
   Destination:            USEND/FSM_onehot_which_byte_out_reg[4]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.292ns  (logic 0.141ns (48.306%)  route 0.151ns (51.694%))
+  Data Path Delay:        0.308ns  (logic 0.141ns (45.834%)  route 0.167ns (54.166%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X13Y35         FDRE                         0.000     0.000 r  USEND/FSM_onehot_which_byte_out_reg[3]/C
-    SLICE_X13Y35         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/FSM_onehot_which_byte_out_reg[3]/Q
-                         net (fo=8, routed)           0.151     0.292    USEND/FSM_onehot_which_byte_out_reg_n_0_[3]
-    SLICE_X13Y35         FDRE                                         r  USEND/FSM_onehot_which_byte_out_reg[4]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 URX/r_RX_Byte_reg[2]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            UHANDLE/status2_reg/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.302ns  (logic 0.141ns (46.757%)  route 0.161ns (53.243%))
-  Logic Levels:           1  (FDRE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y20          FDRE                         0.000     0.000 r  URX/r_RX_Byte_reg[2]/C
-    SLICE_X0Y20          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  URX/r_RX_Byte_reg[2]/Q
-                         net (fo=9, routed)           0.161     0.302    UHANDLE/r_RX_Byte[0]
-    SLICE_X0Y19          FDRE                                         r  UHANDLE/status2_reg/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 URX/r_Clk_Count_reg[6]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            URX/r_Clk_Count_reg[8]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.307ns  (logic 0.186ns (60.622%)  route 0.121ns (39.378%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X4Y19          FDRE                         0.000     0.000 r  URX/r_Clk_Count_reg[6]/C
-    SLICE_X4Y19          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  URX/r_Clk_Count_reg[6]/Q
-                         net (fo=6, routed)           0.121     0.262    URX/r_Clk_Count_reg_n_0_[6]
-    SLICE_X5Y19          LUT6 (Prop_lut6_I0_O)        0.045     0.307 r  URX/r_Clk_Count[8]_i_3/O
-                         net (fo=1, routed)           0.000     0.307    URX/r_Clk_Count[8]_i_3_n_0
-    SLICE_X5Y19          FDRE                                         r  URX/r_Clk_Count_reg[8]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 USEND/temp_byte_out_reg[2]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            UTX/r_TX_Data_reg[2]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.317ns  (logic 0.164ns (51.668%)  route 0.153ns (48.332%))
-  Logic Levels:           1  (FDRE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X12Y37         FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[2]/C
-    SLICE_X12Y37         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  USEND/temp_byte_out_reg[2]/Q
-                         net (fo=2, routed)           0.153     0.317    UTX/D[2]
-    SLICE_X12Y36         FDRE                                         r  UTX/r_TX_Data_reg[2]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 URX/r_Bit_Index_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            URX/r_RX_Byte_reg[4]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.318ns  (logic 0.186ns (58.427%)  route 0.132ns (41.573%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X3Y20          FDRE                         0.000     0.000 r  URX/r_Bit_Index_reg[1]/C
-    SLICE_X3Y20          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  URX/r_Bit_Index_reg[1]/Q
-                         net (fo=11, routed)          0.132     0.273    URX/r_Bit_Index_reg_n_0_[1]
-    SLICE_X2Y20          LUT6 (Prop_lut6_I1_O)        0.045     0.318 r  URX/r_RX_Byte[4]_i_1/O
-                         net (fo=1, routed)           0.000     0.318    URX/r_RX_Byte[4]_i_1_n_0
-    SLICE_X2Y20          FDRE                                         r  URX/r_RX_Byte_reg[4]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 UTX/r_Clk_Count_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            UTX/r_Clk_Count_reg[2]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.319ns  (logic 0.186ns (58.389%)  route 0.133ns (41.611%))
-  Logic Levels:           2  (FDRE=1 LUT4=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X15Y35         FDRE                         0.000     0.000 r  UTX/r_Clk_Count_reg[0]/C
-    SLICE_X15Y35         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UTX/r_Clk_Count_reg[0]/Q
-                         net (fo=8, routed)           0.133     0.274    UTX/r_Clk_Count_reg[0]
-    SLICE_X14Y35         LUT4 (Prop_lut4_I1_O)        0.045     0.319 r  UTX/r_Clk_Count[2]_i_1__0/O
-                         net (fo=1, routed)           0.000     0.319    UTX/r_Clk_Count[2]
-    SLICE_X14Y35         FDRE                                         r  UTX/r_Clk_Count_reg[2]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 UTX/r_Clk_Count_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            UTX/r_Clk_Count_reg[3]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.322ns  (logic 0.189ns (58.778%)  route 0.133ns (41.222%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X15Y35         FDRE                         0.000     0.000 r  UTX/r_Clk_Count_reg[0]/C
-    SLICE_X15Y35         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UTX/r_Clk_Count_reg[0]/Q
-                         net (fo=8, routed)           0.133     0.274    UTX/r_Clk_Count_reg[0]
-    SLICE_X14Y35         LUT5 (Prop_lut5_I2_O)        0.048     0.322 r  UTX/r_Clk_Count[3]_i_1__0/O
-                         net (fo=1, routed)           0.000     0.322    UTX/r_Clk_Count[3]
-    SLICE_X14Y35         FDRE                                         r  UTX/r_Clk_Count_reg[3]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 USEND/FSM_onehot_which_byte_out_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            USEND/temp_byte_out_reg[6]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.335ns  (logic 0.186ns (55.564%)  route 0.149ns (44.436%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X13Y35         FDRE                         0.000     0.000 r  USEND/FSM_onehot_which_byte_out_reg[0]/C
-    SLICE_X13Y35         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/FSM_onehot_which_byte_out_reg[0]/Q
-                         net (fo=9, routed)           0.149     0.290    USEND/FSM_onehot_which_byte_out_reg_n_0_[0]
-    SLICE_X12Y35         LUT5 (Prop_lut5_I2_O)        0.045     0.335 r  USEND/temp_byte_out[6]_i_1/O
-                         net (fo=1, routed)           0.000     0.335    USEND/temp_byte_out[6]
-    SLICE_X12Y35         FDRE                                         r  USEND/temp_byte_out_reg[6]/D
+    SLICE_X0Y16          FDRE                         0.000     0.000 r  USEND/FSM_onehot_which_byte_out_reg[3]/C
+    SLICE_X0Y16          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/FSM_onehot_which_byte_out_reg[3]/Q
+                         net (fo=8, routed)           0.167     0.308    USEND/FSM_onehot_which_byte_out_reg_n_0_[3]
+    SLICE_X0Y16          FDRE                                         r  USEND/FSM_onehot_which_byte_out_reg[4]/D
   -------------------------------------------------------------------    -------------------
 
 

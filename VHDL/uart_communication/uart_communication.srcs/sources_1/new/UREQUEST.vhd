@@ -37,7 +37,8 @@ entity UREQUEST is
         i_Request_select : in std_logic_vector(3 downto 0);
         i_Request_confirm : in std_logic;
         o_Byte_out : out std_logic_vector(7 downto 0);
-        o_Send_Byte : out std_logic
+        o_Send_Byte : out std_logic;
+        o_Status4 : out STD_LOGIC
    );
 end UREQUEST;
 
@@ -45,8 +46,8 @@ architecture Behavioral of UREQUEST is
 
 begin
     process(i_Clk)
-        variable counter : integer range 0 to ((10*434) + 100) := 0;
-        variable send_out : std_logic := '0';
+        variable counter : integer range 0 to ((10*434) + 200) := 0;
+        variable send_out, unpressed : std_logic := '0';
         variable confirmed_request : std_logic_vector(3 downto 0);
         variable bytes_out_0, bytes_out_1, bytes_out_2, bytes_out_3, bytes_out_4, temp_byte_out : std_logic_vector(7 downto 0);
         variable which_byte_out : integer range 0 to 5 := 0;
@@ -56,16 +57,21 @@ begin
             o_Send_Byte <= '0';
         
             --If a new request is made and the last one has been completed
-            if i_Request_confirm = '1' and send_out = '0' then
+            if i_Request_confirm = '1' and send_out = '0' and unpressed = '0' then
                 send_out := '1';    --Make sure only one request is made at the same time
+                unpressed := '1';   --Zodat er niet 100 achter elkaar worden verstuurd als je het knopje telang inhoud
                 confirmed_request := i_Request_select;
+            elsif i_Request_confirm = '1' and unpressed = '1' then
+                send_out := send_out;
+                unpressed := '1';
             else
                 send_out := send_out;
+                unpressed := '0';
                 confirmed_request := confirmed_request;
             end if;
             
             --If a request should be send out
-            if send_out = '1' then
+            if send_out = '1' then 
                 case confirmed_request is
                     when "0000" =>
                         bytes_out_0 := "01010101";
@@ -79,6 +85,12 @@ begin
                         bytes_out_2 := "01100001";
                         bytes_out_3 := "01110100";
                         bytes_out_4 := "00001010";
+                    when "0010" =>                      --Vraag geld bedrag op
+                        bytes_out_0 := "01100111";
+                        bytes_out_1 := "01100101";
+                        bytes_out_2 := "01101100";
+                        bytes_out_3 := "01100100";
+                        bytes_out_4 := "00001010";
                     when others =>
                         bytes_out_0 := "00000000";
                         bytes_out_1 := "00000000";
@@ -88,7 +100,7 @@ begin
                 end case;
                 
                 --Send out all 5 bytes
-                if counter = ((10*434) + 99) then --Makes sure to wait till the next byte should be send
+                if counter >= ((10*434) + 99) then --Makes sure to wait till the next byte should be send
                     --Handle counter
                     counter := 0;
                     
@@ -126,11 +138,11 @@ begin
                     o_Send_Byte <= '0';
                     which_byte_out := which_byte_out;
                     send_out := send_out;
-                end if;
+                end if; --counter
                 --Stuur de byte out
                 o_Byte_out <= temp_Byte_out;
                 
-            end if;
+            end if; -- send out
             --Count up
             if counter < ((10*434) + 99) then
                 counter := counter + 1;
@@ -138,5 +150,6 @@ begin
                 counter := counter;
             end if;
         end if;
+        o_Status4 <= send_out;
     end process;
 end Behavioral;

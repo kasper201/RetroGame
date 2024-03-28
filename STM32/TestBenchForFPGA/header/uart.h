@@ -5,5 +5,6 @@ extern struct k_msgq uart_msgq; // Declare uart_msgq here
 
 int uartSetup(void);
 void print_uart(char *buf);
+int checkFromFpga();
 
 #endif //UART_H_

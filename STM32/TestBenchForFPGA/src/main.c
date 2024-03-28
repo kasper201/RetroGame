@@ -45,24 +45,6 @@ void button_pressed(const struct device *dev, struct gpio_callback *cb,
 	// printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
 }
 
-#define MESSAGE_SIZE 128
-
-int checkFromFpga()
-{
-    int returnValue = 0;
-    char Message[MESSAGE_SIZE];
-    k_msgq_get(&uart_msgq, &Message, K_NO_WAIT);
-    k_msgq_cleanup(&uart_msgq);
-
-    //Returns 1 when fpga sends "what"
-    if (strstr(Message, "what"))
-    {
-        returnValue = 1;
-    }
-
-    return returnValue;
-}
-
 int main(void)
 {
 	int ret;
@@ -122,6 +104,7 @@ int main(void)
 	int ledActivated = 0;
 	char outToFpga[6];
 	int countWatVerstuurdIs = 0;
+	int geld = 0;
 	
 	outToFpga[0] = 0x55;
 	outToFpga[1] = 0xaa;
@@ -171,7 +154,9 @@ int main(void)
 				}
 			}
 			
-			if (checkFromFpga() == 1)
+
+			int input = checkFromFpga();
+			if (input == 1)
 			{
 				gpio_pin_set_dt(&led, 0);
 				if (ledActivated == 1)
@@ -179,6 +164,19 @@ int main(void)
 					ledActivated = 0;
 					printk("LED turned off\n");
 					ledState = 0;
+				}
+			}
+			else if (input == 2)
+			{
+				unsigned char sendByte;
+				sendByte = geld & 0xFF;
+				print_uart(&sendByte);
+				printf("Send this byte: %d\n", sendByte);
+				printf("Geld is: %d\n", geld);
+				geld = geld + 4;
+				if (geld >= 255)
+				{
+					geld = 0;
 				}
 			}
 

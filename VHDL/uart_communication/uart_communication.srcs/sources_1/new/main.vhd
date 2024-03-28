@@ -36,13 +36,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity main is
     Port ( i_Clk : in STD_LOGIC;
            i_SendButton : in STD_LOGIC;
+           i_Request_select : in std_logic_vector(3 downto 0);
            i_Rx : in STD_LOGIC;           --JAX pin 7 (op stm32 verbinden met pin 8)
            o_Tx : out STD_LOGIC;          --JAX pin 8 (op stm32 verbinden met pin 2)
            o_LED_Status : out STD_LOGIC;
            o_LED_Status1 : out STD_LOGIC;
            o_LED_Status2 : out STD_LOGIC;
            o_LED_Status3 : out STD_LOGIC;
-           o_LED_Status4 : out STD_LOGIC
+           o_LED_Status4 : out STD_LOGIC;
+           o_D_bus : out STD_LOGIC_VECTOR(3 downto 0);  --Alle displays voor 7 segment
+           o_S_bus : out STD_LOGIC_VECTOR(7 downto 0)   --Alle segementen voor 7 segment
            );
 end main;
 
@@ -75,11 +78,12 @@ component RD_Process is
     Port ( i_Clk : in STD_LOGIC;
            i_RX_DV : in STD_LOGIC;
            i_R_Byte : in STD_LOGIC_VECTOR (7 downto 0);
+           i_Request_select : in std_logic_vector(3 downto 0);
            o_Status : out STD_LOGIC;
            o_Status1 : out STD_LOGIC;
            o_Status2 : out STD_LOGIC;
            o_Status3 : out STD_LOGIC;
-           o_Status4 : out STD_LOGIC);
+           o_BCD_bus : out STD_LOGIC_VECTOR(15 downto 0));
 end component;
 
 --Sends out 5 bytes for the uart tx
@@ -89,8 +93,17 @@ component UREQUEST is
         i_Request_select : in std_logic_vector(3 downto 0);
         i_Request_confirm : in std_logic;
         o_Byte_out : out std_logic_vector(7 downto 0);
-        o_Send_Byte : out std_logic
+        o_Send_Byte : out std_logic;
+        o_Status4 : out STD_LOGIC
    );
+end component;
+
+component display_bus is
+    Port ( i_Clk : in STD_LOGIC;                            --clk signaal
+           i_BCD_bus : in STD_LOGIC_VECTOR (15 downto 0);   --BCD nummers 15 downto 12 (D3) 11 downto 8 (D2) 7 downto 4 (D1) 3 downto 0 (D0)
+           o_D_bus : out STD_LOGIC_VECTOR(3 downto 0);      --Bus voor alle 4 de displays (logisch gedaan dus dislay 0 = o_D_bus(0) en dislay 3 = o_D_bus(3))
+           o_S_bus : out STD_LOGIC_VECTOR(7 downto 0)       --Bus voor alle 8 de segmenten (a = o_S_bus(0) en dp = o_S_bus(7))
+           );
 end component;
 
 --Status for the bytes and if they are ready to handle or to transmit
@@ -99,6 +112,7 @@ signal Recieved_Data_Valid, Transmit_Data_Valid : std_logic;
 signal Data_Recieved, Data_To_Send : std_logic_vector (7 downto 0);
 --Transmit status
 signal Transmit_Active, Transmit_Complete : std_logic;
+signal bcd_to_display : std_logic_vector(15 downto 0);
 
 begin
 
@@ -119,22 +133,31 @@ begin
     );
 
     UHANDLE: RD_Process port map (
-        i_Clk       => i_clk,
-        i_RX_DV     => Recieved_Data_Valid,
-        i_R_Byte    => Data_Recieved,
-        o_Status    => o_LED_Status,
-        o_Status1    => o_LED_Status1,
-        o_Status2    => o_LED_Status2,
-        o_Status3    => o_LED_Status3,
-        o_Status4    => o_LED_Status4
+        i_Clk               => i_clk,
+        i_RX_DV             => Recieved_Data_Valid,
+        i_R_Byte            => Data_Recieved,
+        i_Request_select    => i_Request_select,
+        o_Status            => o_LED_Status,
+        o_Status1           => o_LED_Status1,
+        o_Status2           => o_LED_Status2,
+        o_Status3           => o_LED_Status3,
+        o_BCD_bus           => bcd_to_display
     );
     
     USEND: UREQUEST port map (
         i_Clk               => i_clk,
-        i_Request_select    => "0001",
+        i_Request_select    => i_Request_select,
         i_Request_confirm   => i_sendButton,
         o_Byte_out          => Data_To_Send,
-        o_Send_Byte         => Transmit_Data_Valid
+        o_Send_Byte         => Transmit_Data_Valid,
+        o_Status4           => o_LED_Status4
+   );
+   
+   UDISPLAY: display_bus port map(
+        i_Clk       => i_Clk,
+        i_bcd_bus   => bcd_to_display,
+        o_D_bus     => o_D_bus,
+        o_S_bus     => o_S_bus
    );
 
 end Behavioral;

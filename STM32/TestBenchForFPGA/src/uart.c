@@ -3,6 +3,7 @@
 #include <zephyr/device.h>
 #include <zephyr/drivers/uart.h>
 #include "uart.h"
+#include "main.h"
 
 //Setup uart connection to pc
 #define UART_DEVICE_NODE DT_ALIAS(usart)
@@ -100,4 +101,27 @@ void print_uart(char *buf)
 		uart_poll_out(uart_dev, buf[i]);
 	}	
 	memset(rx_buf, 0, sizeof(rx_buf));
+}
+
+//Check message from FPGA
+int checkFromFpga()
+{
+    int returnValue = 0;
+    char Message[MESSAGE_SIZE];
+    k_msgq_get(&uart_msgq, &Message, K_NO_WAIT);
+    k_msgq_cleanup(&uart_msgq);
+
+    //Returns 1 when fpga sends "what"
+    if (strstr(Message, "what"))
+    {
+        returnValue = 1;
+		printf("what\n");
+    }
+	else if (strstr(Message, "geld"))
+	{
+		returnValue = 2;
+		printf("geld\n");
+	}
+
+    return returnValue;
 }
