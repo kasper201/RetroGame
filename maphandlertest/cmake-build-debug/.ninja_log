@@ -1,0 +1,8 @@
+# ninja log v5
+1	194	1710114606095673107	CMakeFiles/RetroGame.dir/main.cpp.o	b19be2c74d7788b2
+0	22	1710113837196969235	CMakeFiles/RetroGame.dir/mainGame.c.o	e186b5f690b7187a
+0	15	1710169076846787825	build.ninja	19c3510eeb66cacc
+0	18	1710114800593426816	CMakeFiles/RetroGame.dir/main.c.o	e3d8073f88374dac
+0	26	1710113837200302652	CMakeFiles/RetroGame.dir/updateHandler.c.o	505c0bf70303d02d
+18	33	1710114800606760453	RetroGame	396dad1e9616e29c
+1	19	1710114294424802201	CMakeFiles/RetroGame.dir/2DCursor.c.o	4e994d82302c48f3
