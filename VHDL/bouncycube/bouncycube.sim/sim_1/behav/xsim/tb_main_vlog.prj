@@ -1,0 +1,12 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../bouncycube.ip_user_files/ipstatic" \
+"../../../../bouncycube.gen/sources_1/ip/blk_mem_gen_1/sim/blk_mem_gen_1.v" \
+"../../../../bouncycube.gen/sources_1/ip/blk_mem_gen_0/sim/blk_mem_gen_0.v" \
+"../../../../bouncycube.gen/sources_1/ip/prescaler/prescaler_clk_wiz.v" \
+"../../../../bouncycube.gen/sources_1/ip/prescaler/prescaler.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
