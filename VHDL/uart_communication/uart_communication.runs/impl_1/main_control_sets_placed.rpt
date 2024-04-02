@@ -1,8 +1,8 @@
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Apr  1 23:46:49 2024
-| Host         : PC-WouterRosenbrand running 64-bit major release  (build 9200)
+| Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+| Date         : Tue Apr  2 14:36:57 2024
+| Host         : MSI running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
 | Design       : main
 | Device       : xc7a35t
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    14 |
-|    Minimum number of control sets                        |    14 |
+| Total control sets                                       |    15 |
+|    Minimum number of control sets                        |    15 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
 | Unused register locations in slices containing registers |    54 |
@@ -39,10 +39,10 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    14 |
+| Total control sets |    15 |
 | >= 0 to < 4        |     3 |
 | >= 4 to < 6        |     2 |
-| >= 6 to < 8        |     2 |
+| >= 6 to < 8        |     3 |
 | >= 8 to < 10       |     2 |
 | >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     0 |
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             206 |           76 |
+| No           | No                    | No                     |             191 |           74 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |              39 |           11 |
-| Yes          | No                    | No                     |              67 |           35 |
+| Yes          | No                    | No                     |              74 |           39 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              50 |           13 |
+| Yes          | Yes                   | No                     |              50 |           15 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -78,15 +78,16 @@ Table of Contents
 |  i_Clk_IBUF_BUFG |                                            | UDISPLAY/o_S_bus[6]_i_1_n_0              |                1 |              2 |         2.00 |
 |  i_Clk_IBUF_BUFG |                                            | UDISPLAY/o_S_bus[5]_i_1_n_0              |                1 |              4 |         4.00 |
 |  i_Clk_IBUF_BUFG | USEND/FSM_onehot_which_byte_out[4]_i_1_n_0 |                                          |                2 |              5 |         2.50 |
-|  i_Clk_IBUF_BUFG | UTX/r_TX_Data_0                            |                                          |                2 |              7 |         3.50 |
 |  i_Clk_IBUF_BUFG | USEND/temp_byte_out[6]_i_1_n_0             |                                          |                3 |              7 |         2.33 |
-|  i_Clk_IBUF_BUFG | URX/r_Clk_Count[8]_i_2_n_0                 | URX/r_Clk_Count[8]_i_1__0_n_0            |                2 |              9 |         4.50 |
+|  i_Clk_IBUF_BUFG | UTX/r_TX_Data_0                            |                                          |                1 |              7 |         7.00 |
+|  i_Clk_IBUF_BUFG | UHANDLE/bullet2x[7]_i_1_n_0                |                                          |                2 |              7 |         3.50 |
+|  i_Clk_IBUF_BUFG | URX/r_Clk_Count[8]_i_2_n_0                 | URX/r_Clk_Count[8]_i_1__0_n_0            |                4 |              9 |         2.25 |
 |  i_Clk_IBUF_BUFG | UTX/r_Clk_Count_1                          | UTX/r_Clk_Count0                         |                3 |              9 |         3.00 |
 |  i_Clk_IBUF_BUFG | USEND/counter[11]_i_1_n_0                  |                                          |                3 |             11 |         3.67 |
 |  i_Clk_IBUF_BUFG |                                            | UUPDATE/request_selected_int[31]_i_1_n_0 |                8 |             32 |         4.00 |
-|  i_Clk_IBUF_BUFG | UUPDATE/byte                               | URX/Data_Viable_reg                      |                8 |             32 |         4.00 |
-|  i_Clk_IBUF_BUFG | UHANDLE/tussenwaarde[31]_i_1_n_0           |                                          |               24 |             36 |         1.50 |
-|  i_Clk_IBUF_BUFG |                                            |                                          |               76 |            206 |         2.71 |
+|  i_Clk_IBUF_BUFG | URX/r_RX_DV_reg_0                          | URX/r_RX_DV_reg_1                        |                8 |             32 |         4.00 |
+|  i_Clk_IBUF_BUFG | UHANDLE/tussenwaarde[31]_i_1_n_0           |                                          |               27 |             36 |         1.33 |
+|  i_Clk_IBUF_BUFG |                                            |                                          |               74 |            191 |         2.58 |
 +------------------+--------------------------------------------+------------------------------------------+------------------+----------------+--------------+
 
 

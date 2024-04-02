@@ -47,6 +47,7 @@ begin
     variable Data_Viable, first_byte : std_logic := '0';
     variable update : std_logic := '0';
     variable geld, robot, plant, bullet, tussenwaarde : integer := 0;
+    variable bullet1y, bullet1x, bullet2y, bullet2x : integer := 0;
     variable byte : integer := 0;
     
     begin
@@ -59,7 +60,7 @@ begin
                 Data_Viable := '1';
                 
                 --Check incoming Bytes
-                if i_R_byte /= "11111111" then
+                if i_R_byte /= "11111111" and i_R_byte /= "11111110" then
                     update := '0';
                 
                     case i_Request_select is
@@ -67,34 +68,38 @@ begin
                             if byte = 0 then
                                 geld := to_integer(unsigned(i_R_byte));
                             else
-                                geld := geld + (254 * byte * to_integer(unsigned(i_R_byte)));
+                                geld := geld + (253 * byte * to_integer(unsigned(i_R_byte)));
                             end if;
                             byte := byte + 1;
                         when "0001" =>
                             if byte = 0 then
                                 robot := to_integer(unsigned(i_R_byte));
                             else
-                                robot := robot + (254 * byte * to_integer(unsigned(i_R_byte)));
+                                robot := robot + (253 * byte * to_integer(unsigned(i_R_byte)));
                             end if;
                             byte := byte + 1;
                         when "0010" =>
                             if byte = 0 then
                                 plant := to_integer(unsigned(i_R_byte));
                             else
-                                plant := plant + (254 * byte * to_integer(unsigned(i_R_byte)));
+                                plant := plant + (253 * byte * to_integer(unsigned(i_R_byte)));
                             end if;
                             byte := byte + 1;
                         when "0011" =>
                             if byte = 0 then
-                                bullet := to_integer(unsigned(i_R_byte));
-                            else
-                                bullet := bullet + (254 * byte * to_integer(unsigned(i_R_byte)));
+                                bullet1y := to_integer(unsigned(i_R_byte(7 downto 4)));
+                                bullet2y := to_integer(unsigned(i_R_byte(3 downto 0)));
+                            elsif byte = 1 then
+                                bullet1x := to_integer(unsigned(i_R_byte));
+                            elsif byte = 2 then
+                                bullet2x := to_integer(unsigned(i_R_byte));
                             end if;
                             byte := byte + 1;
                         when others =>
                     end case;
-                else
+                elsif i_R_byte = "11111110" then
                     update := '1';
+                else
                     byte := 0;
                 end if;
                 
@@ -116,7 +121,8 @@ begin
                 when "0010" =>
                     tussenwaarde := plant;
                 when "0011" =>
-                    tussenwaarde := bullet;
+                    --tussenwaarde := bullet;
+                    tussenwaarde := bullet1x * 1000 + bullet1y * 100 + bullet2x * 10 + bullet2y;
                 when others =>
             end case;
         end if;

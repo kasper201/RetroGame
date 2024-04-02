@@ -90,6 +90,12 @@ int main(void)
 
 	//Variables
 	unsigned char sendByte[2];
+	struct bullet bullets[2];
+	bullets[0].x = 2;
+	bullets[0].y = 1;
+
+	bullets[1].x = 3;
+	bullets[1].y = 2;
 
 	printk("Start\n");
 	while (1)
@@ -105,7 +111,8 @@ int main(void)
 			print_uart(sendByte);
 			printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
 			sendByte[0] = 0xff;
-			print_uart(&sendByte[0]);
+			sendByte[1] = 0xfe;
+			print_uart(sendByte);
 		}
 		else if (input == 1)
 		{
@@ -114,7 +121,8 @@ int main(void)
 			print_uart(sendByte);
 			printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
 			sendByte[0] = 0xff;
-			print_uart(&sendByte[0]);
+			sendByte[1] = 0xfe;
+			print_uart(sendByte);
 		}
 		else if (input == 2)
 		{
@@ -123,16 +131,23 @@ int main(void)
 			print_uart(sendByte);
 			printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
 			sendByte[0] = 0xff;
-			print_uart(&sendByte[0]);
+			sendByte[1] = 0xfe;
+			print_uart(sendByte);
 		}
 		else if (input == 3)
 		{
-			sendByte[0] = 0x04;
-			sendByte[1] = 0x04;
-			print_uart(sendByte);
-			printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
+			unsigned char sendByteC[3];
+			int y1 = bullets[0].y;
+			int y2 = bullets[1].y;
+			int y = y1 * 16 + y2;
+			sendByteC[0] = y;
+			sendByteC[1] = bullets[0].x;
+			sendByteC[2] = bullets[1].x;
+			print_uart(sendByteC);
+			printf("Send these bytes: %d %d %d\n", sendByteC[0], sendByteC[1], sendByteC[2]);
 			sendByte[0] = 0xff;
-			print_uart(&sendByte[0]);
+			sendByte[1] = 0xfe;
+			print_uart(sendByte);
 		}
 
 		k_msleep(SLEEP_TIME_MS);

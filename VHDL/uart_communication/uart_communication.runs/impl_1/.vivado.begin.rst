@@ -1,50 +1,15 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="13840" HostCore="16" HostMemory="034281848832">
+    <Process Command="vivado.bat" Owner="woute" Host="MSI" Pid="16828" HostCore="12" HostMemory="016991293440">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="24312" HostCore="16" HostMemory="034281848832">
+    <Process Command="vivado.bat" Owner="woute" Host="MSI" Pid="11668" HostCore="12" HostMemory="016991293440">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="10924" HostCore="16" HostMemory="034281848832">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="10248" HostCore="16" HostMemory="034281848832">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="6972" HostCore="16" HostMemory="034281848832">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="18728" HostCore="16" HostMemory="034281848832">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="26644" HostCore="16" HostMemory="034281848832">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="20572" HostCore="16" HostMemory="034281848832">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="35412" HostCore="16" HostMemory="034281848832">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="14944" HostCore="16" HostMemory="034281848832">
+    <Process Command="vivado.bat" Owner="woute" Host="MSI" Pid="20784" HostCore="12" HostMemory="016991293440">
     </Process>
 </ProcessHandle>

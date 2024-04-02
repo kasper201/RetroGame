@@ -1,8 +1,8 @@
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Apr  1 23:47:07 2024
-| Host         : PC-WouterRosenbrand running 64-bit major release  (build 9200)
+| Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+| Date         : Tue Apr  2 14:37:23 2024
+| Host         : MSI running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file main_timing_summary_routed.rpt -pb main_timing_summary_routed.pb -rpx main_timing_summary_routed.rpx -warn_on_violation
 | Design       : main
 | Device       : 7a35t-cpg236
@@ -43,7 +43,7 @@ Timing Summary Report
 
 Rule       Severity          Description                  Violations  
 ---------  ----------------  ---------------------------  ----------  
-TIMING-17  Critical Warning  Non-clocked sequential cell  364         
+TIMING-17  Critical Warning  Non-clocked sequential cell  356         
 
 Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
 
@@ -53,10 +53,10 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (364)
+1. checking no_clock (356)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (583)
+4. checking unconstrained_internal_endpoints (582)
 5. checking no_input_delay (6)
 6. checking no_output_delay (17)
 7. checking multiple_clock (0)
@@ -66,9 +66,9 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (364)
+1. checking no_clock (356)
 --------------------------
- There are 364 register/latch pins with no clock driven by root clock pin: i_Clk (HIGH)
+ There are 356 register/latch pins with no clock driven by root clock pin: i_Clk (HIGH)
 
 
 2. checking constant_clock (0)
@@ -81,9 +81,9 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (583)
+4. checking unconstrained_internal_endpoints (582)
 --------------------------------------------------
- There are 583 pins that are not constrained for maximum delay. (HIGH)
+ There are 582 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
@@ -142,7 +142,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-        inf        0.000                      0                  600          inf        0.000                      0                  600           NA           NA                      NA                    NA  
+        inf        0.000                      0                  599          inf        0.000                      0                  599           NA           NA                      NA                    NA  
 
 
 There are no user specified timing constraints.
@@ -211,8 +211,8 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay           600 Endpoints
-Min Delay           600 Endpoints
+Max Delay           599 Endpoints
+Min Delay           599 Endpoints
 --------------------------------------------------------------------------------------
 
 
@@ -224,342 +224,120 @@ Slack:                    inf
   Destination:            UDISPLAY/BCD_reg[3]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        38.630ns  (logic 12.549ns (32.485%)  route 26.081ns (67.515%))
-  Logic Levels:           41  (CARRY4=19 FDRE=1 LUT1=2 LUT2=1 LUT3=5 LUT4=5 LUT5=3 LUT6=5)
+  Data Path Delay:        40.000ns  (logic 12.416ns (31.040%)  route 27.584ns (68.960%))
+  Logic Levels:           43  (CARRY4=21 FDRE=1 LUT1=2 LUT2=3 LUT3=4 LUT4=4 LUT5=3 LUT6=5)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X15Y1          FDRE                         0.000     0.000 r  UHANDLE/tussenwaarde_reg[0]/C
-    SLICE_X15Y1          FDRE (Prop_fdre_C_Q)         0.419     0.419 f  UHANDLE/tussenwaarde_reg[0]/Q
-                         net (fo=115, routed)         2.550     2.969    UHANDLE/bcd_to_display[0]
-    SLICE_X31Y11         LUT1 (Prop_lut1_I0_O)        0.299     3.268 r  UHANDLE/BCD[3]_i_135/O
-                         net (fo=5, routed)           1.650     4.917    UHANDLE/BCD[3]_i_135_n_0
-    SLICE_X4Y6           CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.580     5.497 r  UHANDLE/BCD_reg[3]_i_95/CO[3]
-                         net (fo=1, routed)           0.000     5.497    UHANDLE/BCD_reg[3]_i_95_n_0
-    SLICE_X4Y7           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114     5.611 r  UHANDLE/BCD_reg[3]_i_99/CO[3]
-                         net (fo=1, routed)           0.000     5.611    UHANDLE/BCD_reg[3]_i_99_n_0
-    SLICE_X4Y8           CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.313     5.924 r  UHANDLE/BCD_reg[3]_i_109/O[3]
-                         net (fo=16, routed)          1.129     7.053    UHANDLE/o_BCD_bus6[12]
-    SLICE_X14Y14         LUT3 (Prop_lut3_I0_O)        0.306     7.359 r  UHANDLE/BCD[3]_i_569/O
-                         net (fo=72, routed)          3.930    11.289    UHANDLE/o_BCD_bus5[12]
-    SLICE_X10Y20         LUT6 (Prop_lut6_I3_O)        0.124    11.413 r  UHANDLE/BCD[3]_i_452/O
-                         net (fo=4, routed)           1.090    12.503    UHANDLE/BCD[3]_i_452_n_0
-    SLICE_X6Y20          LUT6 (Prop_lut6_I1_O)        0.124    12.627 r  UHANDLE/BCD[3]_i_912/O
-                         net (fo=1, routed)           0.000    12.627    UHANDLE/BCD[3]_i_912_n_0
-    SLICE_X6Y20          CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.380    13.007 r  UHANDLE/BCD_reg[3]_i_666/CO[3]
-                         net (fo=1, routed)           0.000    13.007    UHANDLE/BCD_reg[3]_i_666_n_0
-    SLICE_X6Y21          CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    13.246 r  UHANDLE/BCD_reg[3]_i_473/O[2]
-                         net (fo=3, routed)           1.274    14.520    UHANDLE/BCD_reg[3]_i_473_n_5
-    SLICE_X0Y22          LUT3 (Prop_lut3_I2_O)        0.301    14.821 r  UHANDLE/BCD[3]_i_479/O
-                         net (fo=2, routed)           0.825    15.646    UHANDLE/BCD[3]_i_479_n_0
-    SLICE_X0Y21          LUT5 (Prop_lut5_I1_O)        0.124    15.770 r  UHANDLE/BCD[3]_i_257/O
-                         net (fo=2, routed)           0.811    16.581    UHANDLE/BCD[3]_i_257_n_0
-    SLICE_X2Y20          LUT6 (Prop_lut6_I0_O)        0.124    16.705 r  UHANDLE/BCD[3]_i_261/O
-                         net (fo=1, routed)           0.000    16.705    UHANDLE/BCD[3]_i_261_n_0
-    SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533    17.238 r  UHANDLE/BCD_reg[3]_i_189/CO[3]
-                         net (fo=1, routed)           0.000    17.238    UHANDLE/BCD_reg[3]_i_189_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    17.477 r  UHANDLE/BCD_reg[3]_i_264/O[2]
-                         net (fo=4, routed)           1.390    18.867    UHANDLE/BCD_reg[3]_i_264_n_5
-    SLICE_X12Y20         LUT3 (Prop_lut3_I2_O)        0.301    19.168 r  UHANDLE/BCD[2]_i_145/O
-                         net (fo=2, routed)           0.412    19.580    UHANDLE/BCD[2]_i_145_n_0
-    SLICE_X13Y20         LUT4 (Prop_lut4_I3_O)        0.124    19.704 r  UHANDLE/BCD[2]_i_148/O
-                         net (fo=1, routed)           0.000    19.704    UHANDLE/BCD[2]_i_148_n_0
-    SLICE_X13Y20         CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401    20.105 r  UHANDLE/BCD_reg[2]_i_115/CO[3]
-                         net (fo=1, routed)           0.000    20.105    UHANDLE/BCD_reg[2]_i_115_n_0
-    SLICE_X13Y21         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222    20.327 r  UHANDLE/BCD_reg[3]_i_263/O[0]
-                         net (fo=1, routed)           0.803    21.130    UHANDLE/BCD_reg[3]_i_263_n_7
-    SLICE_X14Y19         LUT2 (Prop_lut2_I1_O)        0.299    21.429 r  UHANDLE/BCD[3]_i_192/O
-                         net (fo=1, routed)           0.000    21.429    UHANDLE/BCD[3]_i_192_n_0
-    SLICE_X14Y19         CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.376    21.805 r  UHANDLE/BCD_reg[3]_i_111/CO[3]
-                         net (fo=1, routed)           0.000    21.805    UHANDLE/BCD_reg[3]_i_111_n_0
-    SLICE_X14Y20         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    22.024 r  UHANDLE/BCD_reg[3]_i_110/O[0]
-                         net (fo=1, routed)           1.205    23.229    UHANDLE/BCD_reg[3]_i_110_n_7
-    SLICE_X29Y15         LUT4 (Prop_lut4_I3_O)        0.295    23.524 r  UHANDLE/BCD[3]_i_76/O
-                         net (fo=1, routed)           0.000    23.524    UHANDLE/BCD[3]_i_76_n_0
-    SLICE_X29Y15         CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.580    24.104 f  UHANDLE/BCD_reg[3]_i_26/O[2]
-                         net (fo=1, routed)           1.009    25.113    UHANDLE/BCD_reg[3]_i_26_n_5
-    SLICE_X32Y12         LUT1 (Prop_lut1_I0_O)        0.302    25.415 r  UHANDLE/BCD[3]_i_71/O
-                         net (fo=1, routed)           0.000    25.415    UHANDLE/BCD[3]_i_71_n_0
-    SLICE_X32Y12         CARRY4 (Prop_carry4_S[2]_CO[2])
-                                                      0.314    25.729 r  UHANDLE/BCD_reg[3]_i_25/CO[2]
-                         net (fo=30, routed)          1.220    26.948    UHANDLE/BCD_reg[3]_i_25_n_1
-    SLICE_X31Y13         LUT3 (Prop_lut3_I1_O)        0.313    27.261 r  UHANDLE/BCD[3]_i_105/O
-                         net (fo=1, routed)           0.000    27.261    UHANDLE/p_0_in[6]
-    SLICE_X31Y13         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550    27.811 r  UHANDLE/BCD_reg[3]_i_58/CO[3]
-                         net (fo=1, routed)           0.000    27.811    UHANDLE/BCD_reg[3]_i_58_n_0
-    SLICE_X31Y14         CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.313    28.124 r  UHANDLE/BCD_reg[3]_i_23/O[3]
-                         net (fo=1, routed)           0.718    28.843    UHANDLE/data0[12]
-    SLICE_X30Y14         LUT6 (Prop_lut6_I1_O)        0.306    29.149 r  UHANDLE/BCD[3]_i_11/O
-                         net (fo=21, routed)          0.992    30.141    UHANDLE/o_BCD_bus1[12]
-    SLICE_X33Y16         LUT4 (Prop_lut4_I1_O)        0.124    30.265 r  UHANDLE/BCD[2]_i_157/O
-                         net (fo=1, routed)           0.000    30.265    UHANDLE/BCD[2]_i_157_n_0
-    SLICE_X33Y16         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550    30.815 r  UHANDLE/BCD_reg[2]_i_116/CO[3]
-                         net (fo=1, routed)           0.000    30.815    UHANDLE/BCD_reg[2]_i_116_n_0
-    SLICE_X33Y17         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334    31.149 r  UHANDLE/BCD_reg[2]_i_71/O[1]
-                         net (fo=2, routed)           0.989    32.138    UHANDLE/BCD_reg[2]_i_71_n_6
-    SLICE_X30Y17         LUT3 (Prop_lut3_I0_O)        0.303    32.441 r  UHANDLE/BCD[2]_i_25/O
-                         net (fo=2, routed)           0.809    33.250    UHANDLE/BCD[2]_i_25_n_0
-    SLICE_X32Y18         LUT4 (Prop_lut4_I0_O)        0.124    33.374 r  UHANDLE/BCD[2]_i_29/O
-                         net (fo=1, routed)           0.000    33.374    UHANDLE/BCD[2]_i_29_n_0
-    SLICE_X32Y18         CARRY4 (Prop_carry4_S[0]_O[2])
-                                                      0.547    33.921 r  UHANDLE/BCD_reg[2]_i_11/O[2]
-                         net (fo=3, routed)           0.968    34.889    UHANDLE/BCD_reg[2]_i_11_n_5
-    SLICE_X31Y19         LUT4 (Prop_lut4_I3_O)        0.302    35.191 r  UHANDLE/BCD[2]_i_35/O
-                         net (fo=1, routed)           0.000    35.191    UHANDLE/BCD[2]_i_35_n_0
-    SLICE_X31Y19         CARRY4 (Prop_carry4_S[1]_CO[2])
-                                                      0.570    35.761 f  UHANDLE/BCD_reg[2]_i_13/CO[2]
-                         net (fo=4, routed)           0.812    36.572    UHANDLE/BCD_reg[2]_i_13_n_1
-    SLICE_X33Y19         LUT5 (Prop_lut5_I1_O)        0.313    36.885 r  UHANDLE/BCD[3]_i_12/O
-                         net (fo=1, routed)           0.670    37.556    UHANDLE/BCD[3]_i_12_n_0
-    SLICE_X33Y19         LUT5 (Prop_lut5_I1_O)        0.124    37.680 r  UHANDLE/BCD[3]_i_3/O
-                         net (fo=1, routed)           0.827    38.506    UHANDLE/BCD[3]_i_3_n_0
-    SLICE_X35Y18         LUT6 (Prop_lut6_I1_O)        0.124    38.630 r  UHANDLE/BCD[3]_i_1/O
-                         net (fo=1, routed)           0.000    38.630    UDISPLAY/D[3]
-    SLICE_X35Y18         FDRE                                         r  UDISPLAY/BCD_reg[3]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 UHANDLE/tussenwaarde_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            UDISPLAY/BCD_reg[2]/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        37.967ns  (logic 12.425ns (32.726%)  route 25.542ns (67.274%))
-  Logic Levels:           40  (CARRY4=19 FDRE=1 LUT1=2 LUT2=1 LUT3=5 LUT4=5 LUT5=1 LUT6=6)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X15Y1          FDRE                         0.000     0.000 r  UHANDLE/tussenwaarde_reg[0]/C
-    SLICE_X15Y1          FDRE (Prop_fdre_C_Q)         0.419     0.419 f  UHANDLE/tussenwaarde_reg[0]/Q
-                         net (fo=115, routed)         2.550     2.969    UHANDLE/bcd_to_display[0]
-    SLICE_X31Y11         LUT1 (Prop_lut1_I0_O)        0.299     3.268 r  UHANDLE/BCD[3]_i_135/O
-                         net (fo=5, routed)           1.650     4.917    UHANDLE/BCD[3]_i_135_n_0
-    SLICE_X4Y6           CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.580     5.497 r  UHANDLE/BCD_reg[3]_i_95/CO[3]
-                         net (fo=1, routed)           0.000     5.497    UHANDLE/BCD_reg[3]_i_95_n_0
-    SLICE_X4Y7           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114     5.611 r  UHANDLE/BCD_reg[3]_i_99/CO[3]
-                         net (fo=1, routed)           0.000     5.611    UHANDLE/BCD_reg[3]_i_99_n_0
-    SLICE_X4Y8           CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.313     5.924 r  UHANDLE/BCD_reg[3]_i_109/O[3]
-                         net (fo=16, routed)          1.129     7.053    UHANDLE/o_BCD_bus6[12]
-    SLICE_X14Y14         LUT3 (Prop_lut3_I0_O)        0.306     7.359 r  UHANDLE/BCD[3]_i_569/O
-                         net (fo=72, routed)          3.930    11.289    UHANDLE/o_BCD_bus5[12]
-    SLICE_X10Y20         LUT6 (Prop_lut6_I3_O)        0.124    11.413 r  UHANDLE/BCD[3]_i_452/O
-                         net (fo=4, routed)           1.090    12.503    UHANDLE/BCD[3]_i_452_n_0
-    SLICE_X6Y20          LUT6 (Prop_lut6_I1_O)        0.124    12.627 r  UHANDLE/BCD[3]_i_912/O
-                         net (fo=1, routed)           0.000    12.627    UHANDLE/BCD[3]_i_912_n_0
-    SLICE_X6Y20          CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.380    13.007 r  UHANDLE/BCD_reg[3]_i_666/CO[3]
-                         net (fo=1, routed)           0.000    13.007    UHANDLE/BCD_reg[3]_i_666_n_0
-    SLICE_X6Y21          CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    13.246 r  UHANDLE/BCD_reg[3]_i_473/O[2]
-                         net (fo=3, routed)           1.274    14.520    UHANDLE/BCD_reg[3]_i_473_n_5
-    SLICE_X0Y22          LUT3 (Prop_lut3_I2_O)        0.301    14.821 r  UHANDLE/BCD[3]_i_479/O
-                         net (fo=2, routed)           0.825    15.646    UHANDLE/BCD[3]_i_479_n_0
-    SLICE_X0Y21          LUT5 (Prop_lut5_I1_O)        0.124    15.770 r  UHANDLE/BCD[3]_i_257/O
-                         net (fo=2, routed)           0.811    16.581    UHANDLE/BCD[3]_i_257_n_0
-    SLICE_X2Y20          LUT6 (Prop_lut6_I0_O)        0.124    16.705 r  UHANDLE/BCD[3]_i_261/O
-                         net (fo=1, routed)           0.000    16.705    UHANDLE/BCD[3]_i_261_n_0
-    SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533    17.238 r  UHANDLE/BCD_reg[3]_i_189/CO[3]
-                         net (fo=1, routed)           0.000    17.238    UHANDLE/BCD_reg[3]_i_189_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    17.477 r  UHANDLE/BCD_reg[3]_i_264/O[2]
-                         net (fo=4, routed)           1.390    18.867    UHANDLE/BCD_reg[3]_i_264_n_5
-    SLICE_X12Y20         LUT3 (Prop_lut3_I2_O)        0.301    19.168 r  UHANDLE/BCD[2]_i_145/O
-                         net (fo=2, routed)           0.412    19.580    UHANDLE/BCD[2]_i_145_n_0
-    SLICE_X13Y20         LUT4 (Prop_lut4_I3_O)        0.124    19.704 r  UHANDLE/BCD[2]_i_148/O
-                         net (fo=1, routed)           0.000    19.704    UHANDLE/BCD[2]_i_148_n_0
-    SLICE_X13Y20         CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401    20.105 r  UHANDLE/BCD_reg[2]_i_115/CO[3]
-                         net (fo=1, routed)           0.000    20.105    UHANDLE/BCD_reg[2]_i_115_n_0
-    SLICE_X13Y21         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222    20.327 r  UHANDLE/BCD_reg[3]_i_263/O[0]
-                         net (fo=1, routed)           0.803    21.130    UHANDLE/BCD_reg[3]_i_263_n_7
-    SLICE_X14Y19         LUT2 (Prop_lut2_I1_O)        0.299    21.429 r  UHANDLE/BCD[3]_i_192/O
-                         net (fo=1, routed)           0.000    21.429    UHANDLE/BCD[3]_i_192_n_0
-    SLICE_X14Y19         CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.376    21.805 r  UHANDLE/BCD_reg[3]_i_111/CO[3]
-                         net (fo=1, routed)           0.000    21.805    UHANDLE/BCD_reg[3]_i_111_n_0
-    SLICE_X14Y20         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    22.024 r  UHANDLE/BCD_reg[3]_i_110/O[0]
-                         net (fo=1, routed)           1.205    23.229    UHANDLE/BCD_reg[3]_i_110_n_7
-    SLICE_X29Y15         LUT4 (Prop_lut4_I3_O)        0.295    23.524 r  UHANDLE/BCD[3]_i_76/O
-                         net (fo=1, routed)           0.000    23.524    UHANDLE/BCD[3]_i_76_n_0
-    SLICE_X29Y15         CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.580    24.104 f  UHANDLE/BCD_reg[3]_i_26/O[2]
-                         net (fo=1, routed)           1.009    25.113    UHANDLE/BCD_reg[3]_i_26_n_5
-    SLICE_X32Y12         LUT1 (Prop_lut1_I0_O)        0.302    25.415 r  UHANDLE/BCD[3]_i_71/O
-                         net (fo=1, routed)           0.000    25.415    UHANDLE/BCD[3]_i_71_n_0
-    SLICE_X32Y12         CARRY4 (Prop_carry4_S[2]_CO[2])
-                                                      0.314    25.729 r  UHANDLE/BCD_reg[3]_i_25/CO[2]
-                         net (fo=30, routed)          1.220    26.948    UHANDLE/BCD_reg[3]_i_25_n_1
-    SLICE_X31Y13         LUT3 (Prop_lut3_I1_O)        0.313    27.261 r  UHANDLE/BCD[3]_i_105/O
-                         net (fo=1, routed)           0.000    27.261    UHANDLE/p_0_in[6]
-    SLICE_X31Y13         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550    27.811 r  UHANDLE/BCD_reg[3]_i_58/CO[3]
-                         net (fo=1, routed)           0.000    27.811    UHANDLE/BCD_reg[3]_i_58_n_0
-    SLICE_X31Y14         CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.313    28.124 r  UHANDLE/BCD_reg[3]_i_23/O[3]
-                         net (fo=1, routed)           0.718    28.843    UHANDLE/data0[12]
-    SLICE_X30Y14         LUT6 (Prop_lut6_I1_O)        0.306    29.149 r  UHANDLE/BCD[3]_i_11/O
-                         net (fo=21, routed)          0.992    30.141    UHANDLE/o_BCD_bus1[12]
-    SLICE_X33Y16         LUT4 (Prop_lut4_I1_O)        0.124    30.265 r  UHANDLE/BCD[2]_i_157/O
-                         net (fo=1, routed)           0.000    30.265    UHANDLE/BCD[2]_i_157_n_0
-    SLICE_X33Y16         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550    30.815 r  UHANDLE/BCD_reg[2]_i_116/CO[3]
-                         net (fo=1, routed)           0.000    30.815    UHANDLE/BCD_reg[2]_i_116_n_0
-    SLICE_X33Y17         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334    31.149 r  UHANDLE/BCD_reg[2]_i_71/O[1]
-                         net (fo=2, routed)           0.989    32.138    UHANDLE/BCD_reg[2]_i_71_n_6
-    SLICE_X30Y17         LUT3 (Prop_lut3_I0_O)        0.303    32.441 r  UHANDLE/BCD[2]_i_25/O
-                         net (fo=2, routed)           0.809    33.250    UHANDLE/BCD[2]_i_25_n_0
-    SLICE_X32Y18         LUT4 (Prop_lut4_I0_O)        0.124    33.374 r  UHANDLE/BCD[2]_i_29/O
-                         net (fo=1, routed)           0.000    33.374    UHANDLE/BCD[2]_i_29_n_0
-    SLICE_X32Y18         CARRY4 (Prop_carry4_S[0]_O[2])
-                                                      0.547    33.921 r  UHANDLE/BCD_reg[2]_i_11/O[2]
-                         net (fo=3, routed)           0.968    34.889    UHANDLE/BCD_reg[2]_i_11_n_5
-    SLICE_X31Y19         LUT4 (Prop_lut4_I3_O)        0.302    35.191 r  UHANDLE/BCD[2]_i_35/O
-                         net (fo=1, routed)           0.000    35.191    UHANDLE/BCD[2]_i_35_n_0
-    SLICE_X31Y19         CARRY4 (Prop_carry4_S[1]_CO[2])
-                                                      0.570    35.761 r  UHANDLE/BCD_reg[2]_i_13/CO[2]
-                         net (fo=4, routed)           0.812    36.572    UHANDLE/BCD_reg[2]_i_13_n_1
-    SLICE_X33Y19         LUT6 (Prop_lut6_I4_O)        0.313    36.885 r  UHANDLE/BCD[2]_i_3/O
-                         net (fo=1, routed)           0.958    37.843    UHANDLE/bcd_to_display[14]
-    SLICE_X34Y18         LUT6 (Prop_lut6_I1_O)        0.124    37.967 r  UHANDLE/BCD[2]_i_1/O
-                         net (fo=1, routed)           0.000    37.967    UDISPLAY/D[2]
-    SLICE_X34Y18         FDRE                                         r  UDISPLAY/BCD_reg[2]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 UHANDLE/tussenwaarde_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            UDISPLAY/BCD_reg[0]/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        37.746ns  (logic 12.425ns (32.917%)  route 25.321ns (67.083%))
-  Logic Levels:           40  (CARRY4=19 FDRE=1 LUT1=2 LUT2=1 LUT3=5 LUT4=5 LUT5=1 LUT6=6)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X15Y1          FDRE                         0.000     0.000 r  UHANDLE/tussenwaarde_reg[0]/C
-    SLICE_X15Y1          FDRE (Prop_fdre_C_Q)         0.419     0.419 f  UHANDLE/tussenwaarde_reg[0]/Q
-                         net (fo=115, routed)         2.550     2.969    UHANDLE/bcd_to_display[0]
-    SLICE_X31Y11         LUT1 (Prop_lut1_I0_O)        0.299     3.268 r  UHANDLE/BCD[3]_i_135/O
-                         net (fo=5, routed)           1.650     4.917    UHANDLE/BCD[3]_i_135_n_0
-    SLICE_X4Y6           CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.580     5.497 r  UHANDLE/BCD_reg[3]_i_95/CO[3]
-                         net (fo=1, routed)           0.000     5.497    UHANDLE/BCD_reg[3]_i_95_n_0
-    SLICE_X4Y7           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114     5.611 r  UHANDLE/BCD_reg[3]_i_99/CO[3]
-                         net (fo=1, routed)           0.000     5.611    UHANDLE/BCD_reg[3]_i_99_n_0
-    SLICE_X4Y8           CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.313     5.924 r  UHANDLE/BCD_reg[3]_i_109/O[3]
-                         net (fo=16, routed)          1.129     7.053    UHANDLE/o_BCD_bus6[12]
-    SLICE_X14Y14         LUT3 (Prop_lut3_I0_O)        0.306     7.359 r  UHANDLE/BCD[3]_i_569/O
-                         net (fo=72, routed)          3.930    11.289    UHANDLE/o_BCD_bus5[12]
-    SLICE_X10Y20         LUT6 (Prop_lut6_I3_O)        0.124    11.413 r  UHANDLE/BCD[3]_i_452/O
-                         net (fo=4, routed)           1.090    12.503    UHANDLE/BCD[3]_i_452_n_0
-    SLICE_X6Y20          LUT6 (Prop_lut6_I1_O)        0.124    12.627 r  UHANDLE/BCD[3]_i_912/O
-                         net (fo=1, routed)           0.000    12.627    UHANDLE/BCD[3]_i_912_n_0
-    SLICE_X6Y20          CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.380    13.007 r  UHANDLE/BCD_reg[3]_i_666/CO[3]
-                         net (fo=1, routed)           0.000    13.007    UHANDLE/BCD_reg[3]_i_666_n_0
-    SLICE_X6Y21          CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    13.246 r  UHANDLE/BCD_reg[3]_i_473/O[2]
-                         net (fo=3, routed)           1.274    14.520    UHANDLE/BCD_reg[3]_i_473_n_5
-    SLICE_X0Y22          LUT3 (Prop_lut3_I2_O)        0.301    14.821 r  UHANDLE/BCD[3]_i_479/O
-                         net (fo=2, routed)           0.825    15.646    UHANDLE/BCD[3]_i_479_n_0
-    SLICE_X0Y21          LUT5 (Prop_lut5_I1_O)        0.124    15.770 r  UHANDLE/BCD[3]_i_257/O
-                         net (fo=2, routed)           0.811    16.581    UHANDLE/BCD[3]_i_257_n_0
-    SLICE_X2Y20          LUT6 (Prop_lut6_I0_O)        0.124    16.705 r  UHANDLE/BCD[3]_i_261/O
-                         net (fo=1, routed)           0.000    16.705    UHANDLE/BCD[3]_i_261_n_0
-    SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533    17.238 r  UHANDLE/BCD_reg[3]_i_189/CO[3]
-                         net (fo=1, routed)           0.000    17.238    UHANDLE/BCD_reg[3]_i_189_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    17.477 r  UHANDLE/BCD_reg[3]_i_264/O[2]
-                         net (fo=4, routed)           1.390    18.867    UHANDLE/BCD_reg[3]_i_264_n_5
-    SLICE_X12Y20         LUT3 (Prop_lut3_I2_O)        0.301    19.168 r  UHANDLE/BCD[2]_i_145/O
-                         net (fo=2, routed)           0.412    19.580    UHANDLE/BCD[2]_i_145_n_0
-    SLICE_X13Y20         LUT4 (Prop_lut4_I3_O)        0.124    19.704 r  UHANDLE/BCD[2]_i_148/O
-                         net (fo=1, routed)           0.000    19.704    UHANDLE/BCD[2]_i_148_n_0
-    SLICE_X13Y20         CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401    20.105 r  UHANDLE/BCD_reg[2]_i_115/CO[3]
-                         net (fo=1, routed)           0.000    20.105    UHANDLE/BCD_reg[2]_i_115_n_0
-    SLICE_X13Y21         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222    20.327 r  UHANDLE/BCD_reg[3]_i_263/O[0]
-                         net (fo=1, routed)           0.803    21.130    UHANDLE/BCD_reg[3]_i_263_n_7
-    SLICE_X14Y19         LUT2 (Prop_lut2_I1_O)        0.299    21.429 r  UHANDLE/BCD[3]_i_192/O
-                         net (fo=1, routed)           0.000    21.429    UHANDLE/BCD[3]_i_192_n_0
-    SLICE_X14Y19         CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.376    21.805 r  UHANDLE/BCD_reg[3]_i_111/CO[3]
-                         net (fo=1, routed)           0.000    21.805    UHANDLE/BCD_reg[3]_i_111_n_0
-    SLICE_X14Y20         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    22.024 r  UHANDLE/BCD_reg[3]_i_110/O[0]
-                         net (fo=1, routed)           1.205    23.229    UHANDLE/BCD_reg[3]_i_110_n_7
-    SLICE_X29Y15         LUT4 (Prop_lut4_I3_O)        0.295    23.524 r  UHANDLE/BCD[3]_i_76/O
-                         net (fo=1, routed)           0.000    23.524    UHANDLE/BCD[3]_i_76_n_0
-    SLICE_X29Y15         CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.580    24.104 f  UHANDLE/BCD_reg[3]_i_26/O[2]
-                         net (fo=1, routed)           1.009    25.113    UHANDLE/BCD_reg[3]_i_26_n_5
-    SLICE_X32Y12         LUT1 (Prop_lut1_I0_O)        0.302    25.415 r  UHANDLE/BCD[3]_i_71/O
-                         net (fo=1, routed)           0.000    25.415    UHANDLE/BCD[3]_i_71_n_0
-    SLICE_X32Y12         CARRY4 (Prop_carry4_S[2]_CO[2])
-                                                      0.314    25.729 r  UHANDLE/BCD_reg[3]_i_25/CO[2]
-                         net (fo=30, routed)          1.220    26.948    UHANDLE/BCD_reg[3]_i_25_n_1
-    SLICE_X31Y13         LUT3 (Prop_lut3_I1_O)        0.313    27.261 r  UHANDLE/BCD[3]_i_105/O
-                         net (fo=1, routed)           0.000    27.261    UHANDLE/p_0_in[6]
-    SLICE_X31Y13         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550    27.811 r  UHANDLE/BCD_reg[3]_i_58/CO[3]
-                         net (fo=1, routed)           0.000    27.811    UHANDLE/BCD_reg[3]_i_58_n_0
-    SLICE_X31Y14         CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.313    28.124 r  UHANDLE/BCD_reg[3]_i_23/O[3]
-                         net (fo=1, routed)           0.718    28.843    UHANDLE/data0[12]
-    SLICE_X30Y14         LUT6 (Prop_lut6_I1_O)        0.306    29.149 r  UHANDLE/BCD[3]_i_11/O
-                         net (fo=21, routed)          0.992    30.141    UHANDLE/o_BCD_bus1[12]
-    SLICE_X33Y16         LUT4 (Prop_lut4_I1_O)        0.124    30.265 r  UHANDLE/BCD[2]_i_157/O
-                         net (fo=1, routed)           0.000    30.265    UHANDLE/BCD[2]_i_157_n_0
-    SLICE_X33Y16         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550    30.815 r  UHANDLE/BCD_reg[2]_i_116/CO[3]
-                         net (fo=1, routed)           0.000    30.815    UHANDLE/BCD_reg[2]_i_116_n_0
-    SLICE_X33Y17         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334    31.149 r  UHANDLE/BCD_reg[2]_i_71/O[1]
-                         net (fo=2, routed)           0.989    32.138    UHANDLE/BCD_reg[2]_i_71_n_6
-    SLICE_X30Y17         LUT3 (Prop_lut3_I0_O)        0.303    32.441 r  UHANDLE/BCD[2]_i_25/O
-                         net (fo=2, routed)           0.809    33.250    UHANDLE/BCD[2]_i_25_n_0
-    SLICE_X32Y18         LUT4 (Prop_lut4_I0_O)        0.124    33.374 r  UHANDLE/BCD[2]_i_29/O
-                         net (fo=1, routed)           0.000    33.374    UHANDLE/BCD[2]_i_29_n_0
-    SLICE_X32Y18         CARRY4 (Prop_carry4_S[0]_O[2])
-                                                      0.547    33.921 r  UHANDLE/BCD_reg[2]_i_11/O[2]
-                         net (fo=3, routed)           0.968    34.889    UHANDLE/BCD_reg[2]_i_11_n_5
-    SLICE_X31Y19         LUT4 (Prop_lut4_I3_O)        0.302    35.191 r  UHANDLE/BCD[2]_i_35/O
-                         net (fo=1, routed)           0.000    35.191    UHANDLE/BCD[2]_i_35_n_0
-    SLICE_X31Y19         CARRY4 (Prop_carry4_S[1]_CO[2])
-                                                      0.570    35.761 r  UHANDLE/BCD_reg[2]_i_13/CO[2]
-                         net (fo=4, routed)           0.587    36.347    UHANDLE/BCD_reg[2]_i_13_n_1
-    SLICE_X33Y19         LUT6 (Prop_lut6_I1_O)        0.313    36.660 r  UHANDLE/BCD[0]_i_3/O
-                         net (fo=1, routed)           0.962    37.622    UHANDLE/BCD[0]_i_3_n_0
-    SLICE_X37Y18         LUT6 (Prop_lut6_I1_O)        0.124    37.746 r  UHANDLE/BCD[0]_i_1/O
-                         net (fo=1, routed)           0.000    37.746    UDISPLAY/D[0]
-    SLICE_X37Y18         FDRE                                         r  UDISPLAY/BCD_reg[0]/D
+    SLICE_X28Y2          FDRE                         0.000     0.000 r  UHANDLE/tussenwaarde_reg[0]/C
+    SLICE_X28Y2          FDRE (Prop_fdre_C_Q)         0.456     0.456 f  UHANDLE/tussenwaarde_reg[0]/Q
+                         net (fo=115, routed)         4.099     4.555    UHANDLE/bcd_to_display[0]
+    SLICE_X2Y4           LUT1 (Prop_lut1_I0_O)        0.124     4.679 r  UHANDLE/BCD[3]_i_135/O
+                         net (fo=5, routed)           1.274     5.953    UHANDLE/BCD[3]_i_135_n_0
+    SLICE_X1Y12          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     6.533 r  UHANDLE/BCD_reg[3]_i_95/CO[3]
+                         net (fo=1, routed)           0.000     6.533    UHANDLE/BCD_reg[3]_i_95_n_0
+    SLICE_X1Y13          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.647 r  UHANDLE/BCD_reg[3]_i_99/CO[3]
+                         net (fo=1, routed)           0.000     6.647    UHANDLE/BCD_reg[3]_i_99_n_0
+    SLICE_X1Y14          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     6.981 r  UHANDLE/BCD_reg[3]_i_109/O[1]
+                         net (fo=31, routed)          1.604     8.586    UHANDLE/o_BCD_bus6[10]
+    SLICE_X3Y7           LUT3 (Prop_lut3_I0_O)        0.303     8.889 r  UHANDLE/BCD[3]_i_572/O
+                         net (fo=59, routed)          3.443    12.332    UHANDLE/o_BCD_bus5[10]
+    SLICE_X5Y23          LUT6 (Prop_lut6_I3_O)        0.124    12.456 r  UHANDLE/BCD[3]_i_454/O
+                         net (fo=4, routed)           1.500    13.956    UHANDLE/BCD[3]_i_454_n_0
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.124    14.080 r  UHANDLE/BCD[3]_i_914/O
+                         net (fo=1, routed)           0.000    14.080    UHANDLE/BCD[3]_i_914_n_0
+    SLICE_X2Y17          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    14.593 r  UHANDLE/BCD_reg[3]_i_666/CO[3]
+                         net (fo=1, routed)           0.000    14.593    UHANDLE/BCD_reg[3]_i_666_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    14.916 r  UHANDLE/BCD_reg[3]_i_473/O[1]
+                         net (fo=3, routed)           1.296    16.212    UHANDLE/BCD_reg[3]_i_473_n_6
+    SLICE_X7Y15          LUT3 (Prop_lut3_I2_O)        0.306    16.518 r  UHANDLE/BCD[3]_i_481/O
+                         net (fo=2, routed)           1.171    17.689    UHANDLE/BCD[3]_i_481_n_0
+    SLICE_X2Y13          LUT5 (Prop_lut5_I1_O)        0.124    17.813 r  UHANDLE/BCD[3]_i_258/O
+                         net (fo=2, routed)           0.554    18.367    UHANDLE/BCD[3]_i_258_n_0
+    SLICE_X3Y15          LUT6 (Prop_lut6_I0_O)        0.124    18.491 r  UHANDLE/BCD[3]_i_262/O
+                         net (fo=1, routed)           0.000    18.491    UHANDLE/BCD[3]_i_262_n_0
+    SLICE_X3Y15          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    19.023 r  UHANDLE/BCD_reg[3]_i_189/CO[3]
+                         net (fo=1, routed)           0.000    19.023    UHANDLE/BCD_reg[3]_i_189_n_0
+    SLICE_X3Y16          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    19.262 r  UHANDLE/BCD_reg[3]_i_264/O[2]
+                         net (fo=4, routed)           1.019    20.281    UHANDLE/BCD_reg[3]_i_264_n_5
+    SLICE_X1Y21          LUT3 (Prop_lut3_I2_O)        0.302    20.583 r  UHANDLE/BCD[2]_i_145/O
+                         net (fo=2, routed)           0.721    21.304    UHANDLE/BCD[2]_i_145_n_0
+    SLICE_X0Y21          LUT4 (Prop_lut4_I3_O)        0.124    21.428 r  UHANDLE/BCD[2]_i_148/O
+                         net (fo=1, routed)           0.000    21.428    UHANDLE/BCD[2]_i_148_n_0
+    SLICE_X0Y21          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    21.829 r  UHANDLE/BCD_reg[2]_i_115/CO[3]
+                         net (fo=1, routed)           0.000    21.829    UHANDLE/BCD_reg[2]_i_115_n_0
+    SLICE_X0Y22          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    22.051 r  UHANDLE/BCD_reg[3]_i_263/O[0]
+                         net (fo=1, routed)           0.661    22.712    UHANDLE/BCD_reg[3]_i_263_n_7
+    SLICE_X1Y22          LUT2 (Prop_lut2_I1_O)        0.299    23.011 r  UHANDLE/BCD[3]_i_192/O
+                         net (fo=1, routed)           0.000    23.011    UHANDLE/BCD[3]_i_192_n_0
+    SLICE_X1Y22          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    23.412 r  UHANDLE/BCD_reg[3]_i_111/CO[3]
+                         net (fo=1, routed)           0.000    23.412    UHANDLE/BCD_reg[3]_i_111_n_0
+    SLICE_X1Y23          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    23.746 r  UHANDLE/BCD_reg[3]_i_110/O[1]
+                         net (fo=1, routed)           0.804    24.550    UHANDLE/BCD_reg[3]_i_110_n_6
+    SLICE_X3Y24          LUT4 (Prop_lut4_I0_O)        0.303    24.853 r  UHANDLE/BCD[3]_i_75/O
+                         net (fo=1, routed)           0.000    24.853    UHANDLE/BCD[3]_i_75_n_0
+    SLICE_X3Y24          CARRY4 (Prop_carry4_S[2]_O[2])
+                                                      0.248    25.101 f  UHANDLE/BCD_reg[3]_i_26/O[2]
+                         net (fo=1, routed)           0.984    26.085    UHANDLE/BCD_reg[3]_i_26_n_5
+    SLICE_X3Y27          LUT1 (Prop_lut1_I0_O)        0.302    26.387 r  UHANDLE/BCD[3]_i_71/O
+                         net (fo=1, routed)           0.000    26.387    UHANDLE/BCD[3]_i_71_n_0
+    SLICE_X3Y27          CARRY4 (Prop_carry4_S[2]_CO[2])
+                                                      0.314    26.701 r  UHANDLE/BCD_reg[3]_i_25/CO[2]
+                         net (fo=30, routed)          1.622    28.323    UHANDLE/BCD_reg[3]_i_25_n_1
+    SLICE_X6Y23          LUT3 (Prop_lut3_I1_O)        0.313    28.636 r  UHANDLE/BCD[3]_i_170/O
+                         net (fo=1, routed)           0.000    28.636    UHANDLE/o_BCD_bus4[4]
+    SLICE_X6Y23          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    29.012 r  UHANDLE/BCD_reg[3]_i_101/CO[3]
+                         net (fo=1, routed)           0.000    29.012    UHANDLE/BCD_reg[3]_i_101_n_0
+    SLICE_X6Y24          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    29.129 r  UHANDLE/BCD_reg[3]_i_58/CO[3]
+                         net (fo=1, routed)           0.009    29.138    UHANDLE/BCD_reg[3]_i_58_n_0
+    SLICE_X6Y25          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    29.461 r  UHANDLE/BCD_reg[3]_i_23/O[1]
+                         net (fo=1, routed)           0.577    30.038    UHANDLE/data0[10]
+    SLICE_X7Y25          LUT6 (Prop_lut6_I1_O)        0.306    30.344 r  UHANDLE/BCD[2]_i_14/O
+                         net (fo=20, routed)          1.663    32.007    UHANDLE/o_BCD_bus1[10]
+    SLICE_X14Y23         LUT2 (Prop_lut2_I1_O)        0.124    32.131 r  UHANDLE/BCD[2]_i_158/O
+                         net (fo=1, routed)           0.000    32.131    UHANDLE/BCD[2]_i_158_n_0
+    SLICE_X14Y23         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    32.644 r  UHANDLE/BCD_reg[2]_i_116/CO[3]
+                         net (fo=1, routed)           0.000    32.644    UHANDLE/BCD_reg[2]_i_116_n_0
+    SLICE_X14Y24         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    32.863 r  UHANDLE/BCD_reg[2]_i_71/O[0]
+                         net (fo=2, routed)           0.885    33.748    UHANDLE/BCD_reg[2]_i_71_n_7
+    SLICE_X13Y22         LUT2 (Prop_lut2_I0_O)        0.295    34.043 r  UHANDLE/BCD[2]_i_64/O
+                         net (fo=2, routed)           0.960    35.003    UHANDLE/BCD[2]_i_64_n_0
+    SLICE_X12Y23         LUT4 (Prop_lut4_I3_O)        0.124    35.127 r  UHANDLE/BCD[2]_i_67/O
+                         net (fo=1, routed)           0.000    35.127    UHANDLE/BCD[2]_i_67_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    35.503 r  UHANDLE/BCD_reg[2]_i_22/CO[3]
+                         net (fo=1, routed)           0.000    35.503    UHANDLE/BCD_reg[2]_i_22_n_0
+    SLICE_X12Y24         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    35.826 r  UHANDLE/BCD_reg[2]_i_11/O[1]
+                         net (fo=3, routed)           0.849    36.676    UHANDLE/BCD_reg[2]_i_11_n_6
+    SLICE_X13Y25         LUT4 (Prop_lut4_I1_O)        0.306    36.982 r  UHANDLE/BCD[2]_i_35/O
+                         net (fo=1, routed)           0.000    36.982    UHANDLE/BCD[2]_i_35_n_0
+    SLICE_X13Y25         CARRY4 (Prop_carry4_S[1]_CO[2])
+                                                      0.570    37.552 f  UHANDLE/BCD_reg[2]_i_13/CO[2]
+                         net (fo=4, routed)           0.849    38.400    UHANDLE/BCD_reg[2]_i_13_n_1
+    SLICE_X15Y24         LUT5 (Prop_lut5_I1_O)        0.313    38.713 r  UHANDLE/BCD[3]_i_12/O
+                         net (fo=1, routed)           0.402    39.116    UHANDLE/BCD[3]_i_12_n_0
+    SLICE_X15Y24         LUT5 (Prop_lut5_I1_O)        0.124    39.240 r  UHANDLE/BCD[3]_i_3/O
+                         net (fo=1, routed)           0.636    39.876    UHANDLE/BCD[3]_i_3_n_0
+    SLICE_X15Y23         LUT6 (Prop_lut6_I1_O)        0.124    40.000 r  UHANDLE/BCD[3]_i_1/O
+                         net (fo=1, routed)           0.000    40.000    UDISPLAY/D[3]
+    SLICE_X15Y23         FDRE                                         r  UDISPLAY/BCD_reg[3]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -568,481 +346,691 @@ Slack:                    inf
   Destination:            UDISPLAY/BCD_reg[1]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        37.570ns  (logic 12.655ns (33.684%)  route 24.915ns (66.316%))
-  Logic Levels:           40  (CARRY4=19 FDRE=1 LUT1=2 LUT2=1 LUT3=5 LUT4=5 LUT5=2 LUT6=5)
+  Data Path Delay:        39.363ns  (logic 12.522ns (31.812%)  route 26.841ns (68.188%))
+  Logic Levels:           42  (CARRY4=21 FDRE=1 LUT1=2 LUT2=3 LUT3=4 LUT4=4 LUT5=2 LUT6=5)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X15Y1          FDRE                         0.000     0.000 r  UHANDLE/tussenwaarde_reg[0]/C
-    SLICE_X15Y1          FDRE (Prop_fdre_C_Q)         0.419     0.419 f  UHANDLE/tussenwaarde_reg[0]/Q
-                         net (fo=115, routed)         2.550     2.969    UHANDLE/bcd_to_display[0]
-    SLICE_X31Y11         LUT1 (Prop_lut1_I0_O)        0.299     3.268 r  UHANDLE/BCD[3]_i_135/O
-                         net (fo=5, routed)           1.650     4.917    UHANDLE/BCD[3]_i_135_n_0
-    SLICE_X4Y6           CARRY4 (Prop_carry4_CYINIT_CO[3])
-                                                      0.580     5.497 r  UHANDLE/BCD_reg[3]_i_95/CO[3]
-                         net (fo=1, routed)           0.000     5.497    UHANDLE/BCD_reg[3]_i_95_n_0
-    SLICE_X4Y7           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114     5.611 r  UHANDLE/BCD_reg[3]_i_99/CO[3]
-                         net (fo=1, routed)           0.000     5.611    UHANDLE/BCD_reg[3]_i_99_n_0
-    SLICE_X4Y8           CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.313     5.924 r  UHANDLE/BCD_reg[3]_i_109/O[3]
-                         net (fo=16, routed)          1.129     7.053    UHANDLE/o_BCD_bus6[12]
-    SLICE_X14Y14         LUT3 (Prop_lut3_I0_O)        0.306     7.359 r  UHANDLE/BCD[3]_i_569/O
-                         net (fo=72, routed)          3.930    11.289    UHANDLE/o_BCD_bus5[12]
-    SLICE_X10Y20         LUT6 (Prop_lut6_I3_O)        0.124    11.413 r  UHANDLE/BCD[3]_i_452/O
-                         net (fo=4, routed)           1.090    12.503    UHANDLE/BCD[3]_i_452_n_0
-    SLICE_X6Y20          LUT6 (Prop_lut6_I1_O)        0.124    12.627 r  UHANDLE/BCD[3]_i_912/O
-                         net (fo=1, routed)           0.000    12.627    UHANDLE/BCD[3]_i_912_n_0
-    SLICE_X6Y20          CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.380    13.007 r  UHANDLE/BCD_reg[3]_i_666/CO[3]
-                         net (fo=1, routed)           0.000    13.007    UHANDLE/BCD_reg[3]_i_666_n_0
-    SLICE_X6Y21          CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    13.246 r  UHANDLE/BCD_reg[3]_i_473/O[2]
-                         net (fo=3, routed)           1.274    14.520    UHANDLE/BCD_reg[3]_i_473_n_5
-    SLICE_X0Y22          LUT3 (Prop_lut3_I2_O)        0.301    14.821 r  UHANDLE/BCD[3]_i_479/O
-                         net (fo=2, routed)           0.825    15.646    UHANDLE/BCD[3]_i_479_n_0
-    SLICE_X0Y21          LUT5 (Prop_lut5_I1_O)        0.124    15.770 r  UHANDLE/BCD[3]_i_257/O
-                         net (fo=2, routed)           0.811    16.581    UHANDLE/BCD[3]_i_257_n_0
-    SLICE_X2Y20          LUT6 (Prop_lut6_I0_O)        0.124    16.705 r  UHANDLE/BCD[3]_i_261/O
-                         net (fo=1, routed)           0.000    16.705    UHANDLE/BCD[3]_i_261_n_0
-    SLICE_X2Y20          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533    17.238 r  UHANDLE/BCD_reg[3]_i_189/CO[3]
-                         net (fo=1, routed)           0.000    17.238    UHANDLE/BCD_reg[3]_i_189_n_0
-    SLICE_X2Y21          CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    17.477 r  UHANDLE/BCD_reg[3]_i_264/O[2]
-                         net (fo=4, routed)           1.390    18.867    UHANDLE/BCD_reg[3]_i_264_n_5
-    SLICE_X12Y20         LUT3 (Prop_lut3_I2_O)        0.301    19.168 r  UHANDLE/BCD[2]_i_145/O
-                         net (fo=2, routed)           0.412    19.580    UHANDLE/BCD[2]_i_145_n_0
-    SLICE_X13Y20         LUT4 (Prop_lut4_I3_O)        0.124    19.704 r  UHANDLE/BCD[2]_i_148/O
-                         net (fo=1, routed)           0.000    19.704    UHANDLE/BCD[2]_i_148_n_0
-    SLICE_X13Y20         CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401    20.105 r  UHANDLE/BCD_reg[2]_i_115/CO[3]
-                         net (fo=1, routed)           0.000    20.105    UHANDLE/BCD_reg[2]_i_115_n_0
-    SLICE_X13Y21         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222    20.327 r  UHANDLE/BCD_reg[3]_i_263/O[0]
-                         net (fo=1, routed)           0.803    21.130    UHANDLE/BCD_reg[3]_i_263_n_7
-    SLICE_X14Y19         LUT2 (Prop_lut2_I1_O)        0.299    21.429 r  UHANDLE/BCD[3]_i_192/O
-                         net (fo=1, routed)           0.000    21.429    UHANDLE/BCD[3]_i_192_n_0
-    SLICE_X14Y19         CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.376    21.805 r  UHANDLE/BCD_reg[3]_i_111/CO[3]
-                         net (fo=1, routed)           0.000    21.805    UHANDLE/BCD_reg[3]_i_111_n_0
-    SLICE_X14Y20         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    22.024 r  UHANDLE/BCD_reg[3]_i_110/O[0]
-                         net (fo=1, routed)           1.205    23.229    UHANDLE/BCD_reg[3]_i_110_n_7
-    SLICE_X29Y15         LUT4 (Prop_lut4_I3_O)        0.295    23.524 r  UHANDLE/BCD[3]_i_76/O
-                         net (fo=1, routed)           0.000    23.524    UHANDLE/BCD[3]_i_76_n_0
-    SLICE_X29Y15         CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.580    24.104 f  UHANDLE/BCD_reg[3]_i_26/O[2]
-                         net (fo=1, routed)           1.009    25.113    UHANDLE/BCD_reg[3]_i_26_n_5
-    SLICE_X32Y12         LUT1 (Prop_lut1_I0_O)        0.302    25.415 r  UHANDLE/BCD[3]_i_71/O
-                         net (fo=1, routed)           0.000    25.415    UHANDLE/BCD[3]_i_71_n_0
-    SLICE_X32Y12         CARRY4 (Prop_carry4_S[2]_CO[2])
-                                                      0.314    25.729 r  UHANDLE/BCD_reg[3]_i_25/CO[2]
-                         net (fo=30, routed)          1.220    26.948    UHANDLE/BCD_reg[3]_i_25_n_1
-    SLICE_X31Y13         LUT3 (Prop_lut3_I1_O)        0.313    27.261 r  UHANDLE/BCD[3]_i_105/O
-                         net (fo=1, routed)           0.000    27.261    UHANDLE/p_0_in[6]
-    SLICE_X31Y13         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550    27.811 r  UHANDLE/BCD_reg[3]_i_58/CO[3]
-                         net (fo=1, routed)           0.000    27.811    UHANDLE/BCD_reg[3]_i_58_n_0
-    SLICE_X31Y14         CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.313    28.124 r  UHANDLE/BCD_reg[3]_i_23/O[3]
-                         net (fo=1, routed)           0.718    28.843    UHANDLE/data0[12]
-    SLICE_X30Y14         LUT6 (Prop_lut6_I1_O)        0.306    29.149 r  UHANDLE/BCD[3]_i_11/O
-                         net (fo=21, routed)          0.992    30.141    UHANDLE/o_BCD_bus1[12]
-    SLICE_X33Y16         LUT4 (Prop_lut4_I1_O)        0.124    30.265 r  UHANDLE/BCD[2]_i_157/O
-                         net (fo=1, routed)           0.000    30.265    UHANDLE/BCD[2]_i_157_n_0
-    SLICE_X33Y16         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.550    30.815 r  UHANDLE/BCD_reg[2]_i_116/CO[3]
-                         net (fo=1, routed)           0.000    30.815    UHANDLE/BCD_reg[2]_i_116_n_0
-    SLICE_X33Y17         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334    31.149 r  UHANDLE/BCD_reg[2]_i_71/O[1]
-                         net (fo=2, routed)           0.989    32.138    UHANDLE/BCD_reg[2]_i_71_n_6
-    SLICE_X30Y17         LUT3 (Prop_lut3_I0_O)        0.303    32.441 r  UHANDLE/BCD[2]_i_25/O
-                         net (fo=2, routed)           0.809    33.250    UHANDLE/BCD[2]_i_25_n_0
-    SLICE_X32Y18         LUT4 (Prop_lut4_I0_O)        0.124    33.374 r  UHANDLE/BCD[2]_i_29/O
-                         net (fo=1, routed)           0.000    33.374    UHANDLE/BCD[2]_i_29_n_0
-    SLICE_X32Y18         CARRY4 (Prop_carry4_S[0]_O[2])
-                                                      0.547    33.921 r  UHANDLE/BCD_reg[2]_i_11/O[2]
-                         net (fo=3, routed)           0.968    34.889    UHANDLE/BCD_reg[2]_i_11_n_5
-    SLICE_X31Y19         LUT4 (Prop_lut4_I3_O)        0.302    35.191 r  UHANDLE/BCD[2]_i_35/O
-                         net (fo=1, routed)           0.000    35.191    UHANDLE/BCD[2]_i_35_n_0
-    SLICE_X31Y19         CARRY4 (Prop_carry4_S[1]_CO[2])
-                                                      0.570    35.761 r  UHANDLE/BCD_reg[2]_i_13/CO[2]
-                         net (fo=4, routed)           0.812    36.572    UHANDLE/BCD_reg[2]_i_13_n_1
-    SLICE_X33Y19         LUT5 (Prop_lut5_I2_O)        0.341    36.913 r  UHANDLE/BCD[1]_i_3/O
-                         net (fo=1, routed)           0.331    37.244    UHANDLE/BCD[1]_i_3_n_0
-    SLICE_X34Y18         LUT6 (Prop_lut6_I1_O)        0.326    37.570 r  UHANDLE/BCD[1]_i_1/O
-                         net (fo=1, routed)           0.000    37.570    UDISPLAY/D[1]
-    SLICE_X34Y18         FDRE                                         r  UDISPLAY/BCD_reg[1]/D
+    SLICE_X28Y2          FDRE                         0.000     0.000 r  UHANDLE/tussenwaarde_reg[0]/C
+    SLICE_X28Y2          FDRE (Prop_fdre_C_Q)         0.456     0.456 f  UHANDLE/tussenwaarde_reg[0]/Q
+                         net (fo=115, routed)         4.099     4.555    UHANDLE/bcd_to_display[0]
+    SLICE_X2Y4           LUT1 (Prop_lut1_I0_O)        0.124     4.679 r  UHANDLE/BCD[3]_i_135/O
+                         net (fo=5, routed)           1.274     5.953    UHANDLE/BCD[3]_i_135_n_0
+    SLICE_X1Y12          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     6.533 r  UHANDLE/BCD_reg[3]_i_95/CO[3]
+                         net (fo=1, routed)           0.000     6.533    UHANDLE/BCD_reg[3]_i_95_n_0
+    SLICE_X1Y13          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.647 r  UHANDLE/BCD_reg[3]_i_99/CO[3]
+                         net (fo=1, routed)           0.000     6.647    UHANDLE/BCD_reg[3]_i_99_n_0
+    SLICE_X1Y14          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     6.981 r  UHANDLE/BCD_reg[3]_i_109/O[1]
+                         net (fo=31, routed)          1.604     8.586    UHANDLE/o_BCD_bus6[10]
+    SLICE_X3Y7           LUT3 (Prop_lut3_I0_O)        0.303     8.889 r  UHANDLE/BCD[3]_i_572/O
+                         net (fo=59, routed)          3.443    12.332    UHANDLE/o_BCD_bus5[10]
+    SLICE_X5Y23          LUT6 (Prop_lut6_I3_O)        0.124    12.456 r  UHANDLE/BCD[3]_i_454/O
+                         net (fo=4, routed)           1.500    13.956    UHANDLE/BCD[3]_i_454_n_0
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.124    14.080 r  UHANDLE/BCD[3]_i_914/O
+                         net (fo=1, routed)           0.000    14.080    UHANDLE/BCD[3]_i_914_n_0
+    SLICE_X2Y17          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    14.593 r  UHANDLE/BCD_reg[3]_i_666/CO[3]
+                         net (fo=1, routed)           0.000    14.593    UHANDLE/BCD_reg[3]_i_666_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    14.916 r  UHANDLE/BCD_reg[3]_i_473/O[1]
+                         net (fo=3, routed)           1.296    16.212    UHANDLE/BCD_reg[3]_i_473_n_6
+    SLICE_X7Y15          LUT3 (Prop_lut3_I2_O)        0.306    16.518 r  UHANDLE/BCD[3]_i_481/O
+                         net (fo=2, routed)           1.171    17.689    UHANDLE/BCD[3]_i_481_n_0
+    SLICE_X2Y13          LUT5 (Prop_lut5_I1_O)        0.124    17.813 r  UHANDLE/BCD[3]_i_258/O
+                         net (fo=2, routed)           0.554    18.367    UHANDLE/BCD[3]_i_258_n_0
+    SLICE_X3Y15          LUT6 (Prop_lut6_I0_O)        0.124    18.491 r  UHANDLE/BCD[3]_i_262/O
+                         net (fo=1, routed)           0.000    18.491    UHANDLE/BCD[3]_i_262_n_0
+    SLICE_X3Y15          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    19.023 r  UHANDLE/BCD_reg[3]_i_189/CO[3]
+                         net (fo=1, routed)           0.000    19.023    UHANDLE/BCD_reg[3]_i_189_n_0
+    SLICE_X3Y16          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    19.262 r  UHANDLE/BCD_reg[3]_i_264/O[2]
+                         net (fo=4, routed)           1.019    20.281    UHANDLE/BCD_reg[3]_i_264_n_5
+    SLICE_X1Y21          LUT3 (Prop_lut3_I2_O)        0.302    20.583 r  UHANDLE/BCD[2]_i_145/O
+                         net (fo=2, routed)           0.721    21.304    UHANDLE/BCD[2]_i_145_n_0
+    SLICE_X0Y21          LUT4 (Prop_lut4_I3_O)        0.124    21.428 r  UHANDLE/BCD[2]_i_148/O
+                         net (fo=1, routed)           0.000    21.428    UHANDLE/BCD[2]_i_148_n_0
+    SLICE_X0Y21          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    21.829 r  UHANDLE/BCD_reg[2]_i_115/CO[3]
+                         net (fo=1, routed)           0.000    21.829    UHANDLE/BCD_reg[2]_i_115_n_0
+    SLICE_X0Y22          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    22.051 r  UHANDLE/BCD_reg[3]_i_263/O[0]
+                         net (fo=1, routed)           0.661    22.712    UHANDLE/BCD_reg[3]_i_263_n_7
+    SLICE_X1Y22          LUT2 (Prop_lut2_I1_O)        0.299    23.011 r  UHANDLE/BCD[3]_i_192/O
+                         net (fo=1, routed)           0.000    23.011    UHANDLE/BCD[3]_i_192_n_0
+    SLICE_X1Y22          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    23.412 r  UHANDLE/BCD_reg[3]_i_111/CO[3]
+                         net (fo=1, routed)           0.000    23.412    UHANDLE/BCD_reg[3]_i_111_n_0
+    SLICE_X1Y23          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    23.746 r  UHANDLE/BCD_reg[3]_i_110/O[1]
+                         net (fo=1, routed)           0.804    24.550    UHANDLE/BCD_reg[3]_i_110_n_6
+    SLICE_X3Y24          LUT4 (Prop_lut4_I0_O)        0.303    24.853 r  UHANDLE/BCD[3]_i_75/O
+                         net (fo=1, routed)           0.000    24.853    UHANDLE/BCD[3]_i_75_n_0
+    SLICE_X3Y24          CARRY4 (Prop_carry4_S[2]_O[2])
+                                                      0.248    25.101 f  UHANDLE/BCD_reg[3]_i_26/O[2]
+                         net (fo=1, routed)           0.984    26.085    UHANDLE/BCD_reg[3]_i_26_n_5
+    SLICE_X3Y27          LUT1 (Prop_lut1_I0_O)        0.302    26.387 r  UHANDLE/BCD[3]_i_71/O
+                         net (fo=1, routed)           0.000    26.387    UHANDLE/BCD[3]_i_71_n_0
+    SLICE_X3Y27          CARRY4 (Prop_carry4_S[2]_CO[2])
+                                                      0.314    26.701 r  UHANDLE/BCD_reg[3]_i_25/CO[2]
+                         net (fo=30, routed)          1.622    28.323    UHANDLE/BCD_reg[3]_i_25_n_1
+    SLICE_X6Y23          LUT3 (Prop_lut3_I1_O)        0.313    28.636 r  UHANDLE/BCD[3]_i_170/O
+                         net (fo=1, routed)           0.000    28.636    UHANDLE/o_BCD_bus4[4]
+    SLICE_X6Y23          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    29.012 r  UHANDLE/BCD_reg[3]_i_101/CO[3]
+                         net (fo=1, routed)           0.000    29.012    UHANDLE/BCD_reg[3]_i_101_n_0
+    SLICE_X6Y24          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    29.129 r  UHANDLE/BCD_reg[3]_i_58/CO[3]
+                         net (fo=1, routed)           0.009    29.138    UHANDLE/BCD_reg[3]_i_58_n_0
+    SLICE_X6Y25          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    29.461 r  UHANDLE/BCD_reg[3]_i_23/O[1]
+                         net (fo=1, routed)           0.577    30.038    UHANDLE/data0[10]
+    SLICE_X7Y25          LUT6 (Prop_lut6_I1_O)        0.306    30.344 r  UHANDLE/BCD[2]_i_14/O
+                         net (fo=20, routed)          1.663    32.007    UHANDLE/o_BCD_bus1[10]
+    SLICE_X14Y23         LUT2 (Prop_lut2_I1_O)        0.124    32.131 r  UHANDLE/BCD[2]_i_158/O
+                         net (fo=1, routed)           0.000    32.131    UHANDLE/BCD[2]_i_158_n_0
+    SLICE_X14Y23         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    32.644 r  UHANDLE/BCD_reg[2]_i_116/CO[3]
+                         net (fo=1, routed)           0.000    32.644    UHANDLE/BCD_reg[2]_i_116_n_0
+    SLICE_X14Y24         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    32.863 r  UHANDLE/BCD_reg[2]_i_71/O[0]
+                         net (fo=2, routed)           0.885    33.748    UHANDLE/BCD_reg[2]_i_71_n_7
+    SLICE_X13Y22         LUT2 (Prop_lut2_I0_O)        0.295    34.043 r  UHANDLE/BCD[2]_i_64/O
+                         net (fo=2, routed)           0.960    35.003    UHANDLE/BCD[2]_i_64_n_0
+    SLICE_X12Y23         LUT4 (Prop_lut4_I3_O)        0.124    35.127 r  UHANDLE/BCD[2]_i_67/O
+                         net (fo=1, routed)           0.000    35.127    UHANDLE/BCD[2]_i_67_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    35.503 r  UHANDLE/BCD_reg[2]_i_22/CO[3]
+                         net (fo=1, routed)           0.000    35.503    UHANDLE/BCD_reg[2]_i_22_n_0
+    SLICE_X12Y24         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    35.826 r  UHANDLE/BCD_reg[2]_i_11/O[1]
+                         net (fo=3, routed)           0.849    36.676    UHANDLE/BCD_reg[2]_i_11_n_6
+    SLICE_X13Y25         LUT4 (Prop_lut4_I1_O)        0.306    36.982 r  UHANDLE/BCD[2]_i_35/O
+                         net (fo=1, routed)           0.000    36.982    UHANDLE/BCD[2]_i_35_n_0
+    SLICE_X13Y25         CARRY4 (Prop_carry4_S[1]_CO[2])
+                                                      0.570    37.552 r  UHANDLE/BCD_reg[2]_i_13/CO[2]
+                         net (fo=4, routed)           0.849    38.400    UHANDLE/BCD_reg[2]_i_13_n_1
+    SLICE_X15Y24         LUT5 (Prop_lut5_I2_O)        0.341    38.741 r  UHANDLE/BCD[1]_i_3/O
+                         net (fo=1, routed)           0.296    39.037    UHANDLE/BCD[1]_i_3_n_0
+    SLICE_X15Y23         LUT6 (Prop_lut6_I1_O)        0.326    39.363 r  UHANDLE/BCD[1]_i_1/O
+                         net (fo=1, routed)           0.000    39.363    UDISPLAY/D[1]
+    SLICE_X15Y23         FDRE                                         r  UDISPLAY/BCD_reg[1]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UHANDLE/byte_reg[2]/C
+  Source:                 UHANDLE/tussenwaarde_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UHANDLE/tussenwaarde_reg[31]_rep__0/D
+  Destination:            UDISPLAY/BCD_reg[0]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        19.166ns  (logic 9.907ns (51.690%)  route 9.259ns (48.310%))
-  Logic Levels:           18  (CARRY4=9 DSP48E1=2 FDRE=1 LUT2=1 LUT3=2 LUT4=1 LUT5=1 LUT6=1)
+  Data Path Delay:        39.143ns  (logic 12.292ns (31.403%)  route 26.851ns (68.597%))
+  Logic Levels:           42  (CARRY4=21 FDRE=1 LUT1=2 LUT2=3 LUT3=4 LUT4=4 LUT5=1 LUT6=6)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X6Y0           FDRE                         0.000     0.000 r  UHANDLE/byte_reg[2]/C
-    SLICE_X6Y0           FDRE (Prop_fdre_C_Q)         0.518     0.518 r  UHANDLE/byte_reg[2]/Q
-                         net (fo=14, routed)          1.165     1.683    UHANDLE/byte_reg[2]
-    SLICE_X7Y2           LUT3 (Prop_lut3_I2_O)        0.124     1.807 r  UHANDLE/geld1_i_122/O
-                         net (fo=1, routed)           0.000     1.807    UHANDLE/geld1_i_122_n_0
-    SLICE_X7Y2           CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401     2.208 r  UHANDLE/geld1_i_68/CO[3]
-                         net (fo=1, routed)           0.000     2.208    UHANDLE/geld1_i_68_n_0
-    SLICE_X7Y3           CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     2.542 r  UHANDLE/geld1_i_61/O[1]
-                         net (fo=4, routed)           1.387     3.930    UHANDLE/geld1_i_61_n_6
-    SLICE_X11Y1          LUT3 (Prop_lut3_I1_O)        0.303     4.233 r  UHANDLE/geld1_i_70/O
-                         net (fo=1, routed)           1.021     5.254    UHANDLE/geld1_i_70_n_0
-    SLICE_X9Y1           LUT5 (Prop_lut5_I1_O)        0.124     5.378 r  UHANDLE/geld1_i_36/O
-                         net (fo=1, routed)           0.000     5.378    UHANDLE/geld1_i_36_n_0
-    SLICE_X9Y1           CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401     5.779 r  UHANDLE/geld1_i_11/CO[3]
-                         net (fo=1, routed)           0.000     5.779    UHANDLE/geld1_i_11_n_0
-    SLICE_X9Y2           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114     5.893 r  UHANDLE/geld1_i_10/CO[3]
-                         net (fo=1, routed)           0.000     5.893    UHANDLE/geld1_i_10_n_0
-    SLICE_X9Y3           CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222     6.115 r  UHANDLE/geld1_i_9/O[0]
-                         net (fo=1, routed)           0.722     6.837    UHANDLE/geld2[16]
-    DSP48_X0Y0           DSP48E1 (Prop_dsp48e1_A[16]_PCOUT[47])
-                                                      4.211    11.048 r  UHANDLE/geld1/PCOUT[47]
-                         net (fo=1, routed)           0.002    11.050    UHANDLE/geld1_n_106
-    DSP48_X0Y1           DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
-                                                      1.518    12.568 r  UHANDLE/geld1__0/P[0]
-                         net (fo=4, routed)           1.893    14.460    UHANDLE/geld1__1[17]
-    SLICE_X34Y4          LUT2 (Prop_lut2_I1_O)        0.124    14.584 r  UHANDLE/geld[19]_i_5/O
-                         net (fo=1, routed)           0.000    14.584    UHANDLE/geld[19]_i_5_n_0
-    SLICE_X34Y4          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533    15.117 r  UHANDLE/geld_reg[19]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.117    UHANDLE/geld_reg[19]_i_2_n_0
-    SLICE_X34Y5          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.234 r  UHANDLE/geld_reg[23]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.234    UHANDLE/geld_reg[23]_i_2_n_0
-    SLICE_X34Y6          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.351 r  UHANDLE/geld_reg[27]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.351    UHANDLE/geld_reg[27]_i_2_n_0
-    SLICE_X34Y7          CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315    15.666 r  UHANDLE/geld_reg[31]_i_3/O[3]
-                         net (fo=1, routed)           0.606    16.273    UHANDLE/geld_reg[31]_i_3_n_4
-    SLICE_X30Y7          LUT4 (Prop_lut4_I2_O)        0.307    16.580 r  UHANDLE/geld[31]_i_1/O
-                         net (fo=6, routed)           1.902    18.481    UHANDLE/geld[31]_i_1_n_0
-    SLICE_X11Y8          LUT6 (Prop_lut6_I1_O)        0.124    18.605 r  UHANDLE/tussenwaarde[31]_rep__0_i_1/O
-                         net (fo=1, routed)           0.561    19.166    UHANDLE/tussenwaarde[31]_rep__0_i_1_n_0
-    SLICE_X11Y8          FDRE                                         r  UHANDLE/tussenwaarde_reg[31]_rep__0/D
+    SLICE_X28Y2          FDRE                         0.000     0.000 r  UHANDLE/tussenwaarde_reg[0]/C
+    SLICE_X28Y2          FDRE (Prop_fdre_C_Q)         0.456     0.456 f  UHANDLE/tussenwaarde_reg[0]/Q
+                         net (fo=115, routed)         4.099     4.555    UHANDLE/bcd_to_display[0]
+    SLICE_X2Y4           LUT1 (Prop_lut1_I0_O)        0.124     4.679 r  UHANDLE/BCD[3]_i_135/O
+                         net (fo=5, routed)           1.274     5.953    UHANDLE/BCD[3]_i_135_n_0
+    SLICE_X1Y12          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     6.533 r  UHANDLE/BCD_reg[3]_i_95/CO[3]
+                         net (fo=1, routed)           0.000     6.533    UHANDLE/BCD_reg[3]_i_95_n_0
+    SLICE_X1Y13          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.647 r  UHANDLE/BCD_reg[3]_i_99/CO[3]
+                         net (fo=1, routed)           0.000     6.647    UHANDLE/BCD_reg[3]_i_99_n_0
+    SLICE_X1Y14          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     6.981 r  UHANDLE/BCD_reg[3]_i_109/O[1]
+                         net (fo=31, routed)          1.604     8.586    UHANDLE/o_BCD_bus6[10]
+    SLICE_X3Y7           LUT3 (Prop_lut3_I0_O)        0.303     8.889 r  UHANDLE/BCD[3]_i_572/O
+                         net (fo=59, routed)          3.443    12.332    UHANDLE/o_BCD_bus5[10]
+    SLICE_X5Y23          LUT6 (Prop_lut6_I3_O)        0.124    12.456 r  UHANDLE/BCD[3]_i_454/O
+                         net (fo=4, routed)           1.500    13.956    UHANDLE/BCD[3]_i_454_n_0
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.124    14.080 r  UHANDLE/BCD[3]_i_914/O
+                         net (fo=1, routed)           0.000    14.080    UHANDLE/BCD[3]_i_914_n_0
+    SLICE_X2Y17          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    14.593 r  UHANDLE/BCD_reg[3]_i_666/CO[3]
+                         net (fo=1, routed)           0.000    14.593    UHANDLE/BCD_reg[3]_i_666_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    14.916 r  UHANDLE/BCD_reg[3]_i_473/O[1]
+                         net (fo=3, routed)           1.296    16.212    UHANDLE/BCD_reg[3]_i_473_n_6
+    SLICE_X7Y15          LUT3 (Prop_lut3_I2_O)        0.306    16.518 r  UHANDLE/BCD[3]_i_481/O
+                         net (fo=2, routed)           1.171    17.689    UHANDLE/BCD[3]_i_481_n_0
+    SLICE_X2Y13          LUT5 (Prop_lut5_I1_O)        0.124    17.813 r  UHANDLE/BCD[3]_i_258/O
+                         net (fo=2, routed)           0.554    18.367    UHANDLE/BCD[3]_i_258_n_0
+    SLICE_X3Y15          LUT6 (Prop_lut6_I0_O)        0.124    18.491 r  UHANDLE/BCD[3]_i_262/O
+                         net (fo=1, routed)           0.000    18.491    UHANDLE/BCD[3]_i_262_n_0
+    SLICE_X3Y15          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    19.023 r  UHANDLE/BCD_reg[3]_i_189/CO[3]
+                         net (fo=1, routed)           0.000    19.023    UHANDLE/BCD_reg[3]_i_189_n_0
+    SLICE_X3Y16          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    19.262 r  UHANDLE/BCD_reg[3]_i_264/O[2]
+                         net (fo=4, routed)           1.019    20.281    UHANDLE/BCD_reg[3]_i_264_n_5
+    SLICE_X1Y21          LUT3 (Prop_lut3_I2_O)        0.302    20.583 r  UHANDLE/BCD[2]_i_145/O
+                         net (fo=2, routed)           0.721    21.304    UHANDLE/BCD[2]_i_145_n_0
+    SLICE_X0Y21          LUT4 (Prop_lut4_I3_O)        0.124    21.428 r  UHANDLE/BCD[2]_i_148/O
+                         net (fo=1, routed)           0.000    21.428    UHANDLE/BCD[2]_i_148_n_0
+    SLICE_X0Y21          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    21.829 r  UHANDLE/BCD_reg[2]_i_115/CO[3]
+                         net (fo=1, routed)           0.000    21.829    UHANDLE/BCD_reg[2]_i_115_n_0
+    SLICE_X0Y22          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    22.051 r  UHANDLE/BCD_reg[3]_i_263/O[0]
+                         net (fo=1, routed)           0.661    22.712    UHANDLE/BCD_reg[3]_i_263_n_7
+    SLICE_X1Y22          LUT2 (Prop_lut2_I1_O)        0.299    23.011 r  UHANDLE/BCD[3]_i_192/O
+                         net (fo=1, routed)           0.000    23.011    UHANDLE/BCD[3]_i_192_n_0
+    SLICE_X1Y22          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    23.412 r  UHANDLE/BCD_reg[3]_i_111/CO[3]
+                         net (fo=1, routed)           0.000    23.412    UHANDLE/BCD_reg[3]_i_111_n_0
+    SLICE_X1Y23          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    23.746 r  UHANDLE/BCD_reg[3]_i_110/O[1]
+                         net (fo=1, routed)           0.804    24.550    UHANDLE/BCD_reg[3]_i_110_n_6
+    SLICE_X3Y24          LUT4 (Prop_lut4_I0_O)        0.303    24.853 r  UHANDLE/BCD[3]_i_75/O
+                         net (fo=1, routed)           0.000    24.853    UHANDLE/BCD[3]_i_75_n_0
+    SLICE_X3Y24          CARRY4 (Prop_carry4_S[2]_O[2])
+                                                      0.248    25.101 f  UHANDLE/BCD_reg[3]_i_26/O[2]
+                         net (fo=1, routed)           0.984    26.085    UHANDLE/BCD_reg[3]_i_26_n_5
+    SLICE_X3Y27          LUT1 (Prop_lut1_I0_O)        0.302    26.387 r  UHANDLE/BCD[3]_i_71/O
+                         net (fo=1, routed)           0.000    26.387    UHANDLE/BCD[3]_i_71_n_0
+    SLICE_X3Y27          CARRY4 (Prop_carry4_S[2]_CO[2])
+                                                      0.314    26.701 r  UHANDLE/BCD_reg[3]_i_25/CO[2]
+                         net (fo=30, routed)          1.622    28.323    UHANDLE/BCD_reg[3]_i_25_n_1
+    SLICE_X6Y23          LUT3 (Prop_lut3_I1_O)        0.313    28.636 r  UHANDLE/BCD[3]_i_170/O
+                         net (fo=1, routed)           0.000    28.636    UHANDLE/o_BCD_bus4[4]
+    SLICE_X6Y23          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    29.012 r  UHANDLE/BCD_reg[3]_i_101/CO[3]
+                         net (fo=1, routed)           0.000    29.012    UHANDLE/BCD_reg[3]_i_101_n_0
+    SLICE_X6Y24          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    29.129 r  UHANDLE/BCD_reg[3]_i_58/CO[3]
+                         net (fo=1, routed)           0.009    29.138    UHANDLE/BCD_reg[3]_i_58_n_0
+    SLICE_X6Y25          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    29.461 r  UHANDLE/BCD_reg[3]_i_23/O[1]
+                         net (fo=1, routed)           0.577    30.038    UHANDLE/data0[10]
+    SLICE_X7Y25          LUT6 (Prop_lut6_I1_O)        0.306    30.344 r  UHANDLE/BCD[2]_i_14/O
+                         net (fo=20, routed)          1.663    32.007    UHANDLE/o_BCD_bus1[10]
+    SLICE_X14Y23         LUT2 (Prop_lut2_I1_O)        0.124    32.131 r  UHANDLE/BCD[2]_i_158/O
+                         net (fo=1, routed)           0.000    32.131    UHANDLE/BCD[2]_i_158_n_0
+    SLICE_X14Y23         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    32.644 r  UHANDLE/BCD_reg[2]_i_116/CO[3]
+                         net (fo=1, routed)           0.000    32.644    UHANDLE/BCD_reg[2]_i_116_n_0
+    SLICE_X14Y24         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    32.863 r  UHANDLE/BCD_reg[2]_i_71/O[0]
+                         net (fo=2, routed)           0.885    33.748    UHANDLE/BCD_reg[2]_i_71_n_7
+    SLICE_X13Y22         LUT2 (Prop_lut2_I0_O)        0.295    34.043 r  UHANDLE/BCD[2]_i_64/O
+                         net (fo=2, routed)           0.960    35.003    UHANDLE/BCD[2]_i_64_n_0
+    SLICE_X12Y23         LUT4 (Prop_lut4_I3_O)        0.124    35.127 r  UHANDLE/BCD[2]_i_67/O
+                         net (fo=1, routed)           0.000    35.127    UHANDLE/BCD[2]_i_67_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    35.503 r  UHANDLE/BCD_reg[2]_i_22/CO[3]
+                         net (fo=1, routed)           0.000    35.503    UHANDLE/BCD_reg[2]_i_22_n_0
+    SLICE_X12Y24         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    35.826 r  UHANDLE/BCD_reg[2]_i_11/O[1]
+                         net (fo=3, routed)           0.849    36.676    UHANDLE/BCD_reg[2]_i_11_n_6
+    SLICE_X13Y25         LUT4 (Prop_lut4_I1_O)        0.306    36.982 r  UHANDLE/BCD[2]_i_35/O
+                         net (fo=1, routed)           0.000    36.982    UHANDLE/BCD[2]_i_35_n_0
+    SLICE_X13Y25         CARRY4 (Prop_carry4_S[1]_CO[2])
+                                                      0.570    37.552 r  UHANDLE/BCD_reg[2]_i_13/CO[2]
+                         net (fo=4, routed)           0.851    38.402    UHANDLE/BCD_reg[2]_i_13_n_1
+    SLICE_X15Y24         LUT6 (Prop_lut6_I1_O)        0.313    38.715 r  UHANDLE/BCD[0]_i_3/O
+                         net (fo=1, routed)           0.304    39.019    UHANDLE/BCD[0]_i_3_n_0
+    SLICE_X15Y23         LUT6 (Prop_lut6_I1_O)        0.124    39.143 r  UHANDLE/BCD[0]_i_1/O
+                         net (fo=1, routed)           0.000    39.143    UDISPLAY/D[0]
+    SLICE_X15Y23         FDRE                                         r  UDISPLAY/BCD_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UHANDLE/byte_reg[2]/C
+  Source:                 UHANDLE/tussenwaarde_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UHANDLE/tussenwaarde_reg[31]_rep__1/D
+  Destination:            UDISPLAY/BCD_reg[2]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        18.690ns  (logic 9.907ns (53.006%)  route 8.783ns (46.994%))
-  Logic Levels:           18  (CARRY4=9 DSP48E1=2 FDRE=1 LUT2=1 LUT3=2 LUT4=1 LUT5=1 LUT6=1)
+  Data Path Delay:        39.086ns  (logic 12.292ns (31.449%)  route 26.794ns (68.551%))
+  Logic Levels:           42  (CARRY4=21 FDRE=1 LUT1=2 LUT2=3 LUT3=4 LUT4=4 LUT5=1 LUT6=6)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X6Y0           FDRE                         0.000     0.000 r  UHANDLE/byte_reg[2]/C
-    SLICE_X6Y0           FDRE (Prop_fdre_C_Q)         0.518     0.518 r  UHANDLE/byte_reg[2]/Q
-                         net (fo=14, routed)          1.165     1.683    UHANDLE/byte_reg[2]
-    SLICE_X7Y2           LUT3 (Prop_lut3_I2_O)        0.124     1.807 r  UHANDLE/geld1_i_122/O
-                         net (fo=1, routed)           0.000     1.807    UHANDLE/geld1_i_122_n_0
-    SLICE_X7Y2           CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401     2.208 r  UHANDLE/geld1_i_68/CO[3]
-                         net (fo=1, routed)           0.000     2.208    UHANDLE/geld1_i_68_n_0
-    SLICE_X7Y3           CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     2.542 r  UHANDLE/geld1_i_61/O[1]
-                         net (fo=4, routed)           1.387     3.930    UHANDLE/geld1_i_61_n_6
-    SLICE_X11Y1          LUT3 (Prop_lut3_I1_O)        0.303     4.233 r  UHANDLE/geld1_i_70/O
-                         net (fo=1, routed)           1.021     5.254    UHANDLE/geld1_i_70_n_0
-    SLICE_X9Y1           LUT5 (Prop_lut5_I1_O)        0.124     5.378 r  UHANDLE/geld1_i_36/O
-                         net (fo=1, routed)           0.000     5.378    UHANDLE/geld1_i_36_n_0
-    SLICE_X9Y1           CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401     5.779 r  UHANDLE/geld1_i_11/CO[3]
-                         net (fo=1, routed)           0.000     5.779    UHANDLE/geld1_i_11_n_0
-    SLICE_X9Y2           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114     5.893 r  UHANDLE/geld1_i_10/CO[3]
-                         net (fo=1, routed)           0.000     5.893    UHANDLE/geld1_i_10_n_0
-    SLICE_X9Y3           CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222     6.115 r  UHANDLE/geld1_i_9/O[0]
-                         net (fo=1, routed)           0.722     6.837    UHANDLE/geld2[16]
-    DSP48_X0Y0           DSP48E1 (Prop_dsp48e1_A[16]_PCOUT[47])
-                                                      4.211    11.048 r  UHANDLE/geld1/PCOUT[47]
-                         net (fo=1, routed)           0.002    11.050    UHANDLE/geld1_n_106
-    DSP48_X0Y1           DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
-                                                      1.518    12.568 r  UHANDLE/geld1__0/P[0]
-                         net (fo=4, routed)           1.893    14.460    UHANDLE/geld1__1[17]
-    SLICE_X34Y4          LUT2 (Prop_lut2_I1_O)        0.124    14.584 r  UHANDLE/geld[19]_i_5/O
-                         net (fo=1, routed)           0.000    14.584    UHANDLE/geld[19]_i_5_n_0
-    SLICE_X34Y4          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533    15.117 r  UHANDLE/geld_reg[19]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.117    UHANDLE/geld_reg[19]_i_2_n_0
-    SLICE_X34Y5          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.234 r  UHANDLE/geld_reg[23]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.234    UHANDLE/geld_reg[23]_i_2_n_0
-    SLICE_X34Y6          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.351 r  UHANDLE/geld_reg[27]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.351    UHANDLE/geld_reg[27]_i_2_n_0
-    SLICE_X34Y7          CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315    15.666 r  UHANDLE/geld_reg[31]_i_3/O[3]
-                         net (fo=1, routed)           0.606    16.273    UHANDLE/geld_reg[31]_i_3_n_4
-    SLICE_X30Y7          LUT4 (Prop_lut4_I2_O)        0.307    16.580 r  UHANDLE/geld[31]_i_1/O
-                         net (fo=6, routed)           1.396    17.976    UHANDLE/geld[31]_i_1_n_0
-    SLICE_X11Y8          LUT6 (Prop_lut6_I1_O)        0.124    18.100 r  UHANDLE/tussenwaarde[31]_rep__1_i_1/O
-                         net (fo=1, routed)           0.591    18.690    UHANDLE/tussenwaarde[31]_rep__1_i_1_n_0
-    SLICE_X11Y8          FDRE                                         r  UHANDLE/tussenwaarde_reg[31]_rep__1/D
+    SLICE_X28Y2          FDRE                         0.000     0.000 r  UHANDLE/tussenwaarde_reg[0]/C
+    SLICE_X28Y2          FDRE (Prop_fdre_C_Q)         0.456     0.456 f  UHANDLE/tussenwaarde_reg[0]/Q
+                         net (fo=115, routed)         4.099     4.555    UHANDLE/bcd_to_display[0]
+    SLICE_X2Y4           LUT1 (Prop_lut1_I0_O)        0.124     4.679 r  UHANDLE/BCD[3]_i_135/O
+                         net (fo=5, routed)           1.274     5.953    UHANDLE/BCD[3]_i_135_n_0
+    SLICE_X1Y12          CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     6.533 r  UHANDLE/BCD_reg[3]_i_95/CO[3]
+                         net (fo=1, routed)           0.000     6.533    UHANDLE/BCD_reg[3]_i_95_n_0
+    SLICE_X1Y13          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     6.647 r  UHANDLE/BCD_reg[3]_i_99/CO[3]
+                         net (fo=1, routed)           0.000     6.647    UHANDLE/BCD_reg[3]_i_99_n_0
+    SLICE_X1Y14          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     6.981 r  UHANDLE/BCD_reg[3]_i_109/O[1]
+                         net (fo=31, routed)          1.604     8.586    UHANDLE/o_BCD_bus6[10]
+    SLICE_X3Y7           LUT3 (Prop_lut3_I0_O)        0.303     8.889 r  UHANDLE/BCD[3]_i_572/O
+                         net (fo=59, routed)          3.443    12.332    UHANDLE/o_BCD_bus5[10]
+    SLICE_X5Y23          LUT6 (Prop_lut6_I3_O)        0.124    12.456 r  UHANDLE/BCD[3]_i_454/O
+                         net (fo=4, routed)           1.500    13.956    UHANDLE/BCD[3]_i_454_n_0
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.124    14.080 r  UHANDLE/BCD[3]_i_914/O
+                         net (fo=1, routed)           0.000    14.080    UHANDLE/BCD[3]_i_914_n_0
+    SLICE_X2Y17          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    14.593 r  UHANDLE/BCD_reg[3]_i_666/CO[3]
+                         net (fo=1, routed)           0.000    14.593    UHANDLE/BCD_reg[3]_i_666_n_0
+    SLICE_X2Y18          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    14.916 r  UHANDLE/BCD_reg[3]_i_473/O[1]
+                         net (fo=3, routed)           1.296    16.212    UHANDLE/BCD_reg[3]_i_473_n_6
+    SLICE_X7Y15          LUT3 (Prop_lut3_I2_O)        0.306    16.518 r  UHANDLE/BCD[3]_i_481/O
+                         net (fo=2, routed)           1.171    17.689    UHANDLE/BCD[3]_i_481_n_0
+    SLICE_X2Y13          LUT5 (Prop_lut5_I1_O)        0.124    17.813 r  UHANDLE/BCD[3]_i_258/O
+                         net (fo=2, routed)           0.554    18.367    UHANDLE/BCD[3]_i_258_n_0
+    SLICE_X3Y15          LUT6 (Prop_lut6_I0_O)        0.124    18.491 r  UHANDLE/BCD[3]_i_262/O
+                         net (fo=1, routed)           0.000    18.491    UHANDLE/BCD[3]_i_262_n_0
+    SLICE_X3Y15          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    19.023 r  UHANDLE/BCD_reg[3]_i_189/CO[3]
+                         net (fo=1, routed)           0.000    19.023    UHANDLE/BCD_reg[3]_i_189_n_0
+    SLICE_X3Y16          CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    19.262 r  UHANDLE/BCD_reg[3]_i_264/O[2]
+                         net (fo=4, routed)           1.019    20.281    UHANDLE/BCD_reg[3]_i_264_n_5
+    SLICE_X1Y21          LUT3 (Prop_lut3_I2_O)        0.302    20.583 r  UHANDLE/BCD[2]_i_145/O
+                         net (fo=2, routed)           0.721    21.304    UHANDLE/BCD[2]_i_145_n_0
+    SLICE_X0Y21          LUT4 (Prop_lut4_I3_O)        0.124    21.428 r  UHANDLE/BCD[2]_i_148/O
+                         net (fo=1, routed)           0.000    21.428    UHANDLE/BCD[2]_i_148_n_0
+    SLICE_X0Y21          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    21.829 r  UHANDLE/BCD_reg[2]_i_115/CO[3]
+                         net (fo=1, routed)           0.000    21.829    UHANDLE/BCD_reg[2]_i_115_n_0
+    SLICE_X0Y22          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    22.051 r  UHANDLE/BCD_reg[3]_i_263/O[0]
+                         net (fo=1, routed)           0.661    22.712    UHANDLE/BCD_reg[3]_i_263_n_7
+    SLICE_X1Y22          LUT2 (Prop_lut2_I1_O)        0.299    23.011 r  UHANDLE/BCD[3]_i_192/O
+                         net (fo=1, routed)           0.000    23.011    UHANDLE/BCD[3]_i_192_n_0
+    SLICE_X1Y22          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    23.412 r  UHANDLE/BCD_reg[3]_i_111/CO[3]
+                         net (fo=1, routed)           0.000    23.412    UHANDLE/BCD_reg[3]_i_111_n_0
+    SLICE_X1Y23          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    23.746 r  UHANDLE/BCD_reg[3]_i_110/O[1]
+                         net (fo=1, routed)           0.804    24.550    UHANDLE/BCD_reg[3]_i_110_n_6
+    SLICE_X3Y24          LUT4 (Prop_lut4_I0_O)        0.303    24.853 r  UHANDLE/BCD[3]_i_75/O
+                         net (fo=1, routed)           0.000    24.853    UHANDLE/BCD[3]_i_75_n_0
+    SLICE_X3Y24          CARRY4 (Prop_carry4_S[2]_O[2])
+                                                      0.248    25.101 f  UHANDLE/BCD_reg[3]_i_26/O[2]
+                         net (fo=1, routed)           0.984    26.085    UHANDLE/BCD_reg[3]_i_26_n_5
+    SLICE_X3Y27          LUT1 (Prop_lut1_I0_O)        0.302    26.387 r  UHANDLE/BCD[3]_i_71/O
+                         net (fo=1, routed)           0.000    26.387    UHANDLE/BCD[3]_i_71_n_0
+    SLICE_X3Y27          CARRY4 (Prop_carry4_S[2]_CO[2])
+                                                      0.314    26.701 r  UHANDLE/BCD_reg[3]_i_25/CO[2]
+                         net (fo=30, routed)          1.622    28.323    UHANDLE/BCD_reg[3]_i_25_n_1
+    SLICE_X6Y23          LUT3 (Prop_lut3_I1_O)        0.313    28.636 r  UHANDLE/BCD[3]_i_170/O
+                         net (fo=1, routed)           0.000    28.636    UHANDLE/o_BCD_bus4[4]
+    SLICE_X6Y23          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    29.012 r  UHANDLE/BCD_reg[3]_i_101/CO[3]
+                         net (fo=1, routed)           0.000    29.012    UHANDLE/BCD_reg[3]_i_101_n_0
+    SLICE_X6Y24          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    29.129 r  UHANDLE/BCD_reg[3]_i_58/CO[3]
+                         net (fo=1, routed)           0.009    29.138    UHANDLE/BCD_reg[3]_i_58_n_0
+    SLICE_X6Y25          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    29.461 r  UHANDLE/BCD_reg[3]_i_23/O[1]
+                         net (fo=1, routed)           0.577    30.038    UHANDLE/data0[10]
+    SLICE_X7Y25          LUT6 (Prop_lut6_I1_O)        0.306    30.344 r  UHANDLE/BCD[2]_i_14/O
+                         net (fo=20, routed)          1.663    32.007    UHANDLE/o_BCD_bus1[10]
+    SLICE_X14Y23         LUT2 (Prop_lut2_I1_O)        0.124    32.131 r  UHANDLE/BCD[2]_i_158/O
+                         net (fo=1, routed)           0.000    32.131    UHANDLE/BCD[2]_i_158_n_0
+    SLICE_X14Y23         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    32.644 r  UHANDLE/BCD_reg[2]_i_116/CO[3]
+                         net (fo=1, routed)           0.000    32.644    UHANDLE/BCD_reg[2]_i_116_n_0
+    SLICE_X14Y24         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    32.863 r  UHANDLE/BCD_reg[2]_i_71/O[0]
+                         net (fo=2, routed)           0.885    33.748    UHANDLE/BCD_reg[2]_i_71_n_7
+    SLICE_X13Y22         LUT2 (Prop_lut2_I0_O)        0.295    34.043 r  UHANDLE/BCD[2]_i_64/O
+                         net (fo=2, routed)           0.960    35.003    UHANDLE/BCD[2]_i_64_n_0
+    SLICE_X12Y23         LUT4 (Prop_lut4_I3_O)        0.124    35.127 r  UHANDLE/BCD[2]_i_67/O
+                         net (fo=1, routed)           0.000    35.127    UHANDLE/BCD[2]_i_67_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    35.503 r  UHANDLE/BCD_reg[2]_i_22/CO[3]
+                         net (fo=1, routed)           0.000    35.503    UHANDLE/BCD_reg[2]_i_22_n_0
+    SLICE_X12Y24         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    35.826 r  UHANDLE/BCD_reg[2]_i_11/O[1]
+                         net (fo=3, routed)           0.849    36.676    UHANDLE/BCD_reg[2]_i_11_n_6
+    SLICE_X13Y25         LUT4 (Prop_lut4_I1_O)        0.306    36.982 r  UHANDLE/BCD[2]_i_35/O
+                         net (fo=1, routed)           0.000    36.982    UHANDLE/BCD[2]_i_35_n_0
+    SLICE_X13Y25         CARRY4 (Prop_carry4_S[1]_CO[2])
+                                                      0.570    37.552 r  UHANDLE/BCD_reg[2]_i_13/CO[2]
+                         net (fo=4, routed)           0.447    37.998    UHANDLE/BCD_reg[2]_i_13_n_1
+    SLICE_X15Y24         LUT6 (Prop_lut6_I4_O)        0.313    38.311 r  UHANDLE/BCD[2]_i_3/O
+                         net (fo=1, routed)           0.650    38.962    UHANDLE/bcd_to_display[14]
+    SLICE_X15Y23         LUT6 (Prop_lut6_I1_O)        0.124    39.086 r  UHANDLE/BCD[2]_i_1/O
+                         net (fo=1, routed)           0.000    39.086    UDISPLAY/D[2]
+    SLICE_X15Y23         FDRE                                         r  UDISPLAY/BCD_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UHANDLE/byte_reg[2]/C
+  Source:                 UHANDLE/byte_reg[3]/C
                             (rising edge-triggered cell FDRE)
   Destination:            UHANDLE/tussenwaarde_reg[31]_rep/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        18.615ns  (logic 9.907ns (53.220%)  route 8.708ns (46.780%))
-  Logic Levels:           18  (CARRY4=9 DSP48E1=2 FDRE=1 LUT2=1 LUT3=2 LUT4=1 LUT5=1 LUT6=1)
+  Data Path Delay:        18.015ns  (logic 9.582ns (53.190%)  route 8.433ns (46.810%))
+  Logic Levels:           15  (CARRY4=6 DSP48E1=2 FDRE=1 LUT2=1 LUT4=2 LUT5=1 LUT6=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X6Y0           FDRE                         0.000     0.000 r  UHANDLE/byte_reg[2]/C
-    SLICE_X6Y0           FDRE (Prop_fdre_C_Q)         0.518     0.518 r  UHANDLE/byte_reg[2]/Q
-                         net (fo=14, routed)          1.165     1.683    UHANDLE/byte_reg[2]
-    SLICE_X7Y2           LUT3 (Prop_lut3_I2_O)        0.124     1.807 r  UHANDLE/geld1_i_122/O
-                         net (fo=1, routed)           0.000     1.807    UHANDLE/geld1_i_122_n_0
-    SLICE_X7Y2           CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401     2.208 r  UHANDLE/geld1_i_68/CO[3]
-                         net (fo=1, routed)           0.000     2.208    UHANDLE/geld1_i_68_n_0
-    SLICE_X7Y3           CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     2.542 r  UHANDLE/geld1_i_61/O[1]
-                         net (fo=4, routed)           1.387     3.930    UHANDLE/geld1_i_61_n_6
-    SLICE_X11Y1          LUT3 (Prop_lut3_I1_O)        0.303     4.233 r  UHANDLE/geld1_i_70/O
-                         net (fo=1, routed)           1.021     5.254    UHANDLE/geld1_i_70_n_0
-    SLICE_X9Y1           LUT5 (Prop_lut5_I1_O)        0.124     5.378 r  UHANDLE/geld1_i_36/O
-                         net (fo=1, routed)           0.000     5.378    UHANDLE/geld1_i_36_n_0
-    SLICE_X9Y1           CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401     5.779 r  UHANDLE/geld1_i_11/CO[3]
-                         net (fo=1, routed)           0.000     5.779    UHANDLE/geld1_i_11_n_0
-    SLICE_X9Y2           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114     5.893 r  UHANDLE/geld1_i_10/CO[3]
-                         net (fo=1, routed)           0.000     5.893    UHANDLE/geld1_i_10_n_0
-    SLICE_X9Y3           CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222     6.115 r  UHANDLE/geld1_i_9/O[0]
-                         net (fo=1, routed)           0.722     6.837    UHANDLE/geld2[16]
+    SLICE_X10Y0          FDRE                         0.000     0.000 r  UHANDLE/byte_reg[3]/C
+    SLICE_X10Y0          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  UHANDLE/byte_reg[3]/Q
+                         net (fo=17, routed)          1.490     2.008    UHANDLE/byte_reg[3]
+    SLICE_X14Y2          LUT4 (Prop_lut4_I3_O)        0.124     2.132 r  UHANDLE/geld1_i_114/O
+                         net (fo=1, routed)           0.000     2.132    UHANDLE/geld1_i_114_n_0
+    SLICE_X14Y2          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     2.665 r  UHANDLE/geld1_i_65/CO[3]
+                         net (fo=1, routed)           0.000     2.665    UHANDLE/geld1_i_65_n_0
+    SLICE_X14Y3          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.884 r  UHANDLE/geld1_i_57/O[0]
+                         net (fo=4, routed)           1.366     4.250    UHANDLE/geld1_i_57_n_7
+    SLICE_X9Y2           LUT6 (Prop_lut6_I4_O)        0.295     4.545 r  UHANDLE/geld1_i_25/O
+                         net (fo=2, routed)           0.788     5.333    UHANDLE/geld1_i_25_n_0
+    SLICE_X11Y2          LUT5 (Prop_lut5_I0_O)        0.124     5.457 r  UHANDLE/geld1_i_29/O
+                         net (fo=1, routed)           0.000     5.457    UHANDLE/geld1_i_29_n_0
+    SLICE_X11Y2          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     5.858 r  UHANDLE/geld1_i_10/CO[3]
+                         net (fo=1, routed)           0.000     5.858    UHANDLE/geld1_i_10_n_0
+    SLICE_X11Y3          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     6.080 r  UHANDLE/geld1_i_9/O[0]
+                         net (fo=1, routed)           0.520     6.600    UHANDLE/geld2[16]
     DSP48_X0Y0           DSP48E1 (Prop_dsp48e1_A[16]_PCOUT[47])
-                                                      4.211    11.048 r  UHANDLE/geld1/PCOUT[47]
-                         net (fo=1, routed)           0.002    11.050    UHANDLE/geld1_n_106
-    DSP48_X0Y1           DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
-                                                      1.518    12.568 r  UHANDLE/geld1__0/P[0]
-                         net (fo=4, routed)           1.893    14.460    UHANDLE/geld1__1[17]
-    SLICE_X34Y4          LUT2 (Prop_lut2_I1_O)        0.124    14.584 r  UHANDLE/geld[19]_i_5/O
-                         net (fo=1, routed)           0.000    14.584    UHANDLE/geld[19]_i_5_n_0
-    SLICE_X34Y4          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533    15.117 r  UHANDLE/geld_reg[19]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.117    UHANDLE/geld_reg[19]_i_2_n_0
-    SLICE_X34Y5          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.234 r  UHANDLE/geld_reg[23]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.234    UHANDLE/geld_reg[23]_i_2_n_0
-    SLICE_X34Y6          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.351 r  UHANDLE/geld_reg[27]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.351    UHANDLE/geld_reg[27]_i_2_n_0
-    SLICE_X34Y7          CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315    15.666 r  UHANDLE/geld_reg[31]_i_3/O[3]
-                         net (fo=1, routed)           0.606    16.273    UHANDLE/geld_reg[31]_i_3_n_4
-    SLICE_X30Y7          LUT4 (Prop_lut4_I2_O)        0.307    16.580 r  UHANDLE/geld[31]_i_1/O
-                         net (fo=6, routed)           1.318    17.898    UHANDLE/geld[31]_i_1_n_0
-    SLICE_X11Y8          LUT6 (Prop_lut6_I1_O)        0.124    18.022 r  UHANDLE/tussenwaarde[31]_rep_i_1/O
-                         net (fo=1, routed)           0.593    18.615    UHANDLE/tussenwaarde[31]_rep_i_1_n_0
-    SLICE_X11Y8          FDRE                                         r  UHANDLE/tussenwaarde_reg[31]_rep/D
+                                                      4.211    10.811 r  UHANDLE/geld1/PCOUT[47]
+                         net (fo=1, routed)           0.002    10.813    UHANDLE/geld1_n_106
+    DSP48_X0Y1           DSP48E1 (Prop_dsp48e1_PCIN[47]_P[8])
+                                                      1.518    12.331 r  UHANDLE/geld1__0/P[8]
+                         net (fo=3, routed)           1.996    14.327    UHANDLE/geld1__1[25]
+    SLICE_X39Y7          LUT2 (Prop_lut2_I1_O)        0.124    14.451 r  UHANDLE/robot[27]_i_5/O
+                         net (fo=1, routed)           0.000    14.451    UHANDLE/robot[27]_i_5_n_0
+    SLICE_X39Y7          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    15.001 r  UHANDLE/robot_reg[27]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    15.001    UHANDLE/robot_reg[27]_i_2_n_0
+    SLICE_X39Y8          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    15.314 r  UHANDLE/robot_reg[31]_i_3/O[3]
+                         net (fo=1, routed)           0.803    16.117    UHANDLE/robot_reg[31]_i_3_n_4
+    SLICE_X37Y8          LUT4 (Prop_lut4_I2_O)        0.306    16.423 r  UHANDLE/robot[31]_i_1/O
+                         net (fo=6, routed)           0.754    17.176    UHANDLE/robot[31]_i_1_n_0
+    SLICE_X33Y8          LUT6 (Prop_lut6_I2_O)        0.124    17.300 r  UHANDLE/tussenwaarde[31]_rep_i_1/O
+                         net (fo=1, routed)           0.714    18.015    UHANDLE/tussenwaarde[31]_rep_i_1_n_0
+    SLICE_X32Y8          FDRE                                         r  UHANDLE/tussenwaarde_reg[31]_rep/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UHANDLE/byte_reg[2]/C
+  Source:                 UHANDLE/byte_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UHANDLE/tussenwaarde_reg[31]_rep__0/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        17.935ns  (logic 9.678ns (53.961%)  route 8.257ns (46.039%))
+  Logic Levels:           16  (CARRY4=7 DSP48E1=2 FDRE=1 LUT2=1 LUT4=2 LUT5=1 LUT6=2)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X10Y0          FDRE                         0.000     0.000 r  UHANDLE/byte_reg[3]/C
+    SLICE_X10Y0          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  UHANDLE/byte_reg[3]/Q
+                         net (fo=17, routed)          1.490     2.008    UHANDLE/byte_reg[3]
+    SLICE_X14Y2          LUT4 (Prop_lut4_I3_O)        0.124     2.132 r  UHANDLE/geld1_i_114/O
+                         net (fo=1, routed)           0.000     2.132    UHANDLE/geld1_i_114_n_0
+    SLICE_X14Y2          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     2.665 r  UHANDLE/geld1_i_65/CO[3]
+                         net (fo=1, routed)           0.000     2.665    UHANDLE/geld1_i_65_n_0
+    SLICE_X14Y3          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.884 r  UHANDLE/geld1_i_57/O[0]
+                         net (fo=4, routed)           1.366     4.250    UHANDLE/geld1_i_57_n_7
+    SLICE_X9Y2           LUT6 (Prop_lut6_I4_O)        0.295     4.545 r  UHANDLE/geld1_i_25/O
+                         net (fo=2, routed)           0.788     5.333    UHANDLE/geld1_i_25_n_0
+    SLICE_X11Y2          LUT5 (Prop_lut5_I0_O)        0.124     5.457 r  UHANDLE/geld1_i_29/O
+                         net (fo=1, routed)           0.000     5.457    UHANDLE/geld1_i_29_n_0
+    SLICE_X11Y2          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     5.858 r  UHANDLE/geld1_i_10/CO[3]
+                         net (fo=1, routed)           0.000     5.858    UHANDLE/geld1_i_10_n_0
+    SLICE_X11Y3          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     6.080 r  UHANDLE/geld1_i_9/O[0]
+                         net (fo=1, routed)           0.520     6.600    UHANDLE/geld2[16]
+    DSP48_X0Y0           DSP48E1 (Prop_dsp48e1_A[16]_PCOUT[47])
+                                                      4.211    10.811 r  UHANDLE/geld1/PCOUT[47]
+                         net (fo=1, routed)           0.002    10.813    UHANDLE/geld1_n_106
+    DSP48_X0Y1           DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    12.331 r  UHANDLE/geld1__0/P[3]
+                         net (fo=3, routed)           1.853    14.184    UHANDLE/geld1__1[20]
+    SLICE_X35Y6          LUT2 (Prop_lut2_I1_O)        0.124    14.308 r  UHANDLE/plant[23]_i_6/O
+                         net (fo=1, routed)           0.000    14.308    UHANDLE/plant[23]_i_6_n_0
+    SLICE_X35Y6          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    14.840 r  UHANDLE/plant_reg[23]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    14.840    UHANDLE/plant_reg[23]_i_2_n_0
+    SLICE_X35Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    14.954 r  UHANDLE/plant_reg[27]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    14.954    UHANDLE/plant_reg[27]_i_2_n_0
+    SLICE_X35Y8          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    15.267 r  UHANDLE/plant_reg[31]_i_3/O[3]
+                         net (fo=1, routed)           0.810    16.077    UHANDLE/data1[31]
+    SLICE_X33Y8          LUT4 (Prop_lut4_I3_O)        0.306    16.383 r  UHANDLE/plant[31]_i_1/O
+                         net (fo=6, routed)           0.862    17.245    UHANDLE/plant[31]_i_1_n_0
+    SLICE_X33Y7          LUT6 (Prop_lut6_I1_O)        0.124    17.369 r  UHANDLE/tussenwaarde[31]_rep__0_i_1/O
+                         net (fo=1, routed)           0.566    17.935    UHANDLE/tussenwaarde[31]_rep__0_i_1_n_0
+    SLICE_X31Y7          FDRE                                         r  UHANDLE/tussenwaarde_reg[31]_rep__0/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 UHANDLE/byte_reg[3]/C
                             (rising edge-triggered cell FDRE)
   Destination:            UHANDLE/tussenwaarde_reg[31]_rep__2/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        18.591ns  (logic 9.907ns (53.288%)  route 8.684ns (46.712%))
-  Logic Levels:           18  (CARRY4=9 DSP48E1=2 FDRE=1 LUT2=1 LUT3=2 LUT4=1 LUT5=1 LUT6=1)
+  Data Path Delay:        17.931ns  (logic 9.582ns (53.439%)  route 8.349ns (46.561%))
+  Logic Levels:           15  (CARRY4=6 DSP48E1=2 FDRE=1 LUT2=1 LUT4=2 LUT5=1 LUT6=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X6Y0           FDRE                         0.000     0.000 r  UHANDLE/byte_reg[2]/C
-    SLICE_X6Y0           FDRE (Prop_fdre_C_Q)         0.518     0.518 r  UHANDLE/byte_reg[2]/Q
-                         net (fo=14, routed)          1.165     1.683    UHANDLE/byte_reg[2]
-    SLICE_X7Y2           LUT3 (Prop_lut3_I2_O)        0.124     1.807 r  UHANDLE/geld1_i_122/O
-                         net (fo=1, routed)           0.000     1.807    UHANDLE/geld1_i_122_n_0
-    SLICE_X7Y2           CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401     2.208 r  UHANDLE/geld1_i_68/CO[3]
-                         net (fo=1, routed)           0.000     2.208    UHANDLE/geld1_i_68_n_0
-    SLICE_X7Y3           CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     2.542 r  UHANDLE/geld1_i_61/O[1]
-                         net (fo=4, routed)           1.387     3.930    UHANDLE/geld1_i_61_n_6
-    SLICE_X11Y1          LUT3 (Prop_lut3_I1_O)        0.303     4.233 r  UHANDLE/geld1_i_70/O
-                         net (fo=1, routed)           1.021     5.254    UHANDLE/geld1_i_70_n_0
-    SLICE_X9Y1           LUT5 (Prop_lut5_I1_O)        0.124     5.378 r  UHANDLE/geld1_i_36/O
-                         net (fo=1, routed)           0.000     5.378    UHANDLE/geld1_i_36_n_0
-    SLICE_X9Y1           CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401     5.779 r  UHANDLE/geld1_i_11/CO[3]
-                         net (fo=1, routed)           0.000     5.779    UHANDLE/geld1_i_11_n_0
-    SLICE_X9Y2           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114     5.893 r  UHANDLE/geld1_i_10/CO[3]
-                         net (fo=1, routed)           0.000     5.893    UHANDLE/geld1_i_10_n_0
-    SLICE_X9Y3           CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222     6.115 r  UHANDLE/geld1_i_9/O[0]
-                         net (fo=1, routed)           0.722     6.837    UHANDLE/geld2[16]
+    SLICE_X10Y0          FDRE                         0.000     0.000 r  UHANDLE/byte_reg[3]/C
+    SLICE_X10Y0          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  UHANDLE/byte_reg[3]/Q
+                         net (fo=17, routed)          1.490     2.008    UHANDLE/byte_reg[3]
+    SLICE_X14Y2          LUT4 (Prop_lut4_I3_O)        0.124     2.132 r  UHANDLE/geld1_i_114/O
+                         net (fo=1, routed)           0.000     2.132    UHANDLE/geld1_i_114_n_0
+    SLICE_X14Y2          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     2.665 r  UHANDLE/geld1_i_65/CO[3]
+                         net (fo=1, routed)           0.000     2.665    UHANDLE/geld1_i_65_n_0
+    SLICE_X14Y3          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.884 r  UHANDLE/geld1_i_57/O[0]
+                         net (fo=4, routed)           1.366     4.250    UHANDLE/geld1_i_57_n_7
+    SLICE_X9Y2           LUT6 (Prop_lut6_I4_O)        0.295     4.545 r  UHANDLE/geld1_i_25/O
+                         net (fo=2, routed)           0.788     5.333    UHANDLE/geld1_i_25_n_0
+    SLICE_X11Y2          LUT5 (Prop_lut5_I0_O)        0.124     5.457 r  UHANDLE/geld1_i_29/O
+                         net (fo=1, routed)           0.000     5.457    UHANDLE/geld1_i_29_n_0
+    SLICE_X11Y2          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     5.858 r  UHANDLE/geld1_i_10/CO[3]
+                         net (fo=1, routed)           0.000     5.858    UHANDLE/geld1_i_10_n_0
+    SLICE_X11Y3          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     6.080 r  UHANDLE/geld1_i_9/O[0]
+                         net (fo=1, routed)           0.520     6.600    UHANDLE/geld2[16]
     DSP48_X0Y0           DSP48E1 (Prop_dsp48e1_A[16]_PCOUT[47])
-                                                      4.211    11.048 r  UHANDLE/geld1/PCOUT[47]
-                         net (fo=1, routed)           0.002    11.050    UHANDLE/geld1_n_106
-    DSP48_X0Y1           DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
-                                                      1.518    12.568 r  UHANDLE/geld1__0/P[0]
-                         net (fo=4, routed)           1.893    14.460    UHANDLE/geld1__1[17]
-    SLICE_X34Y4          LUT2 (Prop_lut2_I1_O)        0.124    14.584 r  UHANDLE/geld[19]_i_5/O
-                         net (fo=1, routed)           0.000    14.584    UHANDLE/geld[19]_i_5_n_0
-    SLICE_X34Y4          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533    15.117 r  UHANDLE/geld_reg[19]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.117    UHANDLE/geld_reg[19]_i_2_n_0
-    SLICE_X34Y5          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.234 r  UHANDLE/geld_reg[23]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.234    UHANDLE/geld_reg[23]_i_2_n_0
-    SLICE_X34Y6          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.351 r  UHANDLE/geld_reg[27]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.351    UHANDLE/geld_reg[27]_i_2_n_0
-    SLICE_X34Y7          CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315    15.666 r  UHANDLE/geld_reg[31]_i_3/O[3]
-                         net (fo=1, routed)           0.606    16.273    UHANDLE/geld_reg[31]_i_3_n_4
-    SLICE_X30Y7          LUT4 (Prop_lut4_I2_O)        0.307    16.580 r  UHANDLE/geld[31]_i_1/O
-                         net (fo=6, routed)           1.319    17.899    UHANDLE/geld[31]_i_1_n_0
-    SLICE_X11Y8          LUT6 (Prop_lut6_I1_O)        0.124    18.023 r  UHANDLE/tussenwaarde[31]_rep__2_i_1/O
-                         net (fo=1, routed)           0.569    18.591    UHANDLE/tussenwaarde[31]_rep__2_i_1_n_0
-    SLICE_X11Y8          FDRE                                         r  UHANDLE/tussenwaarde_reg[31]_rep__2/D
+                                                      4.211    10.811 r  UHANDLE/geld1/PCOUT[47]
+                         net (fo=1, routed)           0.002    10.813    UHANDLE/geld1_n_106
+    DSP48_X0Y1           DSP48E1 (Prop_dsp48e1_PCIN[47]_P[8])
+                                                      1.518    12.331 r  UHANDLE/geld1__0/P[8]
+                         net (fo=3, routed)           1.996    14.327    UHANDLE/geld1__1[25]
+    SLICE_X39Y7          LUT2 (Prop_lut2_I1_O)        0.124    14.451 r  UHANDLE/robot[27]_i_5/O
+                         net (fo=1, routed)           0.000    14.451    UHANDLE/robot[27]_i_5_n_0
+    SLICE_X39Y7          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    15.001 r  UHANDLE/robot_reg[27]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    15.001    UHANDLE/robot_reg[27]_i_2_n_0
+    SLICE_X39Y8          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    15.314 r  UHANDLE/robot_reg[31]_i_3/O[3]
+                         net (fo=1, routed)           0.803    16.117    UHANDLE/robot_reg[31]_i_3_n_4
+    SLICE_X37Y8          LUT4 (Prop_lut4_I2_O)        0.306    16.423 r  UHANDLE/robot[31]_i_1/O
+                         net (fo=6, routed)           1.044    17.467    UHANDLE/robot[31]_i_1_n_0
+    SLICE_X33Y7          LUT6 (Prop_lut6_I2_O)        0.124    17.591 r  UHANDLE/tussenwaarde[31]_rep__2_i_1/O
+                         net (fo=1, routed)           0.340    17.931    UHANDLE/tussenwaarde[31]_rep__2_i_1_n_0
+    SLICE_X33Y7          FDRE                                         r  UHANDLE/tussenwaarde_reg[31]_rep__2/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UHANDLE/byte_reg[2]/C
+  Source:                 UHANDLE/byte_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UHANDLE/tussenwaarde_reg[31]_rep__1/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        17.874ns  (logic 9.678ns (54.146%)  route 8.196ns (45.854%))
+  Logic Levels:           16  (CARRY4=7 DSP48E1=2 FDRE=1 LUT2=1 LUT4=2 LUT5=1 LUT6=2)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X10Y0          FDRE                         0.000     0.000 r  UHANDLE/byte_reg[3]/C
+    SLICE_X10Y0          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  UHANDLE/byte_reg[3]/Q
+                         net (fo=17, routed)          1.490     2.008    UHANDLE/byte_reg[3]
+    SLICE_X14Y2          LUT4 (Prop_lut4_I3_O)        0.124     2.132 r  UHANDLE/geld1_i_114/O
+                         net (fo=1, routed)           0.000     2.132    UHANDLE/geld1_i_114_n_0
+    SLICE_X14Y2          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     2.665 r  UHANDLE/geld1_i_65/CO[3]
+                         net (fo=1, routed)           0.000     2.665    UHANDLE/geld1_i_65_n_0
+    SLICE_X14Y3          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.884 r  UHANDLE/geld1_i_57/O[0]
+                         net (fo=4, routed)           1.366     4.250    UHANDLE/geld1_i_57_n_7
+    SLICE_X9Y2           LUT6 (Prop_lut6_I4_O)        0.295     4.545 r  UHANDLE/geld1_i_25/O
+                         net (fo=2, routed)           0.788     5.333    UHANDLE/geld1_i_25_n_0
+    SLICE_X11Y2          LUT5 (Prop_lut5_I0_O)        0.124     5.457 r  UHANDLE/geld1_i_29/O
+                         net (fo=1, routed)           0.000     5.457    UHANDLE/geld1_i_29_n_0
+    SLICE_X11Y2          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     5.858 r  UHANDLE/geld1_i_10/CO[3]
+                         net (fo=1, routed)           0.000     5.858    UHANDLE/geld1_i_10_n_0
+    SLICE_X11Y3          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     6.080 r  UHANDLE/geld1_i_9/O[0]
+                         net (fo=1, routed)           0.520     6.600    UHANDLE/geld2[16]
+    DSP48_X0Y0           DSP48E1 (Prop_dsp48e1_A[16]_PCOUT[47])
+                                                      4.211    10.811 r  UHANDLE/geld1/PCOUT[47]
+                         net (fo=1, routed)           0.002    10.813    UHANDLE/geld1_n_106
+    DSP48_X0Y1           DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    12.331 r  UHANDLE/geld1__0/P[3]
+                         net (fo=3, routed)           1.853    14.184    UHANDLE/geld1__1[20]
+    SLICE_X35Y6          LUT2 (Prop_lut2_I1_O)        0.124    14.308 r  UHANDLE/plant[23]_i_6/O
+                         net (fo=1, routed)           0.000    14.308    UHANDLE/plant[23]_i_6_n_0
+    SLICE_X35Y6          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    14.840 r  UHANDLE/plant_reg[23]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    14.840    UHANDLE/plant_reg[23]_i_2_n_0
+    SLICE_X35Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    14.954 r  UHANDLE/plant_reg[27]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    14.954    UHANDLE/plant_reg[27]_i_2_n_0
+    SLICE_X35Y8          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    15.267 r  UHANDLE/plant_reg[31]_i_3/O[3]
+                         net (fo=1, routed)           0.810    16.077    UHANDLE/data1[31]
+    SLICE_X33Y8          LUT4 (Prop_lut4_I3_O)        0.306    16.383 r  UHANDLE/plant[31]_i_1/O
+                         net (fo=6, routed)           0.713    17.096    UHANDLE/plant[31]_i_1_n_0
+    SLICE_X33Y8          LUT6 (Prop_lut6_I1_O)        0.124    17.220 r  UHANDLE/tussenwaarde[31]_rep__1_i_1/O
+                         net (fo=1, routed)           0.654    17.874    UHANDLE/tussenwaarde[31]_rep__1_i_1_n_0
+    SLICE_X30Y8          FDRE                                         r  UHANDLE/tussenwaarde_reg[31]_rep__1/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 UHANDLE/byte_reg[3]/C
                             (rising edge-triggered cell FDRE)
   Destination:            UHANDLE/tussenwaarde_reg[31]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        18.243ns  (logic 9.783ns (53.627%)  route 8.460ns (46.373%))
-  Logic Levels:           17  (CARRY4=8 DSP48E1=2 FDRE=1 LUT2=1 LUT3=2 LUT4=1 LUT5=1 LUT6=1)
+  Data Path Delay:        17.640ns  (logic 9.678ns (54.865%)  route 7.962ns (45.135%))
+  Logic Levels:           16  (CARRY4=7 DSP48E1=2 FDRE=1 LUT2=1 LUT4=2 LUT5=1 LUT6=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X6Y0           FDRE                         0.000     0.000 r  UHANDLE/byte_reg[2]/C
-    SLICE_X6Y0           FDRE (Prop_fdre_C_Q)         0.518     0.518 r  UHANDLE/byte_reg[2]/Q
-                         net (fo=14, routed)          1.165     1.683    UHANDLE/byte_reg[2]
-    SLICE_X7Y2           LUT3 (Prop_lut3_I2_O)        0.124     1.807 r  UHANDLE/geld1_i_122/O
-                         net (fo=1, routed)           0.000     1.807    UHANDLE/geld1_i_122_n_0
-    SLICE_X7Y2           CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401     2.208 r  UHANDLE/geld1_i_68/CO[3]
-                         net (fo=1, routed)           0.000     2.208    UHANDLE/geld1_i_68_n_0
-    SLICE_X7Y3           CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     2.542 r  UHANDLE/geld1_i_61/O[1]
-                         net (fo=4, routed)           1.387     3.930    UHANDLE/geld1_i_61_n_6
-    SLICE_X11Y1          LUT3 (Prop_lut3_I1_O)        0.303     4.233 r  UHANDLE/geld1_i_70/O
-                         net (fo=1, routed)           1.021     5.254    UHANDLE/geld1_i_70_n_0
-    SLICE_X9Y1           LUT5 (Prop_lut5_I1_O)        0.124     5.378 r  UHANDLE/geld1_i_36/O
-                         net (fo=1, routed)           0.000     5.378    UHANDLE/geld1_i_36_n_0
-    SLICE_X9Y1           CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401     5.779 r  UHANDLE/geld1_i_11/CO[3]
-                         net (fo=1, routed)           0.000     5.779    UHANDLE/geld1_i_11_n_0
-    SLICE_X9Y2           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114     5.893 r  UHANDLE/geld1_i_10/CO[3]
-                         net (fo=1, routed)           0.000     5.893    UHANDLE/geld1_i_10_n_0
-    SLICE_X9Y3           CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222     6.115 r  UHANDLE/geld1_i_9/O[0]
-                         net (fo=1, routed)           0.722     6.837    UHANDLE/geld2[16]
+    SLICE_X10Y0          FDRE                         0.000     0.000 r  UHANDLE/byte_reg[3]/C
+    SLICE_X10Y0          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  UHANDLE/byte_reg[3]/Q
+                         net (fo=17, routed)          1.490     2.008    UHANDLE/byte_reg[3]
+    SLICE_X14Y2          LUT4 (Prop_lut4_I3_O)        0.124     2.132 r  UHANDLE/geld1_i_114/O
+                         net (fo=1, routed)           0.000     2.132    UHANDLE/geld1_i_114_n_0
+    SLICE_X14Y2          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     2.665 r  UHANDLE/geld1_i_65/CO[3]
+                         net (fo=1, routed)           0.000     2.665    UHANDLE/geld1_i_65_n_0
+    SLICE_X14Y3          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.884 r  UHANDLE/geld1_i_57/O[0]
+                         net (fo=4, routed)           1.366     4.250    UHANDLE/geld1_i_57_n_7
+    SLICE_X9Y2           LUT6 (Prop_lut6_I4_O)        0.295     4.545 r  UHANDLE/geld1_i_25/O
+                         net (fo=2, routed)           0.788     5.333    UHANDLE/geld1_i_25_n_0
+    SLICE_X11Y2          LUT5 (Prop_lut5_I0_O)        0.124     5.457 r  UHANDLE/geld1_i_29/O
+                         net (fo=1, routed)           0.000     5.457    UHANDLE/geld1_i_29_n_0
+    SLICE_X11Y2          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     5.858 r  UHANDLE/geld1_i_10/CO[3]
+                         net (fo=1, routed)           0.000     5.858    UHANDLE/geld1_i_10_n_0
+    SLICE_X11Y3          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     6.080 r  UHANDLE/geld1_i_9/O[0]
+                         net (fo=1, routed)           0.520     6.600    UHANDLE/geld2[16]
     DSP48_X0Y0           DSP48E1 (Prop_dsp48e1_A[16]_PCOUT[47])
-                                                      4.211    11.048 r  UHANDLE/geld1/PCOUT[47]
-                         net (fo=1, routed)           0.002    11.050    UHANDLE/geld1_n_106
+                                                      4.211    10.811 r  UHANDLE/geld1/PCOUT[47]
+                         net (fo=1, routed)           0.002    10.813    UHANDLE/geld1_n_106
     DSP48_X0Y1           DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
-                                                      1.518    12.568 r  UHANDLE/geld1__0/P[3]
-                         net (fo=4, routed)           1.650    14.217    UHANDLE/geld1__1[20]
-    SLICE_X32Y5          LUT2 (Prop_lut2_I1_O)        0.124    14.341 r  UHANDLE/plant[23]_i_6/O
-                         net (fo=1, routed)           0.000    14.341    UHANDLE/plant[23]_i_6_n_0
-    SLICE_X32Y5          CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.532    14.873 r  UHANDLE/plant_reg[23]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    14.873    UHANDLE/plant_reg[23]_i_2_n_0
-    SLICE_X32Y6          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114    14.987 r  UHANDLE/plant_reg[27]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    14.987    UHANDLE/plant_reg[27]_i_2_n_0
-    SLICE_X32Y7          CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.313    15.300 r  UHANDLE/plant_reg[31]_i_3/O[3]
-                         net (fo=1, routed)           0.310    15.611    UHANDLE/plant_reg[31]_i_3_n_4
-    SLICE_X30Y7          LUT4 (Prop_lut4_I2_O)        0.306    15.917 r  UHANDLE/plant[31]_i_1/O
-                         net (fo=6, routed)           1.823    17.740    UHANDLE/plant[31]_i_1_n_0
-    SLICE_X11Y7          LUT6 (Prop_lut6_I0_O)        0.124    17.864 r  UHANDLE/tussenwaarde[31]_i_2/O
-                         net (fo=1, routed)           0.379    18.243    UHANDLE/p_1_in[31]
-    SLICE_X11Y7          FDRE                                         r  UHANDLE/tussenwaarde_reg[31]/D
+                                                      1.518    12.331 r  UHANDLE/geld1__0/P[3]
+                         net (fo=3, routed)           1.853    14.184    UHANDLE/geld1__1[20]
+    SLICE_X35Y6          LUT2 (Prop_lut2_I1_O)        0.124    14.308 r  UHANDLE/plant[23]_i_6/O
+                         net (fo=1, routed)           0.000    14.308    UHANDLE/plant[23]_i_6_n_0
+    SLICE_X35Y6          CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    14.840 r  UHANDLE/plant_reg[23]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    14.840    UHANDLE/plant_reg[23]_i_2_n_0
+    SLICE_X35Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    14.954 r  UHANDLE/plant_reg[27]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    14.954    UHANDLE/plant_reg[27]_i_2_n_0
+    SLICE_X35Y8          CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    15.267 r  UHANDLE/plant_reg[31]_i_3/O[3]
+                         net (fo=1, routed)           0.810    16.077    UHANDLE/data1[31]
+    SLICE_X33Y8          LUT4 (Prop_lut4_I3_O)        0.306    16.383 r  UHANDLE/plant[31]_i_1/O
+                         net (fo=6, routed)           0.711    17.094    UHANDLE/plant[31]_i_1_n_0
+    SLICE_X33Y8          LUT6 (Prop_lut6_I1_O)        0.124    17.218 r  UHANDLE/tussenwaarde[31]_i_2/O
+                         net (fo=1, routed)           0.422    17.640    UHANDLE/p_1_in[31]
+    SLICE_X30Y9          FDRE                                         r  UHANDLE/tussenwaarde_reg[31]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 UHANDLE/byte_reg[2]/C
+  Source:                 UHANDLE/byte_reg[3]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UHANDLE/tussenwaarde_reg[28]/D
+  Destination:            UHANDLE/tussenwaarde_reg[29]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        17.958ns  (logic 9.799ns (54.567%)  route 8.159ns (45.433%))
-  Logic Levels:           18  (CARRY4=9 DSP48E1=2 FDRE=1 LUT2=1 LUT3=2 LUT4=1 LUT5=1 LUT6=1)
+  Data Path Delay:        17.551ns  (logic 9.652ns (54.995%)  route 7.899ns (45.005%))
+  Logic Levels:           17  (CARRY4=8 DSP48E1=2 FDRE=1 LUT2=1 LUT4=2 LUT5=1 LUT6=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X6Y0           FDRE                         0.000     0.000 r  UHANDLE/byte_reg[2]/C
-    SLICE_X6Y0           FDRE (Prop_fdre_C_Q)         0.518     0.518 r  UHANDLE/byte_reg[2]/Q
-                         net (fo=14, routed)          1.165     1.683    UHANDLE/byte_reg[2]
-    SLICE_X7Y2           LUT3 (Prop_lut3_I2_O)        0.124     1.807 r  UHANDLE/geld1_i_122/O
-                         net (fo=1, routed)           0.000     1.807    UHANDLE/geld1_i_122_n_0
-    SLICE_X7Y2           CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401     2.208 r  UHANDLE/geld1_i_68/CO[3]
-                         net (fo=1, routed)           0.000     2.208    UHANDLE/geld1_i_68_n_0
-    SLICE_X7Y3           CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     2.542 r  UHANDLE/geld1_i_61/O[1]
-                         net (fo=4, routed)           1.387     3.930    UHANDLE/geld1_i_61_n_6
-    SLICE_X11Y1          LUT3 (Prop_lut3_I1_O)        0.303     4.233 r  UHANDLE/geld1_i_70/O
-                         net (fo=1, routed)           1.021     5.254    UHANDLE/geld1_i_70_n_0
-    SLICE_X9Y1           LUT5 (Prop_lut5_I1_O)        0.124     5.378 r  UHANDLE/geld1_i_36/O
-                         net (fo=1, routed)           0.000     5.378    UHANDLE/geld1_i_36_n_0
-    SLICE_X9Y1           CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.401     5.779 r  UHANDLE/geld1_i_11/CO[3]
-                         net (fo=1, routed)           0.000     5.779    UHANDLE/geld1_i_11_n_0
-    SLICE_X9Y2           CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114     5.893 r  UHANDLE/geld1_i_10/CO[3]
-                         net (fo=1, routed)           0.000     5.893    UHANDLE/geld1_i_10_n_0
-    SLICE_X9Y3           CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222     6.115 r  UHANDLE/geld1_i_9/O[0]
-                         net (fo=1, routed)           0.722     6.837    UHANDLE/geld2[16]
+    SLICE_X10Y0          FDRE                         0.000     0.000 r  UHANDLE/byte_reg[3]/C
+    SLICE_X10Y0          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  UHANDLE/byte_reg[3]/Q
+                         net (fo=17, routed)          1.490     2.008    UHANDLE/byte_reg[3]
+    SLICE_X14Y2          LUT4 (Prop_lut4_I3_O)        0.124     2.132 r  UHANDLE/geld1_i_114/O
+                         net (fo=1, routed)           0.000     2.132    UHANDLE/geld1_i_114_n_0
+    SLICE_X14Y2          CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     2.665 r  UHANDLE/geld1_i_65/CO[3]
+                         net (fo=1, routed)           0.000     2.665    UHANDLE/geld1_i_65_n_0
+    SLICE_X14Y3          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.884 r  UHANDLE/geld1_i_57/O[0]
+                         net (fo=4, routed)           1.366     4.250    UHANDLE/geld1_i_57_n_7
+    SLICE_X9Y2           LUT6 (Prop_lut6_I4_O)        0.295     4.545 r  UHANDLE/geld1_i_25/O
+                         net (fo=2, routed)           0.788     5.333    UHANDLE/geld1_i_25_n_0
+    SLICE_X11Y2          LUT5 (Prop_lut5_I0_O)        0.124     5.457 r  UHANDLE/geld1_i_29/O
+                         net (fo=1, routed)           0.000     5.457    UHANDLE/geld1_i_29_n_0
+    SLICE_X11Y2          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401     5.858 r  UHANDLE/geld1_i_10/CO[3]
+                         net (fo=1, routed)           0.000     5.858    UHANDLE/geld1_i_10_n_0
+    SLICE_X11Y3          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     6.080 r  UHANDLE/geld1_i_9/O[0]
+                         net (fo=1, routed)           0.520     6.600    UHANDLE/geld2[16]
     DSP48_X0Y0           DSP48E1 (Prop_dsp48e1_A[16]_PCOUT[47])
-                                                      4.211    11.048 r  UHANDLE/geld1/PCOUT[47]
-                         net (fo=1, routed)           0.002    11.050    UHANDLE/geld1_n_106
-    DSP48_X0Y1           DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
-                                                      1.518    12.568 r  UHANDLE/geld1__0/P[0]
-                         net (fo=4, routed)           1.893    14.460    UHANDLE/geld1__1[17]
-    SLICE_X34Y4          LUT2 (Prop_lut2_I1_O)        0.124    14.584 r  UHANDLE/geld[19]_i_5/O
-                         net (fo=1, routed)           0.000    14.584    UHANDLE/geld[19]_i_5_n_0
-    SLICE_X34Y4          CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533    15.117 r  UHANDLE/geld_reg[19]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.117    UHANDLE/geld_reg[19]_i_2_n_0
-    SLICE_X34Y5          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.234 r  UHANDLE/geld_reg[23]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.234    UHANDLE/geld_reg[23]_i_2_n_0
-    SLICE_X34Y6          CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    15.351 r  UHANDLE/geld_reg[27]_i_2/CO[3]
-                         net (fo=1, routed)           0.000    15.351    UHANDLE/geld_reg[27]_i_2_n_0
-    SLICE_X34Y7          CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    15.570 r  UHANDLE/geld_reg[31]_i_3/O[0]
-                         net (fo=1, routed)           0.859    16.430    UHANDLE/geld_reg[31]_i_3_n_7
-    SLICE_X35Y7          LUT4 (Prop_lut4_I2_O)        0.295    16.725 r  UHANDLE/geld[28]_i_1/O
-                         net (fo=2, routed)           1.109    17.834    UHANDLE/geld[28]_i_1_n_0
-    SLICE_X33Y9          LUT6 (Prop_lut6_I1_O)        0.124    17.958 r  UHANDLE/tussenwaarde[28]_i_1/O
-                         net (fo=1, routed)           0.000    17.958    UHANDLE/p_1_in[28]
-    SLICE_X33Y9          FDRE                                         r  UHANDLE/tussenwaarde_reg[28]/D
+                                                      4.211    10.811 r  UHANDLE/geld1/PCOUT[47]
+                         net (fo=1, routed)           0.002    10.813    UHANDLE/geld1_n_106
+    DSP48_X0Y1           DSP48E1 (Prop_dsp48e1_PCIN[47]_P[2])
+                                                      1.518    12.331 r  UHANDLE/geld1__0/P[2]
+                         net (fo=3, routed)           2.036    14.367    UHANDLE/geld1__1[19]
+    SLICE_X38Y5          LUT2 (Prop_lut2_I1_O)        0.124    14.491 r  UHANDLE/geld[19]_i_3/O
+                         net (fo=1, routed)           0.000    14.491    UHANDLE/geld[19]_i_3_n_0
+    SLICE_X38Y5          CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    14.867 r  UHANDLE/geld_reg[19]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    14.867    UHANDLE/geld_reg[19]_i_2_n_0
+    SLICE_X38Y6          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    14.984 r  UHANDLE/geld_reg[23]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    14.984    UHANDLE/geld_reg[23]_i_2_n_0
+    SLICE_X38Y7          CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    15.101 r  UHANDLE/geld_reg[27]_i_2/CO[3]
+                         net (fo=1, routed)           0.000    15.101    UHANDLE/geld_reg[27]_i_2_n_0
+    SLICE_X38Y8          CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    15.424 r  UHANDLE/geld_reg[31]_i_3/O[1]
+                         net (fo=1, routed)           0.888    16.313    UHANDLE/geld_reg[31]_i_3_n_6
+    SLICE_X33Y7          LUT4 (Prop_lut4_I3_O)        0.306    16.619 r  UHANDLE/geld[29]_i_1/O
+                         net (fo=2, routed)           0.808    17.427    UHANDLE/geld[29]_i_1_n_0
+    SLICE_X33Y9          LUT6 (Prop_lut6_I5_O)        0.124    17.551 r  UHANDLE/tussenwaarde[29]_i_1/O
+                         net (fo=1, routed)           0.000    17.551    UHANDLE/p_1_in[29]
+    SLICE_X33Y9          FDRE                                         r  UHANDLE/tussenwaarde_reg[29]/D
   -------------------------------------------------------------------    -------------------
 
 
@@ -1052,54 +1040,111 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 USEND/temp_byte_out_reg[6]/C
+  Source:                 USEND/temp_byte_out_reg[5]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UTX/r_TX_Data_reg[6]/D
+  Destination:            UTX/r_TX_Data_reg[5]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.203ns  (logic 0.128ns (63.089%)  route 0.075ns (36.911%))
+  Data Path Delay:        0.271ns  (logic 0.141ns (52.006%)  route 0.130ns (47.994%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X4Y5           FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[6]/C
-    SLICE_X4Y5           FDRE (Prop_fdre_C_Q)         0.128     0.128 r  USEND/temp_byte_out_reg[6]/Q
-                         net (fo=2, routed)           0.075     0.203    UTX/D[6]
-    SLICE_X5Y5           FDRE                                         r  UTX/r_TX_Data_reg[6]/D
+    SLICE_X4Y1           FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[5]/C
+    SLICE_X4Y1           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/temp_byte_out_reg[5]/Q
+                         net (fo=2, routed)           0.130     0.271    UTX/D[5]
+    SLICE_X5Y1           FDRE                                         r  UTX/r_TX_Data_reg[5]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 USEND/temp_byte_out_reg[2]/C
+  Source:                 USEND/FSM_onehot_which_byte_out_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UTX/r_TX_Data_reg[2]/D
+  Destination:            USEND/FSM_onehot_which_byte_out_reg[1]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.256ns  (logic 0.141ns (55.137%)  route 0.115ns (44.863%))
+  Data Path Delay:        0.277ns  (logic 0.141ns (50.956%)  route 0.136ns (49.044%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X4Y4           FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[2]/C
-    SLICE_X4Y4           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/temp_byte_out_reg[2]/Q
-                         net (fo=2, routed)           0.115     0.256    UTX/D[2]
-    SLICE_X7Y4           FDRE                                         r  UTX/r_TX_Data_reg[2]/D
+    SLICE_X3Y1           FDRE                         0.000     0.000 r  USEND/FSM_onehot_which_byte_out_reg[0]/C
+    SLICE_X3Y1           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/FSM_onehot_which_byte_out_reg[0]/Q
+                         net (fo=8, routed)           0.136     0.277    USEND/FSM_onehot_which_byte_out_reg_n_0_[0]
+    SLICE_X1Y2           FDRE                                         r  USEND/FSM_onehot_which_byte_out_reg[1]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 USEND/temp_byte_out_reg[0]/C
+  Source:                 UTX/FSM_sequential_r_SM_Main_reg[2]_inv/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UTX/r_TX_Data_reg[0]/D
+  Destination:            UTX/o_TX_Serial_reg/CE
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.309ns  (logic 0.141ns (45.658%)  route 0.168ns (54.342%))
+  Data Path Delay:        0.289ns  (logic 0.141ns (48.846%)  route 0.148ns (51.154%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X4Y4           FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[0]/C
-    SLICE_X4Y4           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/temp_byte_out_reg[0]/Q
-                         net (fo=2, routed)           0.168     0.309    UTX/D[0]
-    SLICE_X7Y4           FDRE                                         r  UTX/r_TX_Data_reg[0]/D
+    SLICE_X4Y3           FDRE                         0.000     0.000 r  UTX/FSM_sequential_r_SM_Main_reg[2]_inv/C
+    SLICE_X4Y3           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UTX/FSM_sequential_r_SM_Main_reg[2]_inv/Q
+                         net (fo=9, routed)           0.148     0.289    UTX/r_SM_Main[2]
+    SLICE_X5Y2           FDRE                                         r  UTX/o_TX_Serial_reg/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 UTX/FSM_sequential_r_SM_Main_reg[2]_inv/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UTX/FSM_sequential_r_SM_Main_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.295ns  (logic 0.186ns (63.068%)  route 0.109ns (36.932%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y3           FDRE                         0.000     0.000 r  UTX/FSM_sequential_r_SM_Main_reg[2]_inv/C
+    SLICE_X4Y3           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UTX/FSM_sequential_r_SM_Main_reg[2]_inv/Q
+                         net (fo=9, routed)           0.109     0.250    UTX/r_SM_Main[2]
+    SLICE_X5Y3           LUT6 (Prop_lut6_I5_O)        0.045     0.295 r  UTX/FSM_sequential_r_SM_Main[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.295    UTX/FSM_sequential_r_SM_Main[0]_i_1_n_0
+    SLICE_X5Y3           FDRE                                         r  UTX/FSM_sequential_r_SM_Main_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 UTX/FSM_sequential_r_SM_Main_reg[2]_inv/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            UTX/r_Bit_Index_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.296ns  (logic 0.186ns (62.855%)  route 0.110ns (37.145%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y3           FDRE                         0.000     0.000 r  UTX/FSM_sequential_r_SM_Main_reg[2]_inv/C
+    SLICE_X4Y3           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UTX/FSM_sequential_r_SM_Main_reg[2]_inv/Q
+                         net (fo=9, routed)           0.110     0.251    UTX/r_SM_Main[2]
+    SLICE_X5Y3           LUT6 (Prop_lut6_I3_O)        0.045     0.296 r  UTX/r_Bit_Index[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.296    UTX/r_Bit_Index[0]_i_1_n_0
+    SLICE_X5Y3           FDRE                                         r  UTX/r_Bit_Index_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 USEND/confirmed_request_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            USEND/confirmed_request_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.299ns  (logic 0.186ns (62.164%)  route 0.113ns (37.836%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y0           FDRE                         0.000     0.000 r  USEND/confirmed_request_reg[2]/C
+    SLICE_X3Y0           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/confirmed_request_reg[2]/Q
+                         net (fo=2, routed)           0.113     0.254    USEND/confirmed_request[2]
+    SLICE_X3Y0           LUT5 (Prop_lut5_I0_O)        0.045     0.299 r  USEND/confirmed_request[2]_i_1/O
+                         net (fo=1, routed)           0.000     0.299    USEND/confirmed_request[2]_i_1_n_0
+    SLICE_X3Y0           FDRE                                         r  USEND/confirmed_request_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -1108,53 +1153,34 @@ Slack:                    inf
   Destination:            UTX/r_TX_Data_reg[4]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.313ns  (logic 0.128ns (40.874%)  route 0.185ns (59.126%))
+  Data Path Delay:        0.305ns  (logic 0.128ns (42.032%)  route 0.177ns (57.968%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X4Y4           FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[4]/C
-    SLICE_X4Y4           FDRE (Prop_fdre_C_Q)         0.128     0.128 r  USEND/temp_byte_out_reg[4]/Q
-                         net (fo=2, routed)           0.185     0.313    UTX/D[4]
-    SLICE_X5Y5           FDRE                                         r  UTX/r_TX_Data_reg[4]/D
+    SLICE_X4Y0           FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[4]/C
+    SLICE_X4Y0           FDRE (Prop_fdre_C_Q)         0.128     0.128 r  USEND/temp_byte_out_reg[4]/Q
+                         net (fo=2, routed)           0.177     0.305    UTX/D[4]
+    SLICE_X5Y1           FDRE                                         r  UTX/r_TX_Data_reg[4]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 URX/r_Clk_Count_reg[1]/C
+  Source:                 URX/r_Clk_Count_reg[7]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            URX/r_Clk_Count_reg[3]/D
+  Destination:            URX/r_Clk_Count_reg[8]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.316ns  (logic 0.186ns (58.790%)  route 0.130ns (41.210%))
+  Data Path Delay:        0.310ns  (logic 0.227ns (73.156%)  route 0.083ns (26.844%))
   Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y0           FDRE                         0.000     0.000 r  URX/r_Clk_Count_reg[1]/C
-    SLICE_X1Y0           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  URX/r_Clk_Count_reg[1]/Q
-                         net (fo=9, routed)           0.130     0.271    URX/r_Clk_Count_reg_n_0_[1]
-    SLICE_X2Y0           LUT6 (Prop_lut6_I0_O)        0.045     0.316 r  URX/r_Clk_Count[3]_i_1/O
-                         net (fo=1, routed)           0.000     0.316    URX/r_Clk_Count[3]_i_1_n_0
-    SLICE_X2Y0           FDRE                                         r  URX/r_Clk_Count_reg[3]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 URX/r_SM_Main_reg[2]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            URX/r_Bit_Index_reg[0]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.319ns  (logic 0.227ns (71.172%)  route 0.092ns (28.828%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X4Y1           FDRE                         0.000     0.000 r  URX/r_SM_Main_reg[2]/C
-    SLICE_X4Y1           FDRE (Prop_fdre_C_Q)         0.128     0.128 r  URX/r_SM_Main_reg[2]/Q
-                         net (fo=9, routed)           0.092     0.220    URX/r_SM_Main_reg_n_0_[2]
-    SLICE_X4Y1           LUT6 (Prop_lut6_I3_O)        0.099     0.319 r  URX/r_Bit_Index[0]_i_1/O
-                         net (fo=1, routed)           0.000     0.319    URX/r_Bit_Index[0]_i_1_n_0
-    SLICE_X4Y1           FDRE                                         r  URX/r_Bit_Index_reg[0]/D
+    SLICE_X7Y5           FDRE                         0.000     0.000 r  URX/r_Clk_Count_reg[7]/C
+    SLICE_X7Y5           FDRE (Prop_fdre_C_Q)         0.128     0.128 r  URX/r_Clk_Count_reg[7]/Q
+                         net (fo=6, routed)           0.083     0.211    URX/r_Clk_Count_reg_n_0_[7]
+    SLICE_X7Y5           LUT6 (Prop_lut6_I2_O)        0.099     0.310 r  URX/r_Clk_Count[8]_i_3/O
+                         net (fo=1, routed)           0.000     0.310    URX/r_Clk_Count[8]_i_3_n_0
+    SLICE_X7Y5           FDRE                                         r  URX/r_Clk_Count_reg[8]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -1163,70 +1189,32 @@ Slack:                    inf
   Destination:            USEND/FSM_onehot_which_byte_out_reg[4]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.326ns  (logic 0.141ns (43.239%)  route 0.185ns (56.761%))
+  Data Path Delay:        0.315ns  (logic 0.141ns (44.784%)  route 0.174ns (55.216%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y6           FDRE                         0.000     0.000 r  USEND/FSM_onehot_which_byte_out_reg[3]/C
-    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/FSM_onehot_which_byte_out_reg[3]/Q
-                         net (fo=7, routed)           0.185     0.326    USEND/FSM_onehot_which_byte_out_reg_n_0_[3]
-    SLICE_X3Y4           FDRE                                         r  USEND/FSM_onehot_which_byte_out_reg[4]/D
+    SLICE_X1Y2           FDRE                         0.000     0.000 r  USEND/FSM_onehot_which_byte_out_reg[3]/C
+    SLICE_X1Y2           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/FSM_onehot_which_byte_out_reg[3]/Q
+                         net (fo=7, routed)           0.174     0.315    USEND/FSM_onehot_which_byte_out_reg_n_0_[3]
+    SLICE_X3Y1           FDRE                                         r  USEND/FSM_onehot_which_byte_out_reg[4]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 USEND/temp_byte_out_reg[5]/C
+  Source:                 USEND/FSM_onehot_which_byte_out_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            UTX/r_TX_Data_reg[5]/D
+  Destination:            USEND/FSM_onehot_which_byte_out_reg[2]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.326ns  (logic 0.141ns (43.208%)  route 0.185ns (56.792%))
+  Data Path Delay:        0.323ns  (logic 0.141ns (43.594%)  route 0.182ns (56.406%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X4Y5           FDRE                         0.000     0.000 r  USEND/temp_byte_out_reg[5]/C
-    SLICE_X4Y5           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/temp_byte_out_reg[5]/Q
-                         net (fo=2, routed)           0.185     0.326    UTX/D[5]
-    SLICE_X5Y5           FDRE                                         r  UTX/r_TX_Data_reg[5]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 UTX/FSM_sequential_r_SM_Main_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            UTX/r_Bit_Index_reg[0]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.329ns  (logic 0.186ns (56.490%)  route 0.143ns (43.510%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X4Y3           FDRE                         0.000     0.000 r  UTX/FSM_sequential_r_SM_Main_reg[0]/C
-    SLICE_X4Y3           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  UTX/FSM_sequential_r_SM_Main_reg[0]/Q
-                         net (fo=9, routed)           0.143     0.284    UTX/r_SM_Main[0]
-    SLICE_X5Y3           LUT6 (Prop_lut6_I4_O)        0.045     0.329 r  UTX/r_Bit_Index[0]_i_1/O
-                         net (fo=1, routed)           0.000     0.329    UTX/r_Bit_Index[0]_i_1_n_0
-    SLICE_X5Y3           FDRE                                         r  UTX/r_Bit_Index_reg[0]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 UHANDLE/Data_Viable_reg/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            UHANDLE/update_reg/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.334ns  (logic 0.246ns (73.704%)  route 0.088ns (26.296%))
-  Logic Levels:           2  (FDRE=1 LUT4=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X2Y3           FDRE                         0.000     0.000 r  UHANDLE/Data_Viable_reg/C
-    SLICE_X2Y3           FDRE (Prop_fdre_C_Q)         0.148     0.148 r  UHANDLE/Data_Viable_reg/Q
-                         net (fo=3, routed)           0.088     0.236    UHANDLE/Data_Viable
-    SLICE_X2Y3           LUT4 (Prop_lut4_I3_O)        0.098     0.334 r  UHANDLE/update_i_1/O
-                         net (fo=1, routed)           0.000     0.334    UHANDLE/update_i_1_n_0
-    SLICE_X2Y3           FDRE                                         r  UHANDLE/update_reg/D
+    SLICE_X1Y2           FDRE                         0.000     0.000 r  USEND/FSM_onehot_which_byte_out_reg[1]/C
+    SLICE_X1Y2           FDRE (Prop_fdre_C_Q)         0.141     0.141 r  USEND/FSM_onehot_which_byte_out_reg[1]/Q
+                         net (fo=9, routed)           0.182     0.323    USEND/FSM_onehot_which_byte_out_reg_n_0_[1]
+    SLICE_X1Y2           FDRE                                         r  USEND/FSM_onehot_which_byte_out_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
 
