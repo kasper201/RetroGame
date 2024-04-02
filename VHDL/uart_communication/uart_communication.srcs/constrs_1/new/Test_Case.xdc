@@ -11,10 +11,10 @@ set_property PACKAGE_PIN M3 [get_ports o_Tx]
 set_property PACKAGE_PIN U18 [get_ports i_SendButton]
 
 ##Switches
-set_property PACKAGE_PIN V17 [get_ports i_Request_select[0]]
-set_property PACKAGE_PIN V16 [get_ports i_Request_select[1]]
-set_property PACKAGE_PIN W16 [get_ports i_Request_select[2]]
-set_property PACKAGE_PIN W17 [get_ports i_Request_select[3]]
+set_property PACKAGE_PIN V17 [get_ports i_Info_select[0]]
+set_property PACKAGE_PIN V16 [get_ports i_Info_select[1]]
+set_property PACKAGE_PIN W16 [get_ports i_Info_select[2]]
+set_property PACKAGE_PIN W17 [get_ports i_Info_select[3]]
 
 ##LEDS
 set_property PACKAGE_PIN U15 [get_ports o_LED_Status]

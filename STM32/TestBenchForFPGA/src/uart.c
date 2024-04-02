@@ -5,19 +5,19 @@
 #include "uart.h"
 #include "main.h"
 
-//Setup uart connection to pc
+// Setup uart connection to pc
 #define UART_DEVICE_NODE DT_ALIAS(usart)
 static const struct device *const uart_dev = DEVICE_DT_GET(UART_DEVICE_NODE);
 
-//Data retrieval
+// Data retrieval
 #define MSG_SIZE 128
 static char rx_buf[MSG_SIZE];
 static int rx_buf_pos;
 
-//Define msgq
+// Define msgq
 K_MSGQ_DEFINE(uart_msgq, MSG_SIZE, 10, 4);
 
-//Needed to read data from uart
+// Needed to read data from uart
 void serial_cb(const struct device *dev, void *user_data)
 {
 	uint8_t c;
@@ -32,42 +32,43 @@ void serial_cb(const struct device *dev, void *user_data)
 		return;
 	}
 
-	// read until FIFO empty 
+	// read until FIFO empty
 	while (uart_fifo_read(uart_dev, &c, 1) == 1)
 	{
 		if ((c == '\n' || c == '\r') && rx_buf_pos > 0)
 		{
-			// terminate string 
+			// terminate string
 			rx_buf[rx_buf_pos] = '\0';
 
-			// if queue is full, message is silently dropped 
+			// if queue is full, message is silently dropped
 			k_msgq_put(&uart_msgq, &rx_buf, K_NO_WAIT);
 
-			// reset the buffer (it was copied to the msgq) 
+			// reset the buffer (it was copied to the msgq)
 			rx_buf_pos = 0;
 		}
 		else if (rx_buf_pos < (sizeof(rx_buf) - 1))
 		{
 			rx_buf[rx_buf_pos++] = c;
 		}
-		// else: characters beyond buffer size are dropped 
+		// else: characters beyond buffer size are dropped
 	}
 }
 
-//Setup uart device
+// Setup uart device
 int uartSetup()
 {
 	if (!device_is_ready(uart_dev))
 	{
 		printk("UART device not found!");
 		return -1;
-	} else
-    {
-        printk("UART device found!");
-    }
+	}
+	else
+	{
+		printk("UART device found!");
+	}
 
 	/* configure interrupt and callback to receive data */
-    
+
 	int ret = uart_irq_callback_user_data_set(uart_dev, serial_cb, NULL);
 
 	if (ret < 0)
@@ -91,7 +92,7 @@ int uartSetup()
 	return 0;
 }
 
-//Send uart message
+// Send uart message
 void print_uart(char *buf)
 {
 	int msg_len = strlen(buf);
@@ -99,29 +100,56 @@ void print_uart(char *buf)
 	for (int i = 0; i < msg_len; i++)
 	{
 		uart_poll_out(uart_dev, buf[i]);
-	}	
+	}
 	memset(rx_buf, 0, sizeof(rx_buf));
 }
 
-//Check message from FPGA
+// Check message from FPGA
 int checkFromFpga()
 {
-    int returnValue = 0;
-    char Message[MESSAGE_SIZE];
-    k_msgq_get(&uart_msgq, &Message, K_NO_WAIT);
-    k_msgq_cleanup(&uart_msgq);
+	int returnValue = -1;
+	char Message[MESSAGE_SIZE];
+	k_msgq_get(&uart_msgq, &Message, K_NO_WAIT);
+	k_msgq_cleanup(&uart_msgq);
 
-    //Returns 1 when fpga sends "what"
-    if (strstr(Message, "what"))
-    {
-        returnValue = 1;
-		printf("what\n");
-    }
-	else if (strstr(Message, "geld"))
+	int msg_len = strlen(Message);
+
+	if (msg_len > 3)
 	{
-		returnValue = 2;
-		printf("geld\n");
+		printf("Input: ");
+		for (int i = 0; i < msg_len; i++)
+		{
+			printf("%c", Message[i]);
+		}
+		printf("\n");
 	}
 
-    return returnValue;
+	// Returns het bijhorende nummer van het keyword
+	if (strstr(Message, "geld"))
+	{
+		returnValue = 0;
+		printf("geld selected\n");
+	}
+	else if (strstr(Message, "bott"))
+	{
+		returnValue = 1;
+		printf("bott selected\n");
+	}
+	else if (strstr(Message, "plan"))
+	{
+		returnValue = 2;
+		printf("plan selected\n");
+	}
+	else if (strstr(Message, "bull"))
+	{
+		returnValue = 3;
+		printf("bull selected\n");
+	}
+
+	for(int c = 0; c < MESSAGE_SIZE; c++)
+	{
+		Message[c] = NULL;
+	}
+
+	return returnValue;
 }

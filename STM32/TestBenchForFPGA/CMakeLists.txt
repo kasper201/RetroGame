@@ -11,4 +11,5 @@ target_sources(app PRIVATE ${app_sources})
 # Add the path to the directory containing the missing header file
 include_directories(
     header/
+    src/
 )

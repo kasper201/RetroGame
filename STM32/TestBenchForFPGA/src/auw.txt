@@ -1,0 +1,49 @@
+#include <zephyr/kernel.h>
+#include <zephyr/device.h>
+#include <zephyr/sys/util.h>
+#include <zephyr/sys/printk.h>
+#include <string.h>
+#include <zephyr/drivers/uart.h>
+
+#include "uart.h"
+#include "main.h"
+
+#define SLEEP_TIME_MS 10
+
+int main()
+{
+    int geld = 0;
+
+	uartSetup();
+    while (1)
+	{
+		for (int i = 0; i < 2000; i++)
+		{
+			__asm__("nop");
+		}
+		// int input = checkFromFpga();
+		// if (input == 1)
+		// {
+		// }
+		// else if (input == 2)
+		// {
+		// 	unsigned char sendByte;
+		// 	sendByte = geld & 0xFF;
+		// 	print_uart(&sendByte);
+		// 	printf("Send this byte: %d\n", sendByte);
+		// 	printf("Geld is: %d\n", geld);
+		// 	geld = geld + 4;
+		// 	if (geld >= 255)
+		// 	{
+		// 		geld = 0;
+		// 	}
+		// }
+
+		char temp = 0x10;
+		print_uart(&temp);
+		printk("Try\n");
+
+		k_msleep(SLEEP_TIME_MS);
+	}
+	return 0;
+}

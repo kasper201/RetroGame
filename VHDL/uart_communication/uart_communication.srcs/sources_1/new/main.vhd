@@ -36,7 +36,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity main is
     Port ( i_Clk : in STD_LOGIC;
            i_SendButton : in STD_LOGIC;
-           i_Request_select : in std_logic_vector(3 downto 0);
+           i_Info_select : in std_logic_vector(3 downto 0);
            i_Rx : in STD_LOGIC;           --JAX pin 7 (op stm32 verbinden met pin 8)
            o_Tx : out STD_LOGIC;          --JAX pin 8 (op stm32 verbinden met pin 2)
            o_LED_Status : out STD_LOGIC;
@@ -79,10 +79,8 @@ component RD_Process is
            i_RX_DV : in STD_LOGIC;
            i_R_Byte : in STD_LOGIC_VECTOR (7 downto 0);
            i_Request_select : in std_logic_vector(3 downto 0);
-           o_Status : out STD_LOGIC;
-           o_Status1 : out STD_LOGIC;
-           o_Status2 : out STD_LOGIC;
-           o_Status3 : out STD_LOGIC;
+           i_info_select : in std_logic_vector(3 downto 0);
+           o_update : out STD_LOGIC;
            o_BCD_bus : out STD_LOGIC_VECTOR(15 downto 0));
 end component;
 
@@ -106,13 +104,24 @@ component display_bus is
            );
 end component;
 
+component Select_Request is
+    Port ( i_Clk : in STD_LOGIC;
+           i_Update_Request : in STD_LOGIC;
+           i_Start_Frame : in STD_LOGIC;
+           o_Request_Select : out STD_LOGIC_VECTOR (3 downto 0));
+end component;
+
 --Status for the bytes and if they are ready to handle or to transmit
 signal Recieved_Data_Valid, Transmit_Data_Valid : std_logic;
 --The bytes to recieve and send
 signal Data_Recieved, Data_To_Send : std_logic_vector (7 downto 0);
 --Transmit status
 signal Transmit_Active, Transmit_Complete : std_logic;
+--De waarde die op de display moet komen
 signal bcd_to_display : std_logic_vector(15 downto 0);
+--Select welke waarde opgevraagd moet worden
+signal request_select : std_logic_vector(3 downto 0);
+signal update_request : std_logic;
 
 begin
 
@@ -136,21 +145,26 @@ begin
         i_Clk               => i_clk,
         i_RX_DV             => Recieved_Data_Valid,
         i_R_Byte            => Data_Recieved,
-        i_Request_select    => i_Request_select,
-        o_Status            => o_LED_Status,
-        o_Status1           => o_LED_Status1,
-        o_Status2           => o_LED_Status2,
-        o_Status3           => o_LED_Status3,
+        i_Request_select    => Request_select,
+        i_info_select       => i_Info_select,
+        o_update            => update_request,
         o_BCD_bus           => bcd_to_display
     );
     
     USEND: UREQUEST port map (
         i_Clk               => i_clk,
-        i_Request_select    => i_Request_select,
+        i_Request_select    => Request_select,
         i_Request_confirm   => i_sendButton,
         o_Byte_out          => Data_To_Send,
         o_Send_Byte         => Transmit_Data_Valid,
         o_Status4           => o_LED_Status4
+   );
+   
+   UUPDATE: Select_Request port map (
+        i_Clk               => i_clk,
+        i_Update_Request    => update_request,
+        i_Start_Frame       => '1',
+        o_Request_Select    => Request_select
    );
    
    UDISPLAY: display_bus port map(
@@ -159,5 +173,10 @@ begin
         o_D_bus     => o_D_bus,
         o_S_bus     => o_S_bus
    );
+   
+   o_LED_Status <= Request_select(3);
+   o_LED_Status1 <= Request_select(2);
+   o_LED_Status2 <= Request_select(1);
+   o_LED_Status3 <= Request_select(0);
 
 end Behavioral;
