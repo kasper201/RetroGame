@@ -14,11 +14,12 @@ uint8_t toCreate = 0;
  * @param y
  * @return int 0 by default
  */
-int updatePlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y)
+int updatePlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, struct Bullet* bullet[maxBullets])
 {
     if (map[x][y].speed > 0)
     {
-    
+        printf("hey ik was hier");
+        bulletCreate(bullet, x, y);
     }
     // if we decide its necessary for the game, reduce health or defence slowly here:
     return 0;
@@ -107,7 +108,7 @@ switch (type)
         *health = 20;
         *damage = 5;
         *defense = 0;
-        *speed = 0;
+        *speed = 1;
         break;
     case 3: // blocking plant
         *health = 30;
@@ -165,7 +166,7 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
         switch (type)
         {
         case 2: // shooter plant
-            if (player->money > 100)
+            if (player->money >= 100)
             {
                 player->money -= 100;
             }
@@ -175,7 +176,7 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
             }
             break;
         case 3: // blocking plant
-            if (player->money > 50)
+            if (player->money >= 300)
             {
                 player->money -= 50;
             }
@@ -185,7 +186,7 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
             }
             break;
         case 4: // exploding plant
-            if (player->money > 50)
+            if (player->money >= 50)
             {
                 player->money -= 50;
             }
@@ -265,31 +266,18 @@ int createWave(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player* player)
  * @param map
  * @return int 0 if succeeded, 2 if plant update failed, 3 if enemy update failed 4 if wave creation failed
  */
-int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player* player)
+int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player* player, struct Bullet bullet[maxBullets])
 {
     frame++;
-    for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
-    {
-        for (int y = 0; y < MAP_HEIGHT; y++)
-        {
-            if (map[x][y].type >= 1 && map[x][y].type <= 4)
-            {
-                if (updatePlant(map, x, y))
-                    return 2;
-            }
-            else if (map[x][y].type >= 5)
-            {
-                if (updateEnemy(map, x, y, player))
-                    return 3;
-            }
-        }
-    }
-    if (frame == framerate * waverate&& toCreate == 0) // create wave every defined amount of frames
+
+    createPlant(map, 0, 2, 2, player);
+    if (/*frame == framerate * waverate &&*/ toCreate == 0) // create wave every defined amount of frames
     {
         frame = 0;
         if (createWave(map, player))
             return 4;
     }
+    createPlant(map, 1, 2, 2, player);
     if (toCreate != 0) // spawn robots
     {
         printf("we zijn hier");
@@ -320,5 +308,27 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player* player)
 
             }
        }
+         for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
+         {
+             for (int y = 0; y < MAP_HEIGHT; y++)
+             {
+                
+                 if (map[x][y].type >= 1 && map[x][y].type <= 4)
+                 {
+                     printf("print\n");
+                     updatePlant(map, x, y, bullet);
+                         
+                 }
+                 else if (map[x][y].type >= 5)
+                 {
+                     if (updateEnemy(map, x, y, player))
+                         return 3;
+                 }
+             }
+         }
+         printf("\n");
+         for (int i = 0; i < maxBullets; i++) {
+             printf("x:%d y:%d", bullet[i].x, bullet[i].y);
+         }
     return 0;
 }

@@ -7,7 +7,7 @@
 
 #define MAP_WIDTH 8
 #define MAP_HEIGHT 5
-
+#define maxBullets 50
 struct Map
 {
     uint8_t wavesNotMoved;

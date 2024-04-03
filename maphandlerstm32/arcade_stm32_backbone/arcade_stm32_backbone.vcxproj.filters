@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="arcade_stm32_backbone.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="mainGame.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -34,6 +31,9 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="menu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="arcade_stm32_backbone.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -42,13 +42,22 @@ int playerInit(struct Player* player)
     return 0;
 }
 
+void bulletInit(struct Bullet bullet[maxBullets])
+{
+    for (int i = 0; i < maxBullets; i++)
+    {
+        bullet[i].x = 0;
+        bullet[i].y = 6;
+    }
+   
+}
 /**
  * @brief main game function
  *
  * @param map
  * @return int 0 for no error, 1 for general error, 2 for plant update error, 3 for enemy update error
  */
-int gameLoop(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player* player)
+int gameLoop(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player* player, struct Bullet* bullet[maxBullets])
 {
     int err;
     int prev = 0;
@@ -57,7 +66,7 @@ int gameLoop(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player* player)
     while (1)
     {
 
-        err = updateGame(map, player);
+        err = updateGame(map, player, bullet);
         return 0;
         //printf("%d", player->money);
         if (err)

@@ -13,14 +13,7 @@ int bulletIndex = 0;
  * @param y
  */
 
-void bulletInit(struct Bullet bullet[maxBullets])
-{
-    for (int i = 0; i < maxBullets; i++)
-    {
-        bullet[i].x = -1;
-        bullet[i].y = -1;
-    }
-}
+
 
 /**
  * @brief create the bullet
@@ -30,13 +23,20 @@ void bulletInit(struct Bullet bullet[maxBullets])
  */
 void bulletCreate(struct Bullet bullet[maxBullets], int x, int y)
 {
-    bulletIndex = (bulletIndex + 1) % maxBullets;
-    for (int i = 0; i < 5; i++)
-        if (bullet[bulletIndex + i].x != (uint8_t)-1) // if the bullet space is already in use
+    int temp;
+    temp = x * 16 + 12;
+    for (int i = 0; i < maxBullets; i++)
+    {
+        if (bullet[i].y == 6)
+        {
+            bullet[i].x = temp;
+            bullet[i].y = y;
             return;
+        }
+    }
+    printf("bullets Full");
+    return;
 
-    bullet->x = x;
-    bullet->y = y;
 }
 
 /**
@@ -61,8 +61,8 @@ void bulletDetect(struct Bullet* bullet, struct Map map[MAP_WIDTH][MAP_HEIGHT])
     {
         map[bullet->x][bullet->y].health -= 5; // TODO: balance the damage
         // remove the bullet from the map by setting its position to -1
-        bullet->x = -1;
-        bullet->y = -1;
+        bullet->x = 0;
+        bullet->y = 6;
     }
 }
 

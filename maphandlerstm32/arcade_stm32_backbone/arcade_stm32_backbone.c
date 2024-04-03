@@ -11,7 +11,8 @@ int game()
     printf("Initializing map\n");
     // create a 2D array of Map structs
     struct Map map[MAP_WIDTH][MAP_HEIGHT];
-
+    struct Bullet bullet[maxBullets];
+    //struct Bullet bullet[maxBullets];
     // initialize the map
     int err = mapinit(map);
     if (err)
@@ -29,16 +30,12 @@ int game()
         printf("Error initializing player\n");
         return 1;
     }
+    bulletInit(&bullet);
+    // generate bullets
+    //bulletInit(bullet);
+  
 
-    // generate the first wave manually
-    err = createWave(map, &player);
-    if (err)
-    {
-        printf("Error %d creating wave\n", err);
-        return 1;
-    }
-
-    err = gameLoop(map, &player);
+    err = gameLoop(map, &player, &bullet);
     if (err)
     {
         printf("Error %d in game loop\n", err);
@@ -49,6 +46,7 @@ int game()
 
 int main()
 {
+    
      menu();
     return game();
    
