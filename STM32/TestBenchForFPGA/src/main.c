@@ -171,6 +171,16 @@ int main(void)
 			sendByte[1] = 0xfe;
 			print_uart(sendByte);
 		}
+		else if (input == 4)
+		{
+			unsigned char sendByteC;
+			sendByteC = 0x0a;
+			print_uart(&sendByteC);
+			printf("Send these bytes: %d\n", sendByteC);
+			sendByte[0] = 0xff;
+			sendByte[1] = 0xfe;
+			print_uart(sendByte);
+		}
 
 		k_msleep(SLEEP_TIME_MS);
 	}

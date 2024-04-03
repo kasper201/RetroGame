@@ -33,6 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity Sound is
     Port ( i_Clk : in STD_LOGIC;
+           i_life_lost : in STD_LOGIC;
            o_Sound : out STD_LOGIC);
 end Sound;
 
@@ -57,24 +58,38 @@ begin
     
     begin
         if rising_edge(i_Clk) then
-            --if i_life_lost = '1' then
-            --    life_lost := '1';
-            --end if;
-            
-            if (counter >= 0 and counter < 15000000) or (counter >= 16000000 and counter < 31000000) then
-                soundSelect <= "0000";
-            elsif (counter >= 48000000 and counter < 63000000) or (counter >= 64000000 and counter < 79000000) then
-                soundSelect <= "0001";
-            elsif (counter >= 96000000 and counter < 111000000) or (counter >= 112000000 and counter < 127000000) then
-                soundSelect <= "0010";
-            elsif (counter >= 144000000 and counter < 159000000) or (counter >= 160000000 and counter < 175000000) then
-                soundSelect <= "0011";
-            elsif (counter >= 176000000 and counter < 207000000) or (counter >= 224000000 and counter < 255000000) then
-                soundSelect <= "0100";
-            elsif counter >= 272000000 then
+            if i_life_lost = '1' and life_lost = '0' then
+                life_lost := '1';
                 counter := 0;
+            end if;
+            
+            if life_lost = '1' then
+                if counter >= 20000000 and counter < 100000000 then
+                    soundSelect <= "0110";
+                elsif counter > 104000000 and counter < 184000000 then
+                    soundSelect <= "0101";
+                elsif counter >= 200000000 then
+                    counter := 0;
+                    life_lost := '0';
+                else
+                    soundSelect <= "1111";
+                end if;
             else
-                soundSelect <= "1111";
+                if (counter >= 0 and counter < 15000000) or (counter >= 16000000 and counter < 31000000) then
+                    soundSelect <= "0000";
+                elsif (counter >= 48000000 and counter < 63000000) or (counter >= 64000000 and counter < 79000000) then
+                    soundSelect <= "0001";
+                elsif (counter >= 96000000 and counter < 111000000) or (counter >= 112000000 and counter < 127000000) then
+                    soundSelect <= "0010";
+                elsif (counter >= 144000000 and counter < 159000000) or (counter >= 160000000 and counter < 175000000) then
+                    soundSelect <= "0011";
+                elsif (counter >= 176000000 and counter < 207000000) or (counter >= 224000000 and counter < 255000000) then
+                    soundSelect <= "0100";
+                elsif counter >= 372000000 then
+                    counter := 0;
+                else
+                    soundSelect <= "1111";
+                end if;
             end if;
             
             counter := counter + 1;

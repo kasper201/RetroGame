@@ -82,6 +82,7 @@ component RD_Process is
            i_Request_select : in std_logic_vector(3 downto 0);
            i_info_select : in std_logic_vector(3 downto 0);
            o_update : out STD_LOGIC;
+           o_life_lost : out STD_LOGIC;
            o_BCD_bus : out STD_LOGIC_VECTOR(15 downto 0));
 end component;
 
@@ -114,6 +115,7 @@ end component;
 
 component Sound is
     Port ( i_Clk : in STD_LOGIC;
+           i_life_lost : in STD_LOGIC;
            o_Sound : out STD_LOGIC);
 end component;
 
@@ -128,6 +130,8 @@ signal bcd_to_display : std_logic_vector(15 downto 0);
 --Select welke waarde opgevraagd moet worden
 signal request_select : std_logic_vector(3 downto 0);
 signal update_request : std_logic;
+--Life Lost
+signal life_lost : std_logic;
 
 begin
 
@@ -154,6 +158,7 @@ begin
         i_Request_select    => Request_select,
         i_info_select       => i_Info_select,
         o_update            => update_request,
+        o_life_lost         => life_lost,
         o_BCD_bus           => bcd_to_display
     );
     
@@ -181,8 +186,9 @@ begin
    );
    
    USOUND: Sound port map(
-        i_Clk   => i_Clk,
-        o_sound => o_sound
+        i_Clk       => i_Clk,
+        i_life_lost => life_lost,
+        o_sound     => o_sound
    );
    
    o_LED_Status <= Request_select(3);

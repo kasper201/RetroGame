@@ -35,6 +35,7 @@ entity RD_Process is
            i_Request_select : in std_logic_vector(3 downto 0);
            i_info_select : in std_logic_vector(3 downto 0);
            o_update : out STD_LOGIC;
+           o_life_lost : out STD_LOGIC;
            o_BCD_bus : out STD_LOGIC_VECTOR(15 downto 0)
            );
 end RD_Process;
@@ -55,7 +56,7 @@ begin
     begin
         if rising_edge(i_Clk) then
             --Reset
-        
+            
             --Check if there is a new byte
             if i_RX_DV = '1' and Data_Viable = '0' then
                 --Set to 1 because this should not be triggered again until i_RD_DV goes to '0'
@@ -66,21 +67,21 @@ begin
                     update := '0';
                 
                     case i_Request_select is
-                        when "0000" =>
+                        when "0000" =>      --geld
                             if byte = 0 then
                                 geld := to_integer(unsigned(i_R_byte));
                             else
                                 geld := geld + (253 * byte * to_integer(unsigned(i_R_byte)));
                             end if;
                             byte := byte + 1;
-                        when "0001" =>
+                        when "0001" =>      --Robot
                             robot_id := to_integer(unsigned(i_R_byte)) / 16;
                             robot_y := (to_integer(unsigned(i_R_byte)) mod 16) + 1;
-                        when "0010" =>
+                        when "0010" =>      --Plant
                             plant_id := (to_integer(unsigned(i_R_byte)) / 40);
                             plant_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5) + 1;
                             plant_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5) + 1;
-                        when "0011" =>
+                        when "0011" =>      --bullets
                             if byte = 0 then
                                 bullet1y := to_integer(unsigned(i_R_byte(7 downto 4)));
                                 bullet2y := to_integer(unsigned(i_R_byte(3 downto 0)));
@@ -90,12 +91,17 @@ begin
                                 bullet2x := to_integer(unsigned(i_R_byte));
                             end if;
                             byte := byte + 1;
+                        when "0100" =>      --Sound life lost
+                            if to_integer(unsigned(i_R_byte)) = 10 then
+                                o_life_lost <= '1';
+                            end if;
                         when others =>
                     end case;
                 elsif i_R_byte = "11111110" then
                     update := '1';
                 else
                     byte := 0;
+                    o_life_lost <= '0';
                 end if;
                 
                 

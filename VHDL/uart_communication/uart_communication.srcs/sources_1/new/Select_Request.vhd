@@ -63,7 +63,7 @@ begin
             
             if i_update_request = '1' and first_high_request = '0' then --Zet de select request 1 hoger
                 first_high_request := '1';
-                if request_selected_int < 3 then                                         --Huidige hoogste waarde (max 1111)
+                if request_selected_int < 4 then                                         --Huidige hoogste waarde (max 1111)
                     request_selected_int := request_selected_int + 1;
                 else
                     request_selected_int := 0;
