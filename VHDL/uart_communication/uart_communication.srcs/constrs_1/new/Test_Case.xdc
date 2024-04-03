@@ -7,6 +7,9 @@ set_property PACKAGE_PIN W5 [get_ports i_Clk]
 set_property PACKAGE_PIN K3 [get_ports i_Rx]
 set_property PACKAGE_PIN M3 [get_ports o_Tx]
 
+##Sound out
+set_property PACKAGE_PIN A15 [get_ports o_Sound]
+
 ##Buttons
 set_property PACKAGE_PIN U18 [get_ports i_SendButton]
 

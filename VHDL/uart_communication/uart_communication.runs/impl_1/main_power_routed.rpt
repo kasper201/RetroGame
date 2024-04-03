@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-| Date             : Wed Apr  3 11:12:09 2024
+| Date             : Wed Apr  3 15:19:21 2024
 | Host             : MSI running 64-bit major release  (build 9200)
 | Command          : report_power -file main_power_routed.rpt -pb main_power_summary_routed.pb -rpx main_power_routed.rpx
 | Design           : main
@@ -29,20 +29,20 @@ Table of Contents
 1. Summary
 ----------
 
-+--------------------------+----------------------------------+
-| Total On-Chip Power (W)  | 51.775 (Junction temp exceeded!) |
-| Design Power Budget (W)  | Unspecified*                     |
-| Power Budget Margin (W)  | NA                               |
-| Dynamic (W)              | 51.289                           |
-| Device Static (W)        | 0.486                            |
-| Effective TJA (C/W)      | 5.0                              |
-| Max Ambient (C)          | 0.0                              |
-| Junction Temperature (C) | 125.0                            |
-| Confidence Level         | Low                              |
-| Setting File             | ---                              |
-| Simulation Activity File | ---                              |
-| Design Nets Matched      | NA                               |
-+--------------------------+----------------------------------+
++--------------------------+-----------------------------------+
+| Total On-Chip Power (W)  | 105.984 (Junction temp exceeded!) |
+| Design Power Budget (W)  | Unspecified*                      |
+| Power Budget Margin (W)  | NA                                |
+| Dynamic (W)              | 105.498                           |
+| Device Static (W)        | 0.486                             |
+| Effective TJA (C/W)      | 5.0                               |
+| Max Ambient (C)          | 0.0                               |
+| Junction Temperature (C) | 125.0                             |
+| Confidence Level         | Low                               |
+| Setting File             | ---                               |
+| Simulation Activity File | ---                               |
+| Design Nets Matched      | NA                                |
++--------------------------+-----------------------------------+
 * Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
 
 
@@ -52,17 +52,17 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |    13.096 |     2673 |       --- |             --- |
-|   LUT as Logic |    11.932 |     1743 |     20800 |            8.38 |
-|   CARRY4       |     1.084 |      285 |      8150 |            3.50 |
-|   Register     |     0.073 |      309 |     41600 |            0.74 |
+| Slice Logic    |    42.443 |     6903 |       --- |             --- |
+|   LUT as Logic |    35.761 |     4665 |     20800 |           22.43 |
+|   CARRY4       |     6.582 |     1188 |      8150 |           14.58 |
+|   Register     |     0.094 |      375 |     41600 |            0.90 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |       16 |       --- |             --- |
-| Signals        |    11.373 |     2217 |       --- |             --- |
-| DSPs           |     2.016 |        4 |        90 |            4.44 |
-| I/O            |    24.805 |       25 |       106 |           23.58 |
+|   Others       |     0.000 |       20 |       --- |             --- |
+| Signals        |    35.766 |     5754 |       --- |             --- |
+| DSPs           |     2.062 |        4 |        90 |            4.44 |
+| I/O            |    25.226 |       26 |       106 |           24.53 |
 | Static Power   |     0.486 |          |           |                 |
-| Total          |    51.775 |          |           |                 |
+| Total          |   105.984 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,9 +72,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |    26.852 |      26.512 |      0.341 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.961 |       0.908 |      0.053 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     7.014 |       7.013 |      0.001 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |    80.640 |      80.300 |      0.341 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.977 |       0.923 |      0.053 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     7.133 |       7.132 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -139,13 +139,15 @@ Table of Contents
 +------------+-----------+
 | Name       | Power (W) |
 +------------+-----------+
-| main       |    51.289 |
-|   UDISPLAY |     0.596 |
-|   UHANDLE  |    24.608 |
-|   URX      |     0.430 |
-|   USEND    |     0.274 |
-|   UTX      |     0.210 |
-|   UUPDATE  |     0.249 |
+| main       |   105.498 |
+|   UDISPLAY |     0.600 |
+|   UHANDLE  |    24.495 |
+|   URX      |     0.533 |
+|   USEND    |     0.294 |
+|   USOUND   |    53.798 |
+|     PLAYHZ |    51.341 |
+|   UTX      |     0.172 |
+|   UUPDATE  |     0.258 |
 +------------+-----------+
 
 

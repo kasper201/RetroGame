@@ -44,6 +44,7 @@ entity main is
            o_LED_Status2 : out STD_LOGIC;
            o_LED_Status3 : out STD_LOGIC;
            o_LED_Status4 : out STD_LOGIC;
+           o_Sound : out STD_LOGIC;
            o_D_bus : out STD_LOGIC_VECTOR(3 downto 0);  --Alle displays voor 7 segment
            o_S_bus : out STD_LOGIC_VECTOR(7 downto 0)   --Alle segementen voor 7 segment
            );
@@ -111,6 +112,11 @@ component Select_Request is
            o_Request_Select : out STD_LOGIC_VECTOR (3 downto 0));
 end component;
 
+component Sound is
+    Port ( i_Clk : in STD_LOGIC;
+           o_Sound : out STD_LOGIC);
+end component;
+
 --Status for the bytes and if they are ready to handle or to transmit
 signal Recieved_Data_Valid, Transmit_Data_Valid : std_logic;
 --The bytes to recieve and send
@@ -172,6 +178,11 @@ begin
         i_bcd_bus   => bcd_to_display,
         o_D_bus     => o_D_bus,
         o_S_bus     => o_S_bus
+   );
+   
+   USOUND: Sound port map(
+        i_Clk   => i_Clk,
+        o_sound => o_sound
    );
    
    o_LED_Status <= Request_select(3);
