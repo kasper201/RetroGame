@@ -91,11 +91,31 @@ int main(void)
 	//Variables
 	unsigned char sendByte[2];
 	struct bullet bullets[2];
+	struct plant plants[2];
+	struct robot robots[2];
+
 	bullets[0].x = 2;
 	bullets[0].y = 1;
 
 	bullets[1].x = 3;
 	bullets[1].y = 2;
+
+	plants[0].x = 3;
+	plants[0].y = 2;
+	plants[0].id = 4;
+
+	plants[1].x = 2;
+	plants[1].y = 1;
+	plants[1].id = 3;
+
+	robots[0].x = 4;
+	robots[0].y = 2;
+	robots[0].id = 1;
+
+	robots[1].x = 2;
+	robots[1].y = 1;
+	robots[1].id = 3;
+
 
 	printk("Start\n");
 	while (1)
@@ -116,20 +136,22 @@ int main(void)
 		}
 		else if (input == 1)
 		{
-			sendByte[0] = 0x02;
-			sendByte[1] = 0x04;
-			print_uart(sendByte);
-			printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
+			unsigned char sendByteC;
+			int byte = robots[0].id * 16 + robots[0].y;
+			sendByteC = byte;
+			print_uart(&sendByteC);
+			printf("Send these byte: %d\n", sendByteC);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte);
 		}
 		else if (input == 2)
 		{
-			sendByte[0] = 0x03;
-			sendByte[1] = 0x04;
-			print_uart(sendByte);
-			printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
+			unsigned char sendByteC;
+			int byte = (plants[0].id * 40) + (plants[0].x * 5) + plants[0].y;
+			sendByteC = byte;
+			print_uart(&sendByteC);
+			printf("Send these byte: %d\n", sendByteC);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte);

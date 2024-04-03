@@ -48,6 +48,8 @@ begin
     variable update : std_logic := '0';
     variable geld, robot, plant, bullet, tussenwaarde : integer := 0;
     variable bullet1y, bullet1x, bullet2y, bullet2x : integer := 0;
+    variable plant_id, plant_x, plant_y : integer := 0;
+    variable robot_id, robot_y : integer := 0;
     variable byte : integer := 0;
     
     begin
@@ -72,19 +74,12 @@ begin
                             end if;
                             byte := byte + 1;
                         when "0001" =>
-                            if byte = 0 then
-                                robot := to_integer(unsigned(i_R_byte));
-                            else
-                                robot := robot + (253 * byte * to_integer(unsigned(i_R_byte)));
-                            end if;
-                            byte := byte + 1;
+                            robot_id := to_integer(unsigned(i_R_byte)) / 16;
+                            robot_y := (to_integer(unsigned(i_R_byte)) mod 16) + 1;
                         when "0010" =>
-                            if byte = 0 then
-                                plant := to_integer(unsigned(i_R_byte));
-                            else
-                                plant := plant + (253 * byte * to_integer(unsigned(i_R_byte)));
-                            end if;
-                            byte := byte + 1;
+                            plant_id := (to_integer(unsigned(i_R_byte)) / 40);
+                            plant_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5) + 1;
+                            plant_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5) + 1;
                         when "0011" =>
                             if byte = 0 then
                                 bullet1y := to_integer(unsigned(i_R_byte(7 downto 4)));
@@ -117,9 +112,9 @@ begin
                 when "0000" =>
                     tussenwaarde := geld;
                 when "0001" =>
-                    tussenwaarde := robot;
+                    tussenwaarde := robot_id * 100 + robot_y;
                 when "0010" =>
-                    tussenwaarde := plant;
+                    tussenwaarde := plant_id * 1000 + plant_x * 10 + plant_y;
                 when "0011" =>
                     --tussenwaarde := bullet;
                     tussenwaarde := bullet1x * 1000 + bullet1y * 100 + bullet2x * 10 + bullet2y;
