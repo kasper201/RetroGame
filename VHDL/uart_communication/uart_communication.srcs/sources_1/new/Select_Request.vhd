@@ -66,7 +66,7 @@ begin
                 if request_selected_int < 5 then                                         --Huidige hoogste waarde (max 1111)
                     request_selected_int := request_selected_int + 1;
                 else
-                    request_selected_int := 0;
+                    request_selected_int := request_selected_int;
                 end if;
             elsif i_update_request = '1' then
                 first_high_request := '1';
