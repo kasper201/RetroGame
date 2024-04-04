@@ -77,18 +77,13 @@ int main(void)
 	gpio_add_callback(button.port, &button_cb_data);
 	printk("Set up button at %s pin %d\n", button.port->name, button.pin);
 
-
-
-
-
-
 	//
 	//  Mijn stuk!!!
 	//
 
 	uartSetup();
 
-	//Variables
+	// Variables
 	unsigned char sendByte[2];
 	struct bullet bullets[2];
 	struct plant plants[2];
@@ -121,7 +116,9 @@ int main(void)
 	robots[1].y = 1;
 	robots[1].id = 3;
 
-
+	int byte;
+	unsigned char sendByteC;
+	unsigned char sendByteA[3];
 	printk("Start\n");
 	while (1)
 	{
@@ -129,73 +126,67 @@ int main(void)
 		int val = gpio_pin_get_dt(&button);
 
 		int input = checkFromFpga();
-		if (input == 0)
+		switch (input)
 		{
-			sendByte[0] = 0x01;
+		case 0:
+			sendByte[0] = 0x02;
 			sendByte[1] = 0x04;
 			print_uart(sendByte);
 			printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte);
-		}
-		else if (input == 1)
-		{
-			unsigned char sendByteC;
-			int byte = robots[0].id * 16 + robots[0].y;
+			break;
+		case 1:
+			byte = robots[0].id * 16 + robots[0].y;
 			sendByteC = byte;
 			print_uart(&sendByteC);
 			printf("Send these byte: %d\n", sendByteC);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte);
-		}
-		else if (input == 2)
-		{
-			unsigned char sendByteC;
-			int byte = (plants[0].id * 40) + (plants[0].x * 5) + plants[0].y;
+			break;
+		case 2:
+			byte = (plants[0].id * 40) + (plants[0].x * 5) + plants[0].y;
 			sendByteC = byte;
 			print_uart(&sendByteC);
 			printf("Send these byte: %d\n", sendByteC);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte);
-		}
-		else if (input == 3)
-		{
-			unsigned char sendByteC[3];
+			break;
+		case 3:
 			int y1 = bullets[0].y;
 			int y2 = bullets[1].y;
 			int y = y1 * 16 + y2;
-			sendByteC[0] = y;
-			sendByteC[1] = bullets[0].x;
-			sendByteC[2] = bullets[1].x;
-			print_uart(sendByteC);
-			printf("Send these bytes: %d %d %d\n", sendByteC[0], sendByteC[1], sendByteC[2]);
+			sendByteA[0] = y;
+			sendByteA[1] = bullets[0].x;
+			sendByteA[2] = bullets[1].x;
+			print_uart(sendByteA);
+			printf("Send these bytes: %d %d %d\n", sendByteA[0], sendByteA[1], sendByteA[2]);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte);
-		}
-		else if (input == 4)
-		{
-			unsigned char sendByteC;
+			break;
+		case 4:
 			sendByteC = 0x0a;
 			print_uart(&sendByteC);
 			printf("Send these bytes: %d\n", sendByteC);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte);
-		}
-		else if (input == 5)
-		{
-			unsigned char sendByteC;
-			int byte = (shopSelector * 40) + (gardenSelector.x * 5) + gardenSelector.y;
+			break;
+		case 5:
+			byte = (shopSelector * 40) + (gardenSelector.x * 5) + gardenSelector.y;
 			sendByteC = byte;
 			print_uart(&sendByteC);
 			printf("Send these byte: %d\n", sendByteC);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte);
+			break;
+		default:
+			break;
 		}
 
 		k_msleep(SLEEP_TIME_MS);
