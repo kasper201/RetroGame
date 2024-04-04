@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-| Date         : Thu Apr  4 10:25:06 2024
+| Date         : Thu Apr  4 19:24:34 2024
 | Host         : MSI running 64-bit major release  (build 9200)
 | Command      : report_drc -file main_drc_routed.rpt -pb main_drc_routed.pb -rpx main_drc_routed.rpx
 | Design       : main
@@ -24,14 +24,14 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 19
+             Violations found: 23
 +----------+----------+-----------------------------------------------------+------------+
 | Rule     | Severity | Description                                         | Violations |
 +----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| DPIP-1   | Warning  | Input pipelining                                    | 8          |
-| DPOP-1   | Warning  | PREG Output pipelining                              | 5          |
-| DPOP-2   | Warning  | MREG Output pipelining                              | 5          |
+| DPIP-1   | Warning  | Input pipelining                                    | 10         |
+| DPOP-1   | Warning  | PREG Output pipelining                              | 6          |
+| DPOP-2   | Warning  | MREG Output pipelining                              | 6          |
 +----------+----------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -76,17 +76,27 @@ Related violations: <none>
 
 DPIP-1#6 Warning
 Input pipelining  
-DSP UHANDLE/tussenwaarde2 input UHANDLE/tussenwaarde2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP UHANDLE/tussenwaarde0__2 input UHANDLE/tussenwaarde0__2/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-1#7 Warning
 Input pipelining  
-DSP UHANDLE/tussenwaarde2__0 input UHANDLE/tussenwaarde2__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP UHANDLE/tussenwaarde2 input UHANDLE/tussenwaarde2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-1#8 Warning
 Input pipelining  
+DSP UHANDLE/tussenwaarde2__0 input UHANDLE/tussenwaarde2__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#9 Warning
+Input pipelining  
 DSP UHANDLE/tussenwaarde2__1 input UHANDLE/tussenwaarde2__1/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#10 Warning
+Input pipelining  
+DSP UHANDLE/tussenwaarde2__2 input UHANDLE/tussenwaarde2__2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPOP-1#1 Warning
@@ -114,6 +124,11 @@ PREG Output pipelining
 DSP UHANDLE/tussenwaarde0__1 output UHANDLE/tussenwaarde0__1/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
+DPOP-1#6 Warning
+PREG Output pipelining  
+DSP UHANDLE/tussenwaarde0__2 output UHANDLE/tussenwaarde0__2/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
 DPOP-2#1 Warning
 MREG Output pipelining  
 DSP UHANDLE/geld1 multiplier stage UHANDLE/geld1/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
@@ -137,6 +152,11 @@ Related violations: <none>
 DPOP-2#5 Warning
 MREG Output pipelining  
 DSP UHANDLE/tussenwaarde0__1 multiplier stage UHANDLE/tussenwaarde0__1/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#6 Warning
+MREG Output pipelining  
+DSP UHANDLE/tussenwaarde0__2 multiplier stage UHANDLE/tussenwaarde0__2/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 

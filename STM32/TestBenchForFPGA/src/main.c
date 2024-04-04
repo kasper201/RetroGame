@@ -129,8 +129,14 @@ int main(void)
 		switch (input)
 		{
 		case 0:
-			sendByte[0] = 0x02;
-			sendByte[1] = 0x04;
+			int geld = 300;
+			unsigned char tussenin = geld;
+			if( geld > 253)
+			{
+				tussenin = tussenin + 3;
+			}
+			sendByte[0] = 0x11;
+			sendByte[1] = 0x44;
 			print_uart(sendByte);
 			printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
 			sendByte[0] = 0xff;

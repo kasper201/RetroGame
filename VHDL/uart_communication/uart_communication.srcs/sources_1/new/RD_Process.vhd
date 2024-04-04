@@ -50,7 +50,7 @@ begin
     variable geld, robot, plant, bullet, tussenwaarde : integer := 0;
     variable bullet1y, bullet1x, bullet2y, bullet2x : integer range 0 to 255 := 0;
     variable plant_id, plant_x, plant_y : integer range 0 to 255 := 0;
-    variable robot_id, robot_y : integer range 0 to 255 := 0;
+    variable robot_id, robot_y, robot_x : integer range 0 to 255 := 0;
     variable shop_selector, garden_selector_x, garden_selector_y : integer range 0 to 255 := 0;
     variable byte : integer := 0;
     
@@ -76,8 +76,13 @@ begin
                             end if;
                             byte := byte + 1;
                         when "0001" =>      --Robot
-                            robot_id := to_integer(unsigned(i_R_byte)) / 16;
-                            robot_y := (to_integer(unsigned(i_R_byte)) mod 16);
+                            if byte = 0 then
+                                robot_id := to_integer(unsigned(i_R_byte)) / 16;
+                                robot_y := (to_integer(unsigned(i_R_byte)) mod 16);
+                            else
+                                robot_x := to_integer(unsigned(i_R_byte));
+                            end if;
+                            byte := byte + 1;
                         when "0010" =>      --Plant
                             plant_id := (to_integer(unsigned(i_R_byte)) / 40);
                             plant_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5);
@@ -125,7 +130,7 @@ begin
                 when "0000" =>
                     tussenwaarde := geld;
                 when "0001" =>
-                    tussenwaarde := robot_id * 100 + robot_y;
+                    tussenwaarde := robot_id * 1000 + robot_y * 100 + robot_x;
                 when "0010" =>
                     tussenwaarde := plant_id * 1000 + plant_x * 10 + plant_y;
                 when "0011" =>

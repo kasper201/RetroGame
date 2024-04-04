@@ -93,12 +93,10 @@ int uartSetup()
 }
 
 // Send uart message
-void print_uart(char *buf)
+void print_uart(char *buf, int lengte)
 {
-	int msg_len = strlen(buf);
 
-	for (int i = 0; i < msg_len; i++)
-	{
+	for (int i = 0; i < lengte; i++) {
 		uart_poll_out(uart_dev, buf[i]);
 	}
 	memset(rx_buf, 0, sizeof(rx_buf));
@@ -107,7 +105,6 @@ void print_uart(char *buf)
 // Check message from FPGA
 int checkFromFpga()
 {
-	int returnValue = -1;
 	char Message[MESSAGE_SIZE];
 	k_msgq_get(&uart_msgq, &Message, K_NO_WAIT);
 	k_msgq_cleanup(&uart_msgq);
@@ -116,40 +113,45 @@ int checkFromFpga()
 
 	if (msg_len > 3)
 	{
-		printf("Input: ");
-		for (int i = 0; i < msg_len; i++)
-		{
-			printf("%c", Message[i]);
-		}
-		printf("\n");
+		// printf("Input: ");
+		// for (int i = 0; i < msg_len; i++)
+		// {
+		// 	printf("%c", Message[i]);
+		// }
+		// printf("\n");
 	}
 
 	// Returns het bijhorende nummer van het keyword
 	if (strstr(Message, "geld"))
 	{
-		returnValue = 0;
 		printf("geld selected\n");
+		return 0;
 	}
 	else if (strstr(Message, "bott"))
 	{
-		returnValue = 1;
 		printf("bott selected\n");
+		return 1;
 	}
 	else if (strstr(Message, "plan"))
 	{
-		returnValue = 2;
 		printf("plan selected\n");
+		return 2;
 	}
 	else if (strstr(Message, "bull"))
 	{
-		returnValue = 3;
 		printf("bull selected\n");
+		return 3;
 	}
-
-	for(int c = 0; c < MESSAGE_SIZE; c++)
+	else if (strstr(Message, "life"))
 	{
-		Message[c] = NULL;
+		printf("life selected\n");
+		return 4;
+	}
+	else if (strstr(Message, "sect"))
+	{
+		printf("sect selected\n");
+		return 5;
 	}
 
-	return returnValue;
+	return -1;
 }
