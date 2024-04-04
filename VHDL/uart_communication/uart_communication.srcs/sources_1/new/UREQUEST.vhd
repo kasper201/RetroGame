@@ -103,6 +103,12 @@ begin
                         bytes_out_2 := "01100110";
                         bytes_out_3 := "01100101";
                         bytes_out_4 := "00001010";
+                    when "0101" =>                      --Vraag selectors op (sect\n)
+                        bytes_out_0 := "01110011";
+                        bytes_out_1 := "01100101";
+                        bytes_out_2 := "01100011";
+                        bytes_out_3 := "01110100";
+                        bytes_out_4 := "00001010";
                     when others =>
                         bytes_out_0 := "00000000";
                         bytes_out_1 := "00000000";

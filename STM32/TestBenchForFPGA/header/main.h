@@ -23,4 +23,10 @@ struct robot
     uint8_t id;
 };
 
+struct selector
+{
+    uint8_t x;
+    uint8_t y;
+};
+
 #endif //MAIN_H_

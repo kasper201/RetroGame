@@ -48,9 +48,10 @@ begin
     variable Data_Viable, first_byte : std_logic := '0';
     variable update : std_logic := '0';
     variable geld, robot, plant, bullet, tussenwaarde : integer := 0;
-    variable bullet1y, bullet1x, bullet2y, bullet2x : integer := 0;
-    variable plant_id, plant_x, plant_y : integer := 0;
-    variable robot_id, robot_y : integer := 0;
+    variable bullet1y, bullet1x, bullet2y, bullet2x : integer range 0 to 255 := 0;
+    variable plant_id, plant_x, plant_y : integer range 0 to 255 := 0;
+    variable robot_id, robot_y : integer range 0 to 255 := 0;
+    variable shop_selector, garden_selector_x, garden_selector_y : integer range 0 to 255 := 0;
     variable byte : integer := 0;
     
     begin
@@ -76,11 +77,11 @@ begin
                             byte := byte + 1;
                         when "0001" =>      --Robot
                             robot_id := to_integer(unsigned(i_R_byte)) / 16;
-                            robot_y := (to_integer(unsigned(i_R_byte)) mod 16) + 1;
+                            robot_y := (to_integer(unsigned(i_R_byte)) mod 16);
                         when "0010" =>      --Plant
                             plant_id := (to_integer(unsigned(i_R_byte)) / 40);
-                            plant_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5) + 1;
-                            plant_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5) + 1;
+                            plant_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5);
+                            plant_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5);
                         when "0011" =>      --bullets
                             if byte = 0 then
                                 bullet1y := to_integer(unsigned(i_R_byte(7 downto 4)));
@@ -94,7 +95,13 @@ begin
                         when "0100" =>      --Sound life lost
                             if to_integer(unsigned(i_R_byte)) = 10 then
                                 o_life_lost <= '1';
+                            else
+                                o_life_lost <= '0';
                             end if;
+                        when "0101" =>      --Selectors
+                            shop_selector := (to_integer(unsigned(i_R_byte)) / 40);
+                            garden_selector_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5);
+                            garden_selector_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5);
                         when others =>
                     end case;
                 elsif i_R_byte = "11111110" then
@@ -124,6 +131,8 @@ begin
                 when "0011" =>
                     --tussenwaarde := bullet;
                     tussenwaarde := bullet1x * 1000 + bullet1y * 100 + bullet2x * 10 + bullet2y;
+                when "0101" =>
+                    tussenwaarde := shop_selector * 1000 + garden_selector_x * 10 + garden_selector_y;
                 when others =>
             end case;
         end if;

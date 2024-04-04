@@ -93,6 +93,11 @@ int main(void)
 	struct bullet bullets[2];
 	struct plant plants[2];
 	struct robot robots[2];
+	int shopSelector = 2;
+	struct selector gardenSelector;
+
+	gardenSelector.x = 1;
+	gardenSelector.y = 2;
 
 	bullets[0].x = 2;
 	bullets[0].y = 1;
@@ -177,6 +182,17 @@ int main(void)
 			sendByteC = 0x0a;
 			print_uart(&sendByteC);
 			printf("Send these bytes: %d\n", sendByteC);
+			sendByte[0] = 0xff;
+			sendByte[1] = 0xfe;
+			print_uart(sendByte);
+		}
+		else if (input == 5)
+		{
+			unsigned char sendByteC;
+			int byte = (shopSelector * 40) + (gardenSelector.x * 5) + gardenSelector.y;
+			sendByteC = byte;
+			print_uart(&sendByteC);
+			printf("Send these byte: %d\n", sendByteC);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte);

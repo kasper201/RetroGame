@@ -149,6 +149,11 @@ int checkFromFpga()
 		printf("life selected\n");
 		return 4;
 	}
+	else if (strstr(Message, "sect"))
+	{
+		printf("sect selected\n");
+		return 5;
+	}
 
 	return -1;
 }
