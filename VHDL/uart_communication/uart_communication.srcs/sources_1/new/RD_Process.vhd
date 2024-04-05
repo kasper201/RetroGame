@@ -65,11 +65,7 @@ begin
                 
                 --Check incoming Bytes
                 if i_R_byte /= "11111111" and i_R_byte /= "11111110" then
-                    if i_request_select /= "0101" then
-                        update := '0';
-                    else
-                        update := '1';
-                    end if;
+                    update := '0';
                 
                     case i_Request_select is
                         when "0000" =>      --geld

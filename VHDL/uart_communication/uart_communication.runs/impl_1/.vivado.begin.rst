@@ -1,35 +1,15 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="woute" Host="MSI" Pid="24016" HostCore="12" HostMemory="016991293440">
+    <Process Command="vivado.bat" Owner="woute" Host="MSI" Pid="15980" HostCore="12" HostMemory="016991293440">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="woute" Host="MSI" Pid="12300" HostCore="12" HostMemory="016991293440">
+    <Process Command="vivado.bat" Owner="woute" Host="MSI" Pid="12404" HostCore="12" HostMemory="016991293440">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="woute" Host="MSI" Pid="21544" HostCore="12" HostMemory="016991293440">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="woute" Host="MSI" Pid="21044" HostCore="12" HostMemory="016991293440">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="woute" Host="MSI" Pid="21104" HostCore="12" HostMemory="016991293440">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="woute" Host="MSI" Pid="23744" HostCore="12" HostMemory="016991293440">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="woute" Host="MSI" Pid="21000" HostCore="12" HostMemory="016991293440">
+    <Process Command="vivado.bat" Owner="woute" Host="MSI" Pid="7372" HostCore="12" HostMemory="016991293440">
     </Process>
 </ProcessHandle>

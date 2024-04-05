@@ -119,14 +119,6 @@ component Sound is
            o_Sound : out STD_LOGIC);
 end component;
 
-component AskNext is
-    Port ( i_Clk : in STD_LOGIC;
-           i_StartFrame : in STD_LOGIC;
-           i_Update_Request : in STD_LOGIC;
-           i_Request_select : in std_logic_vector(3 downto 0);
-           o_Request_Confirm : out STD_LOGIC);
-end component;
-
 --Status for the bytes and if they are ready to handle or to transmit
 signal Recieved_Data_Valid, Transmit_Data_Valid : std_logic;
 --The bytes to recieve and send
@@ -138,7 +130,6 @@ signal bcd_to_display : std_logic_vector(15 downto 0);
 --Select welke waarde opgevraagd moet worden
 signal request_select : std_logic_vector(3 downto 0);
 signal update_request : std_logic;
-signal request_confirm : std_logic;
 --Life Lost
 signal life_lost : std_logic;
 
@@ -174,7 +165,7 @@ begin
     USEND: UREQUEST port map (
         i_Clk               => i_clk,
         i_Request_select    => Request_select,
-        i_Request_confirm   => request_confirm,--i_sendButton,
+        i_Request_confirm   => i_sendButton,
         o_Byte_out          => Data_To_Send,
         o_Send_Byte         => Transmit_Data_Valid,
         o_Status4           => o_LED_Status4
@@ -183,7 +174,7 @@ begin
    UUPDATE: Select_Request port map (
         i_Clk               => i_clk,
         i_Update_Request    => update_request,
-        i_Start_Frame       => i_sendButton,
+        i_Start_Frame       => '1',
         o_Request_Select    => Request_select
    );
    
@@ -198,14 +189,6 @@ begin
         i_Clk       => i_Clk,
         i_life_lost => life_lost,
         o_sound     => o_sound
-   );
-   
-   UASK: AskNext port map ( 
-        i_Clk               => i_Clk,
-        i_StartFrame        => i_sendButton,
-        i_Update_Request    => update_request,
-        i_Request_select    => request_select,
-        o_Request_Confirm   => request_confirm
    );
    
    o_LED_Status <= Request_select(3);

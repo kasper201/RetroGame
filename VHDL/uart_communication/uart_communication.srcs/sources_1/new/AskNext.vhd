@@ -45,8 +45,7 @@ begin
 
     process(i_clk)
     variable confirm : std_logic := '0';
-    variable first_high_frame, first_low_frame, trigger, trigger2, first_high_update : std_logic := '0';
-    variable last_Request_select : std_logic_vector(3 downto 0) := "0101";
+    variable first_high_frame, trigger, trigger2, first_high_update : std_logic := '0';
     
     begin
     
@@ -55,21 +54,19 @@ begin
             if i_startframe = '1' and first_high_frame = '0' then
                 trigger := '1';
                 first_high_frame := '1';
-                first_low_frame := '1';
-                last_Request_select := i_Request_select;
             elsif i_startframe = '1' then
-               trigger := '0';
-               first_high_frame := '1';
+                trigger := '0';
+                first_high_frame := '1';
             else
                 trigger := '0';
                 first_high_frame := '0';
             end if;
             
             --Voor wanneer de volgende waarde opgevraagd moet worden nadat de vorige is binnen gekomen
-            if i_Request_select /= last_Request_select and first_high_update = '0' and (last_request_select /= "0101") then
-                trigger2 := '1';   
+            if i_update_request = '1' and first_high_update = '0' and 
+i_Request_select /= "0000" then
+                trigger2 := '1';
                 first_high_update := '1';
-                last_Request_select := i_Request_select;
             elsif i_update_request = '1' then
                 trigger2 := '0';
                 first_high_update := '1';
