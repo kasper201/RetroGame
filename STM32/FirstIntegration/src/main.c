@@ -207,6 +207,7 @@ int main(void)
 	unsigned char sendByteC;
 	unsigned char sendByteA[3];
 	int geld;
+	int sendOut = 7;
 
 
 	printk("Start\n");
@@ -254,7 +255,11 @@ int main(void)
 		}
 
 		int input = checkFromFpga();
-		switch (input)
+		if(input >= 0)
+		{
+			sendOut = 0;
+		}
+		switch (sendOut)
 		{
 		case 0:
 			geld = player.money;
@@ -319,6 +324,10 @@ int main(void)
 			break;
 		default:
 			break;
+		}
+		if(sendOut < 6)
+		{
+			sendOut++;
 		}
 
 		k_msleep(SLEEP_TIME_MS);

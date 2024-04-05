@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-| Date         : Thu Apr  4 19:24:08 2024
+| Date         : Fri Apr  5 12:02:16 2024
 | Host         : MSI running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
 | Design       : main
@@ -78,8 +78,8 @@ Table of Contents
 |  i_Clk_IBUF_BUFG |                                       | UDISPLAY/p_0_in[6]                       |                1 |              2 |         2.00 |
 |  i_Clk_IBUF_BUFG |                                       | UDISPLAY/p_0_in[5]                       |                1 |              4 |         4.00 |
 |  i_Clk_IBUF_BUFG | USEND/which_byte_out                  |                                          |                2 |              5 |         2.50 |
-|  i_Clk_IBUF_BUFG | USEND/temp_byte_out[6]_i_1_n_0        |                                          |                6 |              7 |         1.17 |
 |  i_Clk_IBUF_BUFG | UTX/r_TX_Data                         |                                          |                2 |              7 |         3.50 |
+|  i_Clk_IBUF_BUFG | USEND/temp_byte_out[6]_i_1_n_0        |                                          |                6 |              7 |         1.17 |
 |  i_Clk_IBUF_BUFG | URX/r_Clk_Count[7]_i_1_n_0            |                                          |                5 |              8 |         1.60 |
 |  i_Clk_IBUF_BUFG | URX/r_RX_Byte_reg[3]_1                |                                          |                6 |              8 |         1.33 |
 |  i_Clk_IBUF_BUFG | UTX/r_Clk_Count_0                     | UTX/r_Clk_Count0                         |                3 |              8 |         2.67 |
