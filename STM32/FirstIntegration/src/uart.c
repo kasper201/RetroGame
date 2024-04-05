@@ -155,3 +155,18 @@ int checkFromFpga()
 
 	return -1;
 }
+
+void sendBullets() //struct array bullets
+{
+	//send array bullets
+}
+
+void sendRobots() //map robots
+{
+	//send all robots
+}
+
+void sendPlants() //map plant
+{
+	//send all plants
+}
