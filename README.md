@@ -4,7 +4,7 @@ Zephyr version: 3.5 or later
 CMake Version: 3.27.4
 OS: Windows 11 23H2 or later
 Vivado version: 2023.2
-Board: STM NUCLEO-F030R8 (or better)
+Board: STM NUCLEO-F091RC or equivalent
 
 # Installation
 
