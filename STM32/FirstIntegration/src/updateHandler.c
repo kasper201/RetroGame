@@ -55,7 +55,7 @@ int moveEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTHR
         }
     }
 
-    if (x < 0) // if out of bounds the player has lost one heart. player got 5 hearts or 100hp
+    if (x < 120) // if out of bounds the player has lost one heart. player got 5 hearts or 100hp
         player->health -= 20;// remove 1 heart or 20 hp
     if (player->health <= 0)//if all the hearts have been lost deadscreen or menu will show
         deadscreen(player);

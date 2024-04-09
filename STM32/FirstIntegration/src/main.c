@@ -21,7 +21,7 @@
 #include "updateHandler.h"
 #include "mainGame.h"
 
-#define SLEEP_TIME_MS 10
+#define SLEEP_TIME_U 5
 #define MAP_WIDTH 8	   // Plant map width
 #define MAP_HEIGHT 5   // Plant map height
 #define NUM_BUTTONS 7  // Number of buttons
@@ -205,7 +205,7 @@ int main(void)
 	int byte;
 	unsigned char sendByte[2];
 	unsigned char sendByteC;
-	unsigned char sendByteA[3];
+	int tempHealth = player.health;
 	int geld;
 	int sendOut = 7;
 
@@ -213,6 +213,7 @@ int main(void)
 	printk("Start\n");
 	while (1)
 	{
+		
 		val[0] = gpio_pin_get_dt(buttons[0]);
 		val[1] = gpio_pin_get_dt(buttons[1]);
 		val[2] = gpio_pin_get_dt(buttons[2]);
@@ -220,12 +221,12 @@ int main(void)
 		val[4] = gpio_pin_get_dt(buttons[4]);
 		val[5] = gpio_pin_get_dt(buttons[5]);
 		val[6] = gpio_pin_get_dt(buttons[6]);
-
+		
 		// Loop through the buttons
 		for (int i = 0; i < 7; i++)
 		{
 			if (val[i] > 0 && buttonPressed[i] == 0)
-			{
+			{printf("time1\n");
 				buttonPressed[i] = 1;
 				// TODO voeg hier de functies toe die per knop aangeroepen worden want dit is rising edge
 				printk("button %d pressed %d\n", i, count);
@@ -234,6 +235,7 @@ int main(void)
 				released[i] = 0;
 				printk("2D x:%d and y:%d\n", xLoc, yLoc);
 				printk("shop x:%d\n", xLocs);
+				printf("time2\n");
 			}
 			else if (val[i] > 0)
 			{
@@ -253,84 +255,78 @@ int main(void)
 				}
 			}
 		}
-
+	
 		int input = checkFromFpga();
+		
 		if(input >= 0)
 		{
-			sendOut = 0;
-		}
-		switch (sendOut)
-		{
-		case 0:
+			printk("Start sending at at %" PRIu32 "\n", k_cycle_get_32());
+
+			//Geld
 			geld = player.money;
 			sendByte[0] = geld % 253;
 			sendByte[1] = geld / 253;
 			print_uart(sendByte , 2);
-			printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
+			//printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
+			k_usleep(SLEEP_TIME_U);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte, 2);
-			break;
-		case 1:
-			//byte = robots[0].id * 16 + robots[0].y;
-			sendByte[0] = 0x52;
-			sendByte[1] = 0x12;
-			print_uart(sendByte, 2);
-			printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
+			
+			//Robot
+			sendRobots(mapR);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte, 2);
-			break;
-		case 2:
-			//byte = (plants[0].id * 40) + (plants[0].x * 5) + plants[0].y;
-			sendByteC = 0x23;
-			print_uart(&sendByteC, 1);
-			printf("Send these byte: %d\n", sendByteC);
+			
+			//Plant
+			sendPlants(map);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte, 2);
-			break;
-		case 3:
-			int y1 = 1;//bullets[0].y;
-			int y2 = 2;//bullets[1].y;
-			int y = y1 * 16 + y2;
-			sendByteA[0] = y;
-			// sendByteA[1] = bullets[0].x;
-			// sendByteA[2] = bullets[1].x;
-			sendByteA[1] = 0x03;
-			sendByteA[2] = 0x04;
-			print_uart(sendByteA, 3);
-			printf("Send these bytes: %d %d %d\n", sendByteA[0], sendByteA[1], sendByteA[2]);
+			
+			//Bullet
+			sendBullets(bullet);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte, 2);
-			break;
-		case 4:
-			sendByteC = 0x0a;
-			print_uart(&sendByteC, 1);
-			printf("Send these bytes: %d\n", sendByteC);
+			
+			//Life Lost
+			if(tempHealth != player.health)
+			{
+				sendByteC = 0x0a;
+				print_uart(&sendByteC, 1);
+				//printf("Life lost send this byte: %d\n", sendByteC);
+				k_usleep(SLEEP_TIME_U);
+				tempHealth = player.health;
+			}
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte, 2);
-			break;
-		case 5:
+			
+			//Selector
 			byte = (xLocs * 40) + (xLoc * 5) + yLoc; //shop, gardenx, gardeny
 			sendByteC = byte;
 			print_uart(&sendByteC, 1);
-			printf("Send these byte: %d\n", sendByteC);
+			//printf("Send these byte: %d\n", sendByteC);
+			k_usleep(SLEEP_TIME_U);	
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte, 2);
-			break;
-		default:
-			break;
-		}
-		if(sendOut < 6)
-		{
-			sendOut++;
-		}
+			
+			//Wave
+			sendByteC = player.wave;
+			print_uart(&sendByteC, 1);
+			//printf("Send wave these byte: %d\n", sendByteC);
+			k_usleep(SLEEP_TIME_U);
+			sendByte[0] = 0xff;
+			sendByte[1] = 0xfe;
+			print_uart(sendByte, 2);
 
-		k_msleep(SLEEP_TIME_MS);
+			printk("Stop sending at %" PRIu32 "\n", k_cycle_get_32());
+		}
+	
+		k_usleep(SLEEP_TIME_U);
 	}
 	return 0;
 }
