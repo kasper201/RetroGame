@@ -174,7 +174,7 @@ begin
    UUPDATE: Select_Request port map (
         i_Clk               => i_clk,
         i_Update_Request    => update_request,
-        i_Start_Frame       => '1',
+        i_Start_Frame       => i_sendButton,
         o_Request_Select    => Request_select
    );
    
