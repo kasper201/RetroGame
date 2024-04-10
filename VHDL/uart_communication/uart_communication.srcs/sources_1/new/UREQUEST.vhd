@@ -36,6 +36,7 @@ entity UREQUEST is
         i_Clk : in std_logic;
         i_Request_select : in std_logic_vector(3 downto 0);
         i_Request_confirm : in std_logic;
+        i_Update_request : in std_logic;
         o_Byte_out : out std_logic_vector(7 downto 0);
         o_Send_Byte : out std_logic;
         o_Status4 : out STD_LOGIC
@@ -51,6 +52,7 @@ begin
         variable confirmed_request : std_logic_vector(3 downto 0);
         variable bytes_out_0, bytes_out_1, bytes_out_2, bytes_out_3, bytes_out_4, temp_byte_out : std_logic_vector(7 downto 0);
         variable which_byte_out : integer range 0 to 5 := 0;
+        variable counter2 : integer := 0;
     begin
         if rising_edge(i_Clk) then
             --Reset send
@@ -60,6 +62,7 @@ begin
             if i_Request_confirm = '1' and send_out = '0' and unpressed = '0' then
                 send_out := '1';    --Make sure only one request is made at the same time
                 unpressed := '1';   --Zodat er niet 100 achter elkaar worden verstuurd als je het knopje telang inhoud
+                counter2 := 0;      --Counter 2 is verantwoordelijk voor een nieuwe request als de vorige niet ontvangen is door de stm32
                 confirmed_request := i_Request_select;
             elsif i_Request_confirm = '1' and unpressed = '1' then
                 send_out := send_out;
@@ -70,52 +73,25 @@ begin
                 confirmed_request := confirmed_request;
             end if;
             
+            if counter2 < 100000000 then
+                counter2 := counter + 1;
+                --if i_update_request = '0' then
+                --    counter2 := 120000000;
+                --end if;
+            end if;
+            if counter2 > 90000000 and counter2 < 110000000 then
+                send_out := '1';
+                counter2 := 120000000;
+            end if;
+            
             --If a request should be send out
             if send_out = '1' then 
-                case confirmed_request is
-                    when "0000" =>                      --Vraag geld bedrag op (geld\n)
-                        bytes_out_0 := "01100111";
-                        bytes_out_1 := "01100101";
-                        bytes_out_2 := "01101100";
-                        bytes_out_3 := "01100100";
-                        bytes_out_4 := "00001010";
-                    when "0001" =>                      --Vraag Robot locatie op (bott\n)
-                        bytes_out_0 := "01100010";
-                        bytes_out_1 := "01101111";
-                        bytes_out_2 := "01110100";
-                        bytes_out_3 := "01110100";
-                        bytes_out_4 := "00001010";
-                    when "0010" =>                      --Vraag Plant locaties op (plan\n)
-                        bytes_out_0 := "01110000";
-                        bytes_out_1 := "01101100";
-                        bytes_out_2 := "01100001";
-                        bytes_out_3 := "01101110";
-                        bytes_out_4 := "00001010";
-                    when "0011" =>                      --Vraag Bullet locaties op (bull\n)
-                        bytes_out_0 := "01100010";
-                        bytes_out_1 := "01110101";
-                        bytes_out_2 := "01101100";
-                        bytes_out_3 := "01101100";
-                        bytes_out_4 := "00001010";
-                    when "0100" =>                      --Vraag of er een leven is verloren voor geluid op (life\n)
-                        bytes_out_0 := "01101100";
-                        bytes_out_1 := "01101001";
-                        bytes_out_2 := "01100110";
-                        bytes_out_3 := "01100101";
-                        bytes_out_4 := "00001010";
-                    when "0101" =>                      --Vraag selectors op (sect\n)
-                        bytes_out_0 := "01110011";
-                        bytes_out_1 := "01100101";
-                        bytes_out_2 := "01100011";
-                        bytes_out_3 := "01110100";
-                        bytes_out_4 := "00001010";
-                    when others =>
-                        bytes_out_0 := "00000000";
-                        bytes_out_1 := "00000000";
-                        bytes_out_2 := "00000000";
-                        bytes_out_3 := "00000000";
-                        bytes_out_4 := "00000000";
-                end case;
+                
+                    bytes_out_0 := "01100111";
+                    bytes_out_1 := "01100101";
+                    bytes_out_2 := "01101100";
+                    bytes_out_3 := "01100100";
+                    bytes_out_4 := "00001010";
                 
                 --Send out all 5 bytes
                 if counter >= ((10*217) + 99) then --Makes sure to wait till the next byte should be send
@@ -149,6 +125,7 @@ begin
                             o_Send_Byte <= '0';
                             which_byte_out := 0;
                             send_out := '0';
+                            counter2 := 0;
                     end case;
                 else    --Houdt alles op de juiste manier
                     counter := counter;

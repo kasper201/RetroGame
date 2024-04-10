@@ -92,6 +92,7 @@ component UREQUEST is
         i_Clk : in std_logic;
         i_Request_select : in std_logic_vector(3 downto 0);
         i_Request_confirm : in std_logic;
+        i_Update_request : in std_logic;
         o_Byte_out : out std_logic_vector(7 downto 0);
         o_Send_Byte : out std_logic;
         o_Status4 : out STD_LOGIC
@@ -166,6 +167,7 @@ begin
         i_Clk               => i_clk,
         i_Request_select    => Request_select,
         i_Request_confirm   => i_sendButton,
+        i_Update_request    => update_request,
         o_Byte_out          => Data_To_Send,
         o_Send_Byte         => Transmit_Data_Valid,
         o_Status4           => o_LED_Status4

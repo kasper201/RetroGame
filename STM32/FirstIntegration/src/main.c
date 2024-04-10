@@ -267,8 +267,8 @@ int main(void)
 			sendByte[0] = geld % 253;
 			sendByte[1] = geld / 253;
 			print_uart(sendByte , 2);
-			//printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
-			k_usleep(SLEEP_TIME_U);
+			printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
+			//k_usleep(SLEEP_TIME_U);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte, 2);
@@ -296,8 +296,8 @@ int main(void)
 			{
 				sendByteC = 0x0a;
 				print_uart(&sendByteC, 1);
-				//printf("Life lost send this byte: %d\n", sendByteC);
-				k_usleep(SLEEP_TIME_U);
+				printf("Life lost send this byte: %d\n", sendByteC);
+				//k_usleep(SLEEP_TIME_U);
 				tempHealth = player.health;
 			}
 			sendByte[0] = 0xff;
@@ -308,8 +308,8 @@ int main(void)
 			byte = (xLocs * 40) + (xLoc * 5) + yLoc; //shop, gardenx, gardeny
 			sendByteC = byte;
 			print_uart(&sendByteC, 1);
-			//printf("Send these byte: %d\n", sendByteC);
-			k_usleep(SLEEP_TIME_U);	
+			printf("Send these byte: %d\n", sendByteC);
+			//k_usleep(SLEEP_TIME_U);	
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte, 2);
@@ -317,8 +317,8 @@ int main(void)
 			//Wave
 			sendByteC = player.wave;
 			print_uart(&sendByteC, 1);
-			//printf("Send wave these byte: %d\n", sendByteC);
-			k_usleep(SLEEP_TIME_U);
+			printf("Send wave these byte: %d\n", sendByteC);
+			//k_usleep(SLEEP_TIME_U);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte, 2);
@@ -326,7 +326,7 @@ int main(void)
 			printk("Stop sending at %" PRIu32 "\n", k_cycle_get_32());
 		}
 	
-		k_usleep(SLEEP_TIME_U);
+		k_usleep(SLEEP_TIME_U * 10);
 	}
 	return 0;
 }

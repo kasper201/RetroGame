@@ -1,0 +1,98 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Wed Apr 10 12:58:29 2024
+| Host         : MSI running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file Top_control_sets_placed.rpt
+| Design       : Top
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    20 |
+|    Minimum number of control sets                        |    20 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    62 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    20 |
+| >= 0 to < 4        |     3 |
+| >= 4 to < 6        |     1 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |     3 |
+| >= 10 to < 12      |     3 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     7 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             165 |           71 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |             110 |           32 |
+| Yes          | No                    | No                     |             127 |           62 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              40 |           10 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------+--------------------------------------------+-----------------------------------------------+------------------+----------------+--------------+
+|   Clock Signal   |                Enable Signal               |                Set/Reset Signal               | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------+--------------------------------------------+-----------------------------------------------+------------------+----------------+--------------+
+|  i_Clk_IBUF_BUFG |                                            | UART/UDISPLAY/p_0_in[1]                       |                1 |              1 |         1.00 |
+|  i_Clk_IBUF_BUFG | UART/UTX/r_SM_Main[2]                      |                                               |                1 |              1 |         1.00 |
+|  i_Clk_IBUF_BUFG |                                            | UART/UDISPLAY/p_0_in[6]                       |                2 |              2 |         1.00 |
+|  i_Clk_IBUF_BUFG |                                            | UART/UDISPLAY/p_0_in[5]                       |                1 |              4 |         4.00 |
+|  i_Clk_IBUF_BUFG |                                            | UART/USEND/counter2[8]_i_1_n_0                |                3 |              6 |         2.00 |
+|  i_Clk_IBUF_BUFG | UART/UTX/r_TX_Data                         |                                               |                2 |              6 |         3.00 |
+|  i_Clk_IBUF_BUFG | UART/USEND/temp_byte_out[6]_i_1_n_0        |                                               |                2 |              6 |         3.00 |
+|  i_Clk_IBUF_BUFG | UART/UUPDATE/request_selected_int_reg[2]_2 |                                               |                2 |              8 |         4.00 |
+|  i_Clk_IBUF_BUFG | UART/URX/r_Clk_Count[7]_i_1_n_0            |                                               |                4 |              8 |         2.00 |
+|  i_Clk_IBUF_BUFG | UART/UTX/r_Clk_Count_0                     | UART/UTX/r_Clk_Count0                         |                2 |              8 |         4.00 |
+|  i_Clk_IBUF_BUFG | UART/UUPDATE/request_selected_int_reg[0]_0 |                                               |                6 |             10 |         1.67 |
+|  i_Clk_IBUF_BUFG | UART/UUPDATE/request_selected_int_reg[2]_1 |                                               |                6 |             10 |         1.67 |
+|  i_Clk_IBUF_BUFG | UART/USEND/counter[10]_i_1_n_0             |                                               |                3 |             10 |         3.33 |
+|  i_Clk_IBUF_BUFG |                                            | UART/UUPDATE/request_selected_int[31]_i_1_n_0 |                8 |             32 |         4.00 |
+|  i_Clk_IBUF_BUFG |                                            | counter_reg[0]_i_1__0_n_6                     |                8 |             32 |         4.00 |
+|  i_Clk_IBUF_BUFG | UART/UUPDATE/request_selected_int_reg[2]_3 | UART/URX/o_life_lost6_out                     |                8 |             32 |         4.00 |
+|  i_Clk_IBUF_BUFG | UART/URX/r_RX_DV_reg_1                     |                                               |               16 |             32 |         2.00 |
+|  i_Clk_IBUF_BUFG |                                            | UART/USOUND/PLAYHZ/o_Sound_reg_i_1_n_7        |                9 |             33 |         3.67 |
+|  i_Clk_IBUF_BUFG | UART/UHANDLE/tussenwaarde[31]_i_1_n_0      |                                               |               20 |             36 |         1.80 |
+|  i_Clk_IBUF_BUFG |                                            |                                               |               71 |            165 |         2.32 |
++------------------+--------------------------------------------+-----------------------------------------------+------------------+----------------+--------------+
+
+

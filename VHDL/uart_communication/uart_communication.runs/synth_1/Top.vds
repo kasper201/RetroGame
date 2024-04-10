@@ -1,0 +1,412 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Apr 10 12:56:34 2024
+# Process ID: 7816
+# Current directory: C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1
+# Command line: vivado.exe -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
+# Log file: C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/Top.vds
+# Journal file: C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1\vivado.jou
+# Running On: MSI, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 16991 MB
+#-----------------------------------------------------------
+source Top.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 459.758 ; gain = 183.969
+Command: read_checkpoint -auto_incremental -incremental C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/utils_1/imports/synth_1/main.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/utils_1/imports/synth_1/main.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top Top -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 10144
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1295.758 ; gain = 441.090
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Top' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Top.vhd:51]
+INFO: [Synth 8-3491] module 'main' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:36' bound to instance 'UART' of component 'main' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Top.vhd:88]
+INFO: [Synth 8-638] synthesizing module 'main' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:53]
+INFO: [Synth 8-3491] module 'UART_RX' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:23' bound to instance 'URX' of component 'UART_RX' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:139]
+INFO: [Synth 8-638] synthesizing module 'UART_RX' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:36]
+INFO: [Synth 8-256] done synthesizing module 'UART_RX' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:36]
+INFO: [Synth 8-3491] module 'UART_TX' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:24' bound to instance 'UTX' of component 'UART_TX' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:146]
+INFO: [Synth 8-638] synthesizing module 'UART_TX' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'UART_TX' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:39]
+INFO: [Synth 8-3491] module 'RD_Process' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:31' bound to instance 'UHANDLE' of component 'RD_Process' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:155]
+INFO: [Synth 8-638] synthesizing module 'RD_Process' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'RD_Process' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:43]
+INFO: [Synth 8-3491] module 'UREQUEST' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UREQUEST.vhd:34' bound to instance 'USEND' of component 'UREQUEST' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:166]
+INFO: [Synth 8-638] synthesizing module 'UREQUEST' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UREQUEST.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'UREQUEST' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UREQUEST.vhd:46]
+INFO: [Synth 8-3491] module 'Select_Request' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Select_Request.vhd:34' bound to instance 'UUPDATE' of component 'Select_Request' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:176]
+INFO: [Synth 8-638] synthesizing module 'Select_Request' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Select_Request.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'Select_Request' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Select_Request.vhd:41]
+INFO: [Synth 8-3491] module 'display_bus' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/display_bus.vhd:25' bound to instance 'UDISPLAY' of component 'display_bus' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:183]
+INFO: [Synth 8-638] synthesizing module 'display_bus' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/display_bus.vhd:33]
+INFO: [Synth 8-256] done synthesizing module 'display_bus' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/display_bus.vhd:33]
+INFO: [Synth 8-3491] module 'Sound' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Sound.vhd:34' bound to instance 'USOUND' of component 'Sound' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:190]
+INFO: [Synth 8-638] synthesizing module 'Sound' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Sound.vhd:40]
+INFO: [Synth 8-3491] module 'SoundController' declared at 'C:/Users/woute/Desktop/rest/HBO/HardwareProgrammeren/blok6/Eindopdracht/Eindopdracht.srcs/sources_1/new/SoundController.vhd:31' bound to instance 'PLAYHZ' of component 'SoundController' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Sound.vhd:99]
+INFO: [Synth 8-638] synthesizing module 'SoundController' [C:/Users/woute/Desktop/rest/HBO/HardwareProgrammeren/blok6/Eindopdracht/Eindopdracht.srcs/sources_1/new/SoundController.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'SoundController' (0#1) [C:/Users/woute/Desktop/rest/HBO/HardwareProgrammeren/blok6/Eindopdracht/Eindopdracht.srcs/sources_1/new/SoundController.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'Sound' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Sound.vhd:40]
+INFO: [Synth 8-256] done synthesizing module 'main' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:53]
+INFO: [Synth 8-256] done synthesizing module 'Top' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Top.vhd:51]
+WARNING: [Synth 8-7129] Port i_Request_select[3] in module UREQUEST is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_Request_select[2] in module UREQUEST is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_Request_select[1] in module UREQUEST is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_Request_select[0] in module UREQUEST is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_Update_request in module UREQUEST is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_SendButton in module Top is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1415.391 ; gain = 560.723
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1415.391 ; gain = 560.723
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1415.391 ; gain = 560.723
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1415.391 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/constrs_1/new/Test_Case.xdc]
+Finished Parsing XDC File [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/constrs_1/new/Test_Case.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/constrs_1/new/Test_Case.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1447.531 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1447.531 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1447.531 ; gain = 592.863
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1447.531 ; gain = 592.863
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1447.531 ; gain = 592.863
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'r_SM_Main_reg' in module 'UART_TX'
+INFO: [Synth 8-802] inferred FSM for state register 'which_byte_out_reg' in module 'UREQUEST'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  s_idle |                              000 |                              000
+          s_tx_start_bit |                              001 |                              001
+          s_tx_data_bits |                              010 |                              010
+           s_tx_stop_bit |                              011 |                              011
+               s_cleanup |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r_SM_Main_reg' using encoding 'sequential' in module 'UART_TX'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              000 |                              000
+                 iSTATE0 |                              001 |                              001
+                 iSTATE1 |                              010 |                              010
+                 iSTATE2 |                              011 |                              011
+                 iSTATE3 |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'which_byte_out_reg' using encoding 'sequential' in module 'UREQUEST'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 1447.531 ; gain = 592.863
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 4     
+	   2 Input   31 Bit       Adders := 2     
+	   2 Input   15 Bit       Adders := 1     
+	   2 Input   12 Bit       Adders := 2     
+	   2 Input   11 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 3     
+	   2 Input    4 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 7     
++---Registers : 
+	               32 Bit    Registers := 6     
+	               12 Bit    Registers := 1     
+	                8 Bit    Registers := 19    
+	                4 Bit    Registers := 3     
+	                3 Bit    Registers := 3     
+	                1 Bit    Registers := 19    
++---Multipliers : 
+	               9x32  Multipliers := 2     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 31    
+	   8 Input   32 Bit        Muxes := 5     
+	   4 Input   32 Bit        Muxes := 1     
+	   5 Input   32 Bit        Muxes := 1     
+	   2 Input   31 Bit        Muxes := 2     
+	   2 Input   20 Bit        Muxes := 1     
+	   2 Input   19 Bit        Muxes := 4     
+	   2 Input   16 Bit        Muxes := 1     
+	   2 Input   15 Bit        Muxes := 3     
+	   2 Input   12 Bit        Muxes := 3     
+	   2 Input   11 Bit        Muxes := 2     
+	   6 Input    8 Bit        Muxes := 3     
+	   2 Input    8 Bit        Muxes := 89    
+	   8 Input    8 Bit        Muxes := 26    
+	   3 Input    8 Bit        Muxes := 1     
+	   4 Input    8 Bit        Muxes := 1     
+	   5 Input    7 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 3     
+	   5 Input    4 Bit        Muxes := 2     
+	   3 Input    4 Bit        Muxes := 1     
+	   8 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 8     
+	   5 Input    3 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 8     
+	   3 Input    2 Bit        Muxes := 1     
+	   6 Input    1 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 31    
+	   5 Input    1 Bit        Muxes := 12    
+	   8 Input    1 Bit        Muxes := 2     
+	   7 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP geld1, operation Mode is: A*B.
+DSP Report: operator geld1 is absorbed into DSP geld1.
+DSP Report: operator geld1 is absorbed into DSP geld1.
+DSP Report: Generating DSP geld1, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator geld1 is absorbed into DSP geld1.
+DSP Report: operator geld1 is absorbed into DSP geld1.
+DSP Report: Generating DSP tussenwaarde2, operation Mode is: A*(B:0x64).
+DSP Report: operator tussenwaarde2 is absorbed into DSP tussenwaarde2.
+DSP Report: Generating DSP tussenwaarde0, operation Mode is: PCIN+(A:0x3e8)*B.
+DSP Report: operator tussenwaarde0 is absorbed into DSP tussenwaarde0.
+DSP Report: operator tussenwaarde2 is absorbed into DSP tussenwaarde0.
+DSP Report: Generating DSP tussenwaarde2, operation Mode is: A*(B:0xa).
+DSP Report: operator tussenwaarde2 is absorbed into DSP tussenwaarde2.
+DSP Report: Generating DSP tussenwaarde0, operation Mode is: PCIN+(A:0x3e8)*B.
+DSP Report: operator tussenwaarde0 is absorbed into DSP tussenwaarde0.
+DSP Report: operator tussenwaarde2 is absorbed into DSP tussenwaarde0.
+DSP Report: Generating DSP tussenwaarde2, operation Mode is: A*(B:0xa).
+DSP Report: operator tussenwaarde2 is absorbed into DSP tussenwaarde2.
+DSP Report: Generating DSP tussenwaarde0, operation Mode is: PCIN+(A:0x3e8)*B.
+DSP Report: operator tussenwaarde0 is absorbed into DSP tussenwaarde0.
+DSP Report: operator tussenwaarde3 is absorbed into DSP tussenwaarde0.
+DSP Report: Generating DSP tussenwaarde2, operation Mode is: A*(B:0xa).
+DSP Report: operator tussenwaarde2 is absorbed into DSP tussenwaarde2.
+DSP Report: Generating DSP tussenwaarde0, operation Mode is: PCIN+(A:0x3e8)*B.
+DSP Report: operator tussenwaarde0 is absorbed into DSP tussenwaarde0.
+DSP Report: operator tussenwaarde2 is absorbed into DSP tussenwaarde0.
+WARNING: [Synth 8-7129] Port i_Request_select[3] in module UREQUEST is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_Request_select[2] in module UREQUEST is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_Request_select[1] in module UREQUEST is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_Request_select[0] in module UREQUEST is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_Update_request in module UREQUEST is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_SendButton in module Top is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1447.531 ; gain = 592.863
+---------------------------------------------------------------------------------
+ Sort Area is  geld1_8 : 0 0 : 1623 3166 : Used 1 time 0
+ Sort Area is  geld1_8 : 0 1 : 1543 3166 : Used 1 time 0
+ Sort Area is  tussenwaarde2_5 : 0 0 : 95 356 : Used 1 time 0
+ Sort Area is  tussenwaarde2_5 : 0 1 : 261 356 : Used 1 time 0
+ Sort Area is  tussenwaarde2_0 : 0 0 : 35 293 : Used 1 time 0
+ Sort Area is  tussenwaarde2_0 : 0 1 : 258 293 : Used 1 time 0
+ Sort Area is  tussenwaarde2_3 : 0 0 : 35 293 : Used 1 time 0
+ Sort Area is  tussenwaarde2_3 : 0 1 : 258 293 : Used 1 time 0
+ Sort Area is  tussenwaarde2_4 : 0 0 : 35 293 : Used 1 time 0
+ Sort Area is  tussenwaarde2_4 : 0 1 : 258 293 : Used 1 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping      | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|RD_Process  | A*B              | 18     | 9      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | (PCIN>>17)+A*B   | 15     | 9      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | A*(B:0x64)       | 8      | 7      | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN+(A:0x3e8)*B | 10     | 8      | -      | -      | 19     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | A*(B:0xa)        | 8      | 4      | -      | -      | 12     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN+(A:0x3e8)*B | 10     | 8      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | A*(B:0xa)        | 8      | 4      | -      | -      | 12     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN+(A:0x3e8)*B | 10     | 8      | -      | -      | 19     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | A*(B:0xa)        | 8      | 4      | -      | -      | 12     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN+(A:0x3e8)*B | 10     | 8      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 1449.695 ; gain = 595.027
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 1454.738 ; gain = 600.070
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:40 ; elapsed = 00:00:43 . Memory (MB): peak = 1514.586 ; gain = 659.918
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 1527.238 ; gain = 672.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 1527.238 ; gain = 672.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 1527.238 ; gain = 672.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 1527.238 ; gain = 672.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:44 ; elapsed = 00:00:49 . Memory (MB): peak = 1527.238 ; gain = 672.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:45 ; elapsed = 00:00:49 . Memory (MB): peak = 1527.238 ; gain = 672.570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping   | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|RD_Process  | A*B'          | 17     | 8      | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN>>17+A*B' | 30     | 8      | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | A*B           | 4      | 7      | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN+A*B      | 10     | 4      | -      | -      | 19     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | A*B           | 4      | 4      | -      | -      | 12     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN+A*B      | 10     | 3      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | A*B           | 8      | 4      | -      | -      | 12     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN+A*B      | 10     | 8      | -      | -      | 19     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | A*B           | 4      | 4      | -      | -      | 12     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN+A*B      | 10     | 3      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY4  |  1450|
+|3     |DSP48E1 |    10|
+|5     |LUT1    |   271|
+|6     |LUT2    |  3275|
+|7     |LUT3    |   658|
+|8     |LUT4    |  1023|
+|9     |LUT5    |   356|
+|10    |LUT6    |   777|
+|11    |FDRE    |   445|
+|12    |FDSE    |    10|
+|13    |IBUF    |     6|
+|14    |OBUF    |    19|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:45 ; elapsed = 00:00:49 . Memory (MB): peak = 1527.238 ; gain = 672.570
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 7 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:37 ; elapsed = 00:00:47 . Memory (MB): peak = 1527.238 ; gain = 640.430
+Synthesis Optimization Complete : Time (s): cpu = 00:00:45 ; elapsed = 00:00:49 . Memory (MB): peak = 1527.238 ; gain = 672.570
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.075 . Memory (MB): peak = 1539.320 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1460 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1542.961 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: c68367a2
+INFO: [Common 17-83] Releasing license: Synthesis
+54 Infos, 13 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 1542.961 ; gain = 1079.250
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1542.961 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/Top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Apr 10 12:57:38 2024...
