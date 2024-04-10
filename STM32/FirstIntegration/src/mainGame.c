@@ -51,9 +51,9 @@ int mapRinit(struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR])
  */
 int playerInit(struct Player* player)
 {
-    player->wave = 1;
+    player->wave = 0;
     player->health = 100;
-    player->money = 1000;
+    player->money = 10000;
     if (player->wave != 1 || player->health != 100 || player->money != 10000)
         return 1;
     return 0;

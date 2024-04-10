@@ -137,3 +137,117 @@ int bulletShow(struct Bullet bullet[maxBullets])
 	}
 	return 1;
 }
+
+void boomboom(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR], uint8_t temp, uint8_t y)
+{
+	int x = temp * 16;
+	if(y < 1)
+	{
+		for (int i = y; i <= y+1; i++)
+		{
+			if(x < 112)
+			{
+				for (int j = x; j < x + 32; j++)
+				{
+					if(mapR[j][i].type > 0)
+					{
+						mapR[j][i].health = 0;
+						mapR[j][i].damage = 0;
+						mapR[j][i].defense = 0;
+						mapR[j][i].speed = 0;
+						mapR[j][i].type = 0;
+						mapR[j][i].wavesNotMoved = 0;
+					}
+					
+				}
+			}
+			else
+			{
+				for (int j = x; j < x + 16; j++)
+				{
+					if(mapR[j][i].type > 0)
+					{
+						mapR[j][i].health = 0;
+						mapR[j][i].damage = 0;
+						mapR[j][i].defense = 0;
+						mapR[j][i].speed = 0;
+						mapR[j][i].type = 0;
+						mapR[j][i].wavesNotMoved = 0;
+					}
+				}
+			}
+		}
+	}
+	else if (y > 3)
+	{
+		for (int i = y - 1; i <= y; i++)
+		{
+			if(x < 112)
+			{
+				for (int j = x; j < x + 32; j++)
+				{
+					if(mapR[j][i].type > 0)
+					{
+						mapR[j][i].health = 0;
+						mapR[j][i].damage = 0;
+						mapR[j][i].defense = 0;
+						mapR[j][i].speed = 0;
+						mapR[j][i].type = 0;
+						mapR[j][i].wavesNotMoved = 0;
+					}
+				}
+			}
+			else
+			{
+				for (int j = x; j < x + 16; j++)
+				{
+					if(mapR[j][i].type > 0)
+					{
+						mapR[j][i].health = 0;
+						mapR[j][i].damage = 0;
+						mapR[j][i].defense = 0;
+						mapR[j][i].speed = 0;
+						mapR[j][i].type = 0;
+						mapR[j][i].wavesNotMoved = 0;
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		for (int i = y-1; i <= y+1; i++)
+		{
+			if(x < 112)
+			{
+				for (int j = x; j < x + 32; j++)
+				{
+					if(mapR[j][i].type > 0)
+					{
+						mapR[j][i].health = 0;
+						mapR[j][i].damage = 0;
+						mapR[j][i].defense = 0;
+						mapR[j][i].speed = 0;
+						mapR[j][i].type = 0;
+						mapR[j][i].wavesNotMoved = 0;
+					}
+				}
+			}
+			else
+			{
+				for (int j = x; j < x + 16; j++)
+				{
+					if(mapR[j][i].type > 0)
+					{
+						mapR[j][i].health = 0;
+						mapR[j][i].damage = 0;
+						mapR[j][i].defense = 0;
+						mapR[j][i].speed = 0;
+						mapR[j][i].type = 0;
+						mapR[j][i].wavesNotMoved = 0;
+					}
+				}
+			}
+		}
+	}
+}
