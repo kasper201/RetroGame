@@ -34,6 +34,9 @@ entity RD_Process is
            i_R_Byte : in STD_LOGIC_VECTOR (7 downto 0);
            i_Request_select : in std_logic_vector(3 downto 0);
            i_info_select : in std_logic_vector(3 downto 0);
+           o_id : out std_logic_vector(3 downto 0);
+           o_y : out std_logic_vector(3 downto 0);
+           o_x : out std_logic_vector(6 downto 0);
            o_update : out STD_LOGIC;
            o_life_lost : out STD_LOGIC;
            o_BCD_bus : out STD_LOGIC_VECTOR(15 downto 0)
@@ -54,6 +57,7 @@ begin
     variable shop_selector, garden_selector_x, garden_selector_y : integer range 0 to 255 := 0;
     variable wave : integer := 0;
     variable byte : integer := 0;
+    variable id, x, y : integer;
     
     begin
         if rising_edge(i_Clk) then
@@ -79,7 +83,11 @@ begin
                                 geld := geld + (253 * byte * to_integer(unsigned(i_R_byte)));
                             end if;
                             byte := byte + 1;
-                        when "0001" =>      --Robot
+                        when "0001" =>      --Plant
+                            plant_id := (to_integer(unsigned(i_R_byte)) / 40);
+                            plant_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5);
+                            plant_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5);
+                        when "0010" =>      --Robot
                             if byte = 0 then
                                 robot_id := to_integer(unsigned(i_R_byte)) / 16;
                                 robot_y := (to_integer(unsigned(i_R_byte)) mod 16);
@@ -87,10 +95,6 @@ begin
                                 robot_x := to_integer(unsigned(i_R_byte));
                             end if;
                             byte := byte + 1;
-                        when "0010" =>      --Plant
-                            plant_id := (to_integer(unsigned(i_R_byte)) / 40);
-                            plant_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5);
-                            plant_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5);
                         when "0011" =>      --bullets
                             if byte = 0 then
                                 bullet1y := to_integer(unsigned(i_R_byte(7 downto 4)));
@@ -117,8 +121,12 @@ begin
                     end case;
                 elsif i_R_byte = "11111110" then
                     update := '1';
-                else
                     byte := 0;
+                    plant_id := 0;
+                    robot_id := 0;
+                    bullet1y := 6;
+                    bullet2y := 6;
+                else
                     o_life_lost <= '0';
                 end if;
                 
@@ -132,13 +140,45 @@ begin
                 Data_Viable := Data_Viable;
             end if;
             
+            if plant_id /= 0 and i_Request_select = "0001" then
+                id := plant_id;
+                x := plant_x * 8;
+                y := plant_y;
+            elsif robot_id /= 0 and i_Request_select = "0010" then
+                id := robot_id;
+                x := robot_x;
+                y := robot_y;
+            elsif bullet1y /= 6 and byte = 3 and i_Request_select = "0011" then
+                id := 9;
+                x := bullet1x;
+                y := bullet1y;
+            elsif bullet2y /= 6 and byte = 4 and i_Request_select = "0011" then
+                id := 9;
+                x := bullet2x;
+                y := bullet2y;
+            elsif byte = 0 and i_Request_select = "0101" then
+                id := 15;
+                x := shop_selector;
+                y := 6;
+                byte := 1;
+            elsif byte = 1 and i_Request_select = "0101" then
+                id := 15;
+                x := garden_selector_x;
+                y := garden_selector_y;
+                byte := 2;
+            else
+                id := 8;
+                x := 0;
+                y := 0;
+            end if;
+            
             case i_info_select is
                 when "0000" =>
                     tussenwaarde := geld;
                 when "0001" =>
-                    tussenwaarde := robot_id * 1000 + robot_y * 100 + robot_x;
-                when "0010" =>
                     tussenwaarde := plant_id * 1000 + plant_x * 10 + plant_y;
+                when "0010" =>
+                    tussenwaarde := robot_id * 1000 + robot_y * 100 + robot_x;
                 when "0011" =>
                     --tussenwaarde := bullet;
                     tussenwaarde := bullet1x * 1000 + bullet1y * 100 + bullet2x * 10 + bullet2y;
@@ -157,6 +197,9 @@ begin
         o_BCD_bus(3 downto 0) <= std_logic_vector(to_unsigned(tussenwaarde mod 10, 4));
         
         o_update <= update;
+        o_id <= std_logic_vector(to_unsigned(id, 4));
+        o_y <= std_logic_vector(to_unsigned(y, 4));
+        o_x <= std_logic_vector(to_unsigned(x, 7));
     end process;
 
 end Behavioral;

@@ -39,6 +39,9 @@ entity main is
            i_Info_select : in std_logic_vector(3 downto 0);
            i_Rx : in STD_LOGIC;           --JAX pin 7 (op stm32 verbinden met pin 8)
            o_Tx : out STD_LOGIC;          --JAX pin 8 (op stm32 verbinden met pin 2)
+           o_id : out std_logic_vector(3 downto 0);
+           o_y : out std_logic_vector(3 downto 0);
+           o_x : out std_logic_vector(6 downto 0);
            o_LED_Status : out STD_LOGIC;
            o_LED_Status1 : out STD_LOGIC;
            o_LED_Status2 : out STD_LOGIC;
@@ -81,6 +84,9 @@ component RD_Process is
            i_R_Byte : in STD_LOGIC_VECTOR (7 downto 0);
            i_Request_select : in std_logic_vector(3 downto 0);
            i_info_select : in std_logic_vector(3 downto 0);
+           o_id : out std_logic_vector(3 downto 0);
+           o_y : out std_logic_vector(3 downto 0);
+           o_x : out std_logic_vector(6 downto 0);
            o_update : out STD_LOGIC;
            o_life_lost : out STD_LOGIC;
            o_BCD_bus : out STD_LOGIC_VECTOR(15 downto 0));
@@ -158,6 +164,9 @@ begin
         i_R_Byte            => Data_Recieved,
         i_Request_select    => Request_select,
         i_info_select       => i_Info_select,
+        o_id                => o_id,
+        o_y                 => o_y,
+        o_x                 => o_x,
         o_update            => update_request,
         o_life_lost         => life_lost,
         o_BCD_bus           => bcd_to_display

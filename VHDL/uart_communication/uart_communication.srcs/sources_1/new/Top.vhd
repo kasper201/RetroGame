@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity Top is
     Port ( i_Clk : in STD_LOGIC;
-           i_SendButton : in STD_LOGIC;
+           aReset : in STD_LOGIC;
            i_Info_select : in std_logic_vector(3 downto 0);
            i_Rx : in STD_LOGIC;           --JAX pin 7 (op stm32 verbinden met pin 8)
            o_Tx : out STD_LOGIC;          --JAX pin 8 (op stm32 verbinden met pin 2)
@@ -42,6 +42,8 @@ entity Top is
            o_LED_Status2 : out STD_LOGIC;
            o_LED_Status3 : out STD_LOGIC;
            o_LED_Status4 : out STD_LOGIC;
+	       red, green, blue : out  std_logic_vector(3 downto 0);
+	       hsync, vsync : out  STD_LOGIC;
            o_Sound : out STD_LOGIC;
            o_D_bus : out STD_LOGIC_VECTOR(3 downto 0);  --Alle displays voor 7 segment
            o_S_bus : out STD_LOGIC_VECTOR(7 downto 0)   --Alle segementen voor 7 segment
@@ -56,6 +58,9 @@ component main is
            i_Info_select : in std_logic_vector(3 downto 0);
            i_Rx : in STD_LOGIC;           --JAX pin 7 (op stm32 verbinden met pin 8)
            o_Tx : out STD_LOGIC;          --JAX pin 8 (op stm32 verbinden met pin 2)
+           o_id : out std_logic_vector(3 downto 0);
+           o_y : out std_logic_vector(3 downto 0);
+           o_x : out std_logic_vector(6 downto 0);
            o_LED_Status : out STD_LOGIC;
            o_LED_Status1 : out STD_LOGIC;
            o_LED_Status2 : out STD_LOGIC;
@@ -67,7 +72,21 @@ component main is
            );
 end component;
 
+component main2 is
+ Port (clk100 : in STD_LOGIC;
+       aReset : in STD_LOGIC;
+       speedSel : in STD_LOGIC_VECTOR(3 downto 0);
+       tempSel : in STD_LOGIC_VECTOR(3 downto 0);
+       buttonsx : in std_logic_vector(6 downto 0);
+	   red, green, blue : out  std_logic_vector(3 downto 0);
+	   hsync, vsync : out  STD_LOGIC ;
+	   leds : out std_LOGIC_VECTOR (9 downto 0) );
+end component;
+
 signal sendButton : std_logic;
+signal opvangleds : std_logic_vector(9 downto 0);
+signal id, y : std_logic_vector(3 downto 0);
+signal x : std_logic_vector(6 downto 0);
 
 begin
     
@@ -91,6 +110,9 @@ begin
            i_Info_select    => i_Info_select,
            i_Rx             => i_Rx,
            o_Tx             => o_Tx,
+           o_id             => id,
+           o_y              => y,
+           o_x              => x,
            o_LED_Status     => o_LED_Status,
            o_LED_Status1    => o_LED_Status1,
            o_LED_Status2    => o_LED_Status2,
@@ -99,6 +121,20 @@ begin
            o_Sound          => o_Sound,
            o_D_bus          => o_D_bus,
            o_S_bus          => o_S_bus
-           );
+    );
+
+    VIDEO: main2 port map (
+       clk100               => i_Clk,
+       aReset               => aReset,
+       speedSel             => id,
+       tempSel              => y,
+       buttonsx             => x,
+	   red                  => red, 
+	   green                => green, 
+	   blue                 => blue,
+	   hsync                => hsync,
+	   vsync                => vsync,
+	   leds                 => opvangleds
+    );
 
 end Behavioral;

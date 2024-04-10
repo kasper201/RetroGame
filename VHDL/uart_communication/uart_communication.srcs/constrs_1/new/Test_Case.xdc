@@ -11,7 +11,7 @@ set_property PACKAGE_PIN M3 [get_ports o_Tx]
 set_property PACKAGE_PIN H2 [get_ports o_Sound]
 
 ##Buttons
-set_property PACKAGE_PIN U18 [get_ports i_SendButton]
+set_property PACKAGE_PIN U18 [get_ports aReset]
 
 ##Switches
 set_property PACKAGE_PIN V17 [get_ports {i_Info_select[0]}]
@@ -39,4 +39,20 @@ set_property PACKAGE_PIN U5 [get_ports {o_S_bus[4]}]
 set_property PACKAGE_PIN V5 [get_ports {o_S_bus[5]}]
 set_property PACKAGE_PIN U7 [get_ports {o_S_bus[6]}]
 set_property PACKAGE_PIN V7 [get_ports {o_S_bus[7]}]
+
+##VGA
+set_property PACKAGE_PIN P19 [get_ports hsync]
+set_property PACKAGE_PIN R19 [get_ports vsync]
+set_property PACKAGE_PIN J18 [get_ports {blue[3]}]
+set_property PACKAGE_PIN K18 [get_ports {blue[2]}]
+set_property PACKAGE_PIN L18 [get_ports {blue[1]}]
+set_property PACKAGE_PIN N18 [get_ports {blue[0]}]
+set_property PACKAGE_PIN D17 [get_ports {green[3]}]
+set_property PACKAGE_PIN G17 [get_ports {green[2]}]
+set_property PACKAGE_PIN H17 [get_ports {green[1]}]
+set_property PACKAGE_PIN J17 [get_ports {green[0]}]
+set_property PACKAGE_PIN N19 [get_ports {red[3]}]
+set_property PACKAGE_PIN J19 [get_ports {red[2]}]
+set_property PACKAGE_PIN H19 [get_ports {red[1]}]
+set_property PACKAGE_PIN G19 [get_ports {red[0]}]
 

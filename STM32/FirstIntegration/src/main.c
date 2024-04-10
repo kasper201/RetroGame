@@ -273,14 +273,14 @@ int main(void)
 			sendByte[1] = 0xfe;
 			print_uart(sendByte, 2);
 			
-			//Robot
-			sendRobots(mapR);
+			//Plant
+			sendPlants(map);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte, 2);
 			
-			//Plant
-			sendPlants(map);
+			//Robot
+			sendRobots(mapR);
 			sendByte[0] = 0xff;
 			sendByte[1] = 0xfe;
 			print_uart(sendByte, 2);
