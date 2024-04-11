@@ -77,7 +77,7 @@ void casefunction(int i)
 	switch (i)
 	{
 	case 0:
-		if (yLoc < MAP_HEIGHT - 1)
+		if (yLoc < MAP_HEIGHT-1)
 			yLoc++;
 		else
 			yLoc = 0;
@@ -95,7 +95,7 @@ void casefunction(int i)
 			yLoc = 4;
 		break;
 	case 3:
-		if (xLoc < MAP_WIDTH - 1)
+		if (xLoc < MAP_WIDTH-1)
 			xLoc++;
 		else
 			xLoc = 0;
@@ -229,7 +229,7 @@ int main(void)
 				// printf("time1\n");
 				buttonPressed[i] = 1;
 				// TODO voeg hier de functies toe die per knop aangeroepen worden want dit is rising edge
-				// printk("button %d pressed %d\n", i, count);
+				 printk("button %d pressed %d\n", i, count);
 				casefunction(i);
 				count++;
 				released[i] = 0;

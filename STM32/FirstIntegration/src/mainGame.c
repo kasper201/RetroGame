@@ -37,6 +37,10 @@ int mapRinit(struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR])
             mapR[x][y].defense = 0;
             mapR[x][y].speed = 0;
             mapR[x][y].type = 0;
+            // if(x % 16 == 3)
+            // {
+            //     mapR[x][y].type = 5;
+            // }
         }
     }
     if (mapR[0][0].health != 0 || mapR[3][1].type != 0) // check if the map is initialized correctly with an arbitrary position
@@ -53,7 +57,7 @@ int playerInit(struct Player* player)
 {
     player->wave = 0;
     player->health = 100;
-    player->money = 10000;
+    player->money = 1000;
     if (player->wave != 1 || player->health != 100 || player->money != 10000)
         return 1;
     return 0;

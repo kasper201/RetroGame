@@ -46,7 +46,7 @@ end selectorRam;
 architecture Behavioral of selectorRam is
 signal userX : std_logic_vector(3 downto 0) ;
 signal userY : std_logic_vector(2 downto 0) ;
-signal shop : std_logic_vector(1 downto 0) ;
+signal shop : std_logic_vector(2 downto 0):= "000" ;
 --signal localCoords : std_logic_vector(6 downto 0) ;
 begin
 
@@ -55,35 +55,28 @@ begin
     if (rising_edge(clk)) then
         
         if(outputEn = '0')then 
-            if (placeY < "110")then
+            if (placeY < "101")then
                 userX <= placeX;
                 userY <= placeY;
-            else
-                shop <= placeX(1 downto 0);
+            elsif (placeY = "110") then
+                shop <= placeX(2 downto 0);
             end if;
         end if;
         
         data <= '0';
         
         if(outputEn = '1')then 
-            if ((userX = placeX) and (vWriteLoc >= "0001010000"))then                           
-                if    ( ("0001101111" <= vWriteLoc ) and ("0010111111" >= vWriteLoc ) and (userY = "000") ) then --row1
+            if ((userX = placeX) and (vWriteLoc >= "0001100000"))then                           
+                if    ( ("0001110000" <= vWriteLoc ) and ("0011000001" > vWriteLoc ) and (userY = "000") ) then --row1
                     data <= '1';
-                elsif ( ("0010111111" <= vWriteLoc ) and ("0100001111" >= vWriteLoc ) and (userY = "001") ) then  --row2
+                elsif ( ("0011000001" <= vWriteLoc ) and ("0100010010" > vWriteLoc ) and (userY = "001") ) then  --row2
                     data <= '1';
-                elsif ( ("0100001111" <= vWriteLoc ) and ("0101011111" >= vWriteLoc ) and (userY = "010") ) then  --row3
+                elsif ( ("0100010010" <= vWriteLoc ) and ("0101100011" > vWriteLoc ) and (userY = "010") ) then  --row3
                     data <= '1';
-                elsif ( ("0101011111" <= vWriteLoc ) and ("0110101111" >= vWriteLoc ) and (userY = "011") ) then  --row4
+                elsif ( ("0101100011" <= vWriteLoc ) and ("0110110100" > vWriteLoc ) and (userY = "011") ) then  --row4
                     data <= '1';
-                elsif ( ("0110101111" >= vWriteLoc ) and (userY = "100") ) then  --row5?
+                elsif ( ("0110110100" <= vWriteLoc ) and ("1000000101" > vWriteLoc ) and(userY = "100") ) then  --row5?
                     data <= '1';                                                                
-        
-        --coordY <= "S"; -- row1--
-        --coordY <= "0010100100"; -- row2--0001110100
-        --coordY <= "0011110100"; -- row3
-        --coordY <= "0101000100"; -- row4
-        --coordY <= "0110010100"; -- row5 -- I FUCKED THE COORDS PLS FIX ASAP??
-                
                 else
                     data <= '0';
                 end if;
@@ -91,9 +84,10 @@ begin
                 data <= '0';
             end if;
             
-            if((shop = placeX(1 downto 0)) and (vWriteLoc <= "0001110000"))then --row 0/ shop
+            if((shop = ( '0' & placeX(1 downto 0))) and (placeX < "0100") and (vWriteLoc < "0001100000"))then --row 0/ shop
                 data <= '1';
             end if;
+
             
         end if;
         

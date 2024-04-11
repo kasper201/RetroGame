@@ -61,6 +61,9 @@ component main is
            o_id : out std_logic_vector(3 downto 0);
            o_y : out std_logic_vector(3 downto 0);
            o_x : out std_logic_vector(6 downto 0);
+           isNr : out STD_LOGIC_VECTOR (3 downto 0);
+           isMoney : out STD_LOGIC;
+           nextNr : out STD_LOGIC;
            o_LED_Status : out STD_LOGIC;
            o_LED_Status1 : out STD_LOGIC;
            o_LED_Status2 : out STD_LOGIC;
@@ -75,6 +78,9 @@ end component;
 component main2 is
  Port (clk100 : in STD_LOGIC;
        aReset : in STD_LOGIC;
+       isNr : in STD_LOGIC_VECTOR (3 downto 0);
+       isMoney : in STD_LOGIC;
+       nextNr : in STD_LOGIC;
        speedSel : in STD_LOGIC_VECTOR(3 downto 0);
        tempSel : in STD_LOGIC_VECTOR(3 downto 0);
        buttonsx : in std_logic_vector(6 downto 0);
@@ -83,9 +89,9 @@ component main2 is
 	   leds : out std_LOGIC_VECTOR (9 downto 0) );
 end component;
 
-signal sendButton : std_logic;
+signal sendButton, is_Money, next_Nr : std_logic;
 signal opvangleds : std_logic_vector(9 downto 0);
-signal id, y : std_logic_vector(3 downto 0);
+signal id, y, is_Nr : std_logic_vector(3 downto 0);
 signal x : std_logic_vector(6 downto 0);
 
 begin
@@ -113,6 +119,9 @@ begin
            o_id             => id,
            o_y              => y,
            o_x              => x,
+           isNr             => is_Nr,
+           isMoney          => is_Money,
+           nextNr           => next_Nr,
            o_LED_Status     => o_LED_Status,
            o_LED_Status1    => o_LED_Status1,
            o_LED_Status2    => o_LED_Status2,
@@ -126,6 +135,9 @@ begin
     VIDEO: main2 port map (
        clk100               => i_Clk,
        aReset               => aReset,
+       isNr                 => is_Nr,
+       isMoney              => is_Money,
+       nextNr               => next_Nr,
        speedSel             => id,
        tempSel              => y,
        buttonsx             => x,

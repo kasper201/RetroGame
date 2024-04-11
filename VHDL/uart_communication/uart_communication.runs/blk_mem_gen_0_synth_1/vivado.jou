@@ -3,8 +3,8 @@
 # SW Build 4126759 on Thu Feb  8 23:53:51 MST 2024
 # IP Build 4126054 on Fri Feb  9 11:39:09 MST 2024
 # SharedData Build 4115275 on Tue Jan 30 00:40:57 MST 2024
-# Start of session at: Wed Apr 10 19:21:28 2024
-# Process ID: 3508
+# Start of session at: Thu Apr 11 17:11:35 2024
+# Process ID: 16688
 # Current directory: C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_0_synth_1
 # Command line: vivado.exe -log blk_mem_gen_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source blk_mem_gen_0.tcl
 # Log file: C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0.vds

@@ -46,7 +46,7 @@ architecture Behavioral of plantRAM is
 
 
  
-TYPE ramType is ARRAY (3 downto 0)
+TYPE ramType is ARRAY (7 downto 0)
         of std_logic_vector(3 downto 0);
 signal ram: RamType ;
 

@@ -37,6 +37,9 @@ entity RD_Process is
            o_id : out std_logic_vector(3 downto 0);
            o_y : out std_logic_vector(3 downto 0);
            o_x : out std_logic_vector(6 downto 0);
+           isNr : out STD_LOGIC_VECTOR (3 downto 0);
+           isMoney : out STD_LOGIC;
+           nextNr : out STD_LOGIC;
            o_update : out STD_LOGIC;
            o_life_lost : out STD_LOGIC;
            o_BCD_bus : out STD_LOGIC_VECTOR(15 downto 0)
@@ -45,18 +48,21 @@ end RD_Process;
 
 architecture Behavioral of RD_Process is
 
+signal Number : std_logic_vector(3 downto 0);
+signal money, next_nr : std_logic;
+
 begin
 
     process(i_Clk)
     variable Data_Viable, first_byte : std_logic := '0';
-    variable update : std_logic := '0';
-    variable geld, robot, plant, bullet, tussenwaarde : integer := 0;
+    variable update, bullet1, bullet2, shop_select, garden_select : std_logic := '0';
+    variable geld, geldB, robot, plant, bullet, tussenwaarde : integer := 0;
     variable bullet1y, bullet1x, bullet2y, bullet2x : integer range 0 to 255 := 0;
     variable plant_id, plant_x, plant_y : integer range 0 to 255 := 0;
     variable robot_id, robot_y, robot_x : integer range 0 to 255 := 0;
     variable shop_selector, garden_selector_x, garden_selector_y : integer range 0 to 255 := 0;
     variable wave : integer := 0;
-    variable byte : integer := 0;
+    variable byte, counter : integer := 0;
     variable id, x, y : integer;
     
     begin
@@ -79,8 +85,9 @@ begin
                         when "0000" =>      --geld
                             if byte = 0 then
                                 geld := to_integer(unsigned(i_R_byte));
-                            else
+                            elsif byte = 1 then
                                 geld := geld + (253 * byte * to_integer(unsigned(i_R_byte)));
+                                counter := 0;
                             end if;
                             byte := byte + 1;
                         when "0001" =>      --Plant
@@ -91,20 +98,27 @@ begin
                             if byte = 0 then
                                 robot_id := to_integer(unsigned(i_R_byte)) / 16;
                                 robot_y := (to_integer(unsigned(i_R_byte)) mod 16);
+                                byte := 1;
                             else
                                 robot_x := to_integer(unsigned(i_R_byte));
+                                byte := 0;
                             end if;
-                            byte := byte + 1;
                         when "0011" =>      --bullets
                             if byte = 0 then
                                 bullet1y := to_integer(unsigned(i_R_byte(7 downto 4)));
                                 bullet2y := to_integer(unsigned(i_R_byte(3 downto 0)));
+                                byte := 1;
+                                bullet2 := '0';
                             elsif byte = 1 then
                                 bullet1x := to_integer(unsigned(i_R_byte));
+                                bullet1 := '1';
+                                byte := 2;
                             elsif byte = 2 then
                                 bullet2x := to_integer(unsigned(i_R_byte));
+                                bullet2 := '1';
+                                bullet1 := '0';
+                                byte := 0;
                             end if;
-                            byte := byte + 1;
                         when "0100" =>      --Sound life lost
                             if to_integer(unsigned(i_R_byte)) = 10 then
                                 o_life_lost <= '1';
@@ -112,11 +126,14 @@ begin
                                 o_life_lost <= '0';
                             end if;
                         when "0101" =>      --Selectors
+                            garden_select := '0';
                             shop_selector := (to_integer(unsigned(i_R_byte)) / 40);
                             garden_selector_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5);
                             garden_selector_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5);
-                        when "0110" =>
+                            shop_select := '1';
+                        when "0110" =>      --Wave
                             wave := to_integer(unsigned(i_R_byte));
+                            counter := 0;
                         when others =>
                     end case;
                 elsif i_R_byte = "11111110" then
@@ -126,8 +143,11 @@ begin
                     robot_id := 0;
                     bullet1y := 6;
                     bullet2y := 6;
+                    bullet2 := '0';
                 else
                     o_life_lost <= '0';
+                    shop_select := '0';
+                    garden_select := '1';
                 end if;
                 
                 
@@ -140,6 +160,66 @@ begin
                 Data_Viable := Data_Viable;
             end if;
             
+            --Send number for coins or wave
+            if i_Request_select = "0001" then
+                money <= '1';
+                geldB := geld;
+                if counter = 0 then
+                    Number <= std_logic_vector(to_unsigned((geldB mod 10000) / 1000, 4));
+                    next_nr <= '0';
+                elsif counter = 1 then
+                    next_nr <= '1';
+                elsif counter = 2 then
+                    Number <= std_logic_vector(to_unsigned((geldB mod 1000) / 100, 4));
+                    next_nr <= '0';
+                elsif counter = 3 then
+                    next_nr <= '1';
+                elsif counter = 4 then
+                    Number <= std_logic_vector(to_unsigned((geldB mod 100) / 10, 4));
+                    next_nr <= '0';
+                elsif counter = 5 then
+                    next_nr <= '1';
+                elsif counter = 6 then
+                    Number <= std_logic_vector(to_unsigned(geldB mod 10, 4));
+                    next_nr <= '0';
+                elsif counter = 7 then
+                    next_nr <= '1';
+                else
+                    next_nr <= '0';
+                    Number <= "0001";
+                end if;
+                counter := counter + 1;
+            elsif i_Request_select = "0110" then
+                money <= '0';
+                if counter = 0 then
+                    Number <= std_logic_vector(to_unsigned((wave mod 10000) / 1000, 4));
+                    next_nr <= '0';
+                elsif counter = 1 then
+                    next_nr <= '1';
+                elsif counter = 2 then
+                    Number <= std_logic_vector(to_unsigned((wave mod 1000) / 100, 4));
+                    next_nr <= '0';
+                elsif counter = 3 then
+                    next_nr <= '1';
+                elsif counter = 4 then
+                    Number <= std_logic_vector(to_unsigned((wave mod 100) / 10, 4));
+                    next_nr <= '0';
+                elsif counter = 5 then
+                    next_nr <= '1';
+                elsif counter = 6 then
+                    Number <= std_logic_vector(to_unsigned(wave mod 10, 4));
+                    next_nr <= '0';
+                elsif counter = 7 then
+                    next_nr <= '1';
+                else
+                    next_nr <= '0';
+                    Number <= "0001";
+                end if;
+                counter := counter + 1;
+            end if;
+            
+            
+            --Send the right id and x and y coordinates belonging to that id
             if plant_id /= 0 and i_Request_select = "0001" then
                 id := plant_id;
                 x := plant_x * 8;
@@ -148,24 +228,22 @@ begin
                 id := robot_id;
                 x := robot_x;
                 y := robot_y;
-            elsif bullet1y /= 6 and byte = 3 and i_Request_select = "0011" then
+            elsif bullet1y /= 6 and bullet1 = '1' and i_Request_select = "0011" then
                 id := 9;
                 x := bullet1x;
                 y := bullet1y;
-            elsif bullet2y /= 6 and byte = 4 and i_Request_select = "0011" then
+            elsif bullet2y /= 6 and bullet2 = '1' and i_Request_select = "0011" then
                 id := 9;
                 x := bullet2x;
                 y := bullet2y;
-            elsif byte = 0 and i_Request_select = "0101" then
+            elsif shop_select = '1' and i_Request_select = "0101" then
                 id := 15;
-                x := shop_selector;
+                x := shop_selector * 8;
                 y := 6;
-                byte := 1;
-            elsif byte = 1 and i_Request_select = "0101" then
+            elsif garden_select = '1' and i_Request_select = "0101" then
                 id := 15;
-                x := garden_selector_x;
+                x := garden_selector_x * 8;
                 y := garden_selector_y;
-                byte := 2;
             else
                 id := 8;
                 x := 0;
@@ -200,6 +278,11 @@ begin
         o_id <= std_logic_vector(to_unsigned(id, 4));
         o_y <= std_logic_vector(to_unsigned(y, 4));
         o_x <= std_logic_vector(to_unsigned(x, 7));
+        
+        isNr <= Number;
+        isMoney <= money;
+        nextNr <= next_nr;
+        
     end process;
 
 end Behavioral;

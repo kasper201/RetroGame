@@ -379,7 +379,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
     }
     //printk("\ntocreat is so groot:%d\n", toCreate);
     //printk("\n het is wave: %d\n", player->wave);
-    if (count4 == 25)
+    if (count4 == 50)
     {
         if (toCreate != 0) // spawn robots
         {

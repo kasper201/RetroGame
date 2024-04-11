@@ -1,7 +1,7 @@
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
-| Date             : Wed Apr 10 19:26:17 2024
+| Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date             : Thu Apr 11 21:23:24 2024
 | Host             : MSI running 64-bit major release  (build 9200)
 | Command          : report_power -file Top_power_routed.rpt -pb Top_power_summary_routed.pb -rpx Top_power_routed.rpx
 | Design           : Top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.335        |
+| Total On-Chip Power (W)  | 0.363        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.262        |
+| Dynamic (W)              | 0.289        |
 | Device Static (W)        | 0.074        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 83.3         |
-| Junction Temperature (C) | 26.7         |
+| Max Ambient (C)          | 83.2         |
+| Junction Temperature (C) | 26.8         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,20 +52,21 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.011 |        5 |       --- |             --- |
-| Slice Logic    |     0.054 |    15065 |       --- |             --- |
-|   LUT as Logic |     0.045 |     8174 |     20800 |           39.30 |
-|   CARRY4       |     0.008 |     1565 |      8150 |           19.20 |
-|   Register     |    <0.001 |     3362 |     41600 |            8.08 |
-|   F7/F8 Muxes  |    <0.001 |      482 |     32600 |            1.48 |
-|   Others       |     0.000 |      131 |       --- |             --- |
-| Signals        |     0.048 |    12652 |       --- |             --- |
-| Block RAM      |     0.007 |       27 |        50 |           54.00 |
+| Clocks         |     0.013 |        5 |       --- |             --- |
+| Slice Logic    |     0.063 |    18199 |       --- |             --- |
+|   LUT as Logic |     0.054 |     9932 |     20800 |           47.75 |
+|   CARRY4       |     0.009 |     2022 |      8150 |           24.81 |
+|   Register     |    <0.001 |     3519 |     41600 |            8.46 |
+|   F7/F8 Muxes  |    <0.001 |      520 |     32600 |            1.60 |
+|   BUFG         |    <0.001 |        1 |        32 |            3.13 |
+|   Others       |     0.000 |      170 |       --- |             --- |
+| Signals        |     0.055 |    15045 |       --- |             --- |
+| Block RAM      |     0.016 |       29 |        50 |           58.00 |
 | MMCM           |     0.116 |        1 |         5 |           20.00 |
-| DSPs           |     0.002 |       10 |        90 |           11.11 |
-| I/O            |     0.024 |       40 |       106 |           37.74 |
+| DSPs           |     0.001 |        8 |        90 |            8.89 |
+| I/O            |     0.025 |       40 |       106 |           37.74 |
 | Static Power   |     0.074 |          |           |                 |
-| Total          |     0.335 |          |           |                 |
+| Total          |     0.363 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.132 |       0.121 |      0.011 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.158 |       0.147 |      0.011 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.078 |       0.065 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.008 |       0.007 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -84,7 +85,7 @@ Table of Contents
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vccbram   |       1.000 |     0.001 |       0.001 |      0.001 |       NA    | Unspecified | NA         |
+| Vccbram   |       1.000 |     0.002 |       0.001 |      0.001 |       NA    | Unspecified | NA         |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |       NA    | Unspecified | NA         |
@@ -143,25 +144,31 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+--------------+-----------+
-| Name         | Power (W) |
-+--------------+-----------+
-| Top          |     0.262 |
-|   UART       |     0.094 |
-|     UHANDLE  |     0.023 |
-|     USOUND   |     0.069 |
-|       PLAYHZ |     0.066 |
-|   VIDEO      |     0.143 |
-|     G0       |     0.116 |
-|       inst   |     0.116 |
-|     G1       |     0.016 |
-|       bot1   |     0.005 |
-|       bot2   |     0.002 |
-|       bot3   |     0.002 |
-|       bot4   |     0.002 |
-|       bot5   |     0.002 |
-|     G3       |     0.007 |
-|     G4       |     0.003 |
-+--------------+-----------+
++-----------------+-----------+
+| Name            | Power (W) |
++-----------------+-----------+
+| Top             |     0.289 |
+|   UART          |     0.108 |
+|     UDISPLAY    |     0.001 |
+|     UHANDLE     |     0.035 |
+|     USOUND      |     0.070 |
+|       PLAYHZ    |     0.066 |
+|   VIDEO         |     0.156 |
+|     G0          |     0.116 |
+|       inst      |     0.116 |
+|     G1          |     0.019 |
+|       bot1      |     0.005 |
+|       bot2      |     0.002 |
+|       bot3      |     0.002 |
+|       bot4      |     0.002 |
+|       bot5      |     0.002 |
+|     G3          |     0.009 |
+|     G4          |     0.004 |
+|     G5          |     0.008 |
+|       crazyPear |     0.002 |
+|       money     |     0.002 |
+|       sunflower |     0.002 |
+|       wave      |     0.002 |
++-----------------+-----------+
 
 

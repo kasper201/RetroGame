@@ -70,6 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 3
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -115,6 +117,10 @@ read_vhdl -library xil_defaultlib {
   C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd
   {C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/sprite locatie.vhd}
   C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd
+  C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/text.vhd
+  C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Font_Rom.vhd
+  C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/commonPack.vhd
+  C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd
 }
 read_ip -quiet C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
 set_property used_in_implementation false [get_files -all c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]

@@ -100,18 +100,6 @@ port(
  );
 end component;
 
---component bulletHandling is
---  Port (
---        clk : in STD_LOGIC;
---        aReset : in STD_LOGIC;
---        createBullet : in boolean;
---        placeX : in STD_LOGIC_VECTOR(6 downto 0);
---        placeY : in STD_LOGIC_VECTOR(3 downto 0);
---        addrCurrent : in STD_LOGIC_VECTOR(6 downto 0);
---        isBullet : out STD_LOGIC
---        );
---end component;
-
 begin
 
 bot1 : locationRam
@@ -239,14 +227,13 @@ rowDetermination : process(clk) -- this can be done A LOT better but idk how yet
     
     begin
     if (rising_edge(clk))then
-        if((SpeedSel > "0100" AND SpeedSel < "1000") OR (SpeedSel = "1001") ) then -- if bigger than 4 and less than 8 its a robot
---            createBullet <= false;
+        if(((SpeedSel > "0100") AND (SpeedSel < "1000")) OR (SpeedSel = "1001") ) then -- if bigger than 4 and less than 8 its a robot
+
             create <= SpeedSel;
             -- set x show location for plant 
-            addrPlant <= to_unsigned((((TO_INTEGER(Unsigned(hWriteLoc))-144)*8)/640),4 );
+            addrPlant <= to_unsigned((((TO_INTEGER(Unsigned(hWriteLoc))-143)*8)/640),4 );
             addrCurrent <=  UNSIGNED(placeX); -- for plant replace 128 for 8
-            --addrBullet <= to_unsigned((((TO_INTEGER(Unsigned(hWriteLoc))-144)*128)/640),7 );
-            -- set all plants to readOnly
+                       -- set all plants to readOnly
             plantEnables <= "11111";
             outputEnable <= '1';
             case placeY is -- set the row from placeY to write, all others to readOnly
@@ -269,8 +256,7 @@ rowDetermination : process(clk) -- this can be done A LOT better but idk how yet
             -- set x placing location for plant
             addrPlant <= unsigned(placeX(6 downto 3));
             addrCurrent <=  to_unsigned((((TO_INTEGER(Unsigned(hWriteLoc))-144)*128)/640),7 ); -- for plant replace 128 for 8
-            --addrBullet <= to_unsigned((((TO_INTEGER(Unsigned(hWriteLoc))-144)*128)/640),7 );
-            -- set all robots to readOnly
+                    -- set all robots to read Only
             botEnables <= "11111";
             outputEnable <= '1';
             case placeY is -- set the row from placeY to write, all others to readOnly
@@ -289,11 +275,10 @@ rowDetermination : process(clk) -- this can be done A LOT better but idk how yet
             end case;
             
         elsif(SpeedSel = "1000") then -- set everything to read only when sprite thats selected is 8
---            createBullet <= false;
+
             create <= "0000";
-            addrPlant   <= to_unsigned((((TO_INTEGER(Unsigned(hWriteLoc))-144)*8)/640),4 );
+            addrPlant   <= to_unsigned((((TO_INTEGER(Unsigned(hWriteLoc))-143)*8)/640),4 );
             addrCurrent <= to_unsigned((((TO_INTEGER(Unsigned(hWriteLoc))-144)*128)/640),7 ); -- for plant replace 128 for 8
-            --addrBullet <= to_unsigned((((TO_INTEGER(Unsigned(hWriteLoc))-144)*128)/640),7 );
             plantEnables <= "11111";
             botEnables <= "11111";
             outputEnable <= '1'; 
@@ -305,11 +290,9 @@ rowDetermination : process(clk) -- this can be done A LOT better but idk how yet
             addrPlant <= unsigned(placeX(6 downto 3));
             addrCurrent <= to_unsigned((((TO_INTEGER(Unsigned(hWriteLoc))-144)*128)/640),7 );  
         else                          -- speedsselect = 0000reset y level
---            createBullet <= true;
             create <= "0000";
-            addrPlant <= unsigned(placeX(6 downto 3));
-            addrCurrent <= UNSIGNED(placeX);
-            --addrBullet <= UNSIGNED(placeX); 
+            addrPlant   <= to_unsigned((((TO_INTEGER(Unsigned(hWriteLoc))-143)*8)/640),4 );
+            addrCurrent <=  to_unsigned((((TO_INTEGER(Unsigned(hWriteLoc))-144)*128)/640),7 ); -- for plant replace 128 for 8
             case placeY is
                 when "0000" =>
                     plantEnables <= "11110";
@@ -333,7 +316,7 @@ rowDetermination : process(clk) -- this can be done A LOT better but idk how yet
         end if;
     end if;
     end process;
-    
+  
 physicsBox : process(clk, aReset)
         
     begin
@@ -342,15 +325,16 @@ physicsBox : process(clk, aReset)
             
         elsif (rising_edge(clk)) then
 
-            cnt <= cnt + to_unsigned(1,1); -- count how many times the clock has been on the rising edge
+--            cnt <= cnt + to_unsigned(1,1); -- count how many times the clock has been on the rising edge
         
-            if(cnt >= (TO_UNSIGNED(5000,20) * (unsigned(speedSel)* TO_UNSIGNED(2,20)))AND (speedSel(0) = '1')) then -- only actually move if approximately 1 frame has passed
-                cnt <= to_unsigned(0,20);
-            end if;
+--            if(cnt >= (TO_UNSIGNED(5000,20) * (unsigned(speedSel)* TO_UNSIGNED(2,20)))AND (speedSel(0) = '1')) then -- only actually move if approximately 1 frame has passed
+--                cnt <= to_unsigned(0,20);
+--            end if;
             
-            -- give bullets priority then plants then bots
             -- All statements for checking what should be placed on a certain location
-            if(vWriteLoc <= "0001110100") then -- row0
+
+            -- Robots
+            if(vWriteLoc <= "0001110000") then -- row 0
                 coordY <= "0000000010";
                 coordX <= std_logic_vector(addrPlant(2 downto 0) * to_unsigned(80,7));
                 if(addrPlant < "0100") then
@@ -358,52 +342,55 @@ physicsBox : process(clk, aReset)
                 else
                     spriteSelect <= "0000";
                 end if;
-            elsif(vWriteLoc <= "0011000000") then -- row 1              
-                coordY <= "0001010100";
-                if(found_entity /= "0000") then -- found robot or bullet
+            end if;
+
+                if (found_entity /= "0000" AND found_plant = "0000" AND vWriteLoc > "0001110000" AND vWriteLoc <= "0011000000") then 
                     coordX <= std_logic_vector(addrCurrent * to_unsigned(5,3) );
                     spriteSelect <= found_entity(3 downto 0);
-                else -- print plant
-                    coordX <= std_logic_vector(addrPlant(2 downto 0) * to_unsigned(80,7) );
-                    spriteSelect <= found_plant(3 downto 0);
+                    coordY <= "0001010100";
                 end if;
-            elsif(vWriteLoc <= "0100010000") then          
-                coordY <= "0010100100";
-                if(found_entity2 /= "0000") then
+                if(found_entity2 /= "0000" AND found_plant2 = "0000" AND vWriteLoc > "0011000000" AND vWriteLoc <= "0100010000") then
                     coordX <= std_logic_vector(addrCurrent * to_unsigned(5,3) );
                     spriteSelect <= found_entity2(3 downto 0);
-                else
-                    coordX <= std_logic_vector(addrPlant(2 downto 0) * to_unsigned(80,7) );
-                    spriteSelect <= found_plant2(3 downto 0);
+                    coordY <= "0010100100";
                 end if;
-            elsif(vWriteLoc <= "0101100000") then
-                coordY <= "0011110100";
-                if(found_entity3 /= "0000") then
+                if(found_entity3 /= "0000" AND found_plant3 = "0000" AND vWriteLoc > "0100010000" AND vWriteLoc <= "0101100000") then
                     coordX <= std_logic_vector(addrCurrent * to_unsigned(5,3) );
                     spriteSelect <= found_entity3(3 downto 0);
-                else
-                    coordX <= std_logic_vector(addrPlant(2 downto 0) * to_unsigned(80,7) );
-                    spriteSelect <= found_plant3(3 downto 0);
+                    coordY <= "0011110100";
                 end if;
-            elsif(vWriteLoc <= "0110110000") then
-                coordY <= "0101000100";
-                if(found_entity4 /= "0000") then
+                if(found_entity4 /= "0000" AND found_plant4 = "0000" AND vWriteLoc > "0101100000" AND vWriteLoc < "0110110000") then
                     coordX <= std_logic_vector(addrCurrent * to_unsigned(5,3) );
                     spriteSelect <= found_entity4(3 downto 0);
-                else
-                    coordX <= std_logic_vector(addrPlant(2 downto 0) * to_unsigned(80,7) );
-                    spriteSelect <= found_plant4(3 downto 0);
+                    coordY <= "0101000100";
                 end if;
-            else                    
-                coordY <= "0110010100";
-                if(found_entity5 /= "0000") then
+                if(found_entity5 /= "0000" AND found_plant5 = "0000" AND vWriteLoc > "0110110000") then
                     coordX <= std_logic_vector(addrCurrent * to_unsigned(5,3) );
                     spriteSelect <= found_entity5(3 downto 0);
-                else
+                    coordY <= "0110010100";
+                end if;
+                
+                -- plants
+                if (found_plant /= "0000" AND vWriteLoc > "0001110000" AND vWriteLoc <= "0011000000" ) then -- AND NOT (isBullet = '1' AND vWriteLoc > "0010010000" AND vWriteLoc < "0010100000")) then                if(found_plant2 /= "0000" AND vWriteLoc > "0011000000" AND vWriteLoc <= "0100010000") then -- AND NOT (isBullet = '1' AND vWriteLoc > "0011010100" AND vWriteLoc < "0010100100")) then
+                    coordX <= std_logic_vector(addrPlant(2 downto 0) * to_unsigned(80,7) );
+                    spriteSelect <= found_plant2(3 downto 0);
+                    coordY <= "0010100100";
+                end if;
+                if(found_plant3 /= "0000" AND vWriteLoc > "0100010000" AND vWriteLoc <= "0101100000") then -- AND NOT (isBullet = '1' AND vWriteLoc > "0100011100" AND vWriteLoc < "0100110100")) then
+                    coordX <= std_logic_vector(addrPlant(2 downto 0) * to_unsigned(80,7) );
+                    spriteSelect <= found_plant3(3 downto 0);
+                    coordY <= "0011110100";
+                end if;
+                if(found_plant4 /= "0000" AND vWriteLoc > "0101100000" AND vWriteLoc <= "0110110000") then -- AND NOT (isBullet = '1' AND vWriteLoc > "0101110100" AND vWriteLoc < "0101110100")) then
+                    coordX <= std_logic_vector(addrPlant(2 downto 0) * to_unsigned(80,7) );
+                    spriteSelect <= found_plant4(3 downto 0);
+                    coordY <= "0101000100";
+                end if;
+                if(found_plant5 /= "0000" AND vWriteLoc > "0110110000") then -- AND NOT (isBullet = '1' AND vWriteLoc > "0111110100" AND vWriteLoc < "0111111100")) then
                     coordX <= std_logic_vector(addrPlant(2 downto 0) * to_unsigned(80,7) );
                     spriteSelect <= found_plant5(3 downto 0);
+                    coordY <= "0110010100";
                 end if;
-            end if;
         end if;
         
         --coordY <= "0001010100"; -- row1

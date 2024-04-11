@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
--- Date        : Wed Apr 10 19:22:35 2024
+-- Date        : Wed Apr 10 19:22:34 2024
 -- Host        : MSI running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top blk_mem_gen_0 -prefix
+--               blk_mem_gen_0_ blk_mem_gen_0_stub.vhdl
 -- Design      : blk_mem_gen_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a35tcpg236-1
