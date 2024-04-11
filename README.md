@@ -1,10 +1,10 @@
 # Pre-installation
 
-Zephyr version: 3.5 or later
+Zephyr version: 3.5 or later [zephyr_installation_guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html)
 CMake Version: 3.27.4
 OS: Windows 11 23H2 or later
-Vivado version: 2023.2
-Board: STM NUCLEO-F091RC or equivalent
+Vivado version: 2023.2[vivado_installation](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html)
+Board: STM NUCLEO-F091RC, STM NUCLEO-F030R8 or equivalent
 
 # Installation
 
@@ -17,6 +17,22 @@ Board: STM NUCLEO-F091RC or equivalent
 *[WIP]*
 If you are using an STM NUCLEO-F030R8 one can simply follow the [zephyr tutorial](https://docs.zephyrproject.org/latest/develop/getting_started/index.html#build-the-blinky-sample) but instead of `samples\basic\blinky` it should direct to the folder containing the cmake and build files for this project.
 
+### STM32 uploading
+
+To upload a game onto your STM NUCLEO-F091RC OR NUCLEO-32F030R8, follow these steps:
+
+1. Open your command prompt and enter the following command (replace the directory with the correct path to your project):
+`cd c:/path`
+
+2. Build your project. The command will depend on the microcontroller you are using:
+For STM NUCLEO-F030R8:
+`west build -b nucleo_f030r8 -p always -d build`
+For STM NUCLEO-F091RC:
+`west build -b nucleo_f091rc -p always -d build`
+
+3. Finish the upload with the following command:
+`west build`
+   
 ## FPGA
 
 To install the game on the FPGA first open the project in Vivado. 
