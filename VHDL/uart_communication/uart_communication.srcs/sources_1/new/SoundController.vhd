@@ -31,10 +31,8 @@ use IEEE.NUMERIC_STD.ALL;
 entity SoundController is
     Port ( i_Clk : in STD_LOGIC;
            i_SoundOnSwitch : in STD_LOGIC;
-           i_SoundOnMicroblaze : in STD_LOGIC;
+           i_Octaaf : in STD_LOGIC;
            i_SoundInput : in STD_LOGIC_VECTOR(3 downto 0);
-           i_UpdateScore : in STD_LOGIC;                   --Kijk naar goed of fout
-           i_ScoreGoedFout : in STD_LOGIC;                 --Als fout gebruik dit
            o_Sound : out STD_LOGIC);
 end SoundController;
 
@@ -44,101 +42,109 @@ begin
     process(i_Clk)
     
     variable counter : integer := 0;
+    variable divider : integer;
     variable playSound : std_logic;
     
     begin
         if rising_edge(i_Clk) then
-            if i_SoundOnMicroblaze = '1' then
-                playSound := '1';
-            end if;
             --Sound switch on or off
             if i_SoundOnSwitch = '1' then
                 --Playing a sound
-                if playSound = '1' then
-                    if counter < 300000000 then
+                    if counter < 100000000 then
                         counter := counter + 1;
-                        if i_updatescore = '1' and i_scoregoedfout = '0' then
-                        --Speel fout antwoord
-                            if ((counter / 25000) mod 2) = 0 then --Speelt af op 4000 Hz
-                                o_sound <= '1';
-                            else
+                        case i_SoundInput is
+                            when "0000" =>
+                                --Speel muzieknoot e2 of e3
+                                if i_Octaaf = '0' then
+                                    divider := 606796;
+                                else
+                                    divider := 303398;
+                                end if;
+                                if ((counter / divider) mod 2) = 0 then 
+                                    o_sound <= '1';
+                                else
+                                    o_sound <= '0';
+                                end if;
+                            when "0001" =>
+                                --Speel muzieknoot db3 of db4
+                                if i_Octaaf = '0' then
+                                    divider := 360773;
+                                else
+                                    divider := 180387;
+                                end if;
+                                if ((counter / divider) mod 2) = 0 then
+                                    o_sound <= '1';
+                                else
+                                    o_sound <= '0';
+                                end if;
+                            when "0010" =>
+                                --Speel muzieknoot a2 of a3
+                                if i_Octaaf = '0' then
+                                    divider := 454545;
+                                else
+                                    divider := 227273;
+                                end if;
+                                if ((counter / divider) mod 2) = 0 then
+                                    o_sound <= '1';
+                                else
+                                    o_sound <= '0';
+                                end if;
+                            when "0011" =>
+                                --Speel muzieknoot b2 of b3
+                                if i_Octaaf = '0' then
+                                    divider := 404954;
+                                else
+                                    divider := 202477;
+                                end if;
+                                if ((counter / divider) mod 2) = 0 then
+                                    o_sound <= '1';
+                                else
+                                    o_sound <= '0';
+                                end if;
+                            when "0100" =>
+                                --Speel muzieknoot e3 of e4
+                                if i_Octaaf = '0' then
+                                    divider := 303398;
+                                else
+                                    divider := 151699;
+                                end if;
+                                if ((counter / divider) mod 2) = 0 then
+                                    o_sound <= '1';
+                                else
+                                    o_sound <= '0';
+                                end if;
+                            when "0101" =>
+                                --Speel foute noot 1
+                                if i_Octaaf = '0' then
+                                    divider := 2*14616;
+                                else
+                                    divider := 14616;
+                                end if;
+                                if ((counter / divider) mod 2) = 0 then
+                                    o_sound <= '1';
+                                else
+                                    o_sound <= '0';
+                                end if;
+                            when "0110" =>
+                                --Speel foute noot 2
+                                if i_Octaaf = '0' then
+                                    divider := 2*20670;
+                                else
+                                    divider := 20670;
+                                end if;
+                                if ((counter / divider) mod 2) = 0 then
+                                    o_sound <= '1';
+                                else
+                                    o_sound <= '0';
+                                end if;
+                            when others =>
                                 o_sound <= '0';
-                            end if;
-                        elsif i_SoundInput = "0001" then
-                        --Speel muzieknoot f
-                            if ((counter / 143184) mod 2) = 0 then --Speelt af op 349,2 Hz
-                                o_sound <= '1';
-                            else
-                                o_sound <= '0';
-                            end if;
+                        end case;
                         
-                        elsif i_SoundInput = "0010" then
-                        --Speel muzieknoot g
-                            if ((counter / 127583) mod 2) = 0 then --Speelt af op 391,9 Hz
-                                o_sound <= '1';
-                            else
-                                o_sound <= '0';
-                            end if;
-                        
-                        elsif i_SoundInput = "0011" then
-                        --Speel muzieknoot a
-                            if ((counter / 113636) mod 2) = 0 then --Speelt af op 440 Hz
-                                o_sound <= '1';
-                            else
-                                o_sound <= '0';
-                            end if;
-                        
-                        elsif i_SoundInput = "0100" then
-                        --Speel muzieknoot b
-                            if ((counter / 101255) mod 2) = 0 then --Speelt af op 493,8 Hz
-                                o_sound <= '1';
-                            else
-                                o_sound <= '0';
-                            end if;
-                        
-                        elsif i_SoundInput = "0101" then
-                        --Speel muzieknoot c
-                            if ((counter / 95565) mod 2) = 0 then --Speelt af op 523,2 Hz
-                                o_sound <= '1';
-                            else
-                                o_sound <= '0';
-                            end if;
-                        
-                        elsif i_SoundInput = "0110" then
-                        --Speel muzieknoot d
-                            if ((counter / 85135) mod 2) = 0 then --Speelt af op 587,3 Hz
-                                o_sound <= '1';
-                            else
-                                o_sound <= '0';
-                            end if;
-                        
-                        elsif i_SoundInput = "0111" then
-                        --Speel muzieknoot e
-                            if ((counter / 75849) mod 2) = 0 then --Speelt af op 659,2 Hz
-                                o_sound <= '1';
-                            else
-                                o_sound <= '0';
-                            end if;
-                        
-                        elsif i_SoundInput = "1000" then
-                        --Speel muzieknoot f
-                            if ((counter / 71592) mod 2) = 0 then --Speelt af op 698,4 Hz
-                                o_sound <= '1';
-                            else
-                                o_sound <= '0';
-                            end if;
-                        
-                        else
-                            o_sound <= '0';
-                        end if;
                     else
-                        playSound := '0';
                         counter := 0;
                         o_sound <= '0';
                     end if;
-                else
-                    o_Sound <= '0';
-                end if;
             else
                 o_Sound <= '0';
             end if;

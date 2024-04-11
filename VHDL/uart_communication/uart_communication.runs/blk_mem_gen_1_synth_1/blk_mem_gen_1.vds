@@ -3,22 +3,21 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Wed Apr 10 15:20:30 2024
-# Process ID: 25916
-# Current directory: C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1
+# Start of session at: Thu Apr 11 23:32:52 2024
+# Process ID: 29756
+# Current directory: C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1
 # Command line: vivado.exe -log blk_mem_gen_1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source blk_mem_gen_1.tcl
-# Log file: C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1.vds
-# Journal file: C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1\vivado.jou
-# Running On: MSI, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 16991 MB
+# Log file: C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1.vds
+# Journal file: C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1\vivado.jou
+# Running On: PC-WouterRosenbrand, OS: Windows, CPU Frequency: 3800 MHz, CPU Physical cores: 16, Host memory: 34281 MB
 #-----------------------------------------------------------
 source blk_mem_gen_1.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 460.762 ; gain = 185.371
 INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: blk_mem_gen_1
-INFO: [IP_Flow 19-6922] IPCACHE: Exporting cached entry 9c91de6fd54d3739 to dir: C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1
-INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip/2023.2/9/c/9c91de6fd54d3739/blk_mem_gen_1.dcp to C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1.dcp.
-INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip/2023.2/9/c/9c91de6fd54d3739/blk_mem_gen_1_sim_netlist.v to C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1_sim_netlist.v.
-INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip/2023.2/9/c/9c91de6fd54d3739/blk_mem_gen_1_sim_netlist.vhdl to C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1_sim_netlist.vhdl.
-INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip/2023.2/9/c/9c91de6fd54d3739/blk_mem_gen_1_stub.v to C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1_stub.v.
-INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip/2023.2/9/c/9c91de6fd54d3739/blk_mem_gen_1_stub.vhdl to C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1_stub.vhdl.
+INFO: [IP_Flow 19-6922] IPCACHE: Exporting cached entry 9c91de6fd54d3739 to dir: C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip/2023.2/9/c/9c91de6fd54d3739/blk_mem_gen_1.dcp to C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1.dcp.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip/2023.2/9/c/9c91de6fd54d3739/blk_mem_gen_1_sim_netlist.v to C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1_sim_netlist.v.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip/2023.2/9/c/9c91de6fd54d3739/blk_mem_gen_1_sim_netlist.vhdl to C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1_sim_netlist.vhdl.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip/2023.2/9/c/9c91de6fd54d3739/blk_mem_gen_1_stub.v to C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1_stub.v.
+INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip/2023.2/9/c/9c91de6fd54d3739/blk_mem_gen_1_stub.vhdl to C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1_stub.vhdl.
 INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP blk_mem_gen_1, cache-ID = 9c91de6fd54d3739.
-INFO: [Common 17-206] Exiting Vivado at Wed Apr 10 15:20:40 2024...
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 11 23:33:00 2024...

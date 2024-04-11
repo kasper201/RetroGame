@@ -13,6 +13,7 @@ use UNISIM.VComponents.all;
 entity main2 is
  Port (clk100 : in STD_LOGIC;
        aReset : in STD_LOGIC;
+       locationSelect : in STD_LOGIC;
        isNr : in STD_LOGIC_VECTOR (3 downto 0);
        isMoney : in STD_LOGIC;
        nextNr : in STD_LOGIC;
@@ -26,19 +27,21 @@ end main2;
  
 architecture Behavioral of main2 is
 
-signal hQ , vQ : STD_LOGIC_VECTOR(9 downto 0);
-signal coordX, coordY : STD_LOGIC_VECTOR(9 downto 0);
+signal hQ, vQ, hQ1, vQ1, hQ2, vQ2 : STD_LOGIC_VECTOR(9 downto 0);
+signal coordX, coordY, coordX1, coordY1, coordX2, coordY2 : STD_LOGIC_VECTOR(9 downto 0);
 signal clk25, clk5 : STD_LOGIC;
-signal spriteSelect :  STD_LOGIC_VECTOR (3 downto 0);
---signal Reset : STD_LOGIC;
-signal hPos ,vPos : STD_LOGIC_VECTOR (7 downto 0);
+signal spriteSelect, spriteSelect1, spriteSelect2 :  STD_LOGIC_VECTOR (3 downto 0);
+signal speedSel1, speedSel2 : STD_LOGIC_VECTOR(3 downto 0);
+signal hPos ,vPos, hPos1 ,vPos1, hPos2 ,vPos2 : STD_LOGIC_VECTOR (7 downto 0);
 signal rgb : STD_LOGIC_VECTOR(11 downto 0);
 signal active : STD_LOGIC;
 signal activeTemp : STD_LOGIC;
 signal rgbTemp : STD_LOGIC_VECTOR(11 downto 0);
 signal number : STD_LOGIC_VECTOR (3 downto 0) := STD_LOGIC_VECTOR(TO_UNSIGNED(9, 4));
 signal display : STD_LOGIC;
-signal selector : STD_LOGIC;
+signal selector, selector1, selector2 : STD_LOGIC;
+signal X1, X2 : STD_LOGIC_VECTOR(6 downto 0);
+signal Y1, Y2 : STD_LOGIC_VECTOR(3 downto 0);
 
 component prescaler is
     Port ( 
@@ -119,6 +122,42 @@ leds <= coordX;
 --coordX <= "0110010000";
 --coordY <= "0110010000";
 
+process (clk100)
+
+begin
+
+    if rising_edge(clk100) then
+        if locationSelect = '1' then
+            --Opvragen en ontvangen uit ram
+            selector        <= selector1;
+            CoordX          <= CoordX1;
+            CoordY          <= CoordY1;
+            spriteSelect    <= spriteSelect1;
+            hQ1             <= hQ;
+            vQ1             <= vQ;
+            
+            --Plaatsen van ram
+            speedSel2       <= speedSel;
+            X2              <= buttonsX;
+            Y2              <= tempSel;
+        else
+            --Opvragen en ontvangen uit ram
+            selector        <= selector2;
+            CoordX          <= CoordX2;
+            CoordY          <= CoordY2;
+            spriteSelect    <= spriteSelect2;
+            hQ2             <= hQ;
+            vQ2            <= vQ;
+            
+            --Plaatsen van ram
+            speedSel1       <= speedSel;
+            X1              <= buttonsX;
+            Y1              <= tempSel;
+        end if;
+    end if;
+
+end process;
+
 G0 : prescaler port map(
     clk_25 => clk25,
     --clk_5 => clk5,
@@ -128,18 +167,29 @@ G0 : prescaler port map(
   
  G1 : locationDetermination Port map(
            clk => clk100,
-           selector => selector,
-           speedSel => speedSel,
+           selector => selector1,
+           speedSel => speedSel1,
            aReset => aReset,
-           hWriteLoc => hQ,
-           vWriteLoc => vQ,
-           placeX => buttonsX,-- connect this to x of communication
-           placeY => tempSel, -- connect this to y of communication
-           coordY => coordY,
-           coordX => coordX,
-           spriteSelect => spriteSelect); -- not actually sprite select. Speed select does that. Must fix! Is an artifact!
+           hWriteLoc => hQ1,
+           vWriteLoc => vQ1,
+           placeX => X1,-- connect this to x of communication
+           placeY => Y1, -- connect this to y of communication
+           coordY => coordY1,
+           coordX => coordX1,
+           spriteSelect => spriteSelect1); -- not actually sprite select. Speed select does that. Must fix! Is an artifact!
  
-  
+  G1D1 : locationDetermination Port map(
+           clk => clk100,
+           selector => selector2,
+           speedSel => speedSel2,
+           aReset => aReset,
+           hWriteLoc => hQ2,
+           vWriteLoc => vQ2,
+           placeX => X2,-- connect this to x of communication
+           placeY => Y2, -- connect this to y of communication
+           coordY => coordY2,
+           coordX => coordX2,
+           spriteSelect => spriteSelect2); -- not actually sprite select. Speed select does that. Must fix! Is an artifact!
 	
 G2 :sprite_locatie port map(
            clk25 => clk25,

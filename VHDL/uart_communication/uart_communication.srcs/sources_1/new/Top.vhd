@@ -61,6 +61,7 @@ component main is
            o_id : out std_logic_vector(3 downto 0);
            o_y : out std_logic_vector(3 downto 0);
            o_x : out std_logic_vector(6 downto 0);
+           switch : out std_logic;
            isNr : out STD_LOGIC_VECTOR (3 downto 0);
            isMoney : out STD_LOGIC;
            nextNr : out STD_LOGIC;
@@ -78,6 +79,7 @@ end component;
 component main2 is
  Port (clk100 : in STD_LOGIC;
        aReset : in STD_LOGIC;
+       locationSelect : in STD_LOGIC;
        isNr : in STD_LOGIC_VECTOR (3 downto 0);
        isMoney : in STD_LOGIC;
        nextNr : in STD_LOGIC;
@@ -91,8 +93,9 @@ end component;
 
 signal sendButton, is_Money, next_Nr : std_logic;
 signal opvangleds : std_logic_vector(9 downto 0);
-signal id, y, is_Nr : std_logic_vector(3 downto 0);
+signal id, y, id_in, y_in, is_Nr : std_logic_vector(3 downto 0);
 signal x : std_logic_vector(6 downto 0);
+signal switch : std_logic;
 
 begin
     
@@ -103,38 +106,36 @@ begin
             if counter < 5000000 then
                 counter := counter + 1;
                 sendButton <= '0';
+                if counter < 10 then
+                    id <= "0000";
+                    y  <= "0000";
+                elsif counter < 20 then
+                    id <= "0000";
+                    y  <= "0001";
+                elsif counter < 30 then
+                    id <= "0000";
+                    y  <= "0010";
+                elsif counter < 40 then
+                    id <= "0000";
+                    y  <= "0011";
+                elsif counter < 50 then
+                    id <= "0000";
+                    y  <= "0100";
+                else
+                    id <= id_in;
+                    y  <= y_in;
+                end if;
             else
                 counter := 0;
                 sendButton <= '1';
             end if;
         end if;
     end process;
-    
-    UART: main port map(
-           i_Clk            => i_Clk,
-           i_SendButton     => sendButton,
-           i_Info_select    => i_Info_select,
-           i_Rx             => i_Rx,
-           o_Tx             => o_Tx,
-           o_id             => id,
-           o_y              => y,
-           o_x              => x,
-           isNr             => is_Nr,
-           isMoney          => is_Money,
-           nextNr           => next_Nr,
-           o_LED_Status     => o_LED_Status,
-           o_LED_Status1    => o_LED_Status1,
-           o_LED_Status2    => o_LED_Status2,
-           o_LED_Status3    => o_LED_Status3,
-           o_LED_Status4    => o_LED_Status4,
-           o_Sound          => o_Sound,
-           o_D_bus          => o_D_bus,
-           o_S_bus          => o_S_bus
-    );
 
     VIDEO: main2 port map (
        clk100               => i_Clk,
        aReset               => aReset,
+       locationSelect       => switch,
        isNr                 => is_Nr,
        isMoney              => is_Money,
        nextNr               => next_Nr,
@@ -147,6 +148,29 @@ begin
 	   hsync                => hsync,
 	   vsync                => vsync,
 	   leds                 => opvangleds
+    );
+    
+    UART: main port map(
+           i_Clk            => i_Clk,
+           i_SendButton     => sendButton,
+           i_Info_select    => i_Info_select,
+           i_Rx             => i_Rx,
+           o_Tx             => o_Tx,
+           o_id             => id_in,
+           o_y              => y_in,
+           o_x              => x,
+           switch           => switch,
+           isNr             => is_Nr,
+           isMoney          => is_Money,
+           nextNr           => next_Nr,
+           o_LED_Status     => o_LED_Status,
+           o_LED_Status1    => o_LED_Status1,
+           o_LED_Status2    => o_LED_Status2,
+           o_LED_Status3    => o_LED_Status3,
+           o_LED_Status4    => o_LED_Status4,
+           o_Sound          => o_Sound,
+           o_D_bus          => o_D_bus,
+           o_S_bus          => o_S_bus
     );
 
 end Behavioral;

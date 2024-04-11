@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Wed Apr 10 14:53:23 2024
+// Date        : Wed Apr 10 14:53:21 2024
 // Host        : MSI running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_6/blk_mem_gen_6_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top blk_mem_gen_6 -prefix
+//               blk_mem_gen_6_ blk_mem_gen_6_stub.v
 // Design      : blk_mem_gen_6
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a35tcpg236-1

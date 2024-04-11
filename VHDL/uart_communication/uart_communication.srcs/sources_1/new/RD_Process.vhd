@@ -37,6 +37,7 @@ entity RD_Process is
            o_id : out std_logic_vector(3 downto 0);
            o_y : out std_logic_vector(3 downto 0);
            o_x : out std_logic_vector(6 downto 0);
+           switch : out std_logic;
            isNr : out STD_LOGIC_VECTOR (3 downto 0);
            isMoney : out STD_LOGIC;
            nextNr : out STD_LOGIC;
@@ -49,7 +50,7 @@ end RD_Process;
 architecture Behavioral of RD_Process is
 
 signal Number : std_logic_vector(3 downto 0);
-signal money, next_nr : std_logic;
+signal money, next_nr, switchS : std_logic;
 
 begin
 
@@ -134,6 +135,11 @@ begin
                         when "0110" =>      --Wave
                             wave := to_integer(unsigned(i_R_byte));
                             counter := 0;
+                            if switchS = '1' then
+                                switchS <= '0';
+                            else
+                                switchS <= '1';
+                            end if;
                         when others =>
                     end case;
                 elsif i_R_byte = "11111110" then
@@ -266,6 +272,10 @@ begin
                     tussenwaarde := wave;
                 when others =>
             end case;
+            
+            
+                
+            
         end if;
         
         --Display geld op 7 segment
@@ -282,6 +292,7 @@ begin
         isNr <= Number;
         isMoney <= money;
         nextNr <= next_nr;
+        switch <= switchS;
         
     end process;
 
