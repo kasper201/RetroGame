@@ -80,13 +80,13 @@ void casefunction(int i)
 		if (yLoc < MAP_HEIGHT - 1)
 			yLoc++;
 		else
-			yLoc = 1;
+			yLoc = 0;
 		break;
 	case 1:
 		if (xLoc > 0)
 			xLoc--;
 		else
-			xLoc = 8;
+			xLoc = 7;
 		break;
 	case 2:
 		if (yLoc > 0)
@@ -95,29 +95,28 @@ void casefunction(int i)
 			yLoc = 4;
 		break;
 	case 3:
-		updateGame(map, mapR, &player, bullet, frame);
-		//     if (xLoc < MAP_WIDTH-1)
-		// xLoc++;
-		// else
-		// xLoc = 1;
+		if (xLoc < MAP_WIDTH - 1)
+			xLoc++;
+		else
+			xLoc = 0;
 		break;
 	case 4:
-		if (xLocs < 5)
+		if (xLocs < 3)
 			xLocs++;
 		else
 		{
-			xLocs = 1;
+			xLocs = 0;
 		}
 
 		break;
 	case 5:
-		createPlant(map, xLoc, yLoc, xLocs, &player);
+		createPlant(map, xLoc, yLoc, xLocs + 1, &player);
 		break;
 	case 6:
-		if (xLocs > 1)
+		if (xLocs > 0)
 			xLocs--;
 		else
-			xLocs = 4;
+			xLocs = 3;
 		break;
 	}
 }
@@ -207,13 +206,13 @@ int main(void)
 	unsigned char sendByteC;
 	int tempHealth = player.health;
 	int geld;
-	int sendOut = 7;
-
+	bool checkFpga = true;
+	bool generateFrame = false;
 
 	printk("Start\n");
 	while (1)
 	{
-		
+
 		val[0] = gpio_pin_get_dt(buttons[0]);
 		val[1] = gpio_pin_get_dt(buttons[1]);
 		val[2] = gpio_pin_get_dt(buttons[2]);
@@ -221,21 +220,22 @@ int main(void)
 		val[4] = gpio_pin_get_dt(buttons[4]);
 		val[5] = gpio_pin_get_dt(buttons[5]);
 		val[6] = gpio_pin_get_dt(buttons[6]);
-		
+
 		// Loop through the buttons
 		for (int i = 0; i < 7; i++)
 		{
 			if (val[i] > 0 && buttonPressed[i] == 0)
-			{printf("time1\n");
+			{
+				// printf("time1\n");
 				buttonPressed[i] = 1;
 				// TODO voeg hier de functies toe die per knop aangeroepen worden want dit is rising edge
-				printk("button %d pressed %d\n", i, count);
+				// printk("button %d pressed %d\n", i, count);
 				casefunction(i);
 				count++;
 				released[i] = 0;
-				printk("2D x:%d and y:%d\n", xLoc, yLoc);
-				printk("shop x:%d\n", xLocs);
-				printf("time2\n");
+				// printk("2D x:%d and y:%d\n", xLoc, yLoc);
+				// printk("shop x:%d\n", xLocs);
+				// printf("time2\n");
 			}
 			else if (val[i] > 0)
 			{
@@ -255,77 +255,90 @@ int main(void)
 				}
 			}
 		}
-	
-		int input = checkFromFpga();
-		
-		if(input >= 0)
+
+		if (checkFpga)
 		{
-			printk("Start sending at at %" PRIu32 "\n", k_cycle_get_32());
-
-			//Geld
-			geld = player.money;
-			sendByte[0] = geld % 253;
-			sendByte[1] = geld / 253;
-			print_uart(sendByte , 2);
-			printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
-			//k_usleep(SLEEP_TIME_U);
-			sendByte[0] = 0xff;
-			sendByte[1] = 0xfe;
-			print_uart(sendByte, 2);
-			
-			//Plant
-			sendPlants(map);
-			sendByte[0] = 0xff;
-			sendByte[1] = 0xfe;
-			print_uart(sendByte, 2);
-			
-			//Robot
-			sendRobots(mapR);
-			sendByte[0] = 0xff;
-			sendByte[1] = 0xfe;
-			print_uart(sendByte, 2);
-			
-			//Bullet
-			sendBullets(bullet);
-			sendByte[0] = 0xff;
-			sendByte[1] = 0xfe;
-			print_uart(sendByte, 2);
-			
-			//Life Lost
-			if(tempHealth != player.health)
+			int input = checkFromFpga();
+			checkFpga = false;
+			if (input >= 0)
 			{
-				sendByteC = 0x0a;
-				print_uart(&sendByteC, 1);
-				printf("Life lost send this byte: %d\n", sendByteC);
-				//k_usleep(SLEEP_TIME_U);
-				tempHealth = player.health;
-			}
-			sendByte[0] = 0xff;
-			sendByte[1] = 0xfe;
-			print_uart(sendByte, 2);
-			
-			//Selector
-			byte = (xLocs * 40) + (xLoc * 5) + yLoc; //shop, gardenx, gardeny
-			sendByteC = byte;
-			print_uart(&sendByteC, 1);
-			printf("Send these byte: %d\n", sendByteC);
-			//k_usleep(SLEEP_TIME_U);	
-			sendByte[0] = 0xff;
-			sendByte[1] = 0xfe;
-			print_uart(sendByte, 2);
-			
-			//Wave
-			sendByteC = player.wave;
-			print_uart(&sendByteC, 1);
-			printf("Send wave these byte: %d\n", sendByteC);
-			//k_usleep(SLEEP_TIME_U);
-			sendByte[0] = 0xff;
-			sendByte[1] = 0xfe;
-			print_uart(sendByte, 2);
+				printk("Start sending at at %" PRIu32 "\n", k_cycle_get_32());
 
-			printk("Stop sending at %" PRIu32 "\n", k_cycle_get_32());
+				// Geld
+				geld = player.money;
+				sendByte[0] = geld % 253;
+				sendByte[1] = geld / 253;
+				print_uart(sendByte, 2);
+				printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
+				// k_usleep(SLEEP_TIME_U);
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				// Plant
+				sendPlants(map);
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				// Robot
+				sendRobots(mapR);
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				// Bullet
+				sendBullets(bullet);
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				// Life Lost
+				if (tempHealth != player.health)
+				{
+					sendByteC = 0x0a;
+					print_uart(&sendByteC, 1);
+					printf("Life lost send this byte: %d\n", sendByteC);
+					// k_usleep(SLEEP_TIME_U);
+					tempHealth = player.health;
+				}
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				// Selector
+				byte = (xLocs * 40) + (xLoc * 5) + yLoc; // shop, gardenx, gardeny
+				sendByteC = byte;
+				print_uart(&sendByteC, 1);
+				printf("Send these byte: %d\n", sendByteC);
+				// k_usleep(SLEEP_TIME_U);
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				// Wave
+				sendByteC = player.wave;
+				print_uart(&sendByteC, 1);
+				printf("Send wave these byte: %d\n", sendByteC);
+				// k_usleep(SLEEP_TIME_U);
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				printk("Stop sending at %" PRIu32 "\n", k_cycle_get_32());
+				generateFrame = true;
+			}
 		}
-	
+		else
+		{
+			if (generateFrame)
+			{
+				updateGame(map, mapR, &player, bullet, frame);
+				generateFrame = false;
+			}
+			checkFpga = true;
+		}
+
 		k_usleep(SLEEP_TIME_U * 10);
 	}
 	return 0;
