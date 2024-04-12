@@ -130,7 +130,7 @@ begin
                             garden_select := '0';
                             shop_selector := (to_integer(unsigned(i_R_byte)) / 40);
                             garden_selector_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5);
-                            garden_selector_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5);
+                            garden_selector_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5) + 1;
                             shop_select := '1';
                             counter := 0;
                         when "0110" =>      --Wave

@@ -121,6 +121,9 @@ begin
                 elsif counter < 50 then
                     id <= "0000";
                     y  <= "0100";
+                elsif counter < 60 then
+                    id <= "0000";
+                    y  <= "0100";
                 else
                     id <= id_in;
                     y  <= y_in;
@@ -152,7 +155,7 @@ begin
     
     UART: main port map(
            i_Clk            => i_Clk,
-           i_SendButton     => '0',
+           i_SendButton     => sendButton,
            i_Info_select    => i_Info_select,
            i_Rx             => i_Rx,
            o_Tx             => o_Tx,

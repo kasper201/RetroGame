@@ -1,4 +1,5 @@
 #include "menu.h"
+#include "main.h"
 
 #include <stdlib.h>
 uint8_t highscore;
@@ -20,6 +21,7 @@ void deadscreen(struct Player* player)
 		highscore = player->wave;
 	}
 	//voeg toe reset alle waardes
+	game();
 	return;
 	
 }

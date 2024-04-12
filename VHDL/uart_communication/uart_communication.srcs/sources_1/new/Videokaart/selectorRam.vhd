@@ -39,7 +39,7 @@ port(
      placeX : in std_logic_vector(3 downto 0) ;
      placeY : in std_logic_vector(2 downto 0) ;
      data : out std_logic := '0'
-     --addr : in std_logic_vector(6 downto 0) := (others=>'0')
+     
  ); 
 end selectorRam;
 
@@ -47,15 +47,14 @@ architecture Behavioral of selectorRam is
 signal userX : std_logic_vector(3 downto 0) ;
 signal userY : std_logic_vector(2 downto 0) ;
 signal shop : std_logic_vector(2 downto 0):= "000" ;
---signal localCoords : std_logic_vector(6 downto 0) ;
 begin
 
 process(clk)
 begin
     if (rising_edge(clk)) then
         
-        if(outputEn = '0')then 
-            if (placeY < "101")then
+       if(outputEn = '0')then       -- write the selector or shop selector
+            if (placeY > "000" and placeY < "110")then
                 userX <= placeX;
                 userY <= placeY;
             elsif (placeY = "110") then
@@ -65,17 +64,17 @@ begin
         
         data <= '0';
         
-        if(outputEn = '1')then 
+        if(outputEn = '1')then                                      --print the selector
             if ((userX = placeX) and (vWriteLoc >= "0001100000"))then                           
-                if    ( ("0001110000" <= vWriteLoc ) and ("0011000001" > vWriteLoc ) and (userY = "000") ) then --row1
+                if    ( ("0001110000" <= vWriteLoc ) and ("0011000001" > vWriteLoc ) and (userY = "001") ) then --row1
                     data <= '1';
-                elsif ( ("0011000001" <= vWriteLoc ) and ("0100010010" > vWriteLoc ) and (userY = "001") ) then  --row2
+                elsif ( ("0011000001" <= vWriteLoc ) and ("0100010010" > vWriteLoc ) and (userY = "010") ) then  --row2
                     data <= '1';
-                elsif ( ("0100010010" <= vWriteLoc ) and ("0101100011" > vWriteLoc ) and (userY = "010") ) then  --row3
+                elsif ( ("0100010010" <= vWriteLoc ) and ("0101100011" > vWriteLoc ) and (userY = "011") ) then  --row3
                     data <= '1';
-                elsif ( ("0101100011" <= vWriteLoc ) and ("0110110100" > vWriteLoc ) and (userY = "011") ) then  --row4
+                elsif ( ("0101100011" <= vWriteLoc ) and ("0110110100" > vWriteLoc ) and (userY = "100") ) then  --row4
                     data <= '1';
-                elsif ( ("0110110100" <= vWriteLoc ) and ("1000000101" > vWriteLoc ) and(userY = "100") ) then  --row5?
+                elsif ( ("0110110100" <= vWriteLoc ) and ("1000000101" > vWriteLoc ) and(userY = "101") ) then  --row5
                     data <= '1';                                                                
                 else
                     data <= '0';
@@ -83,8 +82,8 @@ begin
             else 
                 data <= '0';
             end if;
-            
-            if((shop = ( '0' & placeX(1 downto 0))) and (placeX < "0100") and (vWriteLoc < "0001100000"))then --row 0/ shop
+                    -- print the shop selector
+            if((shop = ( '0' & placeX(1 downto 0))) and (placeX < "0100") and (vWriteLoc < "0001110000"))then --row 0/ shop
                 data <= '1';
             end if;
 

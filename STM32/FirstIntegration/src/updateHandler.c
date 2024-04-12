@@ -42,6 +42,19 @@ int updatePlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, str
  */
 int moveEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR], uint8_t x, uint8_t y, struct Player *player)
 {
+    if (x < 1) // if out of bounds the player has lost one heart. player got 5 hearts or 100hp
+    {
+        player->health -= 20; // remove 1 heart or 20 hp
+        mapR[x][y].health = 0;
+        mapR[x][y].damage = 0;
+        mapR[x][y].defense = 0;
+        mapR[x][y].speed = 0;
+        mapR[x][y].type = 0;
+        mapR[x][y].wavesNotMoved = 0;
+        
+        return 0;
+    }
+
     if (mapR[x - 1][y].type != 0 || map[(x / 16)][y].type != 0) // if there is already something there don't move
     {
         if (map[(x / 16)][y].type >= 1 && mapR[(x / 16)][y].type <= 4)
@@ -77,16 +90,7 @@ int moveEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTHR
         mapR[x][y].wavesNotMoved++;
     }
 
-    if (x < 0) // if out of bounds the player has lost one heart. player got 5 hearts or 100hp
-    {
-        player->health -= 20; // remove 1 heart or 20 hp
-        mapR[x - 1][y].health = 0;
-        mapR[x - 1][y].damage = 0;
-        mapR[x - 1][y].defense = 0;
-        mapR[x - 1][y].speed = 0;
-        mapR[x - 1][y].type = 0;
-        mapR[x - 1][y].wavesNotMoved = 0;
-    }
+    
     if (player->health <= 0) // if all the hearts have been lost deadscreen or menu will show
     {
         deadscreen(player);
@@ -384,7 +388,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
     }
     // printk("\ntocreat is so groot:%d\n", toCreate);
     // printk("\n het is wave: %d\n", player->wave);
-    if (count4 == 50)
+    if (count4 == 100)
     {
         if (toCreate != 0) // spawn robots
         {

@@ -57,7 +57,7 @@ int playerInit(struct Player* player)
 {
     player->wave = 0;
     player->health = 100;
-    player->money = 1000;
+    player->money = 500;
     if (player->wave != 1 || player->health != 100 || player->money != 10000)
         return 1;
     return 0;
