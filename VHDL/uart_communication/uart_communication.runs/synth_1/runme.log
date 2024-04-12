@@ -6,160 +6,161 @@
 ECHO is off.
 ECHO is off.
 
-****** Vivado v2023.2.2 (64-bit)
-  **** SW Build 4126759 on Thu Feb  8 23:53:51 MST 2024
-  **** IP Build 4126054 on Fri Feb  9 11:39:09 MST 2024
-  **** SharedData Build 4115275 on Tue Jan 30 00:40:57 MST 2024
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source Top.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 462.500 ; gain = 186.023
-Command: read_checkpoint -auto_incremental -incremental C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/utils_1/imports/synth_1/main.dcp
-INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/utils_1/imports/synth_1/main.dcp for incremental synthesis
+Command: read_checkpoint -auto_incremental -incremental C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/utils_1/imports/synth_1/main.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/utils_1/imports/synth_1/main.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top Top -part xc7a35tcpg236-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 11352
+INFO: [Synth 8-7075] Helper process launched with PID 34304
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1310.695 ; gain = 440.164
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:04 . Memory (MB): peak = 1313.266 ; gain = 441.445
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'Top' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Top.vhd:53]
-INFO: [Synth 8-3491] module 'main2' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:13' bound to instance 'VIDEO' of component 'main2' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Top.vhd:138]
-INFO: [Synth 8-638] synthesizing module 'main2' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:28]
-INFO: [Synth 8-3491] module 'prescaler' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/prescaler_stub.vhdl:6' bound to instance 'G0' of component 'prescaler' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:176]
-INFO: [Synth 8-638] synthesizing module 'prescaler' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/prescaler_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'LocationDetermination' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:34' bound to instance 'G1' of component 'locationDetermination' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:183]
-INFO: [Synth 8-638] synthesizing module 'LocationDetermination' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'Top' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Top.vhd:53]
+INFO: [Synth 8-3491] module 'main2' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:13' bound to instance 'VIDEO' of component 'main2' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Top.vhd:137]
+INFO: [Synth 8-638] synthesizing module 'main2' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:28]
+INFO: [Synth 8-3491] module 'prescaler' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/prescaler_stub.vhdl:6' bound to instance 'G0' of component 'prescaler' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:176]
+INFO: [Synth 8-638] synthesizing module 'prescaler' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/prescaler_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'LocationDetermination' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:34' bound to instance 'G1' of component 'locationDetermination' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:183]
+INFO: [Synth 8-638] synthesizing module 'LocationDetermination' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:47]
 	Parameter data_width bound to: 4 - type: integer 
 	Parameter addr_length bound to: 7 - type: integer 
 	Parameter shiftLeft bound to: 0 - type: bool 
-INFO: [Synth 8-3491] module 'locationRAM' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:34' bound to instance 'bot1' of component 'locationRAM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:110]
-INFO: [Synth 8-638] synthesizing module 'locationRAM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:49]
+INFO: [Synth 8-3491] module 'locationRAM' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:34' bound to instance 'bot1' of component 'locationRAM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:110]
+INFO: [Synth 8-638] synthesizing module 'locationRAM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:49]
 	Parameter data_width bound to: 4 - type: integer 
 	Parameter addr_length bound to: 7 - type: integer 
 	Parameter shiftLeft bound to: 0 - type: bool 
-INFO: [Synth 8-256] done synthesizing module 'locationRAM' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:49]
+INFO: [Synth 8-256] done synthesizing module 'locationRAM' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:49]
 	Parameter data_width bound to: 4 - type: integer 
 	Parameter addr_length bound to: 7 - type: integer 
 	Parameter shiftLeft bound to: 0 - type: bool 
-INFO: [Synth 8-3491] module 'locationRAM' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:34' bound to instance 'bot2' of component 'locationRAM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:123]
+INFO: [Synth 8-3491] module 'locationRAM' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:34' bound to instance 'bot2' of component 'locationRAM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:123]
 	Parameter data_width bound to: 4 - type: integer 
 	Parameter addr_length bound to: 7 - type: integer 
 	Parameter shiftLeft bound to: 0 - type: bool 
-INFO: [Synth 8-3491] module 'locationRAM' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:34' bound to instance 'bot3' of component 'locationRAM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:136]
+INFO: [Synth 8-3491] module 'locationRAM' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:34' bound to instance 'bot3' of component 'locationRAM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:136]
 	Parameter data_width bound to: 4 - type: integer 
 	Parameter addr_length bound to: 7 - type: integer 
 	Parameter shiftLeft bound to: 0 - type: bool 
-INFO: [Synth 8-3491] module 'locationRAM' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:34' bound to instance 'bot4' of component 'locationRAM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:149]
+INFO: [Synth 8-3491] module 'locationRAM' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:34' bound to instance 'bot4' of component 'locationRAM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:149]
 	Parameter data_width bound to: 4 - type: integer 
 	Parameter addr_length bound to: 7 - type: integer 
 	Parameter shiftLeft bound to: 0 - type: bool 
-INFO: [Synth 8-3491] module 'locationRAM' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:34' bound to instance 'bot5' of component 'locationRAM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:162]
-INFO: [Synth 8-3491] module 'plantRAM' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:35' bound to instance 'plant1' of component 'plantRAM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:175]
-INFO: [Synth 8-638] synthesizing module 'plantRAM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:45]
-INFO: [Synth 8-256] done synthesizing module 'plantRAM' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:45]
-INFO: [Synth 8-3491] module 'plantRAM' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:35' bound to instance 'plant2' of component 'plantRAM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:184]
-INFO: [Synth 8-3491] module 'plantRAM' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:35' bound to instance 'plant3' of component 'plantRAM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:193]
-INFO: [Synth 8-3491] module 'plantRAM' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:35' bound to instance 'plant4' of component 'plantRAM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:202]
-INFO: [Synth 8-3491] module 'plantRAM' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:35' bound to instance 'plant5' of component 'plantRAM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:211]
-INFO: [Synth 8-3491] module 'selectorRam' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/selectorRam.vhd:34' bound to instance 'selector1' of component 'selectorRam' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:221]
-INFO: [Synth 8-638] synthesizing module 'selectorRam' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/selectorRam.vhd:46]
-INFO: [Synth 8-256] done synthesizing module 'selectorRam' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/selectorRam.vhd:46]
-INFO: [Synth 8-256] done synthesizing module 'LocationDetermination' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:47]
-INFO: [Synth 8-3491] module 'LocationDetermination' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:34' bound to instance 'G1D1' of component 'locationDetermination' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:196]
-WARNING: [Synth 8-5640] Port 'spriteselectq' is missing in component declaration [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:55]
-INFO: [Synth 8-3491] module 'sprite_locatie' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/sprite locatie.vhd:34' bound to instance 'G2' of component 'sprite_locatie' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:209]
-INFO: [Synth 8-638] synthesizing module 'sprite_locatie' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/sprite locatie.vhd:52]
-WARNING: [Synth 8-614] signal 'aReset' is read in the process but is not in the sensitivity list [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/sprite locatie.vhd:64]
-WARNING: [Synth 8-614] signal 'mySpriteSelect' is read in the process but is not in the sensitivity list [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/sprite locatie.vhd:64]
-INFO: [Synth 8-256] done synthesizing module 'sprite_locatie' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/sprite locatie.vhd:52]
-INFO: [Synth 8-3491] module 'vROM' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:14' bound to instance 'G3' of component 'vROM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:222]
-INFO: [Synth 8-638] synthesizing module 'vROM' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:26]
-INFO: [Synth 8-3491] module 'blk_mem_gen_0' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_0_stub.vhdl:6' bound to instance 'ROM1' of component 'blk_mem_gen_0' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:137]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_0_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'blk_mem_gen_1' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_1_stub.vhdl:6' bound to instance 'ROM2' of component 'blk_mem_gen_1' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:143]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_1' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_1_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'blk_mem_gen_2' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_2_stub.vhdl:6' bound to instance 'ROM3' of component 'blk_mem_gen_2' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:149]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_2' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_2_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'blk_mem_gen_3' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_3_stub.vhdl:6' bound to instance 'ROM4' of component 'blk_mem_gen_3' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:155]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_3' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_3_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'blk_mem_gen_4' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_4_stub.vhdl:6' bound to instance 'ROM5' of component 'blk_mem_gen_4' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:161]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_4' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_4_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'blk_mem_gen_5' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_5_stub.vhdl:6' bound to instance 'ROM6' of component 'blk_mem_gen_5' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:167]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_5' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_5_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'blk_mem_gen_6' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_6_stub.vhdl:6' bound to instance 'ROM7' of component 'blk_mem_gen_6' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:173]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_6' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_6_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'blk_mem_gen_7' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_7_stub.vhdl:6' bound to instance 'ROM8' of component 'blk_mem_gen_7' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:179]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_7' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_7_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'blk_mem_gen_8' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_8_stub.vhdl:6' bound to instance 'ROM9' of component 'blk_mem_gen_8' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:185]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_8' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-1652-MSI/realtime/blk_mem_gen_8_stub.vhdl:15]
-INFO: [Synth 8-256] done synthesizing module 'vROM' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:26]
-INFO: [Synth 8-3491] module 'VGA' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vga.vhd:8' bound to instance 'G4' of component 'VGA' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:236]
-INFO: [Synth 8-638] synthesizing module 'VGA' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vga.vhd:20]
-INFO: [Synth 8-256] done synthesizing module 'VGA' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vga.vhd:20]
-INFO: [Synth 8-3491] module 'textComp' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/text.vhd:35' bound to instance 'G5' of component 'textComp' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:249]
-INFO: [Synth 8-638] synthesizing module 'textComp' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/text.vhd:46]
-INFO: [Synth 8-638] synthesizing module 'Pixel_On_Text' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
+INFO: [Synth 8-3491] module 'locationRAM' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/LocationRam.vhd:34' bound to instance 'bot5' of component 'locationRAM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:162]
+INFO: [Synth 8-3491] module 'plantRAM' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:35' bound to instance 'plant1' of component 'plantRAM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:175]
+INFO: [Synth 8-638] synthesizing module 'plantRAM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'plantRAM' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:45]
+INFO: [Synth 8-3491] module 'plantRAM' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:35' bound to instance 'plant2' of component 'plantRAM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:184]
+INFO: [Synth 8-3491] module 'plantRAM' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:35' bound to instance 'plant3' of component 'plantRAM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:193]
+INFO: [Synth 8-3491] module 'plantRAM' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:35' bound to instance 'plant4' of component 'plantRAM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:202]
+INFO: [Synth 8-3491] module 'plantRAM' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/plantRam.vhd:35' bound to instance 'plant5' of component 'plantRAM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:211]
+INFO: [Synth 8-3491] module 'selectorRam' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/selectorRam.vhd:34' bound to instance 'selector1' of component 'selectorRam' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:221]
+INFO: [Synth 8-638] synthesizing module 'selectorRam' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/selectorRam.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'selectorRam' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/selectorRam.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'LocationDetermination' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:47]
+INFO: [Synth 8-3491] module 'LocationDetermination' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/locationDetermination.vhd:34' bound to instance 'G1D1' of component 'locationDetermination' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:196]
+WARNING: [Synth 8-5640] Port 'spriteselectq' is missing in component declaration [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:55]
+INFO: [Synth 8-3491] module 'sprite_locatie' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/sprite locatie.vhd:34' bound to instance 'G2' of component 'sprite_locatie' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:209]
+INFO: [Synth 8-638] synthesizing module 'sprite_locatie' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/sprite locatie.vhd:52]
+WARNING: [Synth 8-614] signal 'aReset' is read in the process but is not in the sensitivity list [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/sprite locatie.vhd:64]
+WARNING: [Synth 8-614] signal 'mySpriteSelect' is read in the process but is not in the sensitivity list [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/sprite locatie.vhd:64]
+INFO: [Synth 8-256] done synthesizing module 'sprite_locatie' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/sprite locatie.vhd:52]
+INFO: [Synth 8-3491] module 'vROM' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:14' bound to instance 'G3' of component 'vROM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:222]
+INFO: [Synth 8-638] synthesizing module 'vROM' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:26]
+INFO: [Synth 8-3491] module 'blk_mem_gen_0' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_0_stub.vhdl:6' bound to instance 'ROM1' of component 'blk_mem_gen_0' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:137]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_0_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'blk_mem_gen_1' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_1_stub.vhdl:6' bound to instance 'ROM2' of component 'blk_mem_gen_1' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_1' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_1_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'blk_mem_gen_2' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_2_stub.vhdl:6' bound to instance 'ROM3' of component 'blk_mem_gen_2' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:149]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_2' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_2_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'blk_mem_gen_3' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_3_stub.vhdl:6' bound to instance 'ROM4' of component 'blk_mem_gen_3' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:155]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_3' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_3_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'blk_mem_gen_4' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_4_stub.vhdl:6' bound to instance 'ROM5' of component 'blk_mem_gen_4' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:161]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_4' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_4_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'blk_mem_gen_5' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_5_stub.vhdl:6' bound to instance 'ROM6' of component 'blk_mem_gen_5' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:167]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_5' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_5_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'blk_mem_gen_6' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_6_stub.vhdl:6' bound to instance 'ROM7' of component 'blk_mem_gen_6' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:173]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_6' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_6_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'blk_mem_gen_7' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_7_stub.vhdl:6' bound to instance 'ROM8' of component 'blk_mem_gen_7' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:179]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_7' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_7_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'blk_mem_gen_8' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_8_stub.vhdl:6' bound to instance 'ROM9' of component 'blk_mem_gen_8' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:185]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_8' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/.Xil/Vivado-22120-PC-WouterRosenbrand/realtime/blk_mem_gen_8_stub.vhdl:15]
+INFO: [Synth 8-256] done synthesizing module 'vROM' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vROM.vhd:26]
+INFO: [Synth 8-3491] module 'VGA' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vga.vhd:8' bound to instance 'G4' of component 'VGA' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:236]
+INFO: [Synth 8-638] synthesizing module 'VGA' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vga.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'VGA' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vga.vhd:20]
+INFO: [Synth 8-3491] module 'textComp' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/text.vhd:35' bound to instance 'G5' of component 'textComp' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:249]
+INFO: [Synth 8-638] synthesizing module 'textComp' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/text.vhd:46]
+INFO: [Synth 8-638] synthesizing module 'Pixel_On_Text' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
 	Parameter textLength bound to: 3 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'Font_Rom' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Font_Rom.vhd:40]
-INFO: [Synth 8-256] done synthesizing module 'Font_Rom' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Font_Rom.vhd:40]
-INFO: [Synth 8-256] done synthesizing module 'Pixel_On_Text' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
-INFO: [Synth 8-638] synthesizing module 'Pixel_On_Text__parameterized0' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
+INFO: [Synth 8-638] synthesizing module 'Font_Rom' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Font_Rom.vhd:40]
+INFO: [Synth 8-256] done synthesizing module 'Font_Rom' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Font_Rom.vhd:40]
+INFO: [Synth 8-256] done synthesizing module 'Pixel_On_Text' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
+INFO: [Synth 8-638] synthesizing module 'Pixel_On_Text__parameterized0' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
 	Parameter textLength bound to: 7 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'Pixel_On_Text__parameterized0' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
-INFO: [Synth 8-638] synthesizing module 'Pixel_On_Text__parameterized1' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
+INFO: [Synth 8-256] done synthesizing module 'Pixel_On_Text__parameterized0' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
+INFO: [Synth 8-638] synthesizing module 'Pixel_On_Text__parameterized1' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
 	Parameter textLength bound to: 4 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'Pixel_On_Text__parameterized1' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
-INFO: [Synth 8-638] synthesizing module 'Pixel_On_Text__parameterized2' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
+INFO: [Synth 8-256] done synthesizing module 'Pixel_On_Text__parameterized1' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
+INFO: [Synth 8-638] synthesizing module 'Pixel_On_Text__parameterized2' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
 	Parameter textLength bound to: 6 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'Pixel_On_Text__parameterized2' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
-INFO: [Synth 8-256] done synthesizing module 'textComp' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/text.vhd:46]
-INFO: [Synth 8-256] done synthesizing module 'main2' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:28]
-WARNING: [Synth 8-5640] Port 'o_clear' is missing in component declaration [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Top.vhd:55]
-INFO: [Synth 8-3491] module 'main' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:36' bound to instance 'UART' of component 'main' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Top.vhd:156]
-INFO: [Synth 8-638] synthesizing module 'main' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:61]
-INFO: [Synth 8-3491] module 'UART_RX' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:23' bound to instance 'URX' of component 'UART_RX' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:155]
-INFO: [Synth 8-638] synthesizing module 'UART_RX' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:36]
-INFO: [Synth 8-256] done synthesizing module 'UART_RX' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:36]
-INFO: [Synth 8-3491] module 'UART_TX' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:24' bound to instance 'UTX' of component 'UART_TX' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:162]
-INFO: [Synth 8-638] synthesizing module 'UART_TX' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:39]
-INFO: [Synth 8-256] done synthesizing module 'UART_TX' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:39]
-INFO: [Synth 8-3491] module 'RD_Process' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:31' bound to instance 'UHANDLE' of component 'RD_Process' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:171]
-INFO: [Synth 8-638] synthesizing module 'RD_Process' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:50]
-WARNING: [Synth 8-614] signal 'Number' is read in the process but is not in the sensitivity list [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:57]
-WARNING: [Synth 8-614] signal 'money' is read in the process but is not in the sensitivity list [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:57]
-WARNING: [Synth 8-614] signal 'next_nr' is read in the process but is not in the sensitivity list [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:57]
-WARNING: [Synth 8-614] signal 'switchS' is read in the process but is not in the sensitivity list [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:57]
-INFO: [Synth 8-256] done synthesizing module 'RD_Process' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:50]
-INFO: [Synth 8-3491] module 'UREQUEST' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UREQUEST.vhd:34' bound to instance 'USEND' of component 'UREQUEST' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:189]
-INFO: [Synth 8-638] synthesizing module 'UREQUEST' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UREQUEST.vhd:46]
-INFO: [Synth 8-256] done synthesizing module 'UREQUEST' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UREQUEST.vhd:46]
-INFO: [Synth 8-3491] module 'Select_Request' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Select_Request.vhd:34' bound to instance 'UUPDATE' of component 'Select_Request' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:199]
-INFO: [Synth 8-638] synthesizing module 'Select_Request' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Select_Request.vhd:42]
-INFO: [Synth 8-256] done synthesizing module 'Select_Request' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Select_Request.vhd:42]
-INFO: [Synth 8-3491] module 'display_bus' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/display_bus.vhd:25' bound to instance 'UDISPLAY' of component 'display_bus' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:207]
-INFO: [Synth 8-638] synthesizing module 'display_bus' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/display_bus.vhd:33]
-INFO: [Synth 8-256] done synthesizing module 'display_bus' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/display_bus.vhd:33]
-INFO: [Synth 8-3491] module 'Sound' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Sound.vhd:34' bound to instance 'USOUND' of component 'Sound' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:214]
-INFO: [Synth 8-638] synthesizing module 'Sound' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Sound.vhd:40]
-INFO: [Synth 8-3491] module 'SoundController' declared at 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/SoundController.vhd:31' bound to instance 'PLAYHZ' of component 'SoundController' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Sound.vhd:99]
-INFO: [Synth 8-638] synthesizing module 'SoundController' [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/SoundController.vhd:39]
-INFO: [Synth 8-256] done synthesizing module 'SoundController' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/SoundController.vhd:39]
-INFO: [Synth 8-256] done synthesizing module 'Sound' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Sound.vhd:40]
-INFO: [Synth 8-256] done synthesizing module 'main' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:61]
-INFO: [Synth 8-256] done synthesizing module 'Top' (0#1) [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Top.vhd:53]
-WARNING: [Synth 8-5863] Implementing Library version of Mod/Rem due to signed path. This typically leads to poor QOR. Check RTL to see if unsigned path for the operator is possible  [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:63]
-WARNING: [Synth 8-5863] Implementing Library version of Mod/Rem due to signed path. This typically leads to poor QOR. Check RTL to see if unsigned path for the operator is possible  [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:63]
-WARNING: [Synth 8-5863] Implementing Library version of Mod/Rem due to signed path. This typically leads to poor QOR. Check RTL to see if unsigned path for the operator is possible  [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:63]
-WARNING: [Synth 8-5863] Implementing Library version of Mod/Rem due to signed path. This typically leads to poor QOR. Check RTL to see if unsigned path for the operator is possible  [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:63]
-WARNING: [Synth 8-6014] Unused sequential element clear_reg was removed.  [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Select_Request.vhd:72]
-WARNING: [Synth 8-3848] Net o_clear in module/entity Select_Request does not have driver. [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Select_Request.vhd:38]
+INFO: [Synth 8-256] done synthesizing module 'Pixel_On_Text__parameterized2' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:49]
+INFO: [Synth 8-256] done synthesizing module 'textComp' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/text.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'main2' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/main2.vhd:28]
+WARNING: [Synth 8-5640] Port 'o_clear' is missing in component declaration [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Top.vhd:55]
+INFO: [Synth 8-3491] module 'main' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:36' bound to instance 'UART' of component 'main' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Top.vhd:155]
+INFO: [Synth 8-638] synthesizing module 'main' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:61]
+INFO: [Synth 8-3491] module 'UART_RX' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:23' bound to instance 'URX' of component 'UART_RX' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:155]
+INFO: [Synth 8-638] synthesizing module 'UART_RX' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:36]
+INFO: [Synth 8-256] done synthesizing module 'UART_RX' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Uart_rx.vhd:36]
+INFO: [Synth 8-3491] module 'UART_TX' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:24' bound to instance 'UTX' of component 'UART_TX' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:162]
+INFO: [Synth 8-638] synthesizing module 'UART_TX' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'UART_TX' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UART_TX.vhd:39]
+INFO: [Synth 8-3491] module 'RD_Process' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:31' bound to instance 'UHANDLE' of component 'RD_Process' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:171]
+INFO: [Synth 8-638] synthesizing module 'RD_Process' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:50]
+WARNING: [Synth 8-614] signal 'Number' is read in the process but is not in the sensitivity list [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:57]
+WARNING: [Synth 8-614] signal 'money' is read in the process but is not in the sensitivity list [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:57]
+WARNING: [Synth 8-614] signal 'next_nr' is read in the process but is not in the sensitivity list [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:57]
+WARNING: [Synth 8-614] signal 'switchS' is read in the process but is not in the sensitivity list [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:57]
+INFO: [Synth 8-256] done synthesizing module 'RD_Process' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:50]
+INFO: [Synth 8-3491] module 'UREQUEST' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UREQUEST.vhd:34' bound to instance 'USEND' of component 'UREQUEST' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:189]
+INFO: [Synth 8-638] synthesizing module 'UREQUEST' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UREQUEST.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'UREQUEST' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/UREQUEST.vhd:46]
+INFO: [Synth 8-3491] module 'Select_Request' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Select_Request.vhd:34' bound to instance 'UUPDATE' of component 'Select_Request' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:199]
+INFO: [Synth 8-638] synthesizing module 'Select_Request' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Select_Request.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'Select_Request' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Select_Request.vhd:42]
+INFO: [Synth 8-3491] module 'display_bus' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/display_bus.vhd:25' bound to instance 'UDISPLAY' of component 'display_bus' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:207]
+INFO: [Synth 8-638] synthesizing module 'display_bus' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/display_bus.vhd:33]
+INFO: [Synth 8-256] done synthesizing module 'display_bus' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/display_bus.vhd:33]
+INFO: [Synth 8-3491] module 'Sound' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Sound.vhd:34' bound to instance 'USOUND' of component 'Sound' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:214]
+INFO: [Synth 8-638] synthesizing module 'Sound' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Sound.vhd:40]
+INFO: [Synth 8-3491] module 'SoundController' declared at 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/SoundController.vhd:31' bound to instance 'PLAYHZ' of component 'SoundController' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Sound.vhd:99]
+INFO: [Synth 8-638] synthesizing module 'SoundController' [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/SoundController.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'SoundController' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/SoundController.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'Sound' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Sound.vhd:40]
+INFO: [Synth 8-256] done synthesizing module 'main' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/main.vhd:61]
+INFO: [Synth 8-256] done synthesizing module 'Top' (0#1) [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Top.vhd:53]
+WARNING: [Synth 8-5863] Implementing Library version of Mod/Rem due to signed path. This typically leads to poor QOR. Check RTL to see if unsigned path for the operator is possible  [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:63]
+WARNING: [Synth 8-5863] Implementing Library version of Mod/Rem due to signed path. This typically leads to poor QOR. Check RTL to see if unsigned path for the operator is possible  [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:63]
+WARNING: [Synth 8-5863] Implementing Library version of Mod/Rem due to signed path. This typically leads to poor QOR. Check RTL to see if unsigned path for the operator is possible  [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:63]
+WARNING: [Synth 8-5863] Implementing Library version of Mod/Rem due to signed path. This typically leads to poor QOR. Check RTL to see if unsigned path for the operator is possible  [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd:63]
+WARNING: [Synth 8-6014] Unused sequential element clear_reg was removed.  [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Select_Request.vhd:72]
+WARNING: [Synth 8-3848] Net o_clear in module/entity Select_Request does not have driver. [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Select_Request.vhd:38]
 WARNING: [Synth 8-7129] Port o_clear in module Select_Request is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_Request_select[3] in module UREQUEST is either unconnected or has no load
 WARNING: [Synth 8-7129] Port i_Request_select[2] in module UREQUEST is either unconnected or has no load
@@ -169,157 +170,192 @@ WARNING: [Synth 8-7129] Port i_Update_request in module UREQUEST is either uncon
 WARNING: [Synth 8-7129] Port hpos[7] in module vROM is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vpos[7] in module vROM is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 1474.094 ; gain = 603.562
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1473.480 ; gain = 601.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 1474.094 ; gain = 603.562
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1473.480 ; gain = 601.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 1474.094 ; gain = 603.562
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1473.480 ; gain = 601.660
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.199 . Memory (MB): peak = 1474.094 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.165 . Memory (MB): peak = 1473.480 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'VIDEO/G3/ROM1'
-Finished Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'VIDEO/G3/ROM1'
-Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/prescaler/prescaler/prescaler_in_context.xdc] for cell 'VIDEO/G0'
-Finished Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/prescaler/prescaler/prescaler_in_context.xdc] for cell 'VIDEO/G0'
-Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_5/blk_mem_gen_5/blk_mem_gen_5_in_context.xdc] for cell 'VIDEO/G3/ROM6'
-Finished Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_5/blk_mem_gen_5/blk_mem_gen_5_in_context.xdc] for cell 'VIDEO/G3/ROM6'
-Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_3/blk_mem_gen_3/blk_mem_gen_3_in_context.xdc] for cell 'VIDEO/G3/ROM4'
-Finished Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_3/blk_mem_gen_3/blk_mem_gen_3_in_context.xdc] for cell 'VIDEO/G3/ROM4'
-Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_7/blk_mem_gen_7/blk_mem_gen_7_in_context.xdc] for cell 'VIDEO/G3/ROM8'
-Finished Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_7/blk_mem_gen_7/blk_mem_gen_7_in_context.xdc] for cell 'VIDEO/G3/ROM8'
-Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_4/blk_mem_gen_4/blk_mem_gen_4_in_context.xdc] for cell 'VIDEO/G3/ROM5'
-Finished Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_4/blk_mem_gen_4/blk_mem_gen_4_in_context.xdc] for cell 'VIDEO/G3/ROM5'
-Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_2/blk_mem_gen_2/blk_mem_gen_2_in_context.xdc] for cell 'VIDEO/G3/ROM3'
-Finished Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_2/blk_mem_gen_2/blk_mem_gen_2_in_context.xdc] for cell 'VIDEO/G3/ROM3'
-Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_6/blk_mem_gen_6/blk_mem_gen_6_in_context.xdc] for cell 'VIDEO/G3/ROM7'
-Finished Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_6/blk_mem_gen_6/blk_mem_gen_6_in_context.xdc] for cell 'VIDEO/G3/ROM7'
-Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_1_2/blk_mem_gen_1/blk_mem_gen_1_in_context.xdc] for cell 'VIDEO/G3/ROM2'
-Finished Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_1_2/blk_mem_gen_1/blk_mem_gen_1_in_context.xdc] for cell 'VIDEO/G3/ROM2'
-Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_8/blk_mem_gen_8/blk_mem_gen_8_in_context.xdc] for cell 'VIDEO/G3/ROM9'
-Finished Parsing XDC File [c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_8/blk_mem_gen_8/blk_mem_gen_8_in_context.xdc] for cell 'VIDEO/G3/ROM9'
-Parsing XDC File [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/constrs_1/new/Test_Case.xdc]
-Finished Parsing XDC File [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/constrs_1/new/Test_Case.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/constrs_1/new/Test_Case.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_propImpl.xdc].
+Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'VIDEO/G3/ROM1'
+Finished Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'VIDEO/G3/ROM1'
+Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_8/blk_mem_gen_8/blk_mem_gen_8_in_context.xdc] for cell 'VIDEO/G3/ROM9'
+Finished Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_8/blk_mem_gen_8/blk_mem_gen_8_in_context.xdc] for cell 'VIDEO/G3/ROM9'
+Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_2/blk_mem_gen_2/blk_mem_gen_2_in_context.xdc] for cell 'VIDEO/G3/ROM3'
+Finished Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_2/blk_mem_gen_2/blk_mem_gen_2_in_context.xdc] for cell 'VIDEO/G3/ROM3'
+Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_3/blk_mem_gen_3/blk_mem_gen_3_in_context.xdc] for cell 'VIDEO/G3/ROM4'
+Finished Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_3/blk_mem_gen_3/blk_mem_gen_3_in_context.xdc] for cell 'VIDEO/G3/ROM4'
+Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_4/blk_mem_gen_4/blk_mem_gen_4_in_context.xdc] for cell 'VIDEO/G3/ROM5'
+Finished Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_4/blk_mem_gen_4/blk_mem_gen_4_in_context.xdc] for cell 'VIDEO/G3/ROM5'
+Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_5/blk_mem_gen_5/blk_mem_gen_5_in_context.xdc] for cell 'VIDEO/G3/ROM6'
+Finished Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_5/blk_mem_gen_5/blk_mem_gen_5_in_context.xdc] for cell 'VIDEO/G3/ROM6'
+Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_6/blk_mem_gen_6/blk_mem_gen_6_in_context.xdc] for cell 'VIDEO/G3/ROM7'
+Finished Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_6/blk_mem_gen_6/blk_mem_gen_6_in_context.xdc] for cell 'VIDEO/G3/ROM7'
+Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_7/blk_mem_gen_7/blk_mem_gen_7_in_context.xdc] for cell 'VIDEO/G3/ROM8'
+Finished Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_7/blk_mem_gen_7/blk_mem_gen_7_in_context.xdc] for cell 'VIDEO/G3/ROM8'
+Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_1_2/blk_mem_gen_1/blk_mem_gen_1_in_context.xdc] for cell 'VIDEO/G3/ROM2'
+Finished Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/bouncycube.gen/sources_1/ip/blk_mem_gen_1_2/blk_mem_gen_1/blk_mem_gen_1_in_context.xdc] for cell 'VIDEO/G3/ROM2'
+Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/prescaler/prescaler/prescaler_in_context.xdc] for cell 'VIDEO/G0'
+Finished Parsing XDC File [c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/prescaler/prescaler/prescaler_in_context.xdc] for cell 'VIDEO/G0'
+Parsing XDC File [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/constrs_1/new/Test_Case.xdc]
+Finished Parsing XDC File [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/constrs_1/new/Test_Case.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/constrs_1/new/Test_Case.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/Top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Parsing XDC File [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/dont_touch.xdc]
-Finished Parsing XDC File [C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/dont_touch.xdc]
+Parsing XDC File [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1590.465 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1582.043 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 Het systeem kan het opgegeven pad niet vinden.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.063 . Memory (MB): peak = 1590.465 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.058 . Memory (MB): peak = 1582.043 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 1590.465 ; gain = 719.934
+Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 1582.043 ; gain = 710.223
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 1590.465 ; gain = 719.934
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 1582.043 ; gain = 710.223
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property IO_BUFFER_TYPE = NONE for i_Clk. (constraint file  c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/prescaler/prescaler/prescaler_in_context.xdc, line 3).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for i_Clk. (constraint file  c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/prescaler/prescaler/prescaler_in_context.xdc, line 4).
+Applied set_property IO_BUFFER_TYPE = NONE for i_Clk. (constraint file  c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/prescaler/prescaler/prescaler_in_context.xdc, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for i_Clk. (constraint file  c:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.gen/sources_1/ip/prescaler/prescaler/prescaler_in_context.xdc, line 4).
 Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM1. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G0. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM6. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM4. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM8. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM5. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM3. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM7. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM2. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM9. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM3. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM4. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM5. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM6. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM7. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM8. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G3/ROM2. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for VIDEO/G0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 1590.465 ; gain = 719.934
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 1582.043 ; gain = 710.223
 ---------------------------------------------------------------------------------
+WARNING: [Synth 8-3936] Found unconnected internal register 'vtemp_reg' and it is trimmed from '10' to '1' bits. [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vga.vhd:48]
+WARNING: [Synth 8-3936] Found unconnected internal register 'htemp_reg' and it is trimmed from '10' to '1' bits. [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/vga.vhd:51]
+INFO: [Synth 8-802] inferred FSM for state register 'r_SM_Main_reg' in module 'UART_TX'
+INFO: [Synth 8-802] inferred FSM for state register 'which_byte_out_reg' in module 'UREQUEST'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  s_idle |                              000 |                              000
+          s_tx_start_bit |                              001 |                              001
+          s_tx_data_bits |                              010 |                              010
+           s_tx_stop_bit |                              011 |                              011
+               s_cleanup |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r_SM_Main_reg' using encoding 'sequential' in module 'UART_TX'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              000 |                              000
+                 iSTATE0 |                              001 |                              001
+                 iSTATE1 |                              010 |                              010
+                 iSTATE2 |                              011 |                              011
+                 iSTATE3 |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'which_byte_out_reg' using encoding 'sequential' in module 'UREQUEST'
 ---------------------------------------------------------------------------------
-Start Preparing Guide Design
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:19 . Memory (MB): peak = 1582.043 ; gain = 710.223
 ---------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Doing Graph Differ : Time (s): cpu = 00:00:16 ; elapsed = 00:00:21 . Memory (MB): peak = 1590.465 ; gain = 719.934
----------------------------------------------------------------------------------
-Top__GC0main__GC0Sound__GB1SoundControllerRD_Process__1__GB1RD_Process__1__GB0main2__GC0LocationDetermination__1---------------------------------------------------------------------------------
-Finished Preparing Guide Design : Time (s): cpu = 00:00:17 ; elapsed = 00:00:22 . Memory (MB): peak = 1590.465 ; gain = 719.934
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:22 . Memory (MB): peak = 1590.465 ; gain = 719.934
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Mimic Skeleton from Reference
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Mimic Skeleton from Reference : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 1590.465 ; gain = 719.934
----------------------------------------------------------------------------------
-
-
-Incremental Synthesis Report Summary:
-
-1. Incremental synthesis run: yes
-
-   Stitch points used : changed
-
-
-2. Change Summary
-
-Report Incremental Modules: 
-+-+----------------+------------+----------+----------+
-| |Changed Modules |Replication |Instances |Changed % |
-+-+----------------+------------+----------+----------+
-+-+----------------+------------+----------+----------+
-
-
-   Full Design Size (number of cells) : 151294
-   Resynthesis Design Size (number of cells) : 0
-   Resynth % : 0.0000,  Reuse % : 100.0000
-
-3. Reference Checkpoint Information
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| DCP Location:  | C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/utils_1/imports/synth_1/main.dcp |
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-+--------------------------------+------------------------------+
-|         DCP Information        |             Value            |
-+--------------------------------+------------------------------+
-| Vivado Version                 |                    v2023.2.2 |
-| DCP State                      |                              |
-+--------------------------------+------------------------------+
-
-
-
-Report RTL Partitions: 
-+------+---------------------------------+------------+----------+
-|      |RTL Partition                    |Replication |Instances |
-+------+---------------------------------+------------+----------+
-|1     |LocationDetermination__1_#REUSE# |           2|         0|
-|2     |main2__GC0_#REUSE#               |           1|         0|
-|3     |RD_Process__1__GB0_#REUSE#       |           1|         0|
-|4     |RD_Process__1__GB1_#REUSE#       |           1|         0|
-|5     |SoundController_#REUSE#          |           1|         0|
-|6     |Sound__GB1_#REUSE#               |           1|         0|
-|7     |main__GC0_#REUSE#                |           1|         0|
-|8     |Top__GC0_#REUSE#                 |           1|         0|
-+------+---------------------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
++---Adders : 
+	   3 Input   33 Bit       Adders := 16    
+	   2 Input   32 Bit       Adders := 25    
+	   3 Input   32 Bit       Adders := 8     
+	   2 Input   31 Bit       Adders := 16    
+	   2 Input   15 Bit       Adders := 3     
+	   2 Input   12 Bit       Adders := 2     
+	   2 Input   11 Bit       Adders := 5     
+	   2 Input   10 Bit       Adders := 9     
+	   3 Input    8 Bit       Adders := 2     
+	   2 Input    8 Bit       Adders := 5     
+	   2 Input    7 Bit       Adders := 10    
+	   2 Input    5 Bit       Adders := 16    
+	   2 Input    4 Bit       Adders := 7     
+	   2 Input    3 Bit       Adders := 13    
+	   2 Input    2 Bit       Adders := 15    
+	   2 Input    1 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 11    
+	               12 Bit    Registers := 3     
+	               10 Bit    Registers := 17    
+	                9 Bit    Registers := 2     
+	                8 Bit    Registers := 33    
+	                7 Bit    Registers := 6     
+	                5 Bit    Registers := 4     
+	                4 Bit    Registers := 1407  
+	                3 Bit    Registers := 7     
+	                1 Bit    Registers := 56    
++---ROMs : 
+	                    ROMs := 8     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 58    
+	   7 Input   32 Bit        Muxes := 12    
+	   3 Input   32 Bit        Muxes := 2     
+	   5 Input   32 Bit        Muxes := 2     
+	   8 Input   32 Bit        Muxes := 1     
+	   4 Input   32 Bit        Muxes := 1     
+	   2 Input   31 Bit        Muxes := 16    
+	   2 Input   20 Bit        Muxes := 1     
+	   2 Input   19 Bit        Muxes := 4     
+	   2 Input   16 Bit        Muxes := 2     
+	   2 Input   15 Bit        Muxes := 7     
+	   3 Input   12 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 4     
+	   2 Input   11 Bit        Muxes := 6     
+	   2 Input   10 Bit        Muxes := 34    
+	  11 Input    9 Bit        Muxes := 2     
+	   3 Input    8 Bit        Muxes := 4     
+	   4 Input    8 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 102   
+	   7 Input    8 Bit        Muxes := 29    
+	   6 Input    8 Bit        Muxes := 3     
+	   2 Input    7 Bit        Muxes := 4     
+	   5 Input    7 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 48    
+	   6 Input    5 Bit        Muxes := 2     
+	   3 Input    5 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 2595  
+	   3 Input    4 Bit        Muxes := 3     
+	   5 Input    4 Bit        Muxes := 2     
+	   8 Input    4 Bit        Muxes := 1     
+	   6 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 14    
+	   5 Input    3 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 14    
+	   4 Input    2 Bit        Muxes := 2     
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 2784  
+	  11 Input    1 Bit        Muxes := 2     
+	   6 Input    1 Bit        Muxes := 5     
+	   3 Input    1 Bit        Muxes := 14    
+	   4 Input    1 Bit        Muxes := 2     
+	   5 Input    1 Bit        Muxes := 15    
+	   7 Input    1 Bit        Muxes := 4     
+	   9 Input    1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -336,41 +372,93 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-7077] IncrSyn: subsequent runs will still be incremental as the reference run was parallel and that data is reused
+WARNING: [Synth 8-3936] Found unconnected internal register 'G2/vpos_reg' and it is trimmed from '8' to '7' bits. [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/sprite locatie.vhd:93]
+WARNING: [Synth 8-3936] Found unconnected internal register 'G2/hpos_reg' and it is trimmed from '8' to '7' bits. [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/Videokaart/sprite locatie.vhd:92]
+WARNING: [Synth 8-3936] Found unconnected internal register 'id_reg' and it is trimmed from '32' to '4' bits. [C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/new/RD_Process.vhd:213]
+DSP Report: Generating DSP tussenwaarde2, operation Mode is: A*(B:0xa).
+DSP Report: operator tussenwaarde2 is absorbed into DSP tussenwaarde2.
+DSP Report: Generating DSP tussenwaarde0, operation Mode is: PCIN+(A:0x3e8)*B.
+DSP Report: operator tussenwaarde0 is absorbed into DSP tussenwaarde0.
+DSP Report: operator tussenwaarde2 is absorbed into DSP tussenwaarde0.
+DSP Report: Generating DSP tussenwaarde2, operation Mode is: A*(B:0x64).
+DSP Report: operator tussenwaarde2 is absorbed into DSP tussenwaarde2.
+DSP Report: Generating DSP tussenwaarde0, operation Mode is: PCIN+(A:0x3e8)*B.
+DSP Report: operator tussenwaarde0 is absorbed into DSP tussenwaarde0.
+DSP Report: operator tussenwaarde2 is absorbed into DSP tussenwaarde0.
+DSP Report: Generating DSP tussenwaarde2, operation Mode is: A*(B:0xa).
+DSP Report: operator tussenwaarde2 is absorbed into DSP tussenwaarde2.
+DSP Report: Generating DSP tussenwaarde0, operation Mode is: PCIN+(A:0x3e8)*B.
+DSP Report: operator tussenwaarde0 is absorbed into DSP tussenwaarde0.
+DSP Report: operator tussenwaarde2 is absorbed into DSP tussenwaarde0.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:25 . Memory (MB): peak = 1590.465 ; gain = 719.934
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:01:01 . Memory (MB): peak = 1703.879 ; gain = 832.059
 ---------------------------------------------------------------------------------
+ Sort Area is RD_Process tussenwaarde2_3 : 0 0 : 95 356 : Used 1 time 0
+ Sort Area is RD_Process tussenwaarde2_3 : 0 1 : 261 356 : Used 1 time 0
+ Sort Area is RD_Process tussenwaarde2_0 : 0 0 : 35 293 : Used 1 time 0
+ Sort Area is RD_Process tussenwaarde2_0 : 0 1 : 258 293 : Used 1 time 0
+ Sort Area is RD_Process tussenwaarde2_6 : 0 0 : 35 293 : Used 1 time 0
+ Sort Area is RD_Process tussenwaarde2_6 : 0 1 : 258 293 : Used 1 time 0
 ---------------------------------------------------------------------------------
-Start Stitch Unchanged AreaOpt Partitions
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++--------------+---------------------+---------------+----------------+
+|Module Name   | RTL Object          | Depth x Width | Implemented As | 
++--------------+---------------------+---------------+----------------+
+|Pixel_On_Text | fontRom/fontRow_reg | 2048x8        | Block RAM      | 
+|Pixel_On_Text | fontRom/fontRow_reg | 2048x8        | Block RAM      | 
+|Pixel_On_Text | fontRom/fontRow_reg | 2048x8        | Block RAM      | 
+|Pixel_On_Text | fontRom/fontRow_reg | 2048x8        | Block RAM      | 
+|Pixel_On_Text | fontRom/fontRow_reg | 2048x8        | Block RAM      | 
+|Pixel_On_Text | fontRom/fontRow_reg | 2048x8        | Block RAM      | 
+|Pixel_On_Text | fontRom/fontRow_reg | 2048x8        | Block RAM      | 
+|Pixel_On_Text | fontRom/fontRow_reg | 2048x8        | Block RAM      | 
++--------------+---------------------+---------------+----------------+
+
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping      | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|RD_Process  | A*(B:0xa)        | 8      | 4      | -      | -      | 12     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN+(A:0x3e8)*B | 10     | 8      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | A*(B:0x64)       | 8      | 7      | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN+(A:0x3e8)*B | 10     | 8      | -      | -      | 19     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | A*(B:0xa)        | 8      | 4      | -      | -      | 12     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN+(A:0x3e8)*B | 10     | 8      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
 ---------------------------------------------------------------------------------
-Finished Stitch Unchanged AreaOpt Partitions : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 1590.465 ; gain = 719.934
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:35 . Memory (MB): peak = 1590.465 ; gain = 719.934
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:01:07 . Memory (MB): peak = 1703.879 ; gain = 832.059
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:35 . Memory (MB): peak = 1590.465 ; gain = 719.934
+Finished Timing Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:01:10 . Memory (MB): peak = 1703.879 ; gain = 832.059
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-7077] IncrSyn: subsequent runs will still be incremental as the reference run was parallel and that data is reused
+INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/sunflower/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/sunflower/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/crazyPear/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/crazyPear/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/money/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/money/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/wave/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/wave/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:29 ; elapsed = 00:00:35 . Memory (MB): peak = 1590.465 ; gain = 719.934
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Stitch Unchanged Partitions
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Stitch Unchanged Partitions : Time (s): cpu = 00:00:30 ; elapsed = 00:00:37 . Memory (MB): peak = 1650.938 ; gain = 780.406
+Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:01:17 . Memory (MB): peak = 1714.906 ; gain = 843.086
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -384,49 +472,41 @@ Finished Flattening Before IO Insertion
 ---------------------------------------------------------------------------------
 Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/sunflower/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/sunflower/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/crazyPear/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/crazyPear/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/money/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/money/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/wave/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance VIDEO/G5/wave/fontRom/fontRow_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:36 ; elapsed = 00:00:45 . Memory (MB): peak = 1684.785 ; gain = 814.254
+Finished IO Insertion : Time (s): cpu = 00:00:28 ; elapsed = 00:01:21 . Memory (MB): peak = 1722.652 ; gain = 850.832
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:36 ; elapsed = 00:00:45 . Memory (MB): peak = 1684.785 ; gain = 814.254
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:28 ; elapsed = 00:01:21 . Memory (MB): peak = 1722.652 ; gain = 850.832
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:37 ; elapsed = 00:00:46 . Memory (MB): peak = 1684.785 ; gain = 814.254
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:28 ; elapsed = 00:01:23 . Memory (MB): peak = 1722.652 ; gain = 850.832
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:37 ; elapsed = 00:00:46 . Memory (MB): peak = 1684.785 ; gain = 814.254
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:28 ; elapsed = 00:01:23 . Memory (MB): peak = 1722.652 ; gain = 850.832
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:38 ; elapsed = 00:00:47 . Memory (MB): peak = 1684.785 ; gain = 814.254
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:01:23 . Memory (MB): peak = 1722.652 ; gain = 850.832
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:38 ; elapsed = 00:00:47 . Memory (MB): peak = 1684.785 ; gain = 814.254
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:28 ; elapsed = 00:01:24 . Memory (MB): peak = 1722.652 ; gain = 850.832
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -437,89 +517,87 @@ DSP Final Report (the ' indicates corresponding REG is set)
 |Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
 +------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 |RD_Process  | A*B         | 4      | 4      | -      | -      | 12     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|RD_Process  | PCIN+A*B    | 10     | 3      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|RD_Process  | A*B         | 8      | 4      | -      | -      | 12     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|RD_Process  | PCIN+A*B    | 10     | 8      | -      | -      | 19     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|RD_Process  | A*B         | 5      | 7      | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN+A*B    | 10     | 4      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | A*B         | 4      | 7      | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 |RD_Process  | PCIN+A*B    | 10     | 4      | -      | -      | 19     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 |RD_Process  | A*B         | 4      | 4      | -      | -      | 12     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|RD_Process  | PCIN+A*B    | 10     | 4      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|RD_Process  | PCIN+A*B    | 10     | 3      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 +------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 
 Report BlackBoxes: 
-+------+------------------------+----------+
-|      |BlackBox name           |Instances |
-+------+------------------------+----------+
-|1     |prescaler_bbox_0__1     |         1|
-|2     |blk_mem_gen_0_bbox_1__1 |         1|
-|3     |blk_mem_gen_1_bbox_2__1 |         1|
-|4     |blk_mem_gen_2_bbox_3__1 |         1|
-|5     |blk_mem_gen_3_bbox_4__1 |         1|
-|6     |blk_mem_gen_4_bbox_5__1 |         1|
-|7     |blk_mem_gen_5_bbox_6__1 |         1|
-|8     |blk_mem_gen_6_bbox_7__1 |         1|
-|9     |blk_mem_gen_7_bbox_8__1 |         1|
-|10    |blk_mem_gen_8_bbox_9__1 |         1|
-+------+------------------------+----------+
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |prescaler     |         1|
+|2     |blk_mem_gen_0 |         1|
+|3     |blk_mem_gen_1 |         1|
+|4     |blk_mem_gen_2 |         1|
+|5     |blk_mem_gen_3 |         1|
+|6     |blk_mem_gen_4 |         1|
+|7     |blk_mem_gen_5 |         1|
+|8     |blk_mem_gen_6 |         1|
+|9     |blk_mem_gen_7 |         1|
+|10    |blk_mem_gen_8 |         1|
++------+--------------+----------+
 
 Report Cell Usage: 
-+------+---------------------+------+
-|      |Cell                 |Count |
-+------+---------------------+------+
-|1     |blk_mem_gen_0_bbox_1 |     1|
-|2     |blk_mem_gen_1_bbox_2 |     1|
-|3     |blk_mem_gen_2_bbox_3 |     1|
-|4     |blk_mem_gen_3_bbox_4 |     1|
-|5     |blk_mem_gen_4_bbox_5 |     1|
-|6     |blk_mem_gen_5_bbox_6 |     1|
-|7     |blk_mem_gen_6_bbox_7 |     1|
-|8     |blk_mem_gen_7_bbox_8 |     1|
-|9     |blk_mem_gen_8_bbox_9 |     1|
-|10    |prescaler_bbox_0     |     1|
-|11    |BUFG                 |     1|
-|12    |CARRY4               |  2278|
-|13    |DSP48E1              |     8|
-|14    |LUT1                 |   395|
-|15    |LUT2                 |  4810|
-|16    |LUT3                 |  2334|
-|17    |LUT4                 |  1899|
-|18    |LUT5                 |  1806|
-|19    |LUT6                 |  4270|
-|20    |MUXF7                |   710|
-|21    |MUXF8                |   252|
-|22    |RAMB18E1             |     4|
-|23    |FDCE                 |    64|
-|24    |FDPE                 |    10|
-|25    |FDRE                 |  6429|
-|26    |FDSE                 |    34|
-|27    |IBUF                 |     6|
-|28    |OBUF                 |    33|
-+------+---------------------+------+
++------+-------------------+------+
+|      |Cell               |Count |
++------+-------------------+------+
+|1     |blk_mem_gen_0_bbox |     1|
+|2     |blk_mem_gen_1_bbox |     1|
+|3     |blk_mem_gen_2_bbox |     1|
+|4     |blk_mem_gen_3_bbox |     1|
+|5     |blk_mem_gen_4_bbox |     1|
+|6     |blk_mem_gen_5_bbox |     1|
+|7     |blk_mem_gen_6_bbox |     1|
+|8     |blk_mem_gen_7_bbox |     1|
+|9     |blk_mem_gen_8_bbox |     1|
+|10    |prescaler_bbox     |     1|
+|11    |BUFG               |     1|
+|12    |CARRY4             |  2171|
+|13    |DSP48E1            |     6|
+|14    |LUT1               |   594|
+|15    |LUT2               |  4387|
+|16    |LUT3               |  2446|
+|17    |LUT4               |  1821|
+|18    |LUT5               |  1463|
+|19    |LUT6               |  4439|
+|20    |MUXF7              |   710|
+|21    |MUXF8              |   252|
+|22    |RAMB18E1           |     4|
+|23    |FDCE               |    64|
+|24    |FDPE               |    10|
+|25    |FDRE               |  6398|
+|26    |FDSE               |    32|
+|27    |IBUF               |     6|
+|28    |OBUF               |    33|
++------+-------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:38 ; elapsed = 00:00:47 . Memory (MB): peak = 1684.785 ; gain = 814.254
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:01:24 . Memory (MB): peak = 1722.652 ; gain = 850.832
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:43 . Memory (MB): peak = 1684.785 ; gain = 697.883
-Synthesis Optimization Complete : Time (s): cpu = 00:00:38 ; elapsed = 00:00:47 . Memory (MB): peak = 1684.785 ; gain = 814.254
+Synthesis finished with 0 errors, 0 critical warnings and 6 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:25 ; elapsed = 00:01:20 . Memory (MB): peak = 1722.652 ; gain = 742.270
+Synthesis Optimization Complete : Time (s): cpu = 00:00:29 ; elapsed = 00:01:24 . Memory (MB): peak = 1722.652 ; gain = 850.832
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.227 . Memory (MB): peak = 1689.020 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 3252 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.200 . Memory (MB): peak = 1734.750 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 3143 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1693.695 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1739.395 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 Het systeem kan het opgegeven pad niet vinden.
-Synth Design complete | Checksum: 370abdcd
+Synth Design complete | Checksum: 5fc5a96c
 INFO: [Common 17-83] Releasing license: Synthesis
-121 Infos, 26 Warnings, 0 Critical Warnings and 0 Errors encountered.
+129 Infos, 28 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:44 ; elapsed = 00:00:56 . Memory (MB): peak = 1693.695 ; gain = 1218.664
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.072 . Memory (MB): peak = 1693.695 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/Top.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:31 ; elapsed = 00:01:31 . Memory (MB): peak = 1739.395 ; gain = 1264.609
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.044 . Memory (MB): peak = 1739.395 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/Top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Apr 12 16:51:56 2024...
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 12 23:20:29 2024...

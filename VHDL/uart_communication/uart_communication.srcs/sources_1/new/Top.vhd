@@ -95,7 +95,7 @@ signal sendButton, is_Money, next_Nr : std_logic;
 signal opvangleds : std_logic_vector(9 downto 0);
 signal id, y, id_in, y_in, is_Nr : std_logic_vector(3 downto 0);
 signal x : std_logic_vector(6 downto 0);
-signal switch : std_logic;
+signal switch, placeholder : std_logic;
 
 begin
     
@@ -106,24 +106,21 @@ begin
             if counter < 5000000 then
                 counter := counter + 1;
                 sendButton <= '0';
-                if counter < 10 then
+                if counter < 150 then
                     id <= "0000";
                     y  <= "0000";
-                elsif counter < 20 then
+                elsif counter < 300 then
                     id <= "0000";
                     y  <= "0001";
-                elsif counter < 30 then
+                elsif counter < 450 then
                     id <= "0000";
                     y  <= "0010";
-                elsif counter < 40 then
+                elsif counter < 600 then
                     id <= "0000";
                     y  <= "0011";
-                elsif counter < 50 then
+                elsif counter < 750 then
                     id <= "0000";
                     y  <= "0100";
-                elsif counter < 60 then
-                    id <= "0000";
-                    y  <= "0101";
                 else
                     id <= id_in;
                     y  <= y_in;
@@ -131,6 +128,8 @@ begin
             else
                 counter := 0;
                 sendButton <= '1';
+                id <= id_in;
+                y  <= y_in;
             end if;
         end if;
     end process;
@@ -170,10 +169,12 @@ begin
            o_LED_Status1    => o_LED_Status1,
            o_LED_Status2    => o_LED_Status2,
            o_LED_Status3    => o_LED_Status3,
-           o_LED_Status4    => o_LED_Status4,
+           o_LED_Status4    => placeholder,
            o_Sound          => o_Sound,
            o_D_bus          => o_D_bus,
            o_S_bus          => o_S_bus
     );
 
+    o_LED_Status4 <= switch;
+    
 end Behavioral;

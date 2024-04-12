@@ -131,32 +131,32 @@ int checkFromFpga()
 	return -1;
 }
 
-void sendBullets(struct Bullet Bullets[maxBullets]) //struct array bullets
+int sendBullets(struct Bullet Bullets[maxBullets], int y) //struct array bullets
 {
 	//send array bullets
-	unsigned char sendByteA[3];
-	for(int i = 0; i < maxBullets; i = i + 2)
+	unsigned char sendByte[2];
+	unsigned char byte;
+	int count = 0;
+	for(int i = 0; i < maxBullets; i++)
 	{
-		int y1 = Bullets[i].y;
-		int y2 = Bullets[i + 1].y;
-		int y = y1 * 16 + y2;
-		sendByteA[0] = y;
-		sendByteA[1] = Bullets[i].x;
-		sendByteA[2] = Bullets[i + 1].x;
-		if(y != 102)
+		if( Bullets[i].y == y)
 		{
-			print_uart(sendByteA, 3);
-			//printf("Bullet 1: x: %d y: %d      Bullet 2: x: %d y: %d", Bullets[i].x, Bullets[i].y, Bullets[i + 1].x, Bullets[i + 1].y);
-			//printf("Send these bytes: %d %d %d\n", sendByteA[0], sendByteA[1], sendByteA[2]);
+			byte = 9 * 16 + y;
+			sendByte[0] = byte;
+			sendByte[1] = Bullets[i].x;
+			print_uart(sendByte, 2);
+			count++;
 		}
 	}
+	return count;
 }
 
-void sendRobots(struct MapR Robot[MAP_WIDTHR][MAP_HEIGHTR]) //map robots
+void sendRobots(struct MapR Robot[MAP_WIDTHR][MAP_HEIGHTR], struct Bullet Bullets[maxBullets]) //map robots
 {
 	int robot = 0;
 	unsigned char byte;
 	unsigned char sendByte[2];
+	int count = 0;
 	for (int y = 0; y < MAP_HEIGHTR; y++)
 	{
 		for(int x = 0; x < MAP_WIDTHR; x++)
@@ -171,8 +171,9 @@ void sendRobots(struct MapR Robot[MAP_WIDTHR][MAP_HEIGHTR]) //map robots
 				//printf("Robot send these bytes: %d %d\n", sendByte[0], sendByte[1]);
 			}
 		}
+		count = count + sendBullets(Bullets, y);
 	}
-	printf("Robots: %d\n", robot);
+	printf("Robots: %d en Bullets: %d\n", robot, count);
 }
 
 void sendPlants(struct Map Plant[MAP_WIDTH][MAP_HEIGHT]) //map plant

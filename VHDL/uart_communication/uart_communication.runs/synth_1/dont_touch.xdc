@@ -5,3 +5,27 @@
 
 # IP: ip/blk_mem_gen_0/blk_mem_gen_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==blk_mem_gen_0 || ORIG_REF_NAME==blk_mem_gen_0} -quiet] -quiet
+
+# IP: ip/blk_mem_gen_8/blk_mem_gen_8.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==blk_mem_gen_8 || ORIG_REF_NAME==blk_mem_gen_8} -quiet] -quiet
+
+# IP: ip/blk_mem_gen_2/blk_mem_gen_2.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==blk_mem_gen_2 || ORIG_REF_NAME==blk_mem_gen_2} -quiet] -quiet
+
+# IP: ip/blk_mem_gen_3/blk_mem_gen_3.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==blk_mem_gen_3 || ORIG_REF_NAME==blk_mem_gen_3} -quiet] -quiet
+
+# IP: ip/blk_mem_gen_4/blk_mem_gen_4.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==blk_mem_gen_4 || ORIG_REF_NAME==blk_mem_gen_4} -quiet] -quiet
+
+# IP: ip/blk_mem_gen_5/blk_mem_gen_5.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==blk_mem_gen_5 || ORIG_REF_NAME==blk_mem_gen_5} -quiet] -quiet
+
+# IP: ip/blk_mem_gen_6/blk_mem_gen_6.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==blk_mem_gen_6 || ORIG_REF_NAME==blk_mem_gen_6} -quiet] -quiet
+
+# IP: ip/blk_mem_gen_7/blk_mem_gen_7.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==blk_mem_gen_7 || ORIG_REF_NAME==blk_mem_gen_7} -quiet] -quiet
+
+# IP: ip/blk_mem_gen_1_1/blk_mem_gen_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==blk_mem_gen_1 || ORIG_REF_NAME==blk_mem_gen_1} -quiet] -quiet

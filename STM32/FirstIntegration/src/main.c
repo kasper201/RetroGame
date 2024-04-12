@@ -29,7 +29,7 @@
 #define MAP_WIDTHR 128 // Robot map width
 #define MAP_HEIGHTR 5
 
-#define TIMER_INTERVAL_MS 1000
+#define TIMER_INTERVAL_MS 500
 
 struct Map map[MAP_WIDTH][MAP_HEIGHT];
 struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR];
@@ -156,13 +156,7 @@ void timer_handler(struct k_timer *timer_id)
 		print_uart(sendByte, 2);
 
 		// Robot
-		sendRobots(mapR);
-		sendByte[0] = 0xff;
-		sendByte[1] = 0xfe;
-		print_uart(sendByte, 2);
-
-		// Bullet
-		sendBullets(bullet);
+		sendRobots(mapR, bullet);
 		sendByte[0] = 0xff;
 		sendByte[1] = 0xfe;
 		print_uart(sendByte, 2);

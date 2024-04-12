@@ -270,15 +270,15 @@ rowDetermination : process(clk, aReset) -- this can be done A LOT better but idk
             plantEnables <= "11111";
             outputEnable <= '1';
             case placeY is -- set the row from placeY to write, all others to readOnly
-                when "0001" =>
+                when "0000" =>
                     botEnables <= "11110";
-                when "0010" =>
+                when "0001" =>
                     botEnables <= "11101";
-                when "0011" =>
+                when "0010" =>
                     botEnables <= "11011";
-                when "0100" =>
+                when "0011" =>
                     botEnables <= "10111";
-                when "0101" =>
+                when "0100" =>
                     botEnables <= "01111";
                 when others =>
                     botEnables <= "11111";
@@ -295,15 +295,15 @@ rowDetermination : process(clk, aReset) -- this can be done A LOT better but idk
             botEnables <= "11111";
             outputEnable <= '1';
             case placeY is -- set the row from placeY to write, all others to readOnly
-                when "0001" =>
+                when "0000" =>
                     plantEnables <= "11110";
-                when "0010" =>                    
+                when "0001" =>                    
                     plantEnables <= "11101";
-                when "0011" =>
+                when "0010" =>
                     plantEnables <= "11011";
-                when "0100" =>
+                when "0011" =>
                     plantEnables <= "10111";
-                when "0101" =>
+                when "0100" =>
                     plantEnables <= "01111";
                 when others =>
                     plantEnables <= "11111";
@@ -329,19 +329,19 @@ rowDetermination : process(clk, aReset) -- this can be done A LOT better but idk
             addrPlant   <= to_unsigned((((TO_INTEGER(Unsigned(LocalhWriteLoc))-143)*8)/640),4 );
             addrCurrent <=  to_unsigned((((TO_INTEGER(Unsigned(LocalhWriteLoc))-144)*128)/640),7 ); -- for plant replace 128 for 8
             case placeY is
-                when "0001" =>
+                when "0000" =>
                     plantEnables <= "11110";
                     botEnables   <= "11110";
-                when "0010" =>                    
+                when "0001" =>                    
                     plantEnables <= "11101";
                     botEnables   <= "11101";
-                when "0011" =>
+                when "0010" =>
                     plantEnables <= "11011";
                     botEnables   <= "11011";
-                when "0100" =>
+                when "0011" =>
                     plantEnables <= "10111";
                     botEnables   <= "10111";
-                when "0101" =>
+                when "0100" =>
                     plantEnables <= "01111";
                     botEnables   <= "01111";
                 when others =>

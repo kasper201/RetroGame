@@ -56,9 +56,8 @@ begin
 
     process(i_Clk)
     variable Data_Viable, first_byte : std_logic := '0';
-    variable update, bullet1, bullet2, shop_select, garden_select : std_logic := '0';
+    variable update, robotS, shop_select, garden_select : std_logic := '0';
     variable geld, geldB, robot, plant, bullet, tussenwaarde : integer := 0;
-    variable bullet1y, bullet1x, bullet2y, bullet2x : integer range 0 to 255 := 0;
     variable plant_id, plant_x, plant_y : integer range 0 to 255 := 0;
     variable robot_id, robot_y, robot_x : integer range 0 to 255 := 0;
     variable shop_selector, garden_selector_x, garden_selector_y : integer range 0 to 255 := 0;
@@ -94,46 +93,32 @@ begin
                         when "0001" =>      --Plant
                             plant_id := (to_integer(unsigned(i_R_byte)) / 40);
                             plant_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5);
-                            plant_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5) + 1;
+                            plant_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5);
                         when "0010" =>      --Robot
                             if byte = 0 then
+                                robotS := '0';
                                 robot_id := to_integer(unsigned(i_R_byte)) / 16;
-                                robot_y := (to_integer(unsigned(i_R_byte)) mod 16) + 1;
+                                robot_y := (to_integer(unsigned(i_R_byte)) mod 16);
                                 byte := 1;
                             else
                                 robot_x := to_integer(unsigned(i_R_byte));
+                                robotS := '1';
                                 byte := 0;
                             end if;
-                        when "0011" =>      --bullets
-                            if byte = 0 then
-                                bullet1y := to_integer(unsigned(i_R_byte(7 downto 4))) + 1;
-                                bullet2y := to_integer(unsigned(i_R_byte(3 downto 0))) + 1;
-                                byte := 1;
-                                bullet2 := '0';
-                            elsif byte = 1 then
-                                bullet1x := to_integer(unsigned(i_R_byte));
-                                bullet1 := '1';
-                                byte := 2;
-                            elsif byte = 2 then
-                                bullet2x := to_integer(unsigned(i_R_byte));
-                                bullet2 := '1';
-                                bullet1 := '0';
-                                byte := 0;
-                            end if;
-                        when "0100" =>      --Sound life lost
+                        when "0011" =>      --Sound life lost
                             if to_integer(unsigned(i_R_byte)) = 10 then
                                 o_life_lost <= '1';
                             else
                                 o_life_lost <= '0';
                             end if;
-                        when "0101" =>      --Selectors
+                        when "0100" =>      --Selectors
                             garden_select := '0';
                             shop_selector := (to_integer(unsigned(i_R_byte)) / 40);
                             garden_selector_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5);
                             garden_selector_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5) + 1;
                             shop_select := '1';
                             counter := 0;
-                        when "0110" =>      --Wave
+                        when "0101" =>      --Wave
                             wave := to_integer(unsigned(i_R_byte));
                             counter := 0;
                         when others =>
@@ -143,12 +128,9 @@ begin
                     byte := 0;
                     plant_id := 8;
                     robot_id := 8;
-                    bullet1y := 6;
-                    bullet2y := 6;
-                    bullet2 := '0';
                 else
                     o_life_lost <= '0';
-                    if i_Request_select = "0110" then
+                    if i_Request_select = "0101" then
                         if switchS = '1' then
                             switchS <= '0';
                         else
@@ -196,7 +178,7 @@ begin
                     Number <= "0001";
                 end if;
                 counter := counter + 1;
-            elsif i_Request_select = "0110" then
+            elsif i_Request_select = "0101" then
                 money <= '0';
                 if counter = 0 then
                     Number <= std_logic_vector(to_unsigned((wave mod 10000) / 1000, 4));
@@ -235,15 +217,7 @@ begin
                 id := robot_id;
                 x := robot_x;
                 y := robot_y;
-            elsif bullet1y /= 7 and bullet1 = '1' and i_Request_select = "0011" then
-                id := 9;
-                x := bullet1x;
-                y := bullet1y;
-            elsif bullet2y /= 7 and bullet2 = '1' and i_Request_select = "0011" then
-                id := 9;
-                x := bullet2x;
-                y := bullet2y;
-            elsif shop_select = '1' and i_Request_select = "0101" then
+            elsif shop_select = '1' and i_Request_select = "0100" then
                 id := 15;
                 x := shop_selector * 8;
                 y := 6;
@@ -253,7 +227,7 @@ begin
                     shop_select := '0';
                     garden_select := '1';
                 end if;
-            elsif garden_select = '1' and i_Request_select = "0101" then
+            elsif garden_select = '1' and i_Request_select = "0100" then
                 id := 15;
                 x := garden_selector_x * 8;
                 y := garden_selector_y;
@@ -270,12 +244,9 @@ begin
                     tussenwaarde := plant_id * 1000 + plant_x * 10 + plant_y;
                 when "0010" =>
                     tussenwaarde := robot_id * 1000 + robot_y * 100 + robot_x;
-                when "0011" =>
-                    --tussenwaarde := bullet;
-                    tussenwaarde := bullet1x * 1000 + bullet1y * 100 + bullet2x * 10 + bullet2y;
-                when "0101" =>
+                when "0100" =>
                     tussenwaarde := shop_selector * 1000 + garden_selector_x * 10 + garden_selector_y;
-                when "0110" =>
+                when "0101" =>
                     tussenwaarde := wave;
                 when others =>
             end case;

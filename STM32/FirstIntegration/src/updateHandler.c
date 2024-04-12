@@ -415,7 +415,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
         }
     }
 
-    if (count >= 100)
+    if (count >= 150)
     {
         for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
         {

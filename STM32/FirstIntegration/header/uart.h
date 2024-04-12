@@ -9,8 +9,8 @@ int uartSetup(void);
 void print_uart(char *buf, int lengte);
 int checkFromFpga();
 
-void sendBullets(struct Bullet bullet[maxBullets]);
-void sendRobots(struct MapR Robot[MAP_WIDTHR][MAP_HEIGHTR]);
+int sendBullets(struct Bullet Bullets[maxBullets], int y);
+void sendRobots(struct MapR Robot[MAP_WIDTHR][MAP_HEIGHTR], struct Bullet Bullets[maxBullets]);
 void sendPlants(struct Map Plant[MAP_WIDTH][MAP_HEIGHT]);
 
 #endif //UART_H_
