@@ -132,14 +132,10 @@ begin
                             garden_selector_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5);
                             garden_selector_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5);
                             shop_select := '1';
+                            counter := 0;
                         when "0110" =>      --Wave
                             wave := to_integer(unsigned(i_R_byte));
                             counter := 0;
-                            if switchS = '1' then
-                                switchS <= '0';
-                            else
-                                switchS <= '1';
-                            end if;
                         when others =>
                     end case;
                 elsif i_R_byte = "11111110" then
@@ -152,8 +148,13 @@ begin
                     bullet2 := '0';
                 else
                     o_life_lost <= '0';
-                    shop_select := '0';
-                    garden_select := '1';
+                    if i_Request_select = "0110" then
+                        if switchS = '1' then
+                            switchS <= '0';
+                        else
+                            switchS <= '1';
+                        end if;
+                    end if;
                 end if;
                 
                 
@@ -246,6 +247,12 @@ begin
                 id := 15;
                 x := shop_selector * 8;
                 y := 6;
+                if counter < 100 then
+                    counter := counter + 1;
+                else
+                    shop_select := '0';
+                    garden_select := '1';
+                end if;
             elsif garden_select = '1' and i_Request_select = "0101" then
                 id := 15;
                 x := garden_selector_x * 8;

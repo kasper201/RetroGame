@@ -25,7 +25,7 @@ int updatePlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, str
 
     if (map[x][y].speed > 0)
     {
-        //printk("hey ik was hier");
+        // printk("hey ik was hier");
         bulletCreate(bullet, x, y);
     }
     // if we decide its necessary for the game, reduce health or defence slowly here:
@@ -46,16 +46,16 @@ int moveEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTHR
     {
         if (map[(x / 16)][y].type >= 1 && mapR[(x / 16)][y].type <= 4)
         {
-            //printk("\n");
-            //printk("enemy detected");
-            //printk("\n"); // if it's a plant
+            // printk("\n");
+            // printk("enemy detected");
+            // printk("\n"); // if it's a plant
             return -2;
         }
         else // if it's a robot
         {
-            //printk("\n");
-            //printk("robot detected");
-            //printk("\n");
+            // printk("\n");
+            // printk("robot detected");
+            // printk("\n");
             return -3;
         }
     }
@@ -113,12 +113,17 @@ int updateEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDT
         if (map[temp][y].type == 4)
         {
             boomboom(map, mapR, temp, y);
+            map[temp][y].health = 0;
+            map[temp][y].damage = 0;
+            map[temp][y].defense = 0;
+            map[temp][y].speed = 0;
+            map[temp][y].type = 0;
         }
         else if (map[temp][y].health > 0)
         {
-            //printk("\n\ni got hit\n\n");
+            // printk("\n\ni got hit\n\n");
             map[temp][y].health -= 1;
-            //printk("\nhp after hit:%d\n", map[temp][y].health);
+            // printk("\nhp after hit:%d\n", map[temp][y].health);
         }
         if (map[temp][y].health == 0)
         {
@@ -214,7 +219,7 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
     // error checking
     if (map[x][y].type != 0)
     {
-        //printk("error 1");
+        // printk("error 1");
         return 1;
     }
     // if (type < 1 || type > 4)
@@ -222,12 +227,12 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
 
     if (x < 0 || x >= MAP_WIDTH || y < 0 || y >= MAP_HEIGHT)
     {
-        //printk("error 2");
+        // printk("error 2");
         return 3;
     }
     if (type > 0 && type < 5)
     {
-        //printk("print that money: %d", player->money);
+        // printk("print that money: %d", player->money);
         switch (type)
         {
         case 1: // bloem plant
@@ -238,7 +243,7 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
             }
             else
             {
-                //printk("error 3");
+                // printk("error 3");
                 return 4;
             }
             break;
@@ -250,7 +255,7 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
             }
             else
             {
-                //printk("error 3");
+                // printk("error 3");
                 return 4;
             }
             break;
@@ -280,8 +285,8 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
     // create plant
     uint8_t health, damage, defense, speed;
     getGenInfo(&health, &damage, &defense, &speed, type);
-    //printk("info met waardes hp:%d dps:%d type:%d\n", health, damage, type);
-    // TODO: money check here or earlier
+    // printk("info met waardes hp:%d dps:%d type:%d\n", health, damage, type);
+    //  TODO: money check here or earlier
     map[x][y].health = health;
     map[x][y].damage = damage;
     map[x][y].defense = defense;
@@ -304,28 +309,28 @@ int createRobot(struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR], uint8_t y, uint8_t ty
     // error checking
     if (type < 5 || type > 7)
     {
-        //printk("error 1");
+        // printk("error 1");
         return 2;
     }
     if (mapR[127][y].type != 0)
     {
 
-        //printk("error 2");
-        //printk("%d", mapR[MAP_WIDTHR - 1][y].type);
+        // printk("error 2");
+        // printk("%d", mapR[MAP_WIDTHR - 1][y].type);
         return 1;
     }
     if (y < 0 || y >= MAP_HEIGHTR)
     {
-        //printk("error 3");
+        // printk("error 3");
         return 3;
     }
     // create robot
-    //printk("create\n");
-    //printk("%d", type);
+    // printk("create\n");
+    // printk("%d", type);
     uint8_t health, damage, defense, speed;
     getGenInfo(&health, &damage, &defense, &speed, type);
-    //printk("info met waardes hp:%d dps:%d type:%d\n", health, damage, type);
-    // TODO: money check here or earlier
+    // printk("info met waardes hp:%d dps:%d type:%d\n", health, damage, type);
+    //  TODO: money check here or earlier
     mapR[x][y].health = health;
     mapR[x][y].damage = damage;
     mapR[x][y].defense = defense;
@@ -345,15 +350,15 @@ int createWave(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player *player)
     player->wave++;
 
     int constant = 4;
-    //printk("%d\n", player->wave);
+    // printk("%d\n", player->wave);
     toCreate = (player->wave) * constant;
 
     // printk("%d", player->money);
     player->money += 100;
-    //printk("\n");
-    //printk("money: %d", player->money);
-    //printk("robots to go:%d", toCreate);
-    //printk("\n");
+    // printk("\n");
+    // printk("money: %d", player->money);
+    // printk("robots to go:%d", toCreate);
+    // printk("\n");
     return 0;
 }
 
@@ -369,16 +374,16 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
     count2++;
     count3++;
     count4++;
-    //printk("%d\n", (framerate * waverate));
-    //printk("%d", count3);
+    // printk("%d\n", (framerate * waverate));
+    // printk("%d", count3);
     if (count3 >= (framerate * waverate) && toCreate == 0) // create wave every defined amount of frames
     {
         printk("wave created");
         createWave(map, player);
         count3 = 0;
     }
-    //printk("\ntocreat is so groot:%d\n", toCreate);
-    //printk("\n het is wave: %d\n", player->wave);
+    // printk("\ntocreat is so groot:%d\n", toCreate);
+    // printk("\n het is wave: %d\n", player->wave);
     if (count4 == 50)
     {
         if (toCreate != 0) // spawn robots
@@ -390,13 +395,13 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
             while (mem == l || mem2 == l)
             {
                 l = rand() % 5;
-                //printk("\n");
+                // printk("\n");
                 r = rand() % 3 + 5;
                 // random lane
             }
-            //printk("lane: %d type: %d\n", l, r);
+            // printk("lane: %d type: %d\n", l, r);
             createRobot(mapR, l, r, player);
-            //printk("called");
+            // printk("called");
             toCreate--;
             mem2 = mem;
             mem = l;
@@ -404,7 +409,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
         }
     }
 
-    if (count == 60)
+    if (count == 100)
     {
         for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
         {
@@ -413,7 +418,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
 
                 if (map[x][y].type >= 1 && map[x][y].type == 2)
                 {
-                    //printk("print\n");
+                    // printk("print\n");
                     updatePlant(map, x, y, bullet);
                 }
             }
@@ -430,7 +435,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
                 if (map[x][y].type >= 1 && map[x][y].type == 1)
                 {
                     player->money += 50;
-                    //printk("\ngeld na update\n%d", player->money);
+                    // printk("\ngeld na update\n%d", player->money);
                 }
             }
         }
@@ -444,7 +449,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
             if (mapR[x][y].type >= 5)
             {
                 int vall = updateEnemy(map, mapR, x, y, player, frame);
-                //printk("update\n");
+                // printk("update\n");
             }
         }
     }
@@ -475,6 +480,6 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
     }*/
 
     bulletMove(bullet);
-    bulletDetect(bullet, mapR);
+    bulletDetect(bullet, mapR, player);
     return 0;
 }

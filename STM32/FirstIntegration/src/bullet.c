@@ -58,7 +58,7 @@ void bulletMove(struct Bullet bullet[maxBullets])
  * @param bullet
  * @param map
  */
-void bulletDetect(struct Bullet bullet[maxBullets], struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR])
+void bulletDetect(struct Bullet bullet[maxBullets], struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR], struct Player *player)
 {
 	for (int i = 0; i < maxBullets; i++) {
 		if (bullet[i].y < 5) {
@@ -88,6 +88,7 @@ void bulletDetect(struct Bullet bullet[maxBullets], struct MapR mapR[MAP_WIDTHR]
 					mapR[bullet[i].x][bullet[i].y].type = 0;
 					bullet[i].x = 0;
 					bullet[i].y = 6;
+					player->money += 50;
 				}
 			}
 			if (mapR[bullet[i].x - 1][bullet[i].y].type > 0) {

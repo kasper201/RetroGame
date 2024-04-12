@@ -35,6 +35,7 @@ entity Select_Request is
     Port ( i_Clk : in STD_LOGIC;
            i_Update_Request : in STD_LOGIC;
            i_Start_Frame : in STD_LOGIC;
+           o_clear : out STD_LOGIC;
            o_Request_Select : out STD_LOGIC_VECTOR (3 downto 0));
 end Select_Request;
 
@@ -42,6 +43,7 @@ architecture Behavioral of Select_Request is
 
 --Request voor welk stukje informatie opgevraagd wordt
 signal request_select : std_logic_vector(3 downto 0);
+signal clear : std_logic;
 
 begin
 
@@ -67,6 +69,7 @@ begin
                     request_selected_int := request_selected_int + 1;
                 else
                     request_selected_int := 0;
+                    clear <= '1';
                 end if;
             elsif i_update_request = '1' then
                 first_high_request := '1';

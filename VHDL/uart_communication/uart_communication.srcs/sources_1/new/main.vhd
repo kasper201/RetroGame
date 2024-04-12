@@ -52,6 +52,7 @@ entity main is
            o_LED_Status3 : out STD_LOGIC;
            o_LED_Status4 : out STD_LOGIC;
            o_Sound : out STD_LOGIC;
+           o_clear : out STD_LOGIC;
            o_D_bus : out STD_LOGIC_VECTOR(3 downto 0);  --Alle displays voor 7 segment
            o_S_bus : out STD_LOGIC_VECTOR(7 downto 0)   --Alle segementen voor 7 segment
            );
@@ -125,6 +126,7 @@ component Select_Request is
     Port ( i_Clk : in STD_LOGIC;
            i_Update_Request : in STD_LOGIC;
            i_Start_Frame : in STD_LOGIC;
+           o_clear : out STD_LOGIC;
            o_Request_Select : out STD_LOGIC_VECTOR (3 downto 0));
 end component;
 
@@ -198,6 +200,7 @@ begin
         i_Clk               => i_clk,
         i_Update_Request    => update_request,
         i_Start_Frame       => i_sendButton,
+        o_clear             => o_clear,
         o_Request_Select    => Request_select
    );
    

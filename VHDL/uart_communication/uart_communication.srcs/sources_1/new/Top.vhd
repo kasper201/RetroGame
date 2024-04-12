@@ -152,7 +152,7 @@ begin
     
     UART: main port map(
            i_Clk            => i_Clk,
-           i_SendButton     => sendButton,
+           i_SendButton     => '0',
            i_Info_select    => i_Info_select,
            i_Rx             => i_Rx,
            o_Tx             => o_Tx,

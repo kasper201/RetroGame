@@ -15,6 +15,7 @@
 #include <inttypes.h>
 #include <string.h>
 #include <zephyr/drivers/uart.h>
+#include <zephyr/drivers/timer/system_timer.h>
 
 #include "uart.h"
 #include "main.h"
@@ -28,10 +29,20 @@
 #define MAP_WIDTHR 128 // Robot map width
 #define MAP_HEIGHTR 5
 
+#define TIMER_INTERVAL_MS 50
+
 struct Map map[MAP_WIDTH][MAP_HEIGHT];
 struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR];
 struct Bullet bullet[maxBullets];
 struct Player player;
+
+static struct k_timer my_timer;
+bool generateFrame = false;
+	int byte;
+	unsigned char sendByte[2];
+	unsigned char sendByteC;
+	int tempHealth;
+	int geld;
 
 // Device tree aliases for buttons
 #define SW1_NODE DT_ALIAS(sw1)
@@ -121,6 +132,75 @@ void casefunction(int i)
 	}
 }
 
+void timer_handler(struct k_timer *timer_id)
+{
+    printk("Start sending at at %" PRIu32 "\n", k_cycle_get_32());
+
+				// Geld
+				geld = player.money;
+				sendByte[0] = geld % 253;
+				sendByte[1] = geld / 253;
+				print_uart(sendByte, 2);
+				printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
+				// k_usleep(SLEEP_TIME_U);
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				// Plant
+				sendPlants(map);
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				// Robot
+				sendRobots(mapR);
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				// Bullet
+				sendBullets(bullet);
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				// Life Lost
+				if (tempHealth != player.health)
+				{
+					sendByteC = 0x0a;
+					print_uart(&sendByteC, 1);
+					printf("Life lost send this byte: %d\n", sendByteC);
+					// k_usleep(SLEEP_TIME_U);
+					tempHealth = player.health;
+				}
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				// Selector
+				byte = (xLocs * 40) + (xLoc * 5) + yLoc; // shop, gardenx, gardeny
+				sendByteC = byte;
+				print_uart(&sendByteC, 1);
+				printf("Send these byte: %d\n", sendByteC);
+				// k_usleep(SLEEP_TIME_U);
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				// Wave
+				sendByteC = player.wave;
+				print_uart(&sendByteC, 1);
+				printf("Send wave these byte: %d\n", sendByteC);
+				// k_usleep(SLEEP_TIME_U);
+				sendByte[0] = 0xff;
+				sendByte[1] = 0xfe;
+				print_uart(sendByte, 2);
+
+				printk("Stop sending at %" PRIu32 "\n", k_cycle_get_32());
+				generateFrame = true;
+}
+
 // Callback function for button press
 void button_left(const struct device *dev, struct gpio_callback *cb, uint32_t pins)
 {
@@ -198,16 +278,13 @@ int main(void)
 	//
 	//  Mijn stuk!!!
 	//
+	tempHealth = player.health;
+	
+	k_timer_init(&my_timer, timer_handler, NULL);
+	k_timer_start(&my_timer, K_MSEC(TIMER_INTERVAL_MS), K_MSEC(TIMER_INTERVAL_MS));
 
 	uartSetup();
 
-	int byte;
-	unsigned char sendByte[2];
-	unsigned char sendByteC;
-	int tempHealth = player.health;
-	int geld;
-	bool checkFpga = true;
-	bool generateFrame = false;
 
 	printk("Start\n");
 	while (1)
@@ -256,88 +333,12 @@ int main(void)
 			}
 		}
 
-		if (checkFpga)
-		{
-			int input = checkFromFpga();
-			checkFpga = false;
-			if (input >= 0)
-			{
-				printk("Start sending at at %" PRIu32 "\n", k_cycle_get_32());
-
-				// Geld
-				geld = player.money;
-				sendByte[0] = geld % 253;
-				sendByte[1] = geld / 253;
-				print_uart(sendByte, 2);
-				printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
-				// k_usleep(SLEEP_TIME_U);
-				sendByte[0] = 0xff;
-				sendByte[1] = 0xfe;
-				print_uart(sendByte, 2);
-
-				// Plant
-				sendPlants(map);
-				sendByte[0] = 0xff;
-				sendByte[1] = 0xfe;
-				print_uart(sendByte, 2);
-
-				// Robot
-				sendRobots(mapR);
-				sendByte[0] = 0xff;
-				sendByte[1] = 0xfe;
-				print_uart(sendByte, 2);
-
-				// Bullet
-				sendBullets(bullet);
-				sendByte[0] = 0xff;
-				sendByte[1] = 0xfe;
-				print_uart(sendByte, 2);
-
-				// Life Lost
-				if (tempHealth != player.health)
-				{
-					sendByteC = 0x0a;
-					print_uart(&sendByteC, 1);
-					printf("Life lost send this byte: %d\n", sendByteC);
-					// k_usleep(SLEEP_TIME_U);
-					tempHealth = player.health;
-				}
-				sendByte[0] = 0xff;
-				sendByte[1] = 0xfe;
-				print_uart(sendByte, 2);
-
-				// Selector
-				byte = (xLocs * 40) + (xLoc * 5) + yLoc; // shop, gardenx, gardeny
-				sendByteC = byte;
-				print_uart(&sendByteC, 1);
-				printf("Send these byte: %d\n", sendByteC);
-				// k_usleep(SLEEP_TIME_U);
-				sendByte[0] = 0xff;
-				sendByte[1] = 0xfe;
-				print_uart(sendByte, 2);
-
-				// Wave
-				sendByteC = player.wave;
-				print_uart(&sendByteC, 1);
-				printf("Send wave these byte: %d\n", sendByteC);
-				// k_usleep(SLEEP_TIME_U);
-				sendByte[0] = 0xff;
-				sendByte[1] = 0xfe;
-				print_uart(sendByte, 2);
-
-				printk("Stop sending at %" PRIu32 "\n", k_cycle_get_32());
-				generateFrame = true;
-			}
-		}
-		else
-		{
+		
 			if (generateFrame)
 			{
 				updateGame(map, mapR, &player, bullet, frame);
 				generateFrame = false;
 			}
-			checkFpga = true;
-		}
 
 		k_usleep(SLEEP_TIME_U * 10);
 	}

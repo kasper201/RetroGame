@@ -177,7 +177,7 @@
         "OUTPUTDIR": [ { "value": "../../../../bouncycube.gen/sources_1/ip/blk_mem_gen_5" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "." } ],
-        "SWVERSION": [ { "value": "2023.2" } ],
+        "SWVERSION": [ { "value": "2023.2.2" } ],
         "SYNTHESISFLOW": [ { "value": "OUT_OF_CONTEXT" } ]
       }
     },

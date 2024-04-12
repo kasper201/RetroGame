@@ -154,6 +154,7 @@ void sendBullets(struct Bullet Bullets[maxBullets]) //struct array bullets
 
 void sendRobots(struct MapR Robot[MAP_WIDTHR][MAP_HEIGHTR]) //map robots
 {
+	int robot = 0;
 	unsigned char byte;
 	unsigned char sendByte[2];
 	for (int y = 0; y < MAP_HEIGHTR; y++)
@@ -166,14 +167,17 @@ void sendRobots(struct MapR Robot[MAP_WIDTHR][MAP_HEIGHTR]) //map robots
 				sendByte[0] = byte;
 				sendByte[1] = x;
 				print_uart(sendByte, 2);
+				robot++;
 				//printf("Robot send these bytes: %d %d\n", sendByte[0], sendByte[1]);
 			}
 		}
 	}
+	printf("Robots: %d", robot);
 }
 
 void sendPlants(struct Map Plant[MAP_WIDTH][MAP_HEIGHT]) //map plant
 {
+	int plant = 0;
 	unsigned char byte;
 	unsigned char sendByteC;
 	for (int y = 0; y < MAP_HEIGHT; y++)
@@ -185,8 +189,10 @@ void sendPlants(struct Map Plant[MAP_WIDTH][MAP_HEIGHT]) //map plant
 				byte = (Plant[x][y].type * 40) + (x * 5) + y;
 				sendByteC = byte;
 				print_uart(&sendByteC, 1);
+				plant++;
 				//printf("Plant type: %d x: %d y: %d send these bytes: %d\n", Plant[x][y].type, x, y, sendByteC);
 			}
 		}
 	}
+	printf("Plants: %d", plant);
 }
