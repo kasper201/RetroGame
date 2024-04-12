@@ -3,8 +3,8 @@
 Zephyr version: 3.5 or later [zephyr_installation_guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html)
 CMake Version: 3.27.4
 OS: Windows 11 23H2 or later
-Vivado version: 2023.2[vivado_installation](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html)
-Board: STM NUCLEO-F091RC, STM NUCLEO-F030R8 or equivalent
+Vivado version: 2023.2 [vivado_installation](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html)
+Board: STM32 NUCLEO-F091RC, STM32 NUCLEO-F030R8 or equivalent
 
 # Installation
 
@@ -14,7 +14,6 @@ Board: STM NUCLEO-F091RC, STM NUCLEO-F030R8 or equivalent
 
 ## STM32
 
-*[WIP]*
 If you are using an STM NUCLEO-F030R8 one can simply follow the [zephyr tutorial](https://docs.zephyrproject.org/latest/develop/getting_started/index.html#build-the-blinky-sample) but instead of `samples\basic\blinky` it should direct to the folder containing the cmake and build files for this project.
 
 ### STM32 uploading
@@ -63,7 +62,7 @@ There also is a button to confirm a purchase which places the selected plant fro
 ## Update Sprites
 
 Updating the sprites is done by replacing the .coe files in the vivado project. 
-It is important to note that a sprite must be 80x80 pixels
+It is important to note that a sprite must be **80x80** pixels
 
 ### How to convert png's to .coe files
 
@@ -93,11 +92,18 @@ The text is saved directly in the portmap for simplicity. When changing the text
 ![portmap example](<WhatsApp Image 2024-04-08 at 22.41.08.jpeg>)
 After changing the length of 'displayText' and 'textLength' it might be necessary to change the horizontal position of the text. This can be done in 'position'.
 
-## Change music
+## Change sound
 
-<!--To change the music in the game one has to manually change the variables to 2 times their actual frequency.-->
-[WIP]
+Changing the sound of the game or the music is done using the files `Sound.vhd` and `SoundController.vhd`.
 
-## Change damage sound
+### Change frequencies belonging to IDs
 
-[WIP]
+To save space only a few frequencies have been placed in the SoundController. There are also no notes. So there is no C#, Eb or anything like that. If you want to utilise those you have to add them yourself. The notes **F4 to F5** do exist.There also is one specific ID for a wrong note. This gets played when a player gets damaged.
+
+![formula frequency](image-2.png)
+The number `101255` in the image above is gathered from the formula: ```((({clock Frequency})/2/[{frequency}) % 2```.
+
+### Change music
+
+The music can be changed from `Sound.vhd`. The noteID of the note requested ... WIP
+![music](image-3.png)
