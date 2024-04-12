@@ -93,25 +93,24 @@ void bulletDetect(struct Bullet bullet[maxBullets], struct MapR mapR[MAP_WIDTHR]
 			}
 			if (mapR[bullet[i].x - 1][bullet[i].y].type > 0) {
 
-				mapR[bullet[i].x - 1][bullet[i].y].health -=
-					10; // TODO: balance the damage
-				printk("\n");
-				printk("\n");
-				printk("robot health: %d",
-				       mapR[bullet[i].x - 1][bullet[i].y].health);
-				printk("\n");
-				printk("\n");
+				mapR[bullet[i].x - 1][bullet[i].y].health -=10; // TODO: balance the damage
+				//printk("\n");
+				//printk("\n");
+				//printk("robot health: %d",
+				//       mapR[bullet[i].x - 1][bullet[i].y].health);
+				//printk("\n");
+				//printk("\n");
 				// remove the bullet from the map by setting its position to -1
 
-				printk("\n");
-				printk("\n");
-				printk("hit!!! %d bullet: %d x:%d y:%d",
-				       mapR[bullet[i].x - 1][bullet[i].y].type, i, bullet[i].x - 1,
-				       bullet[i].y);
-				printk("\n");
-				printk("\n");
+				//printk("\n");
+				//printk("\n");
+				//printk("hit!!! %d bullet: %d x:%d y:%d",
+				//       mapR[bullet[i].x - 1][bullet[i].y].type, i, bullet[i].x - 1,
+				//       bullet[i].y);
+				//printk("\n");
+				//printk("\n");
 				if (mapR[bullet[i].x - 1][bullet[i].y].health == 0) {
-					printk("remove robot ");
+				//	printk("remove robot ");
 					mapR[bullet[i].x - 1][bullet[i].y].damage = 0;
 					mapR[bullet[i].x - 1][bullet[i].y].defense = 0;
 					mapR[bullet[i].x - 1][bullet[i].y].speed = 0;

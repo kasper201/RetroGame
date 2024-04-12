@@ -47,7 +47,7 @@ architecture Behavioral of UREQUEST is
 
 begin
     process(i_Clk)
-        variable counter : integer range 0 to ((10*217) + 200) := 0;    --217 is baud related so change when baud is changed
+        variable counter : integer range 0 to ((10*217) + 900) := 0;    --217 is baud related so change when baud is changed
         variable send_out, unpressed : std_logic := '0';
         variable confirmed_request : std_logic_vector(3 downto 0);
         variable bytes_out_0, bytes_out_1, bytes_out_2, bytes_out_3, bytes_out_4, temp_byte_out : std_logic_vector(7 downto 0);
@@ -139,7 +139,7 @@ begin
                 
             end if; -- send out
             --Count up
-            if counter < ((10*217) + 99) then
+            if counter < ((10*217) + 800) then
                 counter := counter + 1;
             else
                 counter := counter;

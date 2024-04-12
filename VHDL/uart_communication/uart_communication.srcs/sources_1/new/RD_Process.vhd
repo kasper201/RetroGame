@@ -94,11 +94,11 @@ begin
                         when "0001" =>      --Plant
                             plant_id := (to_integer(unsigned(i_R_byte)) / 40);
                             plant_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5);
-                            plant_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5);
+                            plant_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5) + 1;
                         when "0010" =>      --Robot
                             if byte = 0 then
                                 robot_id := to_integer(unsigned(i_R_byte)) / 16;
-                                robot_y := (to_integer(unsigned(i_R_byte)) mod 16);
+                                robot_y := (to_integer(unsigned(i_R_byte)) mod 16) + 1;
                                 byte := 1;
                             else
                                 robot_x := to_integer(unsigned(i_R_byte));
@@ -106,8 +106,8 @@ begin
                             end if;
                         when "0011" =>      --bullets
                             if byte = 0 then
-                                bullet1y := to_integer(unsigned(i_R_byte(7 downto 4)));
-                                bullet2y := to_integer(unsigned(i_R_byte(3 downto 0)));
+                                bullet1y := to_integer(unsigned(i_R_byte(7 downto 4))) + 1;
+                                bullet2y := to_integer(unsigned(i_R_byte(3 downto 0))) + 1;
                                 byte := 1;
                                 bullet2 := '0';
                             elsif byte = 1 then
@@ -141,8 +141,8 @@ begin
                 elsif i_R_byte = "11111110" then
                     update := '1';
                     byte := 0;
-                    plant_id := 0;
-                    robot_id := 0;
+                    plant_id := 8;
+                    robot_id := 8;
                     bullet1y := 6;
                     bullet2y := 6;
                     bullet2 := '0';
@@ -235,11 +235,11 @@ begin
                 id := robot_id;
                 x := robot_x;
                 y := robot_y;
-            elsif bullet1y /= 6 and bullet1 = '1' and i_Request_select = "0011" then
+            elsif bullet1y /= 7 and bullet1 = '1' and i_Request_select = "0011" then
                 id := 9;
                 x := bullet1x;
                 y := bullet1y;
-            elsif bullet2y /= 6 and bullet2 = '1' and i_Request_select = "0011" then
+            elsif bullet2y /= 7 and bullet2 = '1' and i_Request_select = "0011" then
                 id := 9;
                 x := bullet2x;
                 y := bullet2y;

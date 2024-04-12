@@ -94,6 +94,7 @@ int moveEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTHR
     if (player->health <= 0) // if all the hearts have been lost deadscreen or menu will show
     {
         deadscreen(player);
+        toCreate = 0;
     }
     return 0;
 }
@@ -219,7 +220,7 @@ void getGenInfo(uint8_t *health, uint8_t *damage, uint8_t *defense, uint8_t *spe
 int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uint8_t type, struct Player *player)
 {
 
-    printk("called met waardes x:%d y:%d type:%d\n", x, y, type);
+    //printk("called met waardes x:%d y:%d type:%d\n", x, y, type);
     // error checking
     if (map[x][y].type != 0)
     {
@@ -374,6 +375,7 @@ int createWave(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player *player)
  */
 int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR], struct Player *player, struct Bullet bullet[maxBullets], int frame)
 {
+    printf("to create: %d",toCreate);
     count++;
     count2++;
     count3++;
@@ -388,7 +390,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
     }
     // printk("\ntocreat is so groot:%d\n", toCreate);
     // printk("\n het is wave: %d\n", player->wave);
-    if (count4 == 100)
+    if (count4 >= 40)
     {
         if (toCreate != 0) // spawn robots
         {
@@ -413,7 +415,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
         }
     }
 
-    if (count == 100)
+    if (count >= 100)
     {
         for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
         {
@@ -429,7 +431,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
         }
         count = 0;
     }
-    if (count2 == 5)
+    if (count2 >= 20)
     {
         for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
         {
@@ -438,7 +440,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
 
                 if (map[x][y].type >= 1 && map[x][y].type == 1)
                 {
-                    player->money += 50;
+                    player->money += 10;
                     // printk("\ngeld na update\n%d", player->money);
                 }
             }

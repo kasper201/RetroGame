@@ -172,7 +172,7 @@ void sendRobots(struct MapR Robot[MAP_WIDTHR][MAP_HEIGHTR]) //map robots
 			}
 		}
 	}
-	printf("Robots: %d", robot);
+	printf("Robots: %d\n", robot);
 }
 
 void sendPlants(struct Map Plant[MAP_WIDTH][MAP_HEIGHT]) //map plant
@@ -194,5 +194,5 @@ void sendPlants(struct Map Plant[MAP_WIDTH][MAP_HEIGHT]) //map plant
 			}
 		}
 	}
-	printf("Plants: %d", plant);
+	printf("Plants: %d\n", plant);
 }

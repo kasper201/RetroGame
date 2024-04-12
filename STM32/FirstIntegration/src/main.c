@@ -29,7 +29,7 @@
 #define MAP_WIDTHR 128 // Robot map width
 #define MAP_HEIGHTR 5
 
-#define TIMER_INTERVAL_MS 7
+#define TIMER_INTERVAL_MS 1000
 
 struct Map map[MAP_WIDTH][MAP_HEIGHT];
 struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR];
@@ -173,6 +173,7 @@ void timer_handler(struct k_timer *timer_id)
 			sendByteC = 0x0a;
 			print_uart(&sendByteC, 1);
 			printf("Life lost send this byte: %d\n", sendByteC);
+			printf("hp left:%d", player.health);
 			// k_usleep(SLEEP_TIME_U);
 			tempHealth = player.health;
 		}
@@ -185,6 +186,7 @@ void timer_handler(struct k_timer *timer_id)
 		sendByteC = byte;
 		print_uart(&sendByteC, 1);
 		printf("Send these byte: %d\n", sendByteC);
+		
 		// k_usleep(SLEEP_TIME_U);
 		sendByte[0] = 0xff;
 		sendByte[1] = 0xfe;
@@ -287,7 +289,7 @@ int main(void)
 	tempHealth = player.health;
 
 	k_timer_init(&my_timer, timer_handler, NULL);
-	k_timer_start(&my_timer, K_MSEC(TIMER_INTERVAL_MS), K_MSEC(TIMER_INTERVAL_MS));
+	k_timer_start(&my_timer, K_USEC(TIMER_INTERVAL_MS), K_USEC(TIMER_INTERVAL_MS));
 
 	uartSetup();
 

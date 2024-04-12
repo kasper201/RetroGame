@@ -123,7 +123,7 @@ begin
                     y  <= "0100";
                 elsif counter < 60 then
                     id <= "0000";
-                    y  <= "0100";
+                    y  <= "0101";
                 else
                     id <= id_in;
                     y  <= y_in;

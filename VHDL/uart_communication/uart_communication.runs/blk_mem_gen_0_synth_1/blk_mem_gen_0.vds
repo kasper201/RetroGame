@@ -3,8 +3,8 @@
 # SW Build 4126759 on Thu Feb  8 23:53:51 MST 2024
 # IP Build 4126054 on Fri Feb  9 11:39:09 MST 2024
 # SharedData Build 4115275 on Tue Jan 30 00:40:57 MST 2024
-# Start of session at: Fri Apr 12 13:43:15 2024
-# Process ID: 12008
+# Start of session at: Fri Apr 12 16:49:52 2024
+# Process ID: 24012
 # Current directory: C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_0_synth_1
 # Command line: vivado.exe -log blk_mem_gen_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source blk_mem_gen_0.tcl
 # Log file: C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0.vds
@@ -12,7 +12,7 @@
 # Running On: MSI, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 16991 MB
 #-----------------------------------------------------------
 source blk_mem_gen_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 461.953 ; gain = 185.074
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 461.586 ; gain = 186.160
 INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: blk_mem_gen_0
 INFO: [IP_Flow 19-6922] IPCACHE: Exporting cached entry 773932c3b522591b to dir: C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_0_synth_1
 INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip/2023.2.2/7/7/773932c3b522591b/blk_mem_gen_0.dcp to C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0.dcp.
@@ -21,4 +21,4 @@ INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/woute/Desktop/rest/
 INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip/2023.2.2/7/7/773932c3b522591b/blk_mem_gen_0_stub.v to C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0_stub.v.
 INFO: [IP_Flow 19-6928] IPCACHE: copied cached file c:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip/2023.2.2/7/7/773932c3b522591b/blk_mem_gen_0_stub.vhdl to C:/Users/woute/Desktop/rest/HBO/Projecten/Retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0_stub.vhdl.
 INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP blk_mem_gen_0, cache-ID = 773932c3b522591b.
-INFO: [Common 17-206] Exiting Vivado at Fri Apr 12 13:43:25 2024...
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 12 16:50:02 2024...
