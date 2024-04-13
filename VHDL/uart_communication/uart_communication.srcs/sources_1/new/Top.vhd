@@ -122,7 +122,11 @@ begin
                     id <= "0000";
                     y  <= "0100";
                 else
-                    id <= id_in;
+                    if id_in = "0000" or id_in = "1000" or (id_in > "1001" and id_in < "1110") then
+                        id <= "1110";
+                    else
+                        id <= id_in;
+                    end if;
                     y  <= y_in;
                 end if;
             else

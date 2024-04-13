@@ -131,8 +131,8 @@ begin
                 elsif i_R_byte = "11111110" then
                     update := '1';
                     byte := 0;
-                    plant_id := 8;
-                    robot_id := 8;
+                    plant_id := 14;
+                    robot_id := 14;
                 else
                     o_life_lost <= '0';
                     if i_Request_select = "0101" then

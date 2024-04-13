@@ -318,6 +318,11 @@ rowDetermination : process(clk, aReset) -- this can be done A LOT better but idk
             botEnables <= "11111";
             outputEnable <= '1'; 
             
+        elsif (SpeedSel = "1110")then
+            plantEnables <= plantEnables;
+            botEnables <= botEnables; 
+            outputEnable <= outputEnable;
+            
         elsif (SpeedSel = "1111")then  --selector 
             plantEnables <= "11111";
             botEnables <= "11111"; 

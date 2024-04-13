@@ -38,3 +38,13 @@
     <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="6560" HostCore="16" HostMemory="034281848832">
     </Process>
 </ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="17816" HostCore="16" HostMemory="034281848832">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="6816" HostCore="16" HostMemory="034281848832">
+    </Process>
+</ProcessHandle>
