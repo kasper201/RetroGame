@@ -285,11 +285,11 @@ rowDetermination : process(clk, aReset) -- this can be done A LOT better but idk
             end case;
               
         
-        elsif (SpeedSel > "0000" AND SpeedSel <= "0100" ) then -- if bigger than 0 and less than or equela to 4 its a plant
+        elsif (SpeedSel > "0000" AND SpeedSel <= "0100" AND placeX(6 downto 3) /= "0000") then -- if bigger than 0 and less than or equela to 4 its a plant
 --            createBullet <= false;
             create <= SpeedSel;
             -- set x placing location for plant
-            addrPlant <= unsigned(placeX(6 downto 3));
+            addrPlant <= to_unsigned(to_integer(unsigned(placeX(6 downto 3))) - 1, 4);
             addrCurrent <=  to_unsigned((((TO_INTEGER(Unsigned(LocalhWriteLoc))-144)*128)/640),7 ); -- for plant replace 128 for 8
                     -- set all robots to read Only
             botEnables <= "11111";
@@ -324,6 +324,7 @@ rowDetermination : process(clk, aReset) -- this can be done A LOT better but idk
             outputEnable <= '0';  
             addrPlant <= unsigned(placeX(6 downto 3));
             addrCurrent <= to_unsigned((((TO_INTEGER(Unsigned(LocalhWriteLoc))-144)*128)/640),7 );  
+            
         else                          -- speedsselect = 0000reset y level
             create <= "0000";
             addrPlant   <= to_unsigned((((TO_INTEGER(Unsigned(LocalhWriteLoc))-143)*8)/640),4 );
@@ -393,7 +394,7 @@ physicsBox : process(clk, aReset)
                     if(cnt = "0000") then
                         startCNT <= '1';
                         coordX <= std_logic_vector(addrCurrent * to_unsigned(5,3) );
-                        tempBotSel <= found_entity(3 downto 0);
+                        tempBotSel <= found_entity2(3 downto 0);
                     end if;
                     if(cnt = "1111") then
                         startCNT <= '0';
@@ -404,7 +405,7 @@ physicsBox : process(clk, aReset)
                     if(cnt = "0000") then
                         startCNT <= '1';
                         coordX <= std_logic_vector(addrCurrent * to_unsigned(5,3) );
-                        tempBotSel <= found_entity(3 downto 0);
+                        tempBotSel <= found_entity3(3 downto 0);
                     end if;
                     if(cnt = "1111") then
                         startCNT <= '0';
@@ -415,7 +416,7 @@ physicsBox : process(clk, aReset)
                     if(cnt = "0000") then
                         startCNT <= '1';
                         coordX <= std_logic_vector(addrCurrent * to_unsigned(5,3) );
-                        tempBotSel <= found_entity(3 downto 0);
+                        tempBotSel <= found_entity4(3 downto 0);
                     end if;
                     if(cnt = "1111") then
                         startCNT <= '0';
@@ -424,9 +425,8 @@ physicsBox : process(clk, aReset)
                 end if;
                 if(found_entity5 /= "0000" AND found_plant5 = "0000" AND vWriteLoc > "0110110000") then
                     if(cnt = "0000") then
-                        startCNT <= '1';
                         coordX <= std_logic_vector(addrCurrent * to_unsigned(5,3) );
-                        tempBotSel <= found_entity(3 downto 0);
+                        tempBotSel <= found_entity5(3 downto 0);
                     end if;
                     if(cnt = "1111") then
                         startCNT <= '0';

@@ -145,7 +145,7 @@ begin
             --Nul naartoe zetten
             --hQ2             <= "0000000000";
             --vQ2             <= "0000000000";
-            --speedSel1       <= "0000";
+            speedSel1       <= "1000";
             --X1              <= "0000000";
             --Y1              <= "0000";
         else
@@ -165,7 +165,7 @@ begin
             --Nul naartoe zetten
             --hQ1             <= "0000000000";
             --vQ1             <= "0000000000";
-            --speedSel2       <= "0000";
+            speedSel2       <= "1000";
             --X2              <= "0000000";
             --Y2              <= "0000";
         end if;

@@ -92,8 +92,9 @@ begin
                             byte := byte + 1;
                         when "0001" =>      --Plant
                             plant_id := (to_integer(unsigned(i_R_byte)) / 40);
-                            plant_x := (to_integer(unsigned(i_R_byte)) mod 40 / 5);
-                            plant_y := (to_integer(unsigned(i_R_byte)) mod 40 mod 5);
+                            plant_y := (to_integer(unsigned(i_R_byte)) mod 40 / 8);
+                            plant_x := (to_integer(unsigned(i_R_byte)) mod 40 mod 8) + 1;
+                            counter := 0;
                         when "0010" =>      --Robot
                             if byte = 0 then
                                 robotS := '0';
@@ -209,7 +210,7 @@ begin
             
             
             --Send the right id and x and y coordinates belonging to that id
-            if plant_id /= 0 and i_Request_select = "0001" then
+            if plant_id /= 0 and i_RX_DV = '0' and i_Request_select = "0001" then
                 id := plant_id;
                 x := plant_x * 8;
                 y := plant_y;

@@ -96,7 +96,8 @@ int uartSetup()
 void print_uart(char *buf, int lengte)
 {
 
-	for (int i = 0; i < lengte; i++) {
+	for (int i = 0; i < lengte; i++)
+	{
 		uart_poll_out(uart_dev, buf[i]);
 	}
 	memset(rx_buf, 0, sizeof(rx_buf));
@@ -131,15 +132,15 @@ int checkFromFpga()
 	return -1;
 }
 
-int sendBullets(struct Bullet Bullets[maxBullets], int y) //struct array bullets
+int sendBullets(struct Bullet Bullets[maxBullets], int y) // struct array bullets
 {
-	//send array bullets
+	// send array bullets
 	unsigned char sendByte[2];
 	unsigned char byte;
 	int count = 0;
-	for(int i = 0; i < maxBullets; i++)
+	for (int i = 0; i < maxBullets; i++)
 	{
-		if( Bullets[i].y == y)
+		if (Bullets[i].y == y)
 		{
 			byte = 9 * 16 + y;
 			sendByte[0] = byte;
@@ -151,7 +152,7 @@ int sendBullets(struct Bullet Bullets[maxBullets], int y) //struct array bullets
 	return count;
 }
 
-void sendRobots(struct MapR Robot[MAP_WIDTHR][MAP_HEIGHTR], struct Bullet Bullets[maxBullets]) //map robots
+void sendRobots(struct MapR Robot[MAP_WIDTHR][MAP_HEIGHTR], struct Bullet Bullets[maxBullets]) // map robots
 {
 	int robot = 0;
 	unsigned char byte;
@@ -159,39 +160,45 @@ void sendRobots(struct MapR Robot[MAP_WIDTHR][MAP_HEIGHTR], struct Bullet Bullet
 	int count = 0;
 	for (int y = 0; y < MAP_HEIGHTR; y++)
 	{
-		for(int x = 0; x < MAP_WIDTHR; x++)
-		{
-			if(Robot[x][y].type != 0)
-			{
-				byte = Robot[x][y].type * 16 + y;
-				sendByte[0] = byte;
-				sendByte[1] = x;
-				print_uart(sendByte, 2);
-				robot++;
-				//printf("Robot send these bytes: %d %d\n", sendByte[0], sendByte[1]);
-			}
-		}
 		count = count + sendBullets(Bullets, y);
+		for (int x = 0; x < MAP_WIDTHR; x++)
+		{
+			byte = 0x00;
+
+			if (byte == 0x00)
+			{
+				if (Robot[x][y].type != 0)
+				{
+					byte = Robot[x][y].type * 16 + y;
+					robot++;
+				}
+			}
+
+			sendByte[0] = byte;
+			sendByte[1] = x;
+			print_uart(sendByte, 2);
+			// printf("Robot send these bytes: %d %d\n", sendByte[0], sendByte[1]);
+		}
 	}
 	printf("Robots: %d en Bullets: %d\n", robot, count);
 }
 
-void sendPlants(struct Map Plant[MAP_WIDTH][MAP_HEIGHT]) //map plant
+void sendPlants(struct Map Plant[MAP_WIDTH][MAP_HEIGHT]) // map plant
 {
 	int plant = 0;
 	unsigned char byte;
 	unsigned char sendByteC;
 	for (int y = 0; y < MAP_HEIGHT; y++)
 	{
-		for(int x = 0; x < MAP_WIDTH; x++)
+		for (int x = 0; x < MAP_WIDTH; x++)
 		{
-			if(Plant[x][y].type != 0)
+			if (Plant[x][y].type != 0)
 			{
-				byte = (Plant[x][y].type * 40) + (x * 5) + y;
+				byte = (Plant[x][y].type * 40) + (y * 8) + x;
 				sendByteC = byte;
 				print_uart(&sendByteC, 1);
 				plant++;
-				//printf("Plant type: %d x: %d y: %d send these bytes: %d\n", Plant[x][y].type, x, y, sendByteC);
+				// printf("Plant type: %d x: %d y: %d send these bytes: %d\n", Plant[x][y].type, x, y, sendByteC);
 			}
 		}
 	}
