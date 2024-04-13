@@ -89,6 +89,12 @@ void bulletDetect(struct Bullet bullet[maxBullets], struct MapR mapR[MAP_WIDTHR]
 					bullet[i].x = 0;
 					bullet[i].y = 6;
 					player->money += 50;
+				} 
+				//Wouters bug fix op dat bullets na eve bestaan
+				else if (mapR[bullet[i].x][bullet[i].y].type != 0)
+				{
+					bullet[i].x = 0;
+					bullet[i].y = 6;
 				}
 			}
 			if (mapR[bullet[i].x - 1][bullet[i].y].type > 0) {
