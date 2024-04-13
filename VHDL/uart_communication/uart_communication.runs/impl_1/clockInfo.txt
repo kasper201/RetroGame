@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Sat Apr 13 23:13:41 2024
+| Date         : Sat Apr 13 23:29:45 2024
 | Host         : PC-WouterRosenbrand
 | Design       : design_1
 | Device       : xc7a35t-cpg236-1--

@@ -260,12 +260,12 @@ rowDetermination : process(clk, aReset) -- this can be done A LOT better but idk
     
     begin
     if (rising_edge(clk))then
-        if(((SpeedSel > "0100") AND (SpeedSel < "1000")) OR (SpeedSel = "1001") ) then -- if bigger than 4 and less than 8 its a robot
+        if((((SpeedSel > "0100") AND (SpeedSel < "1000")) OR (SpeedSel = "1001")) AND (placeX /= "0000000")) then -- if bigger than 4 and less than 8 its a robot
 
             create <= SpeedSel;
             -- set x show location for plant 
             addrPlant <= to_unsigned((((TO_INTEGER(Unsigned(LocalhWriteLoc))-143)*8)/640),4 );
-            addrCurrent <=  UNSIGNED(placeX); -- for plant replace 128 for 8
+            addrCurrent <=  to_unsigned(to_integer(unsigned(placeX)) - 1, 7); -- for plant replace 128 for 8
                        -- set all plants to readOnly
             plantEnables <= "11111";
             outputEnable <= '1';

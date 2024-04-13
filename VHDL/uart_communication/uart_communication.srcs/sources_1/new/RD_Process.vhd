@@ -102,7 +102,11 @@ begin
                                 robot_y := (to_integer(unsigned(i_R_byte)) mod 16);
                                 byte := 1;
                             else
-                                robot_x := to_integer(unsigned(i_R_byte));
+                                if i_R_byte = "01111111" then
+                                    robot_x := 127;
+                                else
+                                    robot_x := to_integer(unsigned(i_R_byte)) + 1;
+                                end if;
                                 robotS := '1';
                                 byte := 0;
                             end if;
