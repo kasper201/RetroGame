@@ -77,6 +77,10 @@ For more information on how the FPGA can be installed with the ability to be pow
 
 ![configuration JP1](image-5.png)
 
+### FPGA Pin-Out
+
+![Pin-Out FPGA](image-8.png)
+
 ## Controls
 
 There are 7 buttons for the user to interact with. There are 2 buttons to navigate the shop menu and 4 to navigate around the field. 
