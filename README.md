@@ -62,7 +62,7 @@ There also is a button to confirm a purchase which places the selected plant fro
 ## Update Sprites
 
 Updating the sprites is done by replacing the .coe files in the vivado project. 
-It is important to note that a sprite must be **80x80** pixels
+It is important to note that a sprite must be **80x80** pixels. Furthermore, the background colour of the sprite must be 0x0A3 to filter it out and properly show the background.
 
 ### How to convert png's to .coe files
 
