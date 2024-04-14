@@ -5,12 +5,29 @@ CMake Version: 3.27.4
 OS: Windows 11 23H2 or later
 Vivado version: 2023.2 [vivado_installation](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html)
 Board: STM32 NUCLEO-F091RC, STM32 NUCLEO-F030R8 or equivalent
+FPGA: Basys3
 
 # Installation
 
 ## Hardware:
 
-[WIP]
+### Conneting
+
+To connect the STM32, FPGA and buttons a shield had been made. The layout of this shield has been drawn in the image below.
+
+![layout shield](image-4.png)
+
+### Button colours
+
+The buttons are connected to specific coloured lines to make troubleshooting simpler.
+- black    = ground
+- red      = down garden
+- blue     = left garden
+- white    = up garden
+- yellow   = right garden
+- green    = right shop
+- pink     = confirm shop
+- orange   = left shop
 
 ## STM32
 
