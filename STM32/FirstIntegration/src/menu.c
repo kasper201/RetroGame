@@ -13,7 +13,7 @@ void deadscreen(struct Player* player)
 		highscore = player->wave;
 	}
 	//voeg toe reset alle waardes
-	game();
+	game();// initialise the game again
 	return;
 	
 }

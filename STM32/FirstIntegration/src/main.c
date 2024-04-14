@@ -47,7 +47,7 @@ unsigned char sendByteC;
 int tempHealth;
 int geld;
 
-// Device tree aliases for buttons
+// Device 7 aliases for buttons
 #define SW1_NODE DT_ALIAS(sw1)
 #define SW2_NODE DT_ALIAS(sw2)
 #define SW3_NODE DT_ALIAS(sw3)
@@ -88,49 +88,50 @@ int xLocs = 0;
 
 void casefunction(int i)
 {
+	// a switch case for when a button is pressed
 	switch (i)
 	{
 	case 0:
-		if (yLoc < MAP_HEIGHT - 1)
+		if (yLoc < MAP_HEIGHT - 1)// selector move down
 			yLoc++;
 		else
-			yLoc = 0;
+			yLoc = 0;// if selector is already in the bottum position of the grid move it to the top
 		break;
 	case 1:
 		if (xLoc > 0)
-			xLoc--;
+			xLoc--;// selector move left
 		else
-			xLoc = 7;
+			xLoc = 7;//  if selector is already in the most left position of the grid move it to the most right position
 		break;
 	case 2:
 		if (yLoc > 0)
-			yLoc--;
+			yLoc--;// selector move up
 		else
-			yLoc = 4;
+			yLoc = 4;// if selector is already in the top position of the grid move it to the bottum
 		break;
 	case 3:
 		if (xLoc < MAP_WIDTH - 1)
-			xLoc++;
+			xLoc++;// selector move right
 		else
-			xLoc = 0;
+			xLoc = 0;//  if selector is already in the most right position of the grid move it to the most left postion
 		break;
 	case 4:
 		if (xLocs < 3)
-			xLocs++;
+			xLocs++;// shop selector move right
 		else
 		{
-			xLocs = 0;
+			xLocs = 0; if //shop selector is already in the most right position of the grid move it to the most left postion
 		}
 
 		break;
 	case 5:
-		createPlant(map, xLoc, yLoc, xLocs + 1, &player);
+		createPlant(map, xLoc, yLoc, xLocs + 1, &player);// create a plant 
 		break;
 	case 6:
-		if (xLocs > 0)
+		if (xLocs > 0)// shop selector move left
 			xLocs--;
 		else
-			xLocs = 3;
+			xLocs = 3;//shop selector is already in the most left position of the grid move it to the most right postion
 		break;
 	}
 }
@@ -242,10 +243,12 @@ void button_rightshop(const struct device *dev, struct gpio_callback *cb, uint32
 
 void game()
 {
+	// initilize all the grids and arrays of the game
 	int err = mapinit(map);
 	err = mapRinit(mapR);
 	err = playerInit(&player);
 	bulletInit(bullet);
+	// initilize the variablees
 	xLoc = 0;
 	yLoc = 0;
 	xLocs = 0;
@@ -324,7 +327,6 @@ int main(void)
 			if (val[i] > 0 && buttonPressed[i] == 0)
 			{
 				buttonPressed[i] = 1;
-				// TODO voeg hier de functies toe die per knop aangeroepen worden want dit is rising edge
 				printk("button %d pressed %d\n", i, count);
 				if(!pause)
 				{

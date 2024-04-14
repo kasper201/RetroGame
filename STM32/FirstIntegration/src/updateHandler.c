@@ -2,12 +2,12 @@
 
 #include <stdlib.h>
 
-#define framerate 10
+#define framerate 20
 #define waverate 5
 uint8_t toCreate = 0;
 uint8_t count = 0;
 uint8_t count2 = 0;
-int count3 = 50;
+int count3 = 100;
 int count4 = 0;
 int mem = 0;
 int mem2 = 0;
@@ -326,16 +326,15 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
     //counters to count each frame
     count++;
     count2++;
-    count3++;
     count4++;
-    if (count3 >= (framerate * waverate) && toCreate == 0) // create wave every defined amount of frames 
-    //and if there are no more robots to create
-    {
+    if (toCreate == 0){ //and if there are no more robots to create 
+    count3++;
+    if(count3 >= (framerate * waverate)){// create wave every defined amount of frames 
         printk("wave created");
         createWave(map, player);
         count3 = 0;// set counter 3 to 0
     }
-
+    }
     if (count4 >= 40)// create robot every defined amount of frames
     {
         if (toCreate != 0) // check if there are still robots left to create
