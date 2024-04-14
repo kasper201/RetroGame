@@ -13,24 +13,6 @@ int mem = 0;
 int mem2 = 0;
 int l = 0;
 int r = 0;
-/**
- *
- * @param map
- * @param x
- * @param y
- * @return int 0 by default
- */
-int updatePlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, struct Bullet bullet[maxBullets])
-{
-
-    if (map[x][y].speed > 0)
-    {
-        // printk("hey ik was hier");
-        bulletCreate(bullet, x, y);
-    }
-    // if we decide its necessary for the game, reduce health or defence slowly here:
-    return 0;
-}
 
 /**
  *
@@ -57,23 +39,17 @@ int moveEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTHR
 
     if (mapR[x - 1][y].type != 0 || map[(x / 16)][y].type != 0) // if there is already something there don't move
     {
-        if (map[(x / 16)][y].type >= 1 && mapR[(x / 16)][y].type <= 4)
+        if (map[(x / 16)][y].type >= 1 && mapR[(x / 16)][y].type <= 4)//check for plant in plant grid
         {
-            // printk("\n");
-            // printk("enemy detected");
-            // printk("\n"); // if it's a plant
-            return -2;
+            return -2;// if a plant is detected return 2
         }
         else // if it's a robot
         {
-            // printk("\n");
-            // printk("robot detected");
-            // printk("\n");
-            return -3;
+            return -3; // if a robot is detected
         }
     }
 
-    if (mapR[x][y].wavesNotMoved == 10 - mapR[x][y].speed) // TODO: fix that this is compatible with Jasper/Wouter's code for the FPGA
+    if (mapR[x][y].wavesNotMoved == 10 - mapR[x][y].speed) // check if robot waited long enough if yes move robot
     {
 
         mapR[x - 1][y] = mapR[x][y];
@@ -85,7 +61,7 @@ int moveEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTHR
         mapR[x][y].type = 0;
         mapR[x][y].wavesNotMoved = 0;
     }
-    else
+    else// if not add 1 to wait timer
     {
         mapR[x][y].wavesNotMoved++;
     }
@@ -93,8 +69,8 @@ int moveEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTHR
     
     if (player->health <= 0) // if all the hearts have been lost deadscreen or menu will show
     {
-        deadscreen(player);
-        toCreate = 0;
+        deadscreen(player);// starts a new game
+        toCreate = 0;// make sure there are no robots left to create in the next game
     }
     return 0;
 }
@@ -115,10 +91,10 @@ int updateEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDT
 
     if (val == -2)
     {
-        if (map[temp][y].type == 4)
+        if (map[temp][y].type == 4)// if the robots touch a pinaple it will explode 
         {
-            boomboom(map, mapR, temp, y);
-            map[temp][y].health = 0;
+            boomboom(map, mapR, temp, y);// function that removes all the robots in the area
+            map[temp][y].health = 0;// remove the pinaple that exploded
             map[temp][y].damage = 0;
             map[temp][y].defense = 0;
             map[temp][y].speed = 0;
@@ -126,11 +102,9 @@ int updateEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDT
         }
         else if (map[temp][y].health > 0)
         {
-            // printk("\n\ni got hit\n\n");
-            map[temp][y].health -= 1;
-            // printk("\nhp after hit:%d\n", map[temp][y].health);
+            map[temp][y].health -= 1;// remove 1 hp from the plant every frame
         }
-        if (map[temp][y].health == 0)
+        if (map[temp][y].health == 0)// if health is 0 remove the plant
         {
             map[temp][y].health = 0;
             map[temp][y].damage = 0;
@@ -143,8 +117,6 @@ int updateEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDT
     {
         // do nothing
     }
-    // TODO: implement updateEnemy
-    // update enemy
     return 0;
 }
 
@@ -163,7 +135,7 @@ void getGenInfo(uint8_t *health, uint8_t *damage, uint8_t *defense, uint8_t *spe
 {
     switch (type)
     {
-    case 1: // zonnebloem
+    case 1: // sunflower
         *health = 40;
         *damage = 0;
         *defense = 0;
@@ -220,27 +192,24 @@ void getGenInfo(uint8_t *health, uint8_t *damage, uint8_t *defense, uint8_t *spe
 int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uint8_t type, struct Player *player)
 {
 
-    //printk("called met waardes x:%d y:%d type:%d\n", x, y, type);
-    // error checking
-    if (map[x][y].type != 0)
-    {
-        // printk("error 1");
-        return 1;
-    }
-    // if (type < 1 || type > 4)
-    //   return 2;
 
+
+// if you dont want to overwrite plants this code could be used
+//    if (map[x][y].type != 0)
+//    {
+//        return 1;// if there is already a plant at this location
+//    }
+
+    // error checking
     if (x < 0 || x >= MAP_WIDTH || y < 0 || y >= MAP_HEIGHT)
     {
-        // printk("error 2");
-        return 3;
+        return 3;// return 3 if not in range
     }
     if (type > 0 && type < 5)
     {
-        // printk("print that money: %d", player->money);
         switch (type)
         {
-        case 1: // bloem plant
+        case 1: // sunflower
 
             if (player->money >= 50)
             {
@@ -248,8 +217,7 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
             }
             else
             {
-                // printk("error 3");
-                return 4;
+                return 4;// return 4 if not enough money
             }
             break;
         case 2: // shooter plant
@@ -260,8 +228,7 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
             }
             else
             {
-                // printk("error 3");
-                return 4;
+                return 4;// return 4 if not enough money
             }
             break;
         case 3: // blocking plant
@@ -272,7 +239,7 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
             }
             else
             {
-                return 4;
+                return 4;// return 4 if not enough money
             }
             break;
         case 4: // exploding plant
@@ -282,17 +249,15 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
             }
             else
             {
-                return 4;
+                return 4;// return 4 if not enough money
             }
             break;
         }
     }
     // create plant
-    uint8_t health, damage, defense, speed;
-    getGenInfo(&health, &damage, &defense, &speed, type);
-    // printk("info met waardes hp:%d dps:%d type:%d\n", health, damage, type);
-    //  TODO: money check here or earlier
-    map[x][y].health = health;
+    uint8_t health, damage, defense, speed;// create temps for each value
+    getGenInfo(&health, &damage, &defense, &speed, type);// fill the temps with the plant u want
+    map[x][y].health = health;// place the temps in the grid
     map[x][y].damage = damage;
     map[x][y].defense = defense;
     map[x][y].speed = speed;
@@ -314,29 +279,19 @@ int createRobot(struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR], uint8_t y, uint8_t ty
     // error checking
     if (type < 5 || type > 7)
     {
-        // printk("error 1");
-        return 2;
+        return 2;// if type is not a robot returh 2
     }
     if (mapR[127][y].type != 0)
     {
-
-        // printk("error 2");
-        // printk("%d", mapR[MAP_WIDTHR - 1][y].type);
-        return 1;
+        return 1;// if grid is already taken return 1
     }
     if (y < 0 || y >= MAP_HEIGHTR)
     {
-        // printk("error 3");
         return 3;
     }
-    // create robot
-    // printk("create\n");
-    // printk("%d", type);
-    uint8_t health, damage, defense, speed;
-    getGenInfo(&health, &damage, &defense, &speed, type);
-    // printk("info met waardes hp:%d dps:%d type:%d\n", health, damage, type);
-    //  TODO: money check here or earlier
-    mapR[x][y].health = health;
+    uint8_t health, damage, defense, speed;// create temps for each value
+    getGenInfo(&health, &damage, &defense, &speed, type);// fill the temps with the robot
+    mapR[x][y].health = health;// place the temps in the grid
     mapR[x][y].damage = damage;
     mapR[x][y].defense = defense;
     mapR[x][y].speed = speed;
@@ -352,18 +307,10 @@ int createRobot(struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR], uint8_t y, uint8_t ty
  */
 int createWave(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player *player)
 {
-    player->wave++;
-
-    int constant = 4;
-    // printk("%d\n", player->wave);
-    toCreate = (player->wave) * constant;
-
-    // printk("%d", player->money);
-    player->money += 100;
-    // printk("\n");
-    // printk("money: %d", player->money);
-    // printk("robots to go:%d", toCreate);
-    // printk("\n");
+    player->wave++;// add wave to player
+    int constant = 2;// each wave the amount of robots increases by 2
+    toCreate = (player->wave) * constant;// to create is the amount of robots created each game
+    player->money += 100;// add 100 dollar to the player every wave
     return 0;
 }
 
@@ -376,38 +323,34 @@ int createWave(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct Player *player)
 int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR], struct Player *player, struct Bullet bullet[maxBullets], int frame)
 {
     printf("to create: %d",toCreate);
+    //counters to count each frame
     count++;
     count2++;
     count3++;
     count4++;
-    // printk("%d\n", (framerate * waverate));
-    // printk("%d", count3);
-    if (count3 >= (framerate * waverate) && toCreate == 0) // create wave every defined amount of frames
+    if (count3 >= (framerate * waverate) && toCreate == 0) // create wave every defined amount of frames 
+    //and if there are no more robots to create
     {
         printk("wave created");
         createWave(map, player);
-        count3 = 0;
+        count3 = 0;// set counter 3 to 0
     }
-    // printk("\ntocreat is so groot:%d\n", toCreate);
-    // printk("\n het is wave: %d\n", player->wave);
-    if (count4 >= 40)
+
+    if (count4 >= 40)// create robot every defined amount of frames
     {
-        if (toCreate != 0) // spawn robots
+        if (toCreate != 0) // check if there are still robots left to create
         {
 
-            // random type
-            l = rand() % 5;
-            r = rand() % 3 + 5;
-            while (mem == l || mem2 == l)
+            
+            l = rand() % 5;//random lane
+            r = rand() % 3 + 5;// random type
+            while (mem == l || mem2 == l)// if the robot is spawned on one of the last 2 lanes randomize again
             {
                 l = rand() % 5;
-                // printk("\n");
                 r = rand() % 3 + 5;
-                // random lane
+
             }
-            // printk("lane: %d type: %d\n", l, r);
-            createRobot(mapR, l, r, player);
-            // printk("called");
+            createRobot(mapR, l, r, player);// create a robot with these random values
             toCreate--;
             mem2 = mem;
             mem = l;
@@ -415,23 +358,23 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
         }
     }
 
-    if (count >= 150)
+    if (count >= 150) //update shooter plant every defined amount of frames
     {
         for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
         {
             for (int y = 0; y < MAP_HEIGHT; y++)
             {
 
-                if (map[x][y].type >= 1 && map[x][y].type == 2)
+                if (map[x][y].type == 2)// if the plant is the correct type create a bullet
                 {
-                    // printk("print\n");
-                    updatePlant(map, x, y, bullet);
+                     bulletCreate(bullet, x, y);
                 }
             }
         }
         count = 0;
     }
-    if (count2 >= 20)
+
+    if (count2 >= 50)//add 10 for every sunflower every defined amount of frames
     {
         for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
         {
@@ -441,51 +384,24 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
                 if (map[x][y].type >= 1 && map[x][y].type == 1)
                 {
                     player->money += 10;
-                    // printk("\ngeld na update\n%d", player->money);
                 }
             }
         }
         count2 = 0;
     }
-
-    for (int x = 0; x < MAP_WIDTHR; x++) // iterate over the map and update the plants and enemies
+// update all robots every frame
+    for (int x = 0; x < MAP_WIDTHR; x++) 
     {
         for (int y = 0; y < MAP_HEIGHTR; y++)
         {
             if (mapR[x][y].type >= 5)
             {
                 int vall = updateEnemy(map, mapR, x, y, player, frame);
-                // printk("update\n");
             }
         }
     }
-    /*
-    for (int y = 0; y < MAP_HEIGHT; y++)
-    {
-        for (int x = 0; x < MAP_WIDTH; x++)
-        {
-            printk("%d hp:%d[%d][%d]  ", map[x][y].type, map[x][y].health, x, y);
-            if (x == 7)
-                printk("\n");
-        }
-    }
-    for (int y = 0; y < MAP_HEIGHTR; y++)
-    {
-        for (int x = 0; x < MAP_WIDTHR; x++)
-        {
-            printk("%d  ", mapR[x][y].type, x, y);
-            if (x == 127)
-            {
-                printk("\n");
-            }
-        }
-    }
-    for (int i = 0; i < maxBullets; i++)
-    {
-        printk("%d. x:%d y:%d ", i, bullet[i].x, bullet[i].y);
-    }*/
 
-    bulletMove(bullet);
-    bulletDetect(bullet, mapR, player);
+    bulletMove(bullet);// update bullet every frame
+    bulletDetect(bullet, mapR, player);// move all bullets every frame
     return 0;
 }

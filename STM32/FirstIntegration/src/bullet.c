@@ -6,12 +6,6 @@
 
 int bulletIndex = 0;
 
-/**
- * @brief initialize the bullet
- * @param bullet
- * @param x
- * @param y
- */
 
 /**
  * @brief create the bullet
@@ -22,16 +16,16 @@ int bulletIndex = 0;
 void bulletCreate(struct Bullet bullet[maxBullets], int x, int y)
 {
 	int temp;
-	temp = x * 16 + 12;
-	for (int i = 0; i < maxBullets; i++) {
+	temp = x * 16 + 12;// make sure that the bullet spawns on the right x location
+	for (int i = 0; i < maxBullets; i++) {// check for empty slot in the bullet array
 		if (bullet[i].y == 6) {
+			// fill the slot with the location of the shooter plant
 			bullet[i].x = temp;
 			bullet[i].y = y;
-			printk("shoot my shot");
 			return;
 		}
 	}
-	printk("bullets Full");
+	// if bullet array is full return without doing anything
 	return;
 }
 
@@ -42,10 +36,9 @@ void bulletCreate(struct Bullet bullet[maxBullets], int x, int y)
 void bulletMove(struct Bullet bullet[maxBullets])
 {
 	for (int i = 0; i < maxBullets; i++) { // move the bullet
-		if (bullet[i].y !=
-		    6) { // if the bullet space is already in use move, otherwise do nothing
+		if (bullet[i].y !=6) { //if slot in array is within the grid move the bullet
 			bullet[i].x++;
-			if (bullet[i].x == 127) {
+			if (bullet[i].x == 127) {// if the bullet is out of range remove the bullet
 				bullet[i].x = 0;
 				bullet[i].y = 6;
 			}
@@ -61,25 +54,11 @@ void bulletMove(struct Bullet bullet[maxBullets])
 void bulletDetect(struct Bullet bullet[maxBullets], struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR], struct Player *player)
 {
 	for (int i = 0; i < maxBullets; i++) {
-		if (bullet[i].y < 5) {
+		if (bullet[i].y < 5) {// look the bullet
 			if (mapR[bullet[i].x][bullet[i].y].type > 0) {
 
-				mapR[bullet[i].x][bullet[i].y].health -= 10;
-				printk("\n");
-				printk("\n");
-				printk("robot health: %d", mapR[bullet[i].x][bullet[i].y].health);
-				printk("\n");
-				printk("\n");
-				// TODO: balance the damage
-				// remove the bullet from the map by setting its position to -1
+				mapR[bullet[i].x][bullet[i].y].health -= 10;// remove hp if bullet hits a robot
 
-				printk("\n");
-				printk("\n");
-				printk("hit!!! %d bullet: %d x:%d y:%d",
-				       mapR[bullet[i].x][bullet[i].y].type, i, bullet[i].x,
-				       bullet[i].y);
-				printk("\n");
-				printk("\n");
 				if (mapR[bullet[i].x][bullet[i].y].health == 0) {
 					printk("remove robot ");
 					mapR[bullet[i].x][bullet[i].y].damage = 0;
@@ -99,24 +78,9 @@ void bulletDetect(struct Bullet bullet[maxBullets], struct MapR mapR[MAP_WIDTHR]
 			}
 			if (mapR[bullet[i].x - 1][bullet[i].y].type > 0) {
 
-				mapR[bullet[i].x - 1][bullet[i].y].health -=10; // TODO: balance the damage
-				//printk("\n");
-				//printk("\n");
-				//printk("robot health: %d",
-				//       mapR[bullet[i].x - 1][bullet[i].y].health);
-				//printk("\n");
-				//printk("\n");
-				// remove the bullet from the map by setting its position to -1
+				mapR[bullet[i].x - 1][bullet[i].y].health -=10; 
 
-				//printk("\n");
-				//printk("\n");
-				//printk("hit!!! %d bullet: %d x:%d y:%d",
-				//       mapR[bullet[i].x - 1][bullet[i].y].type, i, bullet[i].x - 1,
-				//       bullet[i].y);
-				//printk("\n");
-				//printk("\n");
 				if (mapR[bullet[i].x - 1][bullet[i].y].health == 0) {
-				//	printk("remove robot ");
 					mapR[bullet[i].x - 1][bullet[i].y].damage = 0;
 					mapR[bullet[i].x - 1][bullet[i].y].defense = 0;
 					mapR[bullet[i].x - 1][bullet[i].y].speed = 0;
@@ -129,20 +93,7 @@ void bulletDetect(struct Bullet bullet[maxBullets], struct MapR mapR[MAP_WIDTHR]
 	}
 }
 
-/**
- * @brief show the bullet
- * @param bullet
- * @return int 0 by default, 1 if there are no bullets
- */
-int bulletShow(struct Bullet bullet[maxBullets])
-{
-	for (int i = 0; i < maxBullets; i++) {
-		if (bullet[i].x != (uint8_t)-1) { // if the bullet space is already in use
-			return 0;
-		}
-	}
-	return 1;
-}
+
 
 void boomboom(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR], uint8_t temp, uint8_t y)
 {
