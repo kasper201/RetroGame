@@ -93,6 +93,15 @@ To change the game logic one can chang ethe amount of seconds one action takes. 
 
 ![Example game balacing](image-6.png)
 
+## Structure c en h files
+- main.h            contains all structs relevant for bullets, plants, robots.
+- main.c            contains send_out list, trigger of gameUpdate, pause screen, cheat activate, hardware setups (buttons and uart).
+- menu.c            containts deadscreen().
+- updateHandler.c   contains all functions relevant during gameplay (updating plants, robots and bullets).
+- uart.c            contains the function for reading uart and sending out bullets, robots and plants to the FPGA.
+- mainGame.c        contains a few initializers.
+- bullet.c          contains damage handling for the bullets and the pineapple.
+
 ## Update Sprites
 
 Updating the sprites is done by replacing the .coe files in the vivado project. 
