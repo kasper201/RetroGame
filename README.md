@@ -140,7 +140,7 @@ The shop is controlled by the 3 buttons on the left. left button makes the selec
 
 the four buttons on the right are for the screen selector up, down, left, right. moves the yellow square in the green field.
 
-Evil robots will come from the right side. they will move to the left. If 4 four robots reach the right side.
+Evil robots will come from the right side. they will move to the left. If 4 four robots reach the left side you die and have to restart.
 
 By placing plants you defend the against the robots. If you ever feel like you misplaced a plant you can just place an other plant on top of the old plant rewriting that spot. The objective is to survive as many waves of robots as possible.
 
