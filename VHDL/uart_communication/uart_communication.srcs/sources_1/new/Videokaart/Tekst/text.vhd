@@ -124,18 +124,18 @@ begin
         
     Highscore_counter: entity work.Pixel_On_Text
         generic map (
-        	textLength => 11
+        	textLength => 10
         )
         port map(
         	clk => clk,
-        	displayText => "Highscore: ",
+        	displayText => "HIGHSCORE:",
         	position => (660, 80), -- text position (top left)
         	horzCoord => to_integer(UNSIGNED(h)),
         	vertCoord => to_integer(UNSIGNED(v)),
         	pixel => displayNr(5) -- result
         );
         
-    waveNumber : entity work.Pixel_On_Text
+    HighscoreNumber : entity work.Pixel_On_Text
         generic map (
         	textLength => 4
         )
@@ -181,7 +181,7 @@ begin
         port map(
         	clk => clk,
         	displayText => "made by THE b0is: Wouter , Flowrizz, Kapstok & Japstok",
-        	position => (330, 500), -- text position (top left)
+        	position => (330, 497), -- text position (top left)
         	horzCoord => to_integer(UNSIGNED(h)),
         	vertCoord => to_integer(UNSIGNED(v)),
         	pixel => displayNr(10) -- result
@@ -200,6 +200,9 @@ begin
                 display <= '1';
             end if;
         end if;
+        if (displayNr(6 downto 5) > "000000000")then
+                display <= '1';
+         end if;
     end process;
    
     

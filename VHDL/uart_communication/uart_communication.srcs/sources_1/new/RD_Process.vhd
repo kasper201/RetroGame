@@ -40,6 +40,7 @@ entity RD_Process is
            switch : out std_logic;
            title : out std_logic;
            isNr : out STD_LOGIC_VECTOR (3 downto 0);
+           highScore : out STD_LOGIC_VECTOR (3 downto 0);
            isMoney : out STD_LOGIC;
            nextNr : out STD_LOGIC;
            o_update : out STD_LOGIC;
@@ -50,7 +51,7 @@ end RD_Process;
 
 architecture Behavioral of RD_Process is
 
-signal Number : std_logic_vector(3 downto 0);
+signal Number, HogeScore : std_logic_vector(3 downto 0);
 signal money, next_nr, switchS, titleS : std_logic;
 
 begin
@@ -62,7 +63,7 @@ begin
     variable plant_id, plant_x, plant_y : integer range 0 to 255 := 0;
     variable robot_id, robot_y, robot_x : integer range 0 to 255 := 0;
     variable shop_selector, garden_selector_x, garden_selector_y : integer range 0 to 255 := 0;
-    variable wave : integer := 0;
+    variable wave, hoogsteScore : integer := 0;
     variable byte, counter : integer := 0;
     variable id, x, y : integer;
     
@@ -135,6 +136,9 @@ begin
                             counter := 0;
                         when "0101" =>      --Wave
                             wave := to_integer(unsigned(i_R_byte));
+                            if wave > hoogsteScore then
+                                hoogsteScore := wave;
+                            end if;
                             counter := 0;
                         when others =>
                     end case;
@@ -170,21 +174,25 @@ begin
                 geldB := geld;
                 if counter = 0 then
                     Number <= std_logic_vector(to_unsigned((geldB mod 10000) / 1000, 4));
+                    HogeScore <= std_logic_vector(to_unsigned((hoogsteScore mod 10000) / 1000, 4));
                     next_nr <= '0';
                 elsif counter = 1 then
                     next_nr <= '1';
                 elsif counter = 2 then
                     Number <= std_logic_vector(to_unsigned((geldB mod 1000) / 100, 4));
+                    HogeScore <= std_logic_vector(to_unsigned((hoogsteScore mod 1000) / 100, 4));
                     next_nr <= '0';
                 elsif counter = 3 then
                     next_nr <= '1';
                 elsif counter = 4 then
                     Number <= std_logic_vector(to_unsigned((geldB mod 100) / 10, 4));
+                    HogeScore <= std_logic_vector(to_unsigned((hoogsteScore mod 100) / 10, 4));
                     next_nr <= '0';
                 elsif counter = 5 then
                     next_nr <= '1';
                 elsif counter = 6 then
                     Number <= std_logic_vector(to_unsigned(geldB mod 10, 4));
+                    HogeScore <= std_logic_vector(to_unsigned(hoogsteScore mod 10, 4));
                     next_nr <= '0';
                 elsif counter = 7 then
                     next_nr <= '1';
@@ -197,21 +205,25 @@ begin
                 money <= '0';
                 if counter = 0 then
                     Number <= std_logic_vector(to_unsigned((wave mod 10000) / 1000, 4));
+                    HogeScore <= std_logic_vector(to_unsigned((hoogsteScore mod 10000) / 1000, 4));
                     next_nr <= '0';
                 elsif counter = 1 then
                     next_nr <= '1';
                 elsif counter = 2 then
                     Number <= std_logic_vector(to_unsigned((wave mod 1000) / 100, 4));
+                    HogeScore <= std_logic_vector(to_unsigned((hoogsteScore mod 1000) / 100, 4));
                     next_nr <= '0';
                 elsif counter = 3 then
                     next_nr <= '1';
                 elsif counter = 4 then
                     Number <= std_logic_vector(to_unsigned((wave mod 100) / 10, 4));
+                    HogeScore <= std_logic_vector(to_unsigned((hoogsteScore mod 100) / 10, 4));
                     next_nr <= '0';
                 elsif counter = 5 then
                     next_nr <= '1';
                 elsif counter = 6 then
                     Number <= std_logic_vector(to_unsigned(wave mod 10, 4));
+                    HogeScore <= std_logic_vector(to_unsigned(hoogsteScore mod 10, 4));
                     next_nr <= '0';
                 elsif counter = 7 then
                     next_nr <= '1';
@@ -283,6 +295,7 @@ begin
         o_x <= std_logic_vector(to_unsigned(x, 7));
         
         isNr <= Number;
+        highScore <= HogeScore;
         isMoney <= money;
         nextNr <= next_nr;
         switch <= switchS;

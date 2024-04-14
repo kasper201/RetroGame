@@ -45,6 +45,7 @@ entity main is
            switch : out std_logic;
            title : out std_logic;
            isNr : out STD_LOGIC_VECTOR (3 downto 0);
+           highScore : out STD_LOGIC_VECTOR (3 downto 0);
            isMoney : out STD_LOGIC;
            nextNr : out STD_LOGIC;
            o_LED_Status : out STD_LOGIC;
@@ -96,6 +97,7 @@ component RD_Process is
            switch : out std_logic;
            title : out std_logic;
            isNr : out STD_LOGIC_VECTOR (3 downto 0);
+           highScore : out STD_LOGIC_VECTOR (3 downto 0);
            isMoney : out STD_LOGIC;
            nextNr : out STD_LOGIC;
            o_update : out STD_LOGIC;
@@ -182,6 +184,7 @@ begin
         switch              => switch,
         title               => title,
         isNr                => isNr,
+        highScore           => highScore,
         isMoney             => isMoney,
         nextNr              => nextNr,
         o_update            => update_request,

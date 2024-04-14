@@ -16,6 +16,7 @@ entity main2 is
        locationSelect : in STD_LOGIC;
        mode : in STD_LOGIC;
        isNr : in STD_LOGIC_VECTOR (3 downto 0);
+       highScore : in STD_LOGIC_VECTOR (3 downto 0);
        isMoney : in STD_LOGIC;
        nextNr : in STD_LOGIC;
        speedSel : in STD_LOGIC_VECTOR(3 downto 0);
@@ -111,6 +112,7 @@ component textComp is
             mode : in STD_LOGIC;
             aReset : in STD_LOGIC;
             isNr : in STD_LOGIC_VECTOR (3 downto 0);
+            highScore : in STD_LOGIC_VECTOR (3 downto 0);
             isMoney : in STD_LOGIC;
             nextNr : in STD_LOGIC;
             h : in STD_LOGIC_VECTOR (9 downto 0);
@@ -253,6 +255,7 @@ G4 : VGA port map(
             mode => mode,
             aReset => aReset,
             isNr => isNr,
+            highScore => highScore,
             isMoney => isMoney,
             nextNr => nextNr,
             h => hQ,
