@@ -49,7 +49,7 @@ struct Bullet
 struct Player
 {
     uint8_t wave;
-    uint8_t health;
+    uint16_t health;
     uint16_t money;
 };
 

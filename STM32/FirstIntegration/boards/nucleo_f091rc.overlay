@@ -45,7 +45,7 @@
         };
         button4: button_4 {
             gpios = <&gpioc 7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;// Example of using GPIO_ACTIVE_LOW flag
-            label = "Button 5";//shop left
+            label = "Button 5";//shop right
         };
         button5: button_5 {
             gpios = <&gpiob 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;// Example of using GPIO_ACTIVE_LOW flag
@@ -53,7 +53,7 @@
         };
         button6: button_6 {
             gpios = <&gpiob 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;// Example of using GPIO_ACTIVE_LOW flag
-            label = "Button 7";//shop right
+            label = "Button 7";//shop left
         };
     };
 };

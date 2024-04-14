@@ -40,6 +40,7 @@ static struct k_timer my_timer;
 bool generateFrame = false;
 bool pause;
 bool pause2;
+bool cheats;
 int byte;
 unsigned char sendByte[2];
 unsigned char sendByteC;
@@ -142,6 +143,10 @@ void timer_handler(struct k_timer *timer_id)
 
 		// Geld
 		geld = player.money;
+		if(cheats)
+		{
+			geld = 9999;
+		}
 		sendByte[0] = geld % 253;
 		sendByte[1] = geld / 253;
 		print_uart(sendByte, 2);
@@ -245,6 +250,7 @@ void game()
 	yLoc = 0;
 	xLocs = 0;
 	pause2 = true;
+	cheats = false;
 }
 
 int main(void)
@@ -274,13 +280,13 @@ int main(void)
 	printk("Set up button at %s pin %d\n", button##index.port->name, button##index.pin);
 
 	// Configure each button
-	CONFIGURE_BUTTON(1, button_left)
-	CONFIGURE_BUTTON(2, button_up)
-	CONFIGURE_BUTTON(3, button_right)
-	CONFIGURE_BUTTON(4, button_down)
-	CONFIGURE_BUTTON(5, button_leftshop)
+	CONFIGURE_BUTTON(1, button_down)
+	CONFIGURE_BUTTON(2, button_left)
+	CONFIGURE_BUTTON(3, button_up)
+	CONFIGURE_BUTTON(4, button_right)
+	CONFIGURE_BUTTON(5, button_rightshop)
 	CONFIGURE_BUTTON(6, button_comfurm)
-	CONFIGURE_BUTTON(7, button_rightshop)
+	CONFIGURE_BUTTON(7, button_leftshop)
 
 	const struct gpio_dt_spec *buttons[NUM_BUTTONS] = {
 		&button1, &button2, &button3, &button4, &button5, &button6, &button7};
@@ -326,18 +332,27 @@ int main(void)
 				}
 				count++;
 				released[i] = 0;
-
-				pause = false;
+				if( val[0] > 0 && val[1] <= 0 && val[2] > 0 && val[3] > 0 && val[4] <= 0 && val[5] <= 0 && val[6] > 0)
+				{
+					cheats = !cheats;
+					if(!cheats)
+					{
+						game();
+					}
+				}
 			}
 			else if (val[i] > 0)
 			{
-
 				buttonPressed[i] = buttonPressed[i];
 			}
 			else
 			{
 				if (released[i] > 2)
 				{
+					if(buttonPressed[i] > 0)
+					{
+						pause = false;
+					}
 					buttonPressed[i] = 0;
 					released[i] = 5;
 				}
@@ -350,6 +365,11 @@ int main(void)
 
 		if (generateFrame == true && pause == false)
 		{
+			if(cheats)
+			{
+				player.money = 9999;
+				player.health = 20000;
+			}
 			updateGame(map, mapR, &player, bullet, frame);
 			generateFrame = false;
 		}

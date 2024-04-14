@@ -37,6 +37,7 @@ entity textComp is
            mode : in STD_LOGIC := '0';
            aReset : in STD_LOGIC;
            isNr : in STD_LOGIC_VECTOR (3 downto 0);
+           highScore : in STD_LOGIC_VECTOR (3 downto 0);
            isMoney : in STD_LOGIC;
            nextNr : in STD_LOGIC;
            h : in STD_LOGIC_VECTOR (9 downto 0);
@@ -47,8 +48,8 @@ end textComp;
 architecture Behavioral of textComp is
 
 signal displayNr : STD_LOGIC_VECTOR(10 downto 0) := (others => '0');
-signal moneyNr, waveNr : string(3 downto 0) := "9850";
-signal tempStr : string(0 downto 0);
+signal moneyNr, waveNr, highScoreNr : string(3 downto 0) := "9850";
+signal tempStr, tmpHigh : string(0 downto 0);
 signal cnt : integer := 0;
 
 begin
@@ -71,15 +72,15 @@ begin
     
     money : entity work.Pixel_On_Text
         generic map (
-        	textLength => 7
+        	textLength => 6
         )
         port map(
         	clk => clk,
-        	displayText => "COINS: ",
-        	position => (700, 40), -- text position (top left)
+        	displayText => "COINS:",
+        	position => (692, 40), -- text position (top left)
         	horzCoord => to_integer(UNSIGNED(h)),
         	vertCoord => to_integer(UNSIGNED(v)),
-        	pixel => displayNr(4) -- result
+        	pixel => displayNr(1) -- result
         );
         
     moneyNumber : entity work.Pixel_On_Text
@@ -92,23 +93,23 @@ begin
         	position => (750, 40), -- text position (top left)
         	horzCoord => to_integer(UNSIGNED(h)),
         	vertCoord => to_integer(UNSIGNED(v)),
-        	pixel => displayNr(5) -- result
+        	pixel => displayNr(2) -- result
         );
     
     wave: entity work.Pixel_On_Text
         generic map (
-        	textLength => 6
+        	textLength => 5
         )
         port map(
         	clk => clk,
-        	displayText => "WAVE: ",
+        	displayText => "WAVE:",
         	position => (700, 60), -- text position (top left)
         	horzCoord => to_integer(UNSIGNED(h)),
         	vertCoord => to_integer(UNSIGNED(v)),
-        	pixel => displayNr(6) -- result
+        	pixel => displayNr(3) -- result
         );
         
-    waveNumber : entity work.Pixel_On_Text
+    waveCntNumber : entity work.Pixel_On_Text
         generic map (
         	textLength => 4
         )
@@ -118,7 +119,33 @@ begin
         	position => (750, 60), -- text position (top left)
         	horzCoord => to_integer(UNSIGNED(h)),
         	vertCoord => to_integer(UNSIGNED(v)),
-        	pixel => displayNr(7) -- result
+        	pixel => displayNr(4) -- result
+        );
+        
+    Highscore_counter: entity work.Pixel_On_Text
+        generic map (
+        	textLength => 11
+        )
+        port map(
+        	clk => clk,
+        	displayText => "Highscore: ",
+        	position => (660, 80), -- text position (top left)
+        	horzCoord => to_integer(UNSIGNED(h)),
+        	vertCoord => to_integer(UNSIGNED(v)),
+        	pixel => displayNr(5) -- result
+        );
+        
+    waveNumber : entity work.Pixel_On_Text
+        generic map (
+        	textLength => 4
+        )
+        port map(
+        	clk => clk,
+        	displayText => highScoreNr,
+        	position => (750, 80), -- text position (top left)
+        	horzCoord => to_integer(UNSIGNED(h)),
+        	vertCoord => to_integer(UNSIGNED(v)),
+        	pixel => displayNr(6) -- result
         );
         
     title : entity work.Pixel_On_Text
@@ -187,6 +214,18 @@ begin
                 "7" when "0111",
                 "8" when "1000",
                 "9" when others;
+                
+  with highScore select
+    tmpHigh <=  "0" when "0000",
+                "1" when "0001",
+                "2" when "0010",
+                "3" when "0011",
+                "4" when "0100",
+                "5" when "0101",
+                "6" when "0110",
+                "7" when "0111",
+                "8" when "1000",
+                "9" when others;
   
   process (aReset, nextNr)
   begin  
@@ -194,6 +233,7 @@ begin
         moneyNr <= "0000";
         waveNr <= "0000";    
     elsif(rising_edge(nextNr)) then
+        highScoreNr <= highScoreNr(2 downto 0) & tmpHigh(0 downto 0);
         if(isMoney = '1')  then
             moneyNr <= moneyNr(2 downto 0) & tempStr(0 downto 0); 
         else
