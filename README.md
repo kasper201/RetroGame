@@ -30,6 +30,12 @@ The buttons are connected to specific coloured lines to make troubleshooting sim
 - pink     = confirm shop
 - orange   = left shop
 
+
+## Electrical diagram and Pin-Out
+
+![electrical diagram](image-9.png)
+![Pin-Out FPGA](image-8.png)
+
 ## STM32
 
 If you are using an STM NUCLEO-F030R8 one can simply follow the [zephyr tutorial](https://docs.zephyrproject.org/latest/develop/getting_started/index.html#build-the-blinky-sample) but instead of `samples\basic\blinky` it should direct to the folder containing the cmake and build files for this project.
@@ -68,6 +74,13 @@ It is possible that when generating a bitstream results in an error. There are m
 2. "Constraint error" It is likely that you have accidentally renamed a variable in the main or constraints file or forgotten to add it to the constraints file.
 3. "Timing constraints error" You might have added timing constraints to which the device was not built. One should either try to fix these by delving into the code or remove the timing constraints from the constraints file.
 4. "Mismatched size ..." Match the size of the mismatched variables. Make sure to modify the correct variable since that has affect on how the program runs and how many variables you might have to change.
+
+### Block Diagram
+
+The following block diagrams are not UML compiant however they do depict the working of the FPGA clearly so that one can understand how the program works in general.
+
+- Top view GPU ![Top view GPU](image-10.png)
+- Middle view GPU ![Middle view GPU](image-11.png)
 
 ### Programming the FPGA with power off abilities 
 
