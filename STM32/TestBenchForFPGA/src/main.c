@@ -3,7 +3,7 @@
  * Copyright (c) 2020 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: Apache-2.0
- * 
+ *
  * Connect pin 2 to A14 and pin 8 to A15
  */
 
@@ -14,6 +14,7 @@
 #include <zephyr/sys/printk.h>
 #include <inttypes.h>
 #include <string.h>
+#include <zephyr/drivers/uart.h>
 
 #include "uart.h"
 #include "main.h"
@@ -76,83 +77,125 @@ int main(void)
 	gpio_add_callback(button.port, &button_cb_data);
 	printk("Set up button at %s pin %d\n", button.port->name, button.pin);
 
-	if (led.port && !gpio_is_ready_dt(&led))
-	{
-		printk("Error %d: LED device %s is not ready; ignoring it\n",
-			   ret, led.port->name);
-		led.port = NULL;
-	}
-	if (led.port)
-	{
-		ret = gpio_pin_configure_dt(&led, GPIO_OUTPUT);
-		if (ret != 0)
-		{
-			printk("Error %d: failed to configure LED device %s pin %d\n",
-				   ret, led.port->name, led.pin);
-			led.port = NULL;
-		}
-		else
-		{
-			printk("Set up LED at %s pin %d\n", led.port->name, led.pin);
-		}
-	}
+	//
+	//  Mijn stuk!!!
+	//
 
 	uartSetup();
-	int buttonPressed = 0;
-	int ledState = 0;
-	int ledActivated = 0;
-	char outToFpga;
 
+	// Variables
+	unsigned char sendByte[2];
+	struct bullet bullets[2];
+	struct plant plants[2];
+	struct robot robots[2];
+	int shopSelector = 2;
+	struct selector gardenSelector;
+
+	gardenSelector.x = 1;
+	gardenSelector.y = 2;
+
+	bullets[0].x = 2;
+	bullets[0].y = 1;
+
+	bullets[1].x = 3;
+	bullets[1].y = 2;
+
+	plants[0].x = 3;
+	plants[0].y = 2;
+	plants[0].id = 4;
+
+	plants[1].x = 2;
+	plants[1].y = 1;
+	plants[1].id = 3;
+
+	robots[0].x = 4;
+	robots[0].y = 2;
+	robots[0].id = 1;
+
+	robots[1].x = 2;
+	robots[1].y = 1;
+	robots[1].id = 3;
+
+	int byte;
+	unsigned char sendByteC;
+	unsigned char sendByteA[3];
 	printk("Start\n");
-	if (led.port)
+	while (1)
 	{
-		while (1)
+		// Read when button pressed 1 when released 0
+		int val = gpio_pin_get_dt(&button);
+
+		int input = checkFromFpga();
+		switch (input)
 		{
-			/* If we have an LED, match its state to the button's. */
-			int val = gpio_pin_get_dt(&button);
-
-			if (val >= 1 && buttonPressed <= 0)
+		case 0:
+			int geld = 300;
+			unsigned char tussenin = geld;
+			if( geld > 253)
 			{
-				if (ledState == 1)
-				{
-					ledState = 0;
-				}
-				else
-				{
-					ledState = 1;
-				}
-				buttonPressed = 1;
+				tussenin = tussenin + 3;
 			}
-			else if (val == 0 && buttonPressed >= 1)
-			{
-				buttonPressed = 0;
-			}
-
-			if (ledState == 1)
-			{
-				gpio_pin_set_dt(&led, 1);
-				if (ledActivated == 0)
-				{
-					outToFpga = 0x11;
-					print_uart(&outToFpga);
-					printk("Send 00010001\n");
-					ledActivated = 1;
-				}
-			}
-			else
-			{
-				gpio_pin_set_dt(&led, 0);
-				if (ledActivated == 1)
-				{
-					outToFpga = 0x88;
-					print_uart(&outToFpga);
-					printk("Send 10001000\n");
-					ledActivated = 0;
-				}
-			}
-
-			k_msleep(SLEEP_TIME_MS);
+			sendByte[0] = 0x11;
+			sendByte[1] = 0x44;
+			print_uart(sendByte);
+			printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
+			sendByte[0] = 0xff;
+			sendByte[1] = 0xfe;
+			print_uart(sendByte);
+			break;
+		case 1:
+			byte = robots[0].id * 16 + robots[0].y;
+			sendByteC = byte;
+			print_uart(&sendByteC);
+			printf("Send these byte: %d\n", sendByteC);
+			sendByte[0] = 0xff;
+			sendByte[1] = 0xfe;
+			print_uart(sendByte);
+			break;
+		case 2:
+			byte = (plants[0].id * 40) + (plants[0].x * 5) + plants[0].y;
+			sendByteC = byte;
+			print_uart(&sendByteC);
+			printf("Send these byte: %d\n", sendByteC);
+			sendByte[0] = 0xff;
+			sendByte[1] = 0xfe;
+			print_uart(sendByte);
+			break;
+		case 3:
+			int y1 = bullets[0].y;
+			int y2 = bullets[1].y;
+			int y = y1 * 16 + y2;
+			sendByteA[0] = y;
+			sendByteA[1] = bullets[0].x;
+			sendByteA[2] = bullets[1].x;
+			print_uart(sendByteA);
+			printf("Send these bytes: %d %d %d\n", sendByteA[0], sendByteA[1], sendByteA[2]);
+			sendByte[0] = 0xff;
+			sendByte[1] = 0xfe;
+			print_uart(sendByte);
+			break;
+		case 4:
+			sendByteC = 0x0a;
+			print_uart(&sendByteC);
+			printf("Send these bytes: %d\n", sendByteC);
+			sendByte[0] = 0xff;
+			sendByte[1] = 0xfe;
+			print_uart(sendByte);
+			break;
+		case 5:
+			byte = (shopSelector * 40) + (gardenSelector.x * 5) + gardenSelector.y;
+			sendByteC = byte;
+			print_uart(&sendByteC);
+			printf("Send these byte: %d\n", sendByteC);
+			sendByte[0] = 0xff;
+			sendByte[1] = 0xfe;
+			print_uart(sendByte);
+			break;
+		default:
+			break;
 		}
+
+		k_msleep(SLEEP_TIME_MS);
 	}
 	return 0;
 }

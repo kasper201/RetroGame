@@ -1,87 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1708904887">
-  <File Type="ROUTE-PWR" Name="main_power_routed.rpt"/>
-  <File Type="PA-TCL" Name="main.tcl"/>
-  <File Type="ROUTE-PWR-SUM" Name="main_power_summary_routed.pb"/>
-  <File Type="REPORTS-TCL" Name="main_reports.tcl"/>
-  <File Type="OPT-RQA-PB" Name="main_rqa_opted.pb"/>
-  <File Type="BITSTR-MMI" Name="main.mmi"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="main_methodology_drc_opted.rpt"/>
-  <File Type="INIT-TIMING" Name="main_timing_summary_init.rpt"/>
-  <File Type="OPT-TIMING" Name="main_timing_summary_opted.rpt"/>
-  <File Type="OPT-DCP" Name="main_opt.dcp"/>
-  <File Type="OPT-DRC" Name="main_drc_opted.rpt"/>
-  <File Type="OPT-HWDEF" Name="main.hwdef"/>
-  <File Type="PWROPT-DCP" Name="main_pwropt.dcp"/>
-  <File Type="PWROPT-DRC" Name="main_drc_pwropted.rpt"/>
-  <File Type="PWROPT-TIMING" Name="main_timing_summary_pwropted.rpt"/>
-  <File Type="PLACE-DCP" Name="main_placed.dcp"/>
-  <File Type="PLACE-IO" Name="main_io_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="main_clock_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL" Name="main_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="main_utilization_placed.pb"/>
-  <File Type="PLACE-CTRL" Name="main_control_sets_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="main_incremental_reuse_placed.rpt"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="main_incremental_reuse_pre_placed.rpt"/>
-  <File Type="BG-BIN" Name="main.bin"/>
-  <File Type="PLACE-TIMING" Name="main_timing_summary_placed.rpt"/>
-  <File Type="ROUTE-PWR-RPX" Name="main_power_routed.rpx"/>
-  <File Type="PLACE-RQA-PB" Name="main_rqa_placed.pb"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="main_postplace_pwropt.dcp"/>
-  <File Type="BITSTR-MSK" Name="main.msk"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="main_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="main_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="main_drc_physopted.rpt"/>
-  <File Type="BITSTR-RBT" Name="main.rbt"/>
-  <File Type="PHYSOPT-TIMING" Name="main_timing_summary_physopted.rpt"/>
-  <File Type="ROUTE-ERROR-DCP" Name="main_routed_error.dcp"/>
-  <File Type="ROUTE-DCP" Name="main_routed.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="main_routed_bb.dcp"/>
-  <File Type="ROUTE-DRC" Name="main_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-PB" Name="main_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="main_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="main_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="main_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="main_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-RQS-PB" Name="main_rqs_routed.pb"/>
-  <File Type="ROUTE-STATUS" Name="main_route_status.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="main_route_status.pb"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="main_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-TIMING-PB" Name="main_timing_summary_routed.pb"/>
-  <File Type="ROUTE-TIMING-RPX" Name="main_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-SIMILARITY" Name="main_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="main_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW" Name="main_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="main_bus_skew_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="main_bus_skew_routed.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="main_postroute_physopt.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="main_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="main_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="main_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="main_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="main_bus_skew_postroute_physopted.rpt"/>
-  <File Type="BG-BIT" Name="main.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="main_bus_skew_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="main_bus_skew_postroute_physopted.rpx"/>
-  <File Type="BITSTR-NKY" Name="main.nky"/>
-  <File Type="BITSTR-BMM" Name="main_bd.bmm"/>
-  <File Type="PDI-FILE" Name="main.pdi"/>
-  <File Type="BOOT-PDI-FILE" Name="main_boot.pdi"/>
-  <File Type="PL-PDI-FILE" Name="main_pld.pdi"/>
-  <File Type="RCFI_FILE" Name="main.rcfi"/>
-  <File Type="CFI_FILE" Name="main.cfi"/>
-  <File Type="RNPI_FILE" Name="main.rnpi"/>
-  <File Type="NPI_FILE" Name="main.npi"/>
-  <File Type="RBD_FILE" Name="main.rbd"/>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1713125024">
+  <File Type="ROUTE-PWR" Name="Top_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="Top.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="Top_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="Top_reports.tcl"/>
+  <File Type="OPT-RQA-PB" Name="Top_rqa_opted.pb"/>
+  <File Type="BITSTR-MMI" Name="Top.mmi"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="Top_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="Top_timing_summary_init.rpt"/>
+  <File Type="OPT-TIMING" Name="Top_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="Top_opt.dcp"/>
+  <File Type="OPT-DRC" Name="Top_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="Top.hwdef"/>
+  <File Type="PWROPT-DCP" Name="Top_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="Top_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="Top_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="Top_placed.dcp"/>
+  <File Type="PLACE-IO" Name="Top_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="Top_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="Top_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="Top_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="Top_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="Top_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="Top_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BIN" Name="Top.bin"/>
+  <File Type="PLACE-TIMING" Name="Top_timing_summary_placed.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="Top_power_routed.rpx"/>
+  <File Type="PLACE-RQA-PB" Name="Top_rqa_placed.pb"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="Top_postplace_pwropt.dcp"/>
+  <File Type="BITSTR-MSK" Name="Top.msk"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="Top_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="Top_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="Top_drc_physopted.rpt"/>
+  <File Type="BITSTR-RBT" Name="Top.rbt"/>
+  <File Type="PHYSOPT-TIMING" Name="Top_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="Top_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="Top_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="Top_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="Top_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="Top_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="Top_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="Top_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="Top_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="Top_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-RQS-PB" Name="Top_rqs_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="Top_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="Top_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="Top_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="Top_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="Top_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="Top_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="Top_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="Top_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="Top_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="Top_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="Top_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="Top_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="Top_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="Top_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="Top_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="Top_bus_skew_postroute_physopted.rpt"/>
+  <File Type="BG-BIT" Name="Top.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="Top_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="Top_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-NKY" Name="Top.nky"/>
+  <File Type="BITSTR-BMM" Name="Top_bd.bmm"/>
+  <File Type="PDI-FILE" Name="Top.pdi"/>
+  <File Type="BOOT-PDI-FILE" Name="Top_boot.pdi"/>
+  <File Type="PL-PDI-FILE" Name="Top_pld.pdi"/>
+  <File Type="RCFI_FILE" Name="Top.rcfi"/>
+  <File Type="CFI_FILE" Name="Top.cfi"/>
+  <File Type="RNPI_FILE" Name="Top.rnpi"/>
+  <File Type="NPI_FILE" Name="Top.npi"/>
+  <File Type="RBD_FILE" Name="Top.rbd"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="main.ltx"/>
-  <File Type="BITSTR-SYSDEF" Name="main.sysdef"/>
-  <File Type="BG-BGN" Name="main.bgn"/>
-  <File Type="BG-DRC" Name="main.drc"/>
-  <File Type="RDI-RDI" Name="main.vdi"/>
+  <File Type="BITSTR-LTX" Name="Top.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="Top.sysdef"/>
+  <File Type="BG-BGN" Name="Top.bgn"/>
+  <File Type="BG-DRC" Name="Top.drc"/>
+  <File Type="RDI-RDI" Name="Top.vdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="ROUTE-RQS" Name="main_routed.rqs"/>
-  <File Type="POSTROUTE-PHYSOPT-RQS" Name="main_postroute_physopted.rqs"/>
+  <File Type="ROUTE-RQS" Name="Top_routed.rqs"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS" Name="Top_postroute_physopted.rqs"/>
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
@@ -92,7 +92,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/TX_Send.vhd">
+    <File Path="$PSRCDIR/sources_1/new/Select_Request.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Sound.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -104,7 +110,19 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/UREQUEST.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/Uart_rx.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/display_bus.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -116,9 +134,216 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/Top.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Videokaart/LocationRam.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Videokaart/vga.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Videokaart/plantRam.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Videokaart/selectorRam.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Videokaart/locationDetermination.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Videokaart/vROM.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Videokaart/sprite locatie.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Videokaart/main2.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sprites/coe/bullet.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sprites/coe/crazyPear.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sprites/coe/credits80px.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sprites/coe/eve.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sprites/coe/penPineappleApplePen.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sprites/coe/wallE.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sprites/coe/CleaningBot.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sprites/coe/peashooter.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sprites/coe/output.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sprites/coe/moneyplant.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Videokaart/Tekst/text.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Videokaart/Tekst/Font_Rom.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Videokaart/Tekst/commonPack.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Videokaart/Tekst/Pixel_On_Text.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/SoundController.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_8/blk_mem_gen_8.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_2/blk_mem_gen_2.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_3/blk_mem_gen_3.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_4/blk_mem_gen_4.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_5/blk_mem_gen_5.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_6/blk_mem_gen_6.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_7/blk_mem_gen_7.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_1_1/blk_mem_gen_1.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="main"/>
+      <Option Name="TopModule" Val="Top"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
@@ -158,6 +383,10 @@
     <Step Id="phys_opt_design"/>
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
-    <Step Id="write_bitstream"/>
+    <Step Id="write_bitstream">
+      <Option Id="BinFile">1</Option>
+    </Step>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="prescaler"/>
+  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_0"/>
 </GenRun>
