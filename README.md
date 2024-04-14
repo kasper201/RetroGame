@@ -61,7 +61,7 @@ To install the game on the FPGA first open the project in Vivado.
 5. After connecting to the FPGA press 'Program device' and then 'OK'. Now the device should get programmed.
 ![Program device](image-1.png)
 
-### errors FPGA
+### Errors FPGA
 
 It is possible that when generating a bitstream results in an error. There are many options however most are the following:
 1. "error: no error" This error may be ignored and you can continue as normal.
@@ -83,7 +83,15 @@ There are 7 buttons for the user to interact with. There are 2 buttons to naviga
 There also is a button to confirm a purchase which places the selected plant from the menu on the location of the selector on the field.
 ![overview controlls](<System Overview - Page 1.png>)
 
+
+
 # Modifying the program
+
+## Game balancing
+
+To change the game logic one can chang ethe amount of seconds one action takes. The image below depicts our demo game. This is made in a way that we believe is fun however a user still might want to change it. To do so one simply changes the numbers corresponding to the thing they want to change. So if the amount of robots per seconds should be increased the robotrate has to be decreased.
+
+![Example game balacing](image-6.png)
 
 ## Update Sprites
 
@@ -134,7 +142,7 @@ The number `101255` in the image above is gathered from the formula: ```((({cloc
 The music can be changed from `Sound.vhd`. The noteID of the note requested 
 ![music](image-3.png)
 
-##game play##
+## Gameplay
 
 The shop is controlled by the 3 buttons on the left. left button makes the selector(yellow square on the upper gray row) go left the middle one confirms a purchase. the right moves the shop selector to the right.
 
@@ -156,6 +164,6 @@ By placing plants you defend the against the robots. If you ever feel like you m
 - **Exploding pineapple:** 
     - When an evil robot is about to hit the pineapple it explodes, instantly killing every robot in a large range(one square higher & lower and two squares to the front) as shown below XX OXX_ XX
 
-### example strategy
+### Example strategy
 
 place shooters on the second(seen from the left) row on the lines where robots are aproaching. when the first three waves are beaten you can start placing sunflowers in the first row(seen from the left) to generate a steady flow of income. This should keep you save for a few more waves now you can start. The crazy pear is best to use on the right side of the screen. Keep in mind that placing plants on the right border can be risky as those plants will get attaked fast(and probably die fast as well) but will also shield the plants on other lines from direct danger.
