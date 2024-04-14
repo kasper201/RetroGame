@@ -120,7 +120,7 @@ void casefunction(int i)
 			xLocs++;// shop selector move right
 		else
 		{
-			xLocs = 0; if //shop selector is already in the most right position of the grid move it to the most left postion
+			xLocs = 0; // if shop selector is already in the most right position of the grid move it to the most left postion
 		}
 
 		break;

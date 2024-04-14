@@ -52,17 +52,15 @@ begin
         variable confirmed_request : std_logic_vector(3 downto 0);
         variable bytes_out_0, bytes_out_1, bytes_out_2, bytes_out_3, bytes_out_4, temp_byte_out : std_logic_vector(7 downto 0);
         variable which_byte_out : integer range 0 to 5 := 0;
-        variable counter2 : integer := 0;
     begin
         if rising_edge(i_Clk) then
             --Reset send
             o_Send_Byte <= '0';
         
-            --If a new request is made and the last one has been completed
+            --If a new request is made and the last one has been completed set send_out high
             if i_Request_confirm = '1' and send_out = '0' and unpressed = '0' then
                 send_out := '1';    --Make sure only one request is made at the same time
                 unpressed := '1';   --Zodat er niet 100 achter elkaar worden verstuurd als je het knopje telang inhoud
-                counter2 := 0;      --Counter 2 is verantwoordelijk voor een nieuwe request als de vorige niet ontvangen is door de stm32
                 confirmed_request := i_Request_select;
             elsif i_Request_confirm = '1' and unpressed = '1' then
                 send_out := send_out;
@@ -73,19 +71,10 @@ begin
                 confirmed_request := confirmed_request;
             end if;
             
-            if counter2 < 100000000 then
-                counter2 := counter + 1;
-                --if i_update_request = '0' then
-                --    counter2 := 120000000;
-                --end if;
-            end if;
-            if counter2 > 90000000 and counter2 < 110000000 then
-                send_out := '1';
-                counter2 := 120000000;
-            end if;
-            
             --If a request should be send out
             if send_out = '1' then 
+                
+                --Send out "geld\n"
                 
                     bytes_out_0 := "01100111";
                     bytes_out_1 := "01100101";
@@ -125,16 +114,16 @@ begin
                             o_Send_Byte <= '0';
                             which_byte_out := 0;
                             send_out := '0';
-                            counter2 := 0;
                     end case;
-                else    --Houdt alles op de juiste manier
+                else    --Makes sure all values are kept in order
                     counter := counter;
                     temp_Byte_out := temp_Byte_out;
                     o_Send_Byte <= '0';
                     which_byte_out := which_byte_out;
                     send_out := send_out;
-                end if; --counter
-                --Stuur de byte out
+                end if; 
+                
+                --Send out the byte
                 o_Byte_out <= temp_Byte_out;
                 
             end if; -- send out

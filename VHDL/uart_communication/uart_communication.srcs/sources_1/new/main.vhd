@@ -118,6 +118,7 @@ component UREQUEST is
    );
 end component;
 
+--7 segment display
 component display_bus is
     Port ( i_Clk : in STD_LOGIC;                            --clk signaal
            i_BCD_bus : in STD_LOGIC_VECTOR (15 downto 0);   --BCD nummers 15 downto 12 (D3) 11 downto 8 (D2) 7 downto 4 (D1) 3 downto 0 (D0)
@@ -126,6 +127,7 @@ component display_bus is
            );
 end component;
 
+--Handles which part of the information is being processed
 component Select_Request is
     Port ( i_Clk : in STD_LOGIC;
            i_Update_Request : in STD_LOGIC;
@@ -134,6 +136,7 @@ component Select_Request is
            o_Request_Select : out STD_LOGIC_VECTOR (3 downto 0));
 end component;
 
+--Handles all sounds played
 component Sound is
     Port ( i_Clk : in STD_LOGIC;
            i_life_lost : in STD_LOGIC;

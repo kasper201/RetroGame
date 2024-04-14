@@ -54,8 +54,8 @@ begin
     
     begin
         if rising_edge(i_Clk) then
-            if i_start_frame = '1' and first_high_frame = '0' then --Start nieuwe frame en dus moet alles opnieuw worden opgevraagd
-                first_high_frame := '1';    --Zorgt dat het niet vaker gebeurd
+            if i_start_frame = '1' and first_high_frame = '0' then --Start new frame and reset information selector
+                first_high_frame := '1';    --Makes sure only ones per frame
                 request_selected_int := 0;
             elsif i_start_frame = '1' then
                 first_high_frame := '1';
@@ -63,9 +63,9 @@ begin
                 first_high_frame := '0';
             end if;
             
-            if i_update_request = '1' and first_high_request = '0' then --Zet de select request 1 hoger
+            if i_update_request = '1' and first_high_request = '0' then --Set the request for 1 or higher
                 first_high_request := '1';
-                if request_selected_int < 5 then                                         --Huidige hoogste waarde (max 1111)
+                if request_selected_int < 5 then                                         --Set to the highest information segment after this it should reset
                     request_selected_int := request_selected_int + 1;
                 else
                     request_selected_int := 0;
