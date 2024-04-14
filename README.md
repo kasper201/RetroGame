@@ -10,11 +10,11 @@
 
 # Installation
 
-## Hardware:
+## Hardware
 
 ### Conneting
 
-To connect the STM32, FPGA and buttons a shield had been made. The layout of this shield has been drawn in the image below.
+To connect the STM32, FPGA and buttons a shield had been made. The layout of this shield has been drawn in the image below. The connector has been made in such a way that it is difficult to connect it incorrectly.
 
 ![layout shield](image-4.png)
 
@@ -68,6 +68,14 @@ It is possible that when generating a bitstream results in an error. There are m
 2. "Constraint error" It is likely that you have accidentally renamed a variable in the main or constraints file or forgotten to add it to the constraints file.
 3. "Timing constraints error" You might have added timing constraints to which the device was not built. One should either try to fix these by delving into the code or remove the timing constraints from the constraints file.
 4. "Mismatched size ..." Match the size of the mismatched variables. Make sure to modify the correct variable since that has affect on how the program runs and how many variables you might have to change.
+
+### Programming the FPGA with power off abilities 
+
+To be able to turn off the FPGA and disconnect it from its power without losing the program if has to first be programmed using the previous method except a module has to be added to add the ability for the FPGA to program itself. The JP1 connector must also be put in QSPI mode (on the top 2 pins) for this to work properly. When this bitstream has been put on the device one can press the big red button and now the program is programmed into the non-voletile memory of the FPGA.
+
+For more information on how the FPGA can be installed with the ability to be powered off without losing the program [this](https://www.youtube.com/watch?v=eVMBHD2S6v4) youtube video can help.
+
+![configuration JP1](image-5.png)
 
 ## Controls
 
