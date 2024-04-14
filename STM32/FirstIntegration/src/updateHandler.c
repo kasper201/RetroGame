@@ -3,7 +3,12 @@
 #include <stdlib.h>
 
 #define framerate 20
-#define waverate 5
+// these defines all represent the amount of seconds per action
+#define waverate 5 
+#define robotrate 2
+#define shootrate 8
+#define sunflowerrate 3
+
 uint8_t toCreate = 0;
 uint8_t count = 0;
 uint8_t count2 = 0;
@@ -335,7 +340,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
         count3 = 0;// set counter 3 to 0
     }
     }
-    if (count4 >= 40)// create robot every defined amount of frames
+    if (count4 >= (framerate * robotrate))// create robot every defined amount of frames
     {
         if (toCreate != 0) // check if there are still robots left to create
         {
@@ -357,7 +362,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
         }
     }
 
-    if (count >= 150) //update shooter plant every defined amount of frames
+    if (count >= (framerate * shootrate)) //update shooter plant every defined amount of frames
     {
         for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
         {
@@ -373,7 +378,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
         count = 0;
     }
 
-    if (count2 >= 50)//add 10 for every sunflower every defined amount of frames
+    if (count2 >= (framerate * sunflowerrate))//add 10 for every sunflower every defined amount of frames
     {
         for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
         {
