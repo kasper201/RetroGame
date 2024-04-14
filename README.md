@@ -125,3 +125,41 @@ The number `101255` in the image above is gathered from the formula: ```((({cloc
 
 The music can be changed from `Sound.vhd`. The noteID of the note requested ... WIP
 ![music](image-3.png)
+
+##game play##
+
+The shop is controlled by the 3 buttons on the left.
+left button makes the selector(yellow square on the upper gray row) go left the middle one confirms a purchase.
+the right moves the shop selector to the right.
+
+the four buttons on the right are for the screen selector up, down, left, right. moves the yellow square in the green field.
+
+
+Evil robots will come from the right side. they will move to the left. If 4 four robots reach the right side.
+
+By placing plants you defend the against the robots.  If you ever feel like you misplaced a plant you can just place an other plant on top of the old plant rewriting that spot. The objective is to survive as many waves of robots as possible.
+
+####Sunflower:
+-generates money every few secconds.
+
+####Shooter:
+-shoots a bullet every few secconds.
+
+####Crazy pear:
+-A heavy pear giving its life for the cause. very tanky. has no action.
+
+####Exploding pineapple:
+when an evil robot is about to hit the pineapple it explodes, instantly killing every robot in a large range(one square higher & lower and two squares to the front) as shown below
+_XX_
+OXX_
+_XX_
+
+###example strategy
+
+place shooters on the second(seen from the left) row on the lines where robots are aproaching.
+when the first three waves are beaten you can start placing sunflowers in the first row(seen from the left) to generate a steady flow of income.
+This should keep you save for a few more waves now you can start. The crazy pear is best to use on the right side of the screen. Keep in mind that placing plants on the right border can be risky as those plants will get attaked fast(and probably die fast as well) but will also shield the plants on other lines from direct danger.
+
+
+
+
