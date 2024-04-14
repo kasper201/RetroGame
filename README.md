@@ -30,6 +30,12 @@ The buttons are connected to specific coloured lines to make troubleshooting sim
 - pink     = confirm shop
 - orange   = left shop
 
+
+## Electrical diagram and Pin-Out
+
+![electrical diagram](image-9.png)
+![Pin-Out FPGA](image-8.png)
+
 ## STM32
 
 If you are using an STM NUCLEO-F030R8 one can simply follow the [zephyr tutorial](https://docs.zephyrproject.org/latest/develop/getting_started/index.html#build-the-blinky-sample) but instead of `samples\basic\blinky` it should direct to the folder containing the cmake and build files for this project.
@@ -69,6 +75,13 @@ It is possible that when generating a bitstream results in an error. There are m
 3. "Timing constraints error" You might have added timing constraints to which the device was not built. One should either try to fix these by delving into the code or remove the timing constraints from the constraints file.
 4. "Mismatched size ..." Match the size of the mismatched variables. Make sure to modify the correct variable since that has affect on how the program runs and how many variables you might have to change.
 
+### Block Diagram
+
+The following block diagrams are not UML compiant however they do depict the working of the FPGA clearly so that one can understand how the program works in general.
+
+- Top view GPU ![Top view GPU](image-10.png)
+- Middle view GPU ![Middle view GPU](image-11.png)
+
 ### Programming the FPGA with power off abilities 
 
 To be able to turn off the FPGA and disconnect it from its power without losing the program if has to first be programmed using the previous method except a module has to be added to add the ability for the FPGA to program itself. The JP1 connector must also be put in QSPI mode (on the top 2 pins) for this to work properly. When this bitstream has been put on the device one can press the big red button and now the program is programmed into the non-voletile memory of the FPGA.
@@ -76,10 +89,6 @@ To be able to turn off the FPGA and disconnect it from its power without losing 
 For more information on how the FPGA can be installed with the ability to be powered off without losing the program [this](https://www.youtube.com/watch?v=eVMBHD2S6v4) youtube video can help.
 
 ![configuration JP1](image-5.png)
-
-### FPGA Pin-Out
-
-![Pin-Out FPGA](image-8.png)
 
 ## Controls
 
