@@ -43,6 +43,7 @@ entity main is
            o_y : out std_logic_vector(3 downto 0);
            o_x : out std_logic_vector(6 downto 0);
            switch : out std_logic;
+           title : out std_logic;
            isNr : out STD_LOGIC_VECTOR (3 downto 0);
            isMoney : out STD_LOGIC;
            nextNr : out STD_LOGIC;
@@ -93,6 +94,7 @@ component RD_Process is
            o_y : out std_logic_vector(3 downto 0);
            o_x : out std_logic_vector(6 downto 0);
            switch : out std_logic;
+           title : out std_logic;
            isNr : out STD_LOGIC_VECTOR (3 downto 0);
            isMoney : out STD_LOGIC;
            nextNr : out STD_LOGIC;
@@ -178,6 +180,7 @@ begin
         o_y                 => o_y,
         o_x                 => o_x,
         switch              => switch,
+        title               => title,
         isNr                => isNr,
         isMoney             => isMoney,
         nextNr              => nextNr,

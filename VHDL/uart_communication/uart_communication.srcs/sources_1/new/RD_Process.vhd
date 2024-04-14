@@ -38,6 +38,7 @@ entity RD_Process is
            o_y : out std_logic_vector(3 downto 0);
            o_x : out std_logic_vector(6 downto 0);
            switch : out std_logic;
+           title : out std_logic;
            isNr : out STD_LOGIC_VECTOR (3 downto 0);
            isMoney : out STD_LOGIC;
            nextNr : out STD_LOGIC;
@@ -50,7 +51,7 @@ end RD_Process;
 architecture Behavioral of RD_Process is
 
 signal Number : std_logic_vector(3 downto 0);
-signal money, next_nr, switchS : std_logic;
+signal money, next_nr, switchS, titleS : std_logic;
 
 begin
 
@@ -111,10 +112,19 @@ begin
                                 byte := 0;
                             end if;
                         when "0011" =>      --Sound life lost
-                            if to_integer(unsigned(i_R_byte)) = 10 then
-                                o_life_lost <= '1';
+                            if byte = 0 then
+                                if to_integer(unsigned(i_R_byte)) = 20 then
+                                    title <= '1';
+                                else
+                                    title <= '0';
+                                end if;
+                                byte := 1;
                             else
-                                o_life_lost <= '0';
+                                if to_integer(unsigned(i_R_byte)) = 10 then
+                                    o_life_lost <= '1';
+                                else
+                                    o_life_lost <= '0';
+                                end if;
                             end if;
                         when "0100" =>      --Selectors
                             garden_select := '0';

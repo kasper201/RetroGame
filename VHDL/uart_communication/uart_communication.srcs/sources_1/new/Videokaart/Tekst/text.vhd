@@ -34,6 +34,7 @@ use UNISIM.VComponents.all;
 
 entity textComp is
     Port ( clk : in STD_LOGIC;
+           mode : in STD_LOGIC := '0';
            aReset : in STD_LOGIC;
            isNr : in STD_LOGIC_VECTOR (3 downto 0);
            isMoney : in STD_LOGIC;
@@ -45,7 +46,7 @@ end textComp;
 
 architecture Behavioral of textComp is
 
-signal displayNr : STD_LOGIC_VECTOR(8 downto 0) := (others => '0');
+signal displayNr : STD_LOGIC_VECTOR(10 downto 0) := (others => '0');
 signal moneyNr, waveNr : string(3 downto 0) := "9850";
 signal tempStr : string(0 downto 0);
 signal cnt : integer := 0;
@@ -54,58 +55,20 @@ begin
 
 -- 050, 100, 050, 200
 
-    sunflower : entity work.Pixel_On_Text
+    priceList : entity work.Pixel_On_Text
         generic map (
-            textLength => 3
+            textLength => 34
         )
         port map (
             clk => clk,
-        	displayText => " 50",
+        	displayText => "  50       100        50       200",
         	position => (190, 95), -- text position (top left)
         	horzCoord => to_integer(UNSIGNED(h)),
         	vertCoord => to_integer(UNSIGNED(v)),
         	pixel => displayNr(0) -- result
         );
         
-    peashooter : entity work.Pixel_On_Text
-        generic map (
-            textLength => 3
-        )
-        port map (
-            clk => clk,
-        	displayText => "100",
-        	position => (270, 95), -- text position (top left)
-        	horzCoord => to_integer(UNSIGNED(h)),
-        	vertCoord => to_integer(UNSIGNED(v)),
-        	pixel => displayNr(1) -- result
-        );
-
-    crazyPear : entity work.Pixel_On_Text
-        generic map (
-            textLength => 3
-        )
-        port map (
-            clk => clk,
-        	displayText => " 50",
-        	position => (350, 95), -- text position (top left)
-        	horzCoord => to_integer(UNSIGNED(h)),
-        	vertCoord => to_integer(UNSIGNED(v)),
-        	pixel => displayNr(2) -- result
-        );
-
-    explodingPineapple : entity work.Pixel_On_Text
-        generic map (
-            textLength => 3
-        )
-        port map (
-            clk => clk,
-        	displayText => "200",
-        	position => (430, 95), -- text position (top left)
-        	horzCoord => to_integer(UNSIGNED(h)),
-        	vertCoord => to_integer(UNSIGNED(v)),
-        	pixel => displayNr(3) -- result
-        );
-
+    
     money : entity work.Pixel_On_Text
         generic map (
         	textLength => 7
@@ -158,9 +121,61 @@ begin
         	pixel => displayNr(7) -- result
         );
         
-  display <=    '1' when displayNr > "000000000" else
-                '0';
-                
+    title : entity work.Pixel_On_Text
+        generic map (
+        	textLength => 20
+        )
+        port map(
+        	clk => clk,
+        	displayText => "PLANTS VERSUS ROBOTS",
+        	position => (150, 100), -- text position (top left)
+        	horzCoord => (to_integer(UNSIGNED(h))/2),
+        	vertCoord => (to_integer(UNSIGNED(v))/2),
+        	pixel => displayNr(8) -- result
+        );
+        
+     play : entity work.Pixel_On_Text
+        generic map (
+        	textLength => 23
+        )
+        port map(
+        	clk => clk,
+        	displayText => "Press your nose to play",
+        	position => (350, 230), -- text position (top left)
+        	horzCoord => to_integer(UNSIGNED(h)),
+        	vertCoord => to_integer(UNSIGNED(v)),
+        	pixel => displayNr(9) -- result
+        );
+        
+      credits : entity work.Pixel_On_Text
+        generic map (
+        	textLength => 54
+        )
+        port map(
+        	clk => clk,
+        	displayText => "made by THE b0is: Wouter , Flowrizz, Kapstok & Japstok",
+        	position => (330, 500), -- text position (top left)
+        	horzCoord => to_integer(UNSIGNED(h)),
+        	vertCoord => to_integer(UNSIGNED(v)),
+        	pixel => displayNr(10) -- result
+        );
+        
+        
+  process(mode, displayNr)
+    begin
+        display <= '0';
+        if mode = '0' then
+            if (displayNr(7 downto 0) > "00000000000")then
+                display <= '1';
+            end if;
+        else 
+            if (displayNr(10 downto 8) > "000000000")then
+                display <= '1';
+            end if;
+        end if;
+    end process;
+   
+    
   with isNr select
     tempStr <=  "0" when "0000",
                 "1" when "0001",

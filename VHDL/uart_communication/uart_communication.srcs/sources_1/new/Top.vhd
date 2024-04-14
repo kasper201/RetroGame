@@ -62,6 +62,7 @@ component main is
            o_y : out std_logic_vector(3 downto 0);
            o_x : out std_logic_vector(6 downto 0);
            switch : out std_logic;
+           title : out std_logic;
            isNr : out STD_LOGIC_VECTOR (3 downto 0);
            isMoney : out STD_LOGIC;
            nextNr : out STD_LOGIC;
@@ -80,6 +81,7 @@ component main2 is
  Port (clk100 : in STD_LOGIC;
        aReset : in STD_LOGIC;
        locationSelect : in STD_LOGIC;
+       mode : in STD_LOGIC;
        isNr : in STD_LOGIC_VECTOR (3 downto 0);
        isMoney : in STD_LOGIC;
        nextNr : in STD_LOGIC;
@@ -95,7 +97,7 @@ signal sendButton, is_Money, next_Nr : std_logic;
 signal opvangleds : std_logic_vector(9 downto 0);
 signal id, y, id_in, y_in, is_Nr : std_logic_vector(3 downto 0);
 signal x : std_logic_vector(6 downto 0);
-signal switch, placeholder : std_logic;
+signal switch, placeholder, menu : std_logic;
 
 begin
     
@@ -142,6 +144,7 @@ begin
        clk100               => i_Clk,
        aReset               => aReset,
        locationSelect       => switch,
+       mode                 => menu,
        isNr                 => is_Nr,
        isMoney              => is_Money,
        nextNr               => next_Nr,
@@ -166,6 +169,7 @@ begin
            o_y              => y_in,
            o_x              => x,
            switch           => switch,
+           title            => menu,
            isNr             => is_Nr,
            isMoney          => is_Money,
            nextNr           => next_Nr,

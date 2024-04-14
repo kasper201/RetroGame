@@ -14,6 +14,7 @@ entity main2 is
  Port (clk100 : in STD_LOGIC;
        aReset : in STD_LOGIC;
        locationSelect : in STD_LOGIC;
+       mode : in STD_LOGIC;
        isNr : in STD_LOGIC_VECTOR (3 downto 0);
        isMoney : in STD_LOGIC;
        nextNr : in STD_LOGIC;
@@ -107,6 +108,7 @@ end component;
 component textComp is
     Port ( 
             clk : in STD_LOGIC;
+            mode : in STD_LOGIC;
             aReset : in STD_LOGIC;
             isNr : in STD_LOGIC_VECTOR (3 downto 0);
             isMoney : in STD_LOGIC;
@@ -248,6 +250,7 @@ G4 : VGA port map(
   
  G5 : textComp port map(
             clk => clk100,
+            mode => mode,
             aReset => aReset,
             isNr => isNr,
             isMoney => isMoney,

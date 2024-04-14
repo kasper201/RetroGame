@@ -38,6 +38,8 @@ struct Player player;
 
 static struct k_timer my_timer;
 bool generateFrame = false;
+bool pause;
+bool pause2;
 int byte;
 unsigned char sendByte[2];
 unsigned char sendByteC;
@@ -161,7 +163,17 @@ void timer_handler(struct k_timer *timer_id)
 		sendByte[1] = 0xfe;
 		print_uart(sendByte, 2);
 
-		// Life Lost
+		// Life Lost and title screen
+		if (pause == true)
+		{
+			sendByteC = 0x14;
+		}
+		else
+		{
+			sendByteC = 0x10;
+		}
+		print_uart(&sendByteC, 1);
+
 		if (tempHealth != player.health)
 		{
 			sendByteC = 0x0a;
@@ -232,6 +244,7 @@ void game()
 	xLoc = 0;
 	yLoc = 0;
 	xLocs = 0;
+	pause2 = true;
 }
 
 int main(void)
@@ -304,16 +317,17 @@ int main(void)
 		{
 			if (val[i] > 0 && buttonPressed[i] == 0)
 			{
-				// printf("time1\n");
 				buttonPressed[i] = 1;
 				// TODO voeg hier de functies toe die per knop aangeroepen worden want dit is rising edge
 				printk("button %d pressed %d\n", i, count);
-				casefunction(i);
+				if(!pause)
+				{
+					casefunction(i);
+				}
 				count++;
 				released[i] = 0;
-				// printk("2D x:%d and y:%d\n", xLoc, yLoc);
-				// printk("shop x:%d\n", xLocs);
-				// printf("time2\n");
+
+				pause = false;
 			}
 			else if (val[i] > 0)
 			{
@@ -334,12 +348,16 @@ int main(void)
 			}
 		}
 
-		if (generateFrame)
+		if (generateFrame == true && pause == false)
 		{
 			updateGame(map, mapR, &player, bullet, frame);
 			generateFrame = false;
 		}
-
+		if (pause2 == true)
+		{
+			pause = true;
+			pause2 = false;
+		}
 		k_usleep(SLEEP_TIME_U * 10);
 	}
 	return 0;
