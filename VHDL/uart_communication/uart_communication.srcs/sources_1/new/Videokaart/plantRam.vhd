@@ -1,11 +1,11 @@
 ----------------------------------------------------------------------------------
 -- Company: 
--- Engineer: 
+-- Engineer: Jasper Verplanke
 -- 
 -- Create Date: 31.03.2024 14:22:00
 -- Design Name: 
 -- Module Name: plantRam - Behavioral
--- Project Name: 
+-- Project Name: plants versus robots
 -- Target Devices: 
 -- Tool Versions: 
 -- Description: 
@@ -47,7 +47,7 @@ architecture Behavioral of plantRAM is
 
  
 TYPE ramType is ARRAY (7 downto 0)
-        of std_logic_vector(3 downto 0);
+        of std_logic_vector(3 downto 0); -- size of a sprite ID
 signal ram: RamType ;
 
 signal oldEn : std_logic := '0';
@@ -59,12 +59,12 @@ begin
  
     if(rising_edge (clk))then
         
-         if (oldEn = '1' and outputEn = '0')then 
+         if (oldEn = '1' and outputEn = '0')then -- wip the entire row after it has been read/ when the ram returns to write-mode
             ram <= (others => (others => '0'));
          end if;
 
         if (outputEn = '0' )then 
-            ram(to_integer(signed(Addr))) <= create;
+            ram(to_integer(signed(Addr))) <= create;  -- write new data
         end if;
 
         if (outputEn = '1')then
