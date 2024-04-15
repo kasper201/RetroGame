@@ -1,16 +1,40 @@
 # Pre-installation
 
-Zephyr version: 3.5 or later [zephyr_installation_guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html)
-CMake Version: 3.27.4
-OS: Windows 11 23H2 or later
-Vivado version: 2023.2 [vivado_installation](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html)
-Board: STM32 NUCLEO-F091RC, STM32 NUCLEO-F030R8 or equivalent
+- Zephyr version: 3.5 or later [zephyr_installation_guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html)
+- CMake Version: 3.27.4
+- OS: Windows 11 23H2 or later
+- Vivado version: 2023.2 [vivado_installation](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html)
+- Board: STM32 NUCLEO-F091RC, STM32 NUCLEO-F030R8 or equivalent
+- FPGA: Basys3
+- Buttons: 7 physical buttons
 
 # Installation
 
-## Hardware:
+## Hardware
 
-[WIP]
+### Conneting
+
+To connect the STM32, FPGA and buttons a shield had been made. The layout of this shield has been drawn in the image below. The connector has been made in such a way that it is difficult to connect it incorrectly.
+
+![layout shield](image-4.png)
+
+### Button colours
+
+The buttons are connected to specific coloured lines to make troubleshooting simpler.
+- black    = ground
+- red      = down garden
+- blue     = left garden
+- white    = up garden
+- yellow   = right garden
+- green    = right shop
+- pink     = confirm shop
+- orange   = left shop
+
+
+## Electrical diagram and Pin-Out
+
+![electrical diagram](image-9.png)
+![Pin-Out FPGA](image-8.png)
 
 ## STM32
 
@@ -44,7 +68,7 @@ To install the game on the FPGA first open the project in Vivado.
 5. After connecting to the FPGA press 'Program device' and then 'OK'. Now the device should get programmed.
 ![Program device](image-1.png)
 
-### errors FPGA
+### Errors FPGA
 
 It is possible that when generating a bitstream results in an error. There are many options however most are the following:
 1. "error: no error" This error may be ignored and you can continue as normal.
@@ -52,18 +76,50 @@ It is possible that when generating a bitstream results in an error. There are m
 3. "Timing constraints error" You might have added timing constraints to which the device was not built. One should either try to fix these by delving into the code or remove the timing constraints from the constraints file.
 4. "Mismatched size ..." Match the size of the mismatched variables. Make sure to modify the correct variable since that has affect on how the program runs and how many variables you might have to change.
 
+### Block Diagram
+
+The following block diagrams are not UML compiant however they do depict the working of the FPGA clearly so that one can understand how the program works in general.
+
+- Top view GPU ![Top view GPU](image-10.png)
+- Middle view GPU ![Middle view GPU](image-11.png)
+
+### Programming the FPGA with power off abilities 
+
+To be able to turn off the FPGA and disconnect it from its power without losing the program if has to first be programmed using the previous method except a module has to be added to add the ability for the FPGA to program itself. The JP1 connector must also be put in QSPI mode (on the top 2 pins) for this to work properly. When this bitstream has been put on the device one can press the big red button and now the program is programmed into the non-voletile memory of the FPGA.
+
+For more information on how the FPGA can be installed with the ability to be powered off without losing the program [this](https://www.youtube.com/watch?v=eVMBHD2S6v4) youtube video can help.
+
+![configuration JP1](image-5.png)
+
 ## Controls
 
 There are 7 buttons for the user to interact with. There are 2 buttons to navigate the shop menu and 4 to navigate around the field. 
 There also is a button to confirm a purchase which places the selected plant from the menu on the location of the selector on the field.
 ![overview controlls](<System Overview - Page 1.png>)
 
+
+
 # Modifying the program
+
+## Game balancing
+
+To change the game logic one can chang ethe amount of seconds one action takes. The image below depicts our demo game. This is made in a way that we believe is fun however a user still might want to change it. To do so one simply changes the numbers corresponding to the thing they want to change. So if the amount of robots per seconds should be increased the robotrate has to be decreased.
+
+![Example game balacing](image-6.png)
+
+## Structure c en h files
+- main.h            contains all structs relevant for bullets, plants, robots.
+- main.c            contains send_out list, trigger of gameUpdate, pause screen, cheat activate, hardware setups (buttons and uart).
+- menu.c            containts deadscreen().
+- updateHandler.c   contains all functions relevant during gameplay (updating plants, robots and bullets).
+- uart.c            contains the function for reading uart and sending out bullets, robots and plants to the FPGA.
+- mainGame.c        contains a few initializers.
+- bullet.c          contains damage handling for the bullets and the pineapple.
 
 ## Update Sprites
 
 Updating the sprites is done by replacing the .coe files in the vivado project. 
-It is important to note that a sprite must be **80x80** pixels
+It is important to note that a sprite must be **80x80** pixels. Furthermore, the background colour of the sprite must be 0x0A3 to filter it out and properly show the background.
 
 ### How to convert png's to .coe files
 
@@ -107,5 +163,31 @@ The number `101255` in the image above is gathered from the formula: ```((({cloc
 
 ### Change music
 
-The music can be changed from `Sound.vhd`. The SoundSelect signal corresponts to a the requested note id. The lenght of a note gets calculated using the counter. This counter counts up once every clock pulse. This means that the counter counts 100 million times every second. Using this one can precisely change how long a note can take and how long there should be silence.
+The music can be changed from `Sound.vhd`. The noteID of the note requested 
 ![music](image-3.png)
+
+## Gameplay
+
+The shop is controlled by the 3 buttons on the left. left button makes the selector(yellow square on the upper gray row) go left the middle one confirms a purchase. the right moves the shop selector to the right.
+
+the four buttons on the right are for the screen selector up, down, left, right. moves the yellow square in the green field.
+
+Evil robots will come from the right side. they will move to the left. If 4 four robots reach the left side you die and have to restart.
+
+By placing plants you defend the against the robots. If you ever feel like you misplaced a plant you can just place an other plant on top of the old plant rewriting that spot. The objective is to survive as many waves of robots as possible.
+
+- **Sunflower:** 
+    - generates money every few secconds.
+
+- **Shooter:** 
+    - shoots a bullet every few secconds.
+
+- **Crazy pear:** 
+    - A heavy pear giving its life for the cause. very tanky. has no action.
+
+- **Exploding pineapple:** 
+    - When an evil robot is about to hit the pineapple it explodes, instantly killing every robot in a large range(one square higher & lower and two squares to the front) as shown below XX OXX_ XX
+
+### Example strategy
+
+place shooters on the second(seen from the left) row on the lines where robots are aproaching. when the first three waves are beaten you can start placing sunflowers in the first row(seen from the left) to generate a steady flow of income. This should keep you save for a few more waves now you can start. The crazy pear is best to use on the right side of the screen. Keep in mind that placing plants on the right border can be risky as those plants will get attaked fast(and probably die fast as well) but will also shield the plants on other lines from direct danger.
