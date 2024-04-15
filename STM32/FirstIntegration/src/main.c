@@ -136,8 +136,10 @@ void casefunction(int i)
 	}
 }
 
+//Is triggered by an interrupt
 void timer_handler(struct k_timer *timer_id)
 {
+	//Check for input
 	if (checkFromFpga() != -1)
 	{
 		printk("Start sending at at %" PRIu32 "\n", k_cycle_get_32());
@@ -152,7 +154,6 @@ void timer_handler(struct k_timer *timer_id)
 		sendByte[1] = geld / 253;
 		print_uart(sendByte, 2);
 		printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
-		// k_usleep(SLEEP_TIME_U);
 		sendByte[0] = 0xff;
 		sendByte[1] = 0xfe;
 		print_uart(sendByte, 2);
@@ -186,7 +187,6 @@ void timer_handler(struct k_timer *timer_id)
 			print_uart(&sendByteC, 1);
 			printf("Life lost send this byte: %d\n", sendByteC);
 			printf("hp left:%d", player.health);
-			// k_usleep(SLEEP_TIME_U);
 			tempHealth = player.health;
 		}
 		sendByte[0] = 0xff;
@@ -198,8 +198,6 @@ void timer_handler(struct k_timer *timer_id)
 		sendByteC = byte;
 		print_uart(&sendByteC, 1);
 		printf("Send these byte: %d\n", sendByteC);
-		
-		// k_usleep(SLEEP_TIME_U);
 		sendByte[0] = 0xff;
 		sendByte[1] = 0xfe;
 		print_uart(sendByte, 2);
@@ -208,7 +206,6 @@ void timer_handler(struct k_timer *timer_id)
 		sendByteC = player.wave;
 		print_uart(&sendByteC, 1);
 		printf("Send wave these byte: %d\n", sendByteC);
-		// k_usleep(SLEEP_TIME_U);
 		sendByte[0] = 0xff;
 		sendByte[1] = 0xfe;
 		print_uart(sendByte, 2);
@@ -312,7 +309,7 @@ int main(void)
 	printk("Start\n");
 	while (1)
 	{
-
+		//Sets val to the state of the button
 		val[0] = gpio_pin_get_dt(buttons[0]);
 		val[1] = gpio_pin_get_dt(buttons[1]);
 		val[2] = gpio_pin_get_dt(buttons[2]);
@@ -324,6 +321,7 @@ int main(void)
 		// Loop through the buttons
 		for (int i = 0; i < 7; i++)
 		{
+			//checks if a button is pressed
 			if (val[i] > 0 && buttonPressed[i] == 0)
 			{
 				buttonPressed[i] = 1;
@@ -334,6 +332,7 @@ int main(void)
 				}
 				count++;
 				released[i] = 0;
+				//Activate cheats if left shop, up, down and right for garden is pressed
 				if( val[0] > 0 && val[1] <= 0 && val[2] > 0 && val[3] > 0 && val[4] <= 0 && val[5] <= 0 && val[6] > 0)
 				{
 					cheats = !cheats;
@@ -349,6 +348,7 @@ int main(void)
 			}
 			else
 			{
+				//Button noted as released so there is no accidental released because of bounce
 				if (released[i] > 2)
 				{
 					if(buttonPressed[i] > 0)
@@ -367,14 +367,17 @@ int main(void)
 
 		if (generateFrame == true && pause == false)
 		{
+			// Cheat stats
 			if(cheats)
 			{
 				player.money = 9999;
 				player.health = 20000;
 			}
+			// Generate new frame
 			updateGame(map, mapR, &player, bullet, frame);
 			generateFrame = false;
 		}
+		//Update pause without causing issues
 		if (pause2 == true)
 		{
 			pause = true;
