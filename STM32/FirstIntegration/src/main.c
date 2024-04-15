@@ -92,7 +92,7 @@ void casefunction(int i)
 	switch (i)
 	{
 	case 0:
-		if (yLoc < MAP_HEIGHT - 1)// selector move down
+		if (yLoc < MAP_HEIGHT - 2)// selector move down
 			yLoc++;
 		else
 			yLoc = 0;// if selector is already in the bottum position of the grid move it to the top
@@ -107,7 +107,7 @@ void casefunction(int i)
 		if (yLoc > 0)
 			yLoc--;// selector move up
 		else
-			yLoc = 4;// if selector is already in the top position of the grid move it to the bottum
+			yLoc = 3;// if selector is already in the top position of the grid move it to the bottum
 		break;
 	case 3:
 		if (xLoc < MAP_WIDTH - 1)
