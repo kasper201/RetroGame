@@ -248,9 +248,9 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
             }
             break;
         case 4: // exploding plant
-            if (player->money >= 200)
+            if (player->money >= 300)
             {
-                player->money -= 200;
+                player->money -= 300;
             }
             else
             {
@@ -346,11 +346,11 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
         {
 
             
-            l = rand() % 5;//random lane
+            l = rand() % 4;//random lane
             r = rand() % 10;// random type
             while (mem == l || mem2 == l)// if the robot is spawned on one of the last 2 lanes randomize again
             {
-                l = rand() % 5;
+                l = rand() % 4;
                 r = rand() % 10;
 
             }
