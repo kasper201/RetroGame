@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Sun Apr 14 18:32:54 2024
-| Host         : PC-WouterRosenbrand running 64-bit major release  (build 9200)
+| Date         : Mon Apr 15 15:39:55 2024
+| Host         : Japser running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
 | Design       : Top
 | Device       : xc7a35tcpg236-1
@@ -31,8 +31,8 @@ Table of Contents
 +-------------------------+-------+-------+------------+-----------+-------+
 |        Site Type        |  Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+-------+-------+------------+-----------+-------+
-| Slice LUTs*             | 13685 |     0 |          0 |     20800 | 65.79 |
-|   LUT as Logic          | 13685 |     0 |          0 |     20800 | 65.79 |
+| Slice LUTs*             | 13689 |     0 |          0 |     20800 | 65.81 |
+|   LUT as Logic          | 13689 |     0 |          0 |     20800 | 65.81 |
 |   LUT as Memory         |     0 |     0 |          0 |      9600 |  0.00 |
 | Slice Registers         |  6541 |     0 |          0 |     41600 | 15.72 |
 |   Register as Flip Flop |  6541 |     0 |          0 |     41600 | 15.72 |
@@ -154,13 +154,13 @@ Warning! LUT value is adjusted to account for LUT combining.
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
 | FDRE     | 6434 |        Flop & Latch |
-| LUT2     | 4696 |                 LUT |
-| LUT6     | 4553 |                 LUT |
-| LUT3     | 2712 |                 LUT |
+| LUT2     | 4694 |                 LUT |
+| LUT6     | 4559 |                 LUT |
+| LUT3     | 2713 |                 LUT |
 | CARRY4   | 2384 |          CarryLogic |
-| LUT4     | 2006 |                 LUT |
-| LUT5     | 1562 |                 LUT |
-| LUT1     |  781 |                 LUT |
+| LUT4     | 2005 |                 LUT |
+| LUT5     | 1557 |                 LUT |
+| LUT1     |  783 |                 LUT |
 | MUXF7    |  722 |               MuxFx |
 | MUXF8    |  305 |               MuxFx |
 | FDCE     |   64 |        Flop & Latch |

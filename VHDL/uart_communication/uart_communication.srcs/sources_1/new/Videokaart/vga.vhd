@@ -8,6 +8,7 @@ library IEEE;
 entity VGA is
     Port ( 	clk25 : in STD_LOGIC;
             selector: in STD_LOGIC;
+            mode: in STD_LOGIC := '0';
             rgb : in STD_LOGIC_VECTOR(11 downto 0);
             active : in STD_LOGIC;
 			red, green, blue : out  STD_LOGIC_VECTOR(3 downto 0);
@@ -43,7 +44,7 @@ begin
                 green <= RGB(7 downto 4);
                 blue <= RGB(3 downto 0);
             else 
-                if (vcount > 80+31)then        --draw field
+                if (((vcount > 80+31) and (vcount < 405+31) ) Or (mode = '1'))then        --draw field
                     ----------------------------------------------------------------------
                     vtemp <= std_logic_vector(TO_UNSIGNED(((To_integer(unsigned(vcount)) - 31 ) / 81 ), 10));
                     vcountsquare <= vtemp(0);  
@@ -53,7 +54,7 @@ begin
                      
                     --vcountsquare <= (((To_integer(unsigned(vcount)) - 31 ) / 80 )mod 2);
                     
-                    red <=  selector & selector & '0' & (hcountsquare AND vcountsquare);
+                    red <=  (selector and (not mode)) & (selector and (not mode)) & '0' & (hcountsquare AND vcountsquare);
                     green <= "1" & (hcountsquare AND vcountsquare) & (hcountsquare OR vcountsquare) &(hcountsquare OR vcountsquare) ;
                     blue <= "0000";
                 else            
@@ -100,4 +101,3 @@ begin
 end process;
 
 end Behavioral;
-
