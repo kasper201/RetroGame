@@ -4,7 +4,7 @@
 
 #define framerate 20
 // these defines all represent the amount of seconds per action
-#define waverate 5 
+#define waverate 10 
 #define robotrate 2
 #define shootrate 8
 #define sunflowerrate 3
@@ -42,9 +42,9 @@ int moveEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTHR
         return 0;
     }
 
-    if (mapR[x - 1][y].type != 0 || map[(x / 16)][y].type != 0) // if there is already something there don't move
+    if ( (x >= 16 && mapR[x - 16][y].type != 0 || map[(x / 16)][y].type != 0) || (x < 16 && mapR[x - 1][y].type != 0 || map[(x / 16)][y].type != 0)) // if there is already something there don't move
     {
-        if (map[(x / 16)][y].type >= 1 && mapR[(x / 16)][y].type <= 4)//check for plant in plant grid
+        if (map[(x / 16)][y].type >= 1 && map[(x / 16)][y].type <= 4)//check for plant in plant grid
         {
             return -2;// if a plant is detected return 2
         }
@@ -136,7 +136,7 @@ int updateEnemy(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDT
  * @param type
  * @return void
  */
-void getGenInfo(uint8_t *health, uint8_t *damage, uint8_t *defense, uint8_t *speed, uint8_t type)
+void getGenInfo(uint8_t *health, uint8_t *damage, uint8_t *defense, uint8_t *speed, uint8_t type, struct Player *player)
 {
     switch (type)
     {
@@ -171,13 +171,13 @@ void getGenInfo(uint8_t *health, uint8_t *damage, uint8_t *defense, uint8_t *spe
         *speed = 8;
         break;
     case 6: // tank robot (wall-e)
-        *health = 20;
+        *health = 10  + player->wave * 1;
         *damage = 5;
         *defense = 5;
         *speed = 8;
         break;
     case 7: // flying robot (eve)
-        *health = 30;
+        *health = 20 + player->wave * 2;
         *damage = 10;
         *defense = 0;
         *speed = 9;
@@ -261,7 +261,7 @@ int createPlant(struct Map map[MAP_WIDTH][MAP_HEIGHT], uint8_t x, uint8_t y, uin
     }
     // create plant
     uint8_t health, damage, defense, speed;// create temps for each value
-    getGenInfo(&health, &damage, &defense, &speed, type);// fill the temps with the plant u want
+    getGenInfo(&health, &damage, &defense, &speed, type, player);// fill the temps with the plant u want
     map[x][y].health = health;// place the temps in the grid
     map[x][y].damage = damage;
     map[x][y].defense = defense;
@@ -295,7 +295,7 @@ int createRobot(struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR], uint8_t y, uint8_t ty
         return 3;
     }
     uint8_t health, damage, defense, speed;// create temps for each value
-    getGenInfo(&health, &damage, &defense, &speed, type);// fill the temps with the robot
+    getGenInfo(&health, &damage, &defense, &speed, type, player);// fill the temps with the robot
     mapR[x][y].health = health;// place the temps in the grid
     mapR[x][y].damage = damage;
     mapR[x][y].defense = defense;
@@ -347,14 +347,27 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
 
             
             l = rand() % 5;//random lane
-            r = rand() % 3 + 5;// random type
+            r = rand() % 10;// random type
             while (mem == l || mem2 == l)// if the robot is spawned on one of the last 2 lanes randomize again
             {
                 l = rand() % 5;
-                r = rand() % 3 + 5;
+                r = rand() % 10;
 
             }
-            createRobot(mapR, l, r, player);// create a robot with these random values
+            int type;
+            if( (player->wave < 6 && r == 9) || (player->wave > 5 && player->wave < 11 && (r > 6 && r <= 9)) || (player->wave > 10 && (r > 4 && r <= 9) ))      // 1 out 10 chance eve summons but increases
+            {
+                type = 7;
+            }
+            else if (r < 3) // 3 out of 10 chance wall-e summons
+            {
+                type = 6;
+            }
+            else                // 6 out of 10 chance cleaning robot summons at first after wave 5 only 4 out of 10 and after wave 10 only 2 out of 10
+            {
+                type = 5;
+            }
+            createRobot(mapR, l, type, player);// create a robot with these random values
             toCreate--;
             mem2 = mem;
             mem = l;

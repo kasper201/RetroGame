@@ -67,7 +67,7 @@ void bulletDetect(struct Bullet bullet[maxBullets], struct MapR mapR[MAP_WIDTHR]
 					mapR[bullet[i].x][bullet[i].y].type = 0;
 					bullet[i].x = 0;// remove bullet
 					bullet[i].y = 6;
-					player->money += 50;// add money for the kill
+					player->money += 20;// add money for the kill
 				} 
 				// remove bullets if robot still has hp left
 				else if (mapR[bullet[i].x][bullet[i].y].type != 0)
@@ -80,14 +80,18 @@ void bulletDetect(struct Bullet bullet[maxBullets], struct MapR mapR[MAP_WIDTHR]
 			//this checks for a potantial false miss
 			if (mapR[bullet[i].x - 1][bullet[i].y].type > 0) {
 
-				mapR[bullet[i].x - 1][bullet[i].y].health -=10; // remove hp if bullet hits a robot
-
-				if (mapR[bullet[i].x - 1][bullet[i].y].health == 0) {
+				
+				if (mapR[bullet[i].x - 1][bullet[i].y].health <= 10) {
 					mapR[bullet[i].x - 1][bullet[i].y].damage = 0;
 					mapR[bullet[i].x - 1][bullet[i].y].defense = 0;
 					mapR[bullet[i].x - 1][bullet[i].y].speed = 0;
 					mapR[bullet[i].x - 1][bullet[i].y].type = 0;
 				}
+				else
+				{
+					mapR[bullet[i].x - 1][bullet[i].y].health -=10; // remove hp if bullet hits a robot
+				}
+				
 				bullet[i].x = 0;// remove bullets
 				bullet[i].y = 6;
 			}
