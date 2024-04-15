@@ -333,12 +333,17 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
     count2++;
     count4++;
     if (toCreate == 0){ //and if there are no more robots to create 
+    count4++;
+    if (toCreate == 0){ //and if there are no more robots to create 
     count3++;
+    if(count3 >= (framerate * waverate)){// create wave every defined amount of frames 
     if(count3 >= (framerate * waverate)){// create wave every defined amount of frames 
         printk("wave created");
         createWave(map, player);
         count3 = 0;// set counter 3 to 0
     }
+    }
+    if (count4 >= (framerate * robotrate))// create robot every defined amount of frames
     }
     if (count4 >= (framerate * robotrate))// create robot every defined amount of frames
     {
@@ -376,6 +381,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
     }
 
     if (count >= (framerate * shootrate)) //update shooter plant every defined amount of frames
+    if (count >= (framerate * shootrate)) //update shooter plant every defined amount of frames
     {
         for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
         {
@@ -391,6 +397,7 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
         count = 0;
     }
 
+    if (count2 >= (framerate * sunflowerrate))//add 10 for every sunflower every defined amount of frames
     if (count2 >= (framerate * sunflowerrate))//add 10 for every sunflower every defined amount of frames
     {
         for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies

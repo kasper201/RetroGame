@@ -131,13 +131,20 @@ OPTRACE "create in-memory project" START { }
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
+<<<<<<< HEAD
   set_property webtalk.parent_dir C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/uart_communication/uart_communication.cache/wt [current_project]
   set_property parent.project_path C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/uart_communication/uart_communication.xpr [current_project]
   set_property ip_output_repo C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip [current_project]
+=======
+  set_property webtalk.parent_dir C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.cache/wt [current_project]
+  set_property parent.project_path C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.xpr [current_project]
+  set_property ip_output_repo C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.cache/ip [current_project]
+>>>>>>> development
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
+<<<<<<< HEAD
   add_files -quiet C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/Top.dcp
   read_ip -quiet C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
   read_ip -quiet C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_8/blk_mem_gen_8.xci
@@ -152,6 +159,22 @@ OPTRACE "add files" START { }
   read_ip -quiet C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
 OPTRACE "read constraints: implementation" START { }
   read_xdc C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/uart_communication/uart_communication.srcs/constrs_1/new/Test_Case.xdc
+=======
+  add_files -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/synth_1/Top.dcp
+  read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
+  read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_8/blk_mem_gen_8.xci
+  read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_2/blk_mem_gen_2.xci
+  read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_3/blk_mem_gen_3.xci
+  read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_4/blk_mem_gen_4.xci
+  read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_5/blk_mem_gen_5.xci
+  read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_6/blk_mem_gen_6.xci
+  read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_7/blk_mem_gen_7.xci
+  read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_1_1/blk_mem_gen_1.xci
+  read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/prescaler/prescaler.xci
+  read_ip -quiet C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
+OPTRACE "read constraints: implementation" START { }
+  read_xdc C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.srcs/constrs_1/new/Test_Case.xdc
+>>>>>>> development
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "read constraints: implementation_pre" START { }
 OPTRACE "read constraints: implementation_pre" END { }

@@ -3,9 +3,15 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+<<<<<<< HEAD
 # Start of session at: Mon Apr 15 16:18:15 2024
 # Process ID: 10364
 # Current directory: C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/impl_1
+=======
+# Start of session at: Sun Apr 14 22:05:36 2024
+# Process ID: 36388
+# Current directory: C:/Users/Wouter/Desktop/School/Projecten/RetroGame/RetroGame/VHDL/uart_communication/uart_communication.runs/impl_1
+>>>>>>> development
 # Command line: vivado.exe -log Top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source Top.tcl -notrace
 # Log file: C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/impl_1/Top.vdi
 # Journal file: C:/Users/verpl/Documents/project/retrogame/RetroGame/VHDL/uart_communication/uart_communication.runs/impl_1\vivado.jou
