@@ -7,7 +7,7 @@
  * @param map
  * @return int 1 for error, 0 for no error
  */
-int mapinit(struct Map map[MAP_WIDTH][MAP_HEIGHT])
+int mapinit(struct Map map[MAP_WIDTH][MAP_HEIGHT])// set every position of the plant grid to 0
 {
     for (int x = 0; x < MAP_WIDTH; x++)
     {
@@ -27,7 +27,7 @@ int mapinit(struct Map map[MAP_WIDTH][MAP_HEIGHT])
 }
 int mapRinit(struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR])
 {
-    for (int x = 0; x < MAP_WIDTHR; x++)
+    for (int x = 0; x < MAP_WIDTHR; x++)// set every position of the robot grid to 0
     {
         for (int y = 0; y < MAP_HEIGHTR; y++)
         {
@@ -37,10 +37,6 @@ int mapRinit(struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR])
             mapR[x][y].defense = 0;
             mapR[x][y].speed = 0;
             mapR[x][y].type = 0;
-            // if(x % 16 == 3)
-            // {
-            //     mapR[x][y].type = 5;
-            // }
         }
     }
     if (mapR[0][0].health != 0 || mapR[3][1].type != 0) // check if the map is initialized correctly with an arbitrary position
@@ -55,51 +51,21 @@ int mapRinit(struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR])
  */
 int playerInit(struct Player* player)
 {
-    player->wave = 0;
-    player->health = 100;
-    player->money = 500;
-    if (player->wave != 1 || player->health != 100 || player->money != 10000)
-        return 1;
+    player->wave = 0;// set wave to 0
+    player->health = 100;// give the player 5 lives 
+    player->money = 500;// give the player starter money
     return 0;
 }
 
 void bulletInit(struct Bullet bullet[maxBullets])
 {
-    for (int i = 0; i < maxBullets; i++)
+    for (int i = 0; i < maxBullets; i++)//initialize all bullets in the array
     {
+        // if bullets are not in use then there value is x = 0 and y = 6
+        // these values are used for checks with bullets
         bullet[i].x = 0;
         bullet[i].y = 6;
     }
     return;
 }
-/**
- * @brief main game function
- *
- * @param map
- * @return int 0 for no error, 1 for general error, 2 for plant update error, 3 for enemy update error
- */
-int gameLoop(struct Map map[MAP_WIDTH][MAP_HEIGHT],struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR], struct Player player, struct Bullet bullet[maxBullets])
-{
-    //int err;
 
-    // game loop
-   
-    
-
-        //err = updateGame(map, player, bullet);
-        printk("\n");
-       // printk("%d", err);
-       printk("fuck me");
-        printk("\n");
-        //return 0;
-        //printk("%d", player->money);
-       // if (err)
-        //{
-         //   return err;
-        //}
-       
-        // draw game state
-        // check for user input
-        // check for win/lose conditions
-   return 0;
-}
