@@ -95,7 +95,6 @@ int uartSetup()
 // Send uart message
 void print_uart(char *buf, int lengte)
 {
-
 	for (int i = 0; i < lengte; i++)
 	{
 		uart_poll_out(uart_dev, buf[i]);

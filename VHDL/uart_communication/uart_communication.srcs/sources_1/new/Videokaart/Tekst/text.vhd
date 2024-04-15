@@ -62,7 +62,7 @@ begin
         )
         port map (
             clk => clk,
-        	displayText => "  50       100        50       200",
+        	displayText => "  50       100        50       300",
         	position => (190, 95), -- text position (top left)
         	horzCoord => to_integer(UNSIGNED(h)),
         	vertCoord => to_integer(UNSIGNED(v)),
@@ -176,11 +176,11 @@ begin
         
       credits : entity work.Pixel_On_Text
         generic map (
-        	textLength => 54
+        	textLength => 53
         )
         port map(
         	clk => clk,
-        	displayText => "made by THE b0is: Wouter , Flowrizz, Kapstok & Japstok",
+        	displayText => "made by THE b0is: Wouter, Flowrizz, Kapstok & Japstok",
         	position => (330, 497), -- text position (top left)
         	horzCoord => to_integer(UNSIGNED(h)),
         	vertCoord => to_integer(UNSIGNED(v)),

@@ -31,7 +31,7 @@ struct Map
 struct MapR
 {
     uint8_t wavesNotMoved;
-    uint8_t health;
+    int health;
     uint8_t damage;
     uint8_t defense;
     uint8_t speed; // between 0 and 100

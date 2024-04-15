@@ -81,7 +81,8 @@ end component;
  
 component VGA is
     Port ( 	clk25 : in STD_LOGIC;
-            selector: in STD_LOGIC;
+            selector : in STD_LOGIC;
+            mode : in STD_LOGIC;
 			red, green, blue : out  STD_LOGIC_VECTOR(3 downto 0);
 			hsync, vsync : out  STD_LOGIC;
 			rgb : in STD_LOGIC_VECTOR(11 downto 0);
@@ -235,6 +236,7 @@ active <=   '1' when display = '1' else
 G4 : VGA port map(
     rgb => rgbTemp,
     clk25 => clk25,
+    mode => mode,
     selector => selector,
 	red => red,
 	green => green,
