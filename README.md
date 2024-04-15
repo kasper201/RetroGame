@@ -64,6 +64,7 @@ To install the game on the FPGA first open the project in Vivado.
 3. Now you will either receive an error message or a popup that the bitstream has been generated. If the latter was the case continue to 4. Otherwise, check the error and continue to the topic: errors FPGA
 4. In the hardware manager press on 'Open target' if no hardware target is open and press Auto Connect.
 ![Open Target](image.png)
+
 5. After connecting to the FPGA press 'Program device' and then 'OK'. Now the device should get programmed.
 ![Program device](image-1.png)
 
@@ -157,6 +158,7 @@ Changing the sound of the game or the music is done using the files `Sound.vhd` 
 To save space only a few frequencies have been placed in the SoundController. There are also no notes. So there is no C#, Eb or anything like that. If you want to utilise those you have to add them yourself. The notes **F4 to F5** do exist.There also is one specific ID for a wrong note. This gets played when a player gets damaged.
 
 ![formula frequency](image-2.png)
+
 The number `101255` in the image above is gathered from the formula: ```((({clock Frequency})/2/[{frequency}) % 2```.
 
 ### Change music
