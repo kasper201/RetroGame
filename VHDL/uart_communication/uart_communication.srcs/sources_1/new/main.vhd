@@ -34,11 +34,29 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity main is
-    Port ( clk : in STD_LOGIC;
-           sendButton : in STD_LOGIC;
-           Rx : in STD_LOGIC;           --pin 7 (op stm32 verbinden met pin 8)
-           Tx : out STD_LOGIC;          --pin 1 (op stm32 verbinden met pin 2)
-           LED_Status : out STD_LOGIC
+    Port ( i_Clk : in STD_LOGIC;
+           i_SendButton : in STD_LOGIC;
+           i_Info_select : in std_logic_vector(3 downto 0);
+           i_Rx : in STD_LOGIC;           --JAX pin 7 (op stm32 verbinden met pin 8)
+           o_Tx : out STD_LOGIC;          --JAX pin 8 (op stm32 verbinden met pin 2)
+           o_id : out std_logic_vector(3 downto 0);
+           o_y : out std_logic_vector(3 downto 0);
+           o_x : out std_logic_vector(6 downto 0);
+           switch : out std_logic;
+           title : out std_logic;
+           isNr : out STD_LOGIC_VECTOR (3 downto 0);
+           highScore : out STD_LOGIC_VECTOR (3 downto 0);
+           isMoney : out STD_LOGIC;
+           nextNr : out STD_LOGIC;
+           o_LED_Status : out STD_LOGIC;
+           o_LED_Status1 : out STD_LOGIC;
+           o_LED_Status2 : out STD_LOGIC;
+           o_LED_Status3 : out STD_LOGIC;
+           o_LED_Status4 : out STD_LOGIC;
+           o_Sound : out STD_LOGIC;
+           o_clear : out STD_LOGIC;
+           o_D_bus : out STD_LOGIC_VECTOR(3 downto 0);  --Alle displays voor 7 segment
+           o_S_bus : out STD_LOGIC_VECTOR(7 downto 0)   --Alle segementen voor 7 segment
            );
 end main;
 
@@ -71,15 +89,58 @@ component RD_Process is
     Port ( i_Clk : in STD_LOGIC;
            i_RX_DV : in STD_LOGIC;
            i_R_Byte : in STD_LOGIC_VECTOR (7 downto 0);
-           o_Status : out STD_LOGIC);
+           i_Request_select : in std_logic_vector(3 downto 0);
+           i_info_select : in std_logic_vector(3 downto 0);
+           o_id : out std_logic_vector(3 downto 0);
+           o_y : out std_logic_vector(3 downto 0);
+           o_x : out std_logic_vector(6 downto 0);
+           switch : out std_logic;
+           title : out std_logic;
+           isNr : out STD_LOGIC_VECTOR (3 downto 0);
+           highScore : out STD_LOGIC_VECTOR (3 downto 0);
+           isMoney : out STD_LOGIC;
+           nextNr : out STD_LOGIC;
+           o_update : out STD_LOGIC;
+           o_life_lost : out STD_LOGIC;
+           o_BCD_bus : out STD_LOGIC_VECTOR(15 downto 0));
 end component;
 
---Sends out a byte for the uart tx
-component TX_Send is
+--Sends out 5 bytes for the uart tx
+component UREQUEST is
+  Port (
+        i_Clk : in std_logic;
+        i_Request_select : in std_logic_vector(3 downto 0);
+        i_Request_confirm : in std_logic;
+        i_Update_request : in std_logic;
+        o_Byte_out : out std_logic_vector(7 downto 0);
+        o_Send_Byte : out std_logic;
+        o_Status4 : out STD_LOGIC
+   );
+end component;
+
+--7 segment display
+component display_bus is
+    Port ( i_Clk : in STD_LOGIC;                            --clk signaal
+           i_BCD_bus : in STD_LOGIC_VECTOR (15 downto 0);   --BCD nummers 15 downto 12 (D3) 11 downto 8 (D2) 7 downto 4 (D1) 3 downto 0 (D0)
+           o_D_bus : out STD_LOGIC_VECTOR(3 downto 0);      --Bus voor alle 4 de displays (logisch gedaan dus dislay 0 = o_D_bus(0) en dislay 3 = o_D_bus(3))
+           o_S_bus : out STD_LOGIC_VECTOR(7 downto 0)       --Bus voor alle 8 de segmenten (a = o_S_bus(0) en dp = o_S_bus(7))
+           );
+end component;
+
+--Handles which part of the information is being processed
+component Select_Request is
     Port ( i_Clk : in STD_LOGIC;
-           i_Button : in STD_LOGIC;
-           o_Send_TX : out STD_LOGIC;
-           o_Byte_TX : out STD_LOGIC_VECTOR (7 downto 0));
+           i_Update_Request : in STD_LOGIC;
+           i_Start_Frame : in STD_LOGIC;
+           o_clear : out STD_LOGIC;
+           o_Request_Select : out STD_LOGIC_VECTOR (3 downto 0));
+end component;
+
+--Handles all sounds played
+component Sound is
+    Port ( i_Clk : in STD_LOGIC;
+           i_life_lost : in STD_LOGIC;
+           o_Sound : out STD_LOGIC);
 end component;
 
 --Status for the bytes and if they are ready to handle or to transmit
@@ -88,37 +149,86 @@ signal Recieved_Data_Valid, Transmit_Data_Valid : std_logic;
 signal Data_Recieved, Data_To_Send : std_logic_vector (7 downto 0);
 --Transmit status
 signal Transmit_Active, Transmit_Complete : std_logic;
+--De waarde die op de display moet komen
+signal bcd_to_display : std_logic_vector(15 downto 0);
+--Select welke waarde opgevraagd moet worden
+signal request_select : std_logic_vector(3 downto 0);
+signal update_request : std_logic;
+--Life Lost
+signal life_lost : std_logic;
 
 begin
 
     URX: UART_RX port map (
-        i_Clk       => clk,
-        i_RX_Serial => Rx,
+        i_Clk       => i_clk,
+        i_RX_Serial => i_Rx,
         o_RX_DV     => Recieved_Data_Valid,
         o_RX_Byte   => Data_Recieved
     );
     
     UTX: UART_TX port map (
-        i_Clk       => clk,
+        i_Clk       => i_clk,
         i_TX_DV     => Transmit_Data_Valid,
         i_TX_Byte   => Data_To_Send,
         o_TX_Active => Transmit_Active,
-        o_TX_Serial => Tx,
+        o_TX_Serial => o_Tx,
         o_TX_Done   => Transmit_Complete
     );
 
     UHANDLE: RD_Process port map (
-        i_Clk       => clk,
-        i_RX_DV     => Recieved_Data_Valid,
-        i_R_Byte    => Data_Recieved,
-        o_Status    => LED_Status
+        i_Clk               => i_clk,
+        i_RX_DV             => Recieved_Data_Valid,
+        i_R_Byte            => Data_Recieved,
+        i_Request_select    => Request_select,
+        i_info_select       => i_Info_select,
+        o_id                => o_id,
+        o_y                 => o_y,
+        o_x                 => o_x,
+        switch              => switch,
+        title               => title,
+        isNr                => isNr,
+        highScore           => highScore,
+        isMoney             => isMoney,
+        nextNr              => nextNr,
+        o_update            => update_request,
+        o_life_lost         => life_lost,
+        o_BCD_bus           => bcd_to_display
     );
     
-    USEND: TX_Send port map (
-        i_Clk       => clk,
-        i_Button    => sendButton,
-        o_Send_TX   => Transmit_Data_Valid,
-        o_Byte_TX   => Data_To_Send
-    );
+    USEND: UREQUEST port map (
+        i_Clk               => i_clk,
+        i_Request_select    => Request_select,
+        i_Request_confirm   => i_sendButton,
+        i_Update_request    => update_request,
+        o_Byte_out          => Data_To_Send,
+        o_Send_Byte         => Transmit_Data_Valid,
+        o_Status4           => o_LED_Status4
+   );
+   
+   UUPDATE: Select_Request port map (
+        i_Clk               => i_clk,
+        i_Update_Request    => update_request,
+        i_Start_Frame       => i_sendButton,
+        o_clear             => o_clear,
+        o_Request_Select    => Request_select
+   );
+   
+   UDISPLAY: display_bus port map(
+        i_Clk       => i_Clk,
+        i_bcd_bus   => bcd_to_display,
+        o_D_bus     => o_D_bus,
+        o_S_bus     => o_S_bus
+   );
+   
+   USOUND: Sound port map(
+        i_Clk       => i_Clk,
+        i_life_lost => life_lost,
+        o_sound     => o_sound
+   );
+   
+   o_LED_Status <= Request_select(3);
+   o_LED_Status1 <= Request_select(2);
+   o_LED_Status2 <= Request_select(1);
+   o_LED_Status3 <= Request_select(0);
 
 end Behavioral;

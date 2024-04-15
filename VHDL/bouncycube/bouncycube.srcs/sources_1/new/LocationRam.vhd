@@ -24,7 +24,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
@@ -38,9 +38,9 @@ generic(
 port(
      clk : in std_logic;
      shift : in std_logic;   
-     create : in std_logic_vector(data_width-1 downto 0);   
-     data : out std_logic_vector(data_width-1 downto 0);
-     addr : in std_logic_vector(addr_length-1 downto 0)
+     create : in std_logic_vector(data_width-1 downto 0) := (others=>'0');   
+     data : out std_logic_vector(data_width-1 downto 0) := (others=>'0');
+     addr : in std_logic_vector(addr_length-1 downto 0) := (others=>'0')
  );
  
 end locationRAM;
@@ -66,7 +66,7 @@ begin
         else
         
         end if;
-        
+    data <= ram(TO_INTEGER(UNSIGNED(addr)));  
     else
     
     end if;

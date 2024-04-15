@@ -7,7 +7,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(SOURCE_FILES
         main.c
         mainGame.c
-        updateHandler.c)
+        updateHandler.c
+        2DCursor.c
+        bullet.c)
 
 # Add the executable and specify the source files and header files
 add_executable(RetroGame ${SOURCE_FILES} ${HEADER_FILES})

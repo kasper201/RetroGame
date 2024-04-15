@@ -1,5 +1,24 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="25628" HostCore="16" HostMemory="034281848832">
+<<<<<<< HEAD
+    <Process Command="vivado.bat" Owner="Wouter" Host="PC-WOUTERROSENB" Pid="38828" HostCore="16" HostMemory="034281848832">
+=======
+    <Process Command="vivado.bat" Owner="verpl" Host="JAPSER" Pid="6992" HostCore="16" HostMemory="016890322944">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="verpl" Host="JAPSER" Pid="8236" HostCore="16" HostMemory="016890322944">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="verpl" Host="JAPSER" Pid="23112" HostCore="16" HostMemory="016890322944">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="verpl" Host="JAPSER" Pid="21944" HostCore="16" HostMemory="016890322944">
+>>>>>>> GoFromHere
     </Process>
 </ProcessHandle>

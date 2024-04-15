@@ -1,7 +1,15 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Mon Feb 26 00:49:14 2024
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+| Date         : Mon Apr 15 16:20:14 2024
+| Host         : Japser
+=======
+>>>>>>> GoFromHere
+| Date         : Sun Apr 14 22:06:17 2024
 | Host         : PC-WouterRosenbrand
+>>>>>>> development
 | Design       : design_1
 | Device       : xc7a35t-cpg236-1--
 -------------------------------------

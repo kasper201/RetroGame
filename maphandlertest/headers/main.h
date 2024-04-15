@@ -20,6 +20,12 @@ struct Map
     // for the robots, 5 is normal robot, 6 is tank robot and 7 is flying robot.
 };
 
+struct Bullet
+{
+    uint8_t x;
+    uint8_t y;
+};
+
 struct Player
 {
     uint8_t wave;

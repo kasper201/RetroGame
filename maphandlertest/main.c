@@ -1,4 +1,5 @@
 #include "mainGame.h"
+#include "updateHandler.h"
 
 /**
  * @brief Initializes the game and runs it
@@ -29,7 +30,15 @@ int game()
         return 1;
     }
 
-    err = gameLoop(map);
+    // generate the first wave manually
+    err = createWave(map, &player);
+    if (err)
+    {
+        printf("Error %d creating wave\n", err);
+        return 1;
+    }
+
+    err = gameLoop(map, &player);
     if (err)
     {
         printf("Error %d in game loop\n", err);
