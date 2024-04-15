@@ -107,7 +107,7 @@ To change the game logic one can chang ethe amount of seconds one action takes. 
 
 ![Example game balacing](image-6.png)
 
-## Structure c en h files
+## Structure c and h files
 - main.h            contains all structs relevant for bullets, plants, robots.
 - main.c            contains send_out list, trigger of gameUpdate, pause screen, cheat activate, hardware setups (buttons and uart).
 - menu.c            containts deadscreen().

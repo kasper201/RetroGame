@@ -48,6 +48,10 @@ int tempHealth;
 int geld;
 
 // Device 7 aliases for buttons
+<<<<<<< HEAD
+=======
+// Device 7 aliases for buttons
+>>>>>>> GoFromHere
 #define SW1_NODE DT_ALIAS(sw1)
 #define SW2_NODE DT_ALIAS(sw2)
 #define SW3_NODE DT_ALIAS(sw3)
@@ -89,6 +93,7 @@ int xLocs = 0;
 void casefunction(int i)
 {
 	// a switch case for when a button is pressed
+<<<<<<< HEAD
 	switch (i)
 	{
 	case 0:
@@ -96,48 +101,101 @@ void casefunction(int i)
 			yLoc++;
 		else
 			yLoc = 0;// if selector is already in the bottum position of the grid move it to the top
+=======
+	// a switch case for when a button is pressed
+	switch (i)
+	{
+	case 0:
+		if (yLoc < MAP_HEIGHT - 2)// selector move down
+			yLoc++;
+		else
+			yLoc = 0;// if selector is already in the bottum position of the grid move it to the top
+			yLoc = 0;// if selector is already in the bottum position of the grid move it to the top
+>>>>>>> GoFromHere
 		break;
 	case 1:
 		if (xLoc > 0)
 			xLoc--;// selector move left
+<<<<<<< HEAD
 		else
 			xLoc = 7;//  if selector is already in the most left position of the grid move it to the most right position
+=======
+			xLoc--;// selector move left
+		else
+			xLoc = 7;//  if selector is already in the most left position of the grid move it to the most right position
+			xLoc = 7;//  if selector is already in the most left position of the grid move it to the most right position
+>>>>>>> GoFromHere
 		break;
 	case 2:
 		if (yLoc > 0)
 			yLoc--;// selector move up
+<<<<<<< HEAD
 		else
 			yLoc = 4;// if selector is already in the top position of the grid move it to the bottum
+=======
+			yLoc--;// selector move up
+		else
+			yLoc = 3;// if selector is already in the top position of the grid move it to the bottum
+>>>>>>> GoFromHere
 		break;
 	case 3:
 		if (xLoc < MAP_WIDTH - 1)
 			xLoc++;// selector move right
+<<<<<<< HEAD
 		else
 			xLoc = 0;//  if selector is already in the most right position of the grid move it to the most left postion
+=======
+			xLoc++;// selector move right
+		else
+			xLoc = 0;//  if selector is already in the most right position of the grid move it to the most left postion
+			xLoc = 0;//  if selector is already in the most right position of the grid move it to the most left postion
+>>>>>>> GoFromHere
 		break;
 	case 4:
 		if (xLocs < 3)
 			xLocs++;// shop selector move right
+<<<<<<< HEAD
 		else
 		{
 			xLocs = 0; // if shop selector is already in the most right position of the grid move it to the most left postion
+=======
+			xLocs++;// shop selector move right
+		else
+		{
+			xLocs = 0; // if shop selector is already in the most right position of the grid move it to the most left postion
+			xLocs = 0; // if shop selector is already in the most right position of the grid move it to the most left postion
+>>>>>>> GoFromHere
 		}
 
 		break;
 	case 5:
 		createPlant(map, xLoc, yLoc, xLocs + 1, &player);// create a plant 
+<<<<<<< HEAD
 		break;
 	case 6:
 		if (xLocs > 0)// shop selector move left
 			xLocs--;
 		else
 			xLocs = 3;//shop selector is already in the most left position of the grid move it to the most right postion
+=======
+		createPlant(map, xLoc, yLoc, xLocs + 1, &player);// create a plant 
+		break;
+	case 6:
+		if (xLocs > 0)// shop selector move left
+		if (xLocs > 0)// shop selector move left
+			xLocs--;
+		else
+			xLocs = 3;//shop selector is already in the most left position of the grid move it to the most right postion
+			xLocs = 3;//shop selector is already in the most left position of the grid move it to the most right postion
+>>>>>>> GoFromHere
 		break;
 	}
 }
 
+//Is triggered by an interrupt
 void timer_handler(struct k_timer *timer_id)
 {
+	//Check for input
 	if (checkFromFpga() != -1)
 	{
 		printk("Start sending at at %" PRIu32 "\n", k_cycle_get_32());
@@ -152,7 +210,6 @@ void timer_handler(struct k_timer *timer_id)
 		sendByte[1] = geld / 253;
 		print_uart(sendByte, 2);
 		printf("Send these bytes: %d %d\n", sendByte[0], sendByte[1]);
-		// k_usleep(SLEEP_TIME_U);
 		sendByte[0] = 0xff;
 		sendByte[1] = 0xfe;
 		print_uart(sendByte, 2);
@@ -186,7 +243,6 @@ void timer_handler(struct k_timer *timer_id)
 			print_uart(&sendByteC, 1);
 			printf("Life lost send this byte: %d\n", sendByteC);
 			printf("hp left:%d", player.health);
-			// k_usleep(SLEEP_TIME_U);
 			tempHealth = player.health;
 		}
 		sendByte[0] = 0xff;
@@ -198,8 +254,6 @@ void timer_handler(struct k_timer *timer_id)
 		sendByteC = byte;
 		print_uart(&sendByteC, 1);
 		printf("Send these byte: %d\n", sendByteC);
-		
-		// k_usleep(SLEEP_TIME_U);
 		sendByte[0] = 0xff;
 		sendByte[1] = 0xfe;
 		print_uart(sendByte, 2);
@@ -208,7 +262,6 @@ void timer_handler(struct k_timer *timer_id)
 		sendByteC = player.wave;
 		print_uart(&sendByteC, 1);
 		printf("Send wave these byte: %d\n", sendByteC);
-		// k_usleep(SLEEP_TIME_U);
 		sendByte[0] = 0xff;
 		sendByte[1] = 0xfe;
 		print_uart(sendByte, 2);
@@ -244,11 +297,19 @@ void button_rightshop(const struct device *dev, struct gpio_callback *cb, uint32
 void game()
 {
 	// initilize all the grids and arrays of the game
+<<<<<<< HEAD
+=======
+	// initilize all the grids and arrays of the game
+>>>>>>> GoFromHere
 	int err = mapinit(map);
 	err = mapRinit(mapR);
 	err = playerInit(&player);
 	bulletInit(bullet);
 	// initilize the variablees
+<<<<<<< HEAD
+=======
+	// initilize the variablees
+>>>>>>> GoFromHere
 	xLoc = 0;
 	yLoc = 0;
 	xLocs = 0;
@@ -312,7 +373,7 @@ int main(void)
 	printk("Start\n");
 	while (1)
 	{
-
+		//Sets val to the state of the button
 		val[0] = gpio_pin_get_dt(buttons[0]);
 		val[1] = gpio_pin_get_dt(buttons[1]);
 		val[2] = gpio_pin_get_dt(buttons[2]);
@@ -324,6 +385,7 @@ int main(void)
 		// Loop through the buttons
 		for (int i = 0; i < 7; i++)
 		{
+			//checks if a button is pressed
 			if (val[i] > 0 && buttonPressed[i] == 0)
 			{
 				buttonPressed[i] = 1;
@@ -334,6 +396,7 @@ int main(void)
 				}
 				count++;
 				released[i] = 0;
+				//Activate cheats if left shop, up, down and right for garden is pressed
 				if( val[0] > 0 && val[1] <= 0 && val[2] > 0 && val[3] > 0 && val[4] <= 0 && val[5] <= 0 && val[6] > 0)
 				{
 					cheats = !cheats;
@@ -349,6 +412,7 @@ int main(void)
 			}
 			else
 			{
+				//Button noted as released so there is no accidental released because of bounce
 				if (released[i] > 2)
 				{
 					if(buttonPressed[i] > 0)
@@ -367,14 +431,17 @@ int main(void)
 
 		if (generateFrame == true && pause == false)
 		{
+			// Cheat stats
 			if(cheats)
 			{
 				player.money = 9999;
 				player.health = 20000;
 			}
+			// Generate new frame
 			updateGame(map, mapR, &player, bullet, frame);
 			generateFrame = false;
 		}
+		//Update pause without causing issues
 		if (pause2 == true)
 		{
 			pause = true;
