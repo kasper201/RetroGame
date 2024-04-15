@@ -62,7 +62,7 @@ begin
         )
         port map (
             clk => clk,
-        	displayText => "  50       100        50       200",
+        	displayText => "  50       100        50       300",
         	position => (190, 95), -- text position (top left)
         	horzCoord => to_integer(UNSIGNED(h)),
         	vertCoord => to_integer(UNSIGNED(v)),
