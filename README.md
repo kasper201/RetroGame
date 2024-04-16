@@ -1,3 +1,6 @@
+*Version: V1.0.0*
+
+*Date: 16/04/2024*
 # Pre-installation
 
 - Zephyr version: 3.5 or later [zephyr_installation_guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html)
