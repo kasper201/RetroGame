@@ -256,7 +256,7 @@ countertje : process (clk, aReset)
     end if;
     end process;
   
-rowDetermination : process(clk, aReset) -- this can be done A LOT better but idk how yet
+rowDetermination : process(clk, aReset) -- this process is used for filling the ram. it does so by switching enables
     
     begin
     if (rising_edge(clk))then
@@ -318,12 +318,12 @@ rowDetermination : process(clk, aReset) -- this can be done A LOT better but idk
             botEnables <= "11111";
             outputEnable <= '1'; 
             
-        elsif (SpeedSel = "1110")then
+        elsif (SpeedSel = "1110")then--- if 14 do nothing(this gives the writing function space to breathe)
             plantEnables <= plantEnables;
             botEnables <= botEnables; 
             outputEnable <= outputEnable;
             
-        elsif (SpeedSel = "1111")then  --selector 
+        elsif (SpeedSel = "1111")then  --selector ID is 15
             plantEnables <= "11111";
             botEnables <= "11111"; 
             outputEnable <= '0';  
@@ -358,7 +358,7 @@ rowDetermination : process(clk, aReset) -- this can be done A LOT better but idk
     end if;
     end process;
 
-physicsBox : process(clk, aReset)
+physicsBox : process(clk, aReset) --this process is responsable for reading things from the ram
         
     begin
         if(aReset = '1') then
@@ -373,17 +373,17 @@ physicsBox : process(clk, aReset)
             
             -- All statements for checking what should be placed on a certain location
 
-            -- Robots
+            -- printing the shop plants
             if(vWriteLoc <= "0001110000") then -- row 0
                 coordY <= "0000000010";
                 coordX <= std_logic_vector(addrPlant(2 downto 0) * to_unsigned(80,7));
-                if(addrPlant < "0100") then
+                if(addrPlant < "0100") then --setting the maximum size of the shop
                     spriteSelect <= STD_LOGIC_VECTOR(to_unsigned(to_integer(addrPlant) + 1, 4));
                 else
                     spriteSelect <= "0000";
                 end if;
             end if;
-
+                --robots
                 if (found_entity /= "0000" AND found_plant = "0000" AND vWriteLoc > "0001110000" AND vWriteLoc <= "0011000000") then 
                     if(cnt = "0000") then
                         startCNT <= '1';
