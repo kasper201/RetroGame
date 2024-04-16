@@ -66,7 +66,7 @@ void bulletDetect(struct Bullet bullet[maxBullets], struct MapR mapR[MAP_WIDTHR]
 				}
 				else
 				{
-					mapR[bullet[i].x - 1][bullet[i].y].health -=10; // remove hp if bullet hits a robot
+					mapR[bullet[i].x][bullet[i].y].health -=10; // remove hp if bullet hits a robot
 				}
 				
 				bullet[i].x = 0;// remove bullets

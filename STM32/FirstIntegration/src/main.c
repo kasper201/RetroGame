@@ -36,16 +36,17 @@ struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR];
 struct Bullet bullet[maxBullets];
 struct Player player;
 
-static struct k_timer my_timer;
-bool generateFrame = false;
-bool pause;
-bool pause2;
-bool cheats;
-int byte;
-unsigned char sendByte[2];
-unsigned char sendByteC;
-int tempHealth;
-int geld;
+static struct k_timer my_timer;		//Interrupt timer for uart
+
+bool generateFrame = false;			//Generates a frame if true
+bool pause;							//Pauses the game and shows the pause screen
+bool pause2;						//Is used to set pause to true without issues from game()
+bool cheats;						//Turns cheats on if true
+int byte;							//A value used for calculations before sending the data
+unsigned char sendByte[2];			//A 2 char long array for sending data
+unsigned char sendByteC;			//A single char for sending data
+int tempHealth;						//Value to check if health is lost
+int geld;							//Value to store the money that is send to the fpga
 
 // Device 7 aliases for buttons
 #define SW1_NODE DT_ALIAS(sw1)
