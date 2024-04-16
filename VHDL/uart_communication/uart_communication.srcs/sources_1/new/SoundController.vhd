@@ -52,11 +52,6 @@ begin
                 --Playing a sound
                     if counter < 100000000 then
                         counter := counter + 1;
-                        
-                        -- All sounds are calculated for a block wave
-                        -- the formula: 100MHz/ 2 / Hz mod 2
-                        -- if mod = 0 then part of the wave is high and when mod = 1 the part is low
-                        
                         case i_SoundInput is
                             when "0000" =>
                                 --Speel muzieknoot e2 of e3
