@@ -130,11 +130,10 @@ leds <= coordX;
 process (clk100)
 
 begin
-    -- This process is here to make sure one block of RAM will be used to read
-    -- And the other is being update by the stm32
+
     if rising_edge(clk100) then
         if locationSelect = '1' then
-            --Request data from RAM
+            --Opvragen en ontvangen uit ram
             selector        <= selector1;
             CoordX          <= CoordX1;
             CoordY          <= CoordY1;
@@ -142,16 +141,20 @@ begin
             hQ1             <= hQ;
             vQ1             <= vQ;
             
-            --Fill RAM
+            --Plaatsen van ram
             speedSel2       <= speedSel;
             X2              <= buttonsX;
             Y2              <= tempSel;
             
             
-            --Set speedSel to read only
+            --Nul naartoe zetten
+            --hQ2             <= "0000000000";
+            --vQ2             <= "0000000000";
             speedSel1       <= "1000";
+            --X1              <= "0000000";
+            --Y1              <= "0000";
         else
-            --Request data from RAM
+            --Opvragen en ontvangen uit ram
             selector        <= selector2;
             CoordX          <= CoordX2;
             CoordY          <= CoordY2;
@@ -159,13 +162,17 @@ begin
             hQ2             <= hQ;
             vQ2            <= vQ;
             
-            --Fill RAM
+            --Plaatsen van ram
             speedSel1       <= speedSel;
             X1              <= buttonsX;
             Y1              <= tempSel;
             
-            --Set speedSel to read only
+            --Nul naartoe zetten
+            --hQ1             <= "0000000000";
+            --vQ1             <= "0000000000";
             speedSel2       <= "1000";
+            --X2              <= "0000000";
+            --Y2              <= "0000";
         end if;
     end if;
 
@@ -178,7 +185,6 @@ G0 : prescaler port map(
     clk_100 => clk100
   );
   
-  --RAM 1
  G1 : locationDetermination Port map(
            clk => clk100,
            selector => selector1,
@@ -192,7 +198,6 @@ G0 : prescaler port map(
            coordX => coordX1,
            spriteSelect => spriteSelect1); -- not actually sprite select. Speed select does that. Must fix! Is an artifact!
  
- --RAM 2
   G1D1 : locationDetermination Port map(
            clk => clk100,
            selector => selector2,
@@ -259,7 +264,7 @@ G4 : VGA port map(
             v => vQ,
             display => display
             );
---G5 : locationRAM port map(
+-- G5 : locationRAM port map(
 --    clk <= clk100,
  --    shift <= '0',   
  --    create <= "1011"   

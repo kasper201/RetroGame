@@ -4,11 +4,7 @@
 
 #define framerate 20
 // these defines all represent the amount of seconds per action
-<<<<<<< HEAD
-#define waverate 5 
-=======
 #define waverate 10 
->>>>>>> GoFromHere
 #define robotrate 2
 #define shootrate 8
 #define sunflowerrate 3
@@ -16,11 +12,7 @@
 uint8_t toCreate = 0;
 uint8_t count = 0;
 uint8_t count2 = 0;
-<<<<<<< HEAD
-int count3 = 100;
-=======
 int count3 = 180;
->>>>>>> GoFromHere
 int count4 = 0;
 int mem = 0;
 int mem2 = 0;
@@ -341,27 +333,14 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
     count2++;
     count4++;
     if (toCreate == 0){ //and if there are no more robots to create 
-<<<<<<< HEAD
     count3++;
     if(count3 >= (framerate * waverate)){// create wave every defined amount of frames 
-=======
-    count4++;
-    if (toCreate == 0){ //and if there are no more robots to create 
-    count3++;
-    if(count3 >= (framerate * waverate)){// create wave every defined amount of frames 
-    if(count3 >= (framerate * waverate)){// create wave every defined amount of frames 
->>>>>>> GoFromHere
         printk("wave created");
         createWave(map, player);
         count3 = 0;// set counter 3 to 0
     }
     }
     if (count4 >= (framerate * robotrate))// create robot every defined amount of frames
-<<<<<<< HEAD
-=======
-    }
-    if (count4 >= (framerate * robotrate))// create robot every defined amount of frames
->>>>>>> GoFromHere
     {
         if (toCreate != 0) // check if there are still robots left to create
         {
@@ -397,10 +376,6 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
     }
 
     if (count >= (framerate * shootrate)) //update shooter plant every defined amount of frames
-<<<<<<< HEAD
-=======
-    if (count >= (framerate * shootrate)) //update shooter plant every defined amount of frames
->>>>>>> GoFromHere
     {
         for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
         {
@@ -417,10 +392,6 @@ int updateGame(struct Map map[MAP_WIDTH][MAP_HEIGHT], struct MapR mapR[MAP_WIDTH
     }
 
     if (count2 >= (framerate * sunflowerrate))//add 10 for every sunflower every defined amount of frames
-<<<<<<< HEAD
-=======
-    if (count2 >= (framerate * sunflowerrate))//add 10 for every sunflower every defined amount of frames
->>>>>>> GoFromHere
     {
         for (int x = 0; x < MAP_WIDTH; x++) // iterate over the map and update the plants and enemies
         {

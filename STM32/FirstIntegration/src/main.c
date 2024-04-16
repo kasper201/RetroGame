@@ -36,22 +36,19 @@ struct MapR mapR[MAP_WIDTHR][MAP_HEIGHTR];
 struct Bullet bullet[maxBullets];
 struct Player player;
 
-static struct k_timer my_timer;
-bool generateFrame = false;
-bool pause;
-bool pause2;
-bool cheats;
-int byte;
-unsigned char sendByte[2];
-unsigned char sendByteC;
-int tempHealth;
-int geld;
+static struct k_timer my_timer;		//Interrupt timer for uart
+
+bool generateFrame = false;			//Generates a frame if true
+bool pause;							//Pauses the game and shows the pause screen
+bool pause2;						//Is used to set pause to true without issues from game()
+bool cheats;						//Turns cheats on if true
+int byte;							//A value used for calculations before sending the data
+unsigned char sendByte[2];			//A 2 char long array for sending data
+unsigned char sendByteC;			//A single char for sending data
+int tempHealth;						//Value to check if health is lost
+int geld;							//Value to store the money that is send to the fpga
 
 // Device 7 aliases for buttons
-<<<<<<< HEAD
-=======
-// Device 7 aliases for buttons
->>>>>>> GoFromHere
 #define SW1_NODE DT_ALIAS(sw1)
 #define SW2_NODE DT_ALIAS(sw2)
 #define SW3_NODE DT_ALIAS(sw3)
@@ -93,16 +90,6 @@ int xLocs = 0;
 void casefunction(int i)
 {
 	// a switch case for when a button is pressed
-<<<<<<< HEAD
-	switch (i)
-	{
-	case 0:
-		if (yLoc < MAP_HEIGHT - 1)// selector move down
-			yLoc++;
-		else
-			yLoc = 0;// if selector is already in the bottum position of the grid move it to the top
-=======
-	// a switch case for when a button is pressed
 	switch (i)
 	{
 	case 0:
@@ -110,84 +97,42 @@ void casefunction(int i)
 			yLoc++;
 		else
 			yLoc = 0;// if selector is already in the bottum position of the grid move it to the top
-			yLoc = 0;// if selector is already in the bottum position of the grid move it to the top
->>>>>>> GoFromHere
 		break;
 	case 1:
 		if (xLoc > 0)
 			xLoc--;// selector move left
-<<<<<<< HEAD
 		else
 			xLoc = 7;//  if selector is already in the most left position of the grid move it to the most right position
-=======
-			xLoc--;// selector move left
-		else
-			xLoc = 7;//  if selector is already in the most left position of the grid move it to the most right position
-			xLoc = 7;//  if selector is already in the most left position of the grid move it to the most right position
->>>>>>> GoFromHere
 		break;
 	case 2:
 		if (yLoc > 0)
 			yLoc--;// selector move up
-<<<<<<< HEAD
-		else
-			yLoc = 4;// if selector is already in the top position of the grid move it to the bottum
-=======
-			yLoc--;// selector move up
 		else
 			yLoc = 3;// if selector is already in the top position of the grid move it to the bottum
->>>>>>> GoFromHere
 		break;
 	case 3:
 		if (xLoc < MAP_WIDTH - 1)
 			xLoc++;// selector move right
-<<<<<<< HEAD
 		else
 			xLoc = 0;//  if selector is already in the most right position of the grid move it to the most left postion
-=======
-			xLoc++;// selector move right
-		else
-			xLoc = 0;//  if selector is already in the most right position of the grid move it to the most left postion
-			xLoc = 0;//  if selector is already in the most right position of the grid move it to the most left postion
->>>>>>> GoFromHere
 		break;
 	case 4:
 		if (xLocs < 3)
 			xLocs++;// shop selector move right
-<<<<<<< HEAD
 		else
 		{
 			xLocs = 0; // if shop selector is already in the most right position of the grid move it to the most left postion
-=======
-			xLocs++;// shop selector move right
-		else
-		{
-			xLocs = 0; // if shop selector is already in the most right position of the grid move it to the most left postion
-			xLocs = 0; // if shop selector is already in the most right position of the grid move it to the most left postion
->>>>>>> GoFromHere
 		}
 
 		break;
 	case 5:
 		createPlant(map, xLoc, yLoc, xLocs + 1, &player);// create a plant 
-<<<<<<< HEAD
 		break;
 	case 6:
 		if (xLocs > 0)// shop selector move left
 			xLocs--;
 		else
 			xLocs = 3;//shop selector is already in the most left position of the grid move it to the most right postion
-=======
-		createPlant(map, xLoc, yLoc, xLocs + 1, &player);// create a plant 
-		break;
-	case 6:
-		if (xLocs > 0)// shop selector move left
-		if (xLocs > 0)// shop selector move left
-			xLocs--;
-		else
-			xLocs = 3;//shop selector is already in the most left position of the grid move it to the most right postion
-			xLocs = 3;//shop selector is already in the most left position of the grid move it to the most right postion
->>>>>>> GoFromHere
 		break;
 	}
 }
@@ -297,19 +242,11 @@ void button_rightshop(const struct device *dev, struct gpio_callback *cb, uint32
 void game()
 {
 	// initilize all the grids and arrays of the game
-<<<<<<< HEAD
-=======
-	// initilize all the grids and arrays of the game
->>>>>>> GoFromHere
 	int err = mapinit(map);
 	err = mapRinit(mapR);
 	err = playerInit(&player);
 	bulletInit(bullet);
 	// initilize the variablees
-<<<<<<< HEAD
-=======
-	// initilize the variablees
->>>>>>> GoFromHere
 	xLoc = 0;
 	yLoc = 0;
 	xLocs = 0;
