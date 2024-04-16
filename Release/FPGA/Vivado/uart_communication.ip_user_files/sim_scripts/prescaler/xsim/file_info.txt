@@ -1,3 +1,0 @@
-prescaler_clk_wiz.v,verilog,xil_defaultlib,../../../../uart_communication.gen/sources_1/ip/prescaler/prescaler_clk_wiz.v,incdir="../../../ipstatic"incdir="../../../ipstatic"
-prescaler.v,verilog,xil_defaultlib,../../../../uart_communication.gen/sources_1/ip/prescaler/prescaler.v,incdir="../../../ipstatic"incdir="../../../ipstatic"
-glbl.v,Verilog,xil_defaultlib,glbl.v

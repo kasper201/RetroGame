@@ -1,8 +1,0 @@
-verilog xil_defaultlib --include "../../../ipstatic" \
-"../../../../uart_communication.gen/sources_1/ip/prescaler/prescaler_clk_wiz.v" \
-"../../../../uart_communication.gen/sources_1/ip/prescaler/prescaler.v" \
-
-verilog xil_defaultlib "glbl.v"
-
-# Do not sort compile order
-nosort
